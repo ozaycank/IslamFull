@@ -15,9 +15,6 @@ class SecureStorageService {
           ),
         );
 
-  static const String keyRememberedEmail = 'sec_key_remembered_email';
-  static const String keyRememberMeStatus = 'sec_key_remember_me_status';
-
   // Notification Keys
   static const String keyNotificationsEnabled = 'sec_key_notif_enabled';
   static const String keyPrayerReminderMinutes = 'sec_key_notif_prayer_mins';
@@ -34,30 +31,6 @@ class SecureStorageService {
 
   Future<void> delete({required String key}) async {
     await _storage.delete(key: key);
-  }
-
-  Future<void> saveRememberMe({
-    required bool rememberMe,
-    required String email,
-  }) async {
-    await _storage.write(
-      key: keyRememberMeStatus,
-      value: rememberMe.toString(),
-    );
-    if (rememberMe) {
-      await _storage.write(key: keyRememberedEmail, value: email);
-    } else {
-      await _storage.delete(key: keyRememberedEmail);
-    }
-  }
-
-  Future<bool> getRememberMeStatus() async {
-    final status = await _storage.read(key: keyRememberMeStatus);
-    return status == 'true';
-  }
-
-  Future<String?> getRememberedEmail() async {
-    return _storage.read(key: keyRememberedEmail);
   }
 
   // Notification Getters & Setters

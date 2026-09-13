@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 // Saat dilimi (timezone) veritabanı başlatıcısı
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:noor_life/core/services/local_notification_service.dart';
-import 'firebase_options.dart';
 import 'core/di/injection_container.dart';
 import 'core/routing/app_router.dart';
 import 'core/theme/light_theme.dart';
@@ -24,11 +22,6 @@ void main() async {
 
   // 3. Saat dilimleri veritabanını başlat (Burası "Timezone conversion failed" hatasını çözer)
   tz.initializeTimeZones();
-
-  // 4. Firebase'i başlat
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
 
   // 5. DI (Dependency Injection) yapılandırmasını başlat
   await configureDependencies();

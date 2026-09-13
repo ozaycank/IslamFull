@@ -22,8 +22,6 @@ dependencies:
   flutter_dotenv: ^5.2.1
   json_annotation: ^4.9.0
   equatable: ^2.0.5
-  firebase_core: ^3.8.0
-  firebase_auth: ^5.7.0
   flutter_secure_storage: ^9.2.4
   flutter_svg: ^2.0.10
   timezone: ^0.9.4

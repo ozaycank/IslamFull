@@ -3,35 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get_it/get_it.dart';
 
-import 'package:noor_life/core/errors/failure.dart';
 import 'package:noor_life/core/base/result.dart';
-import 'package:noor_life/features/authentication/domain/entities/auth_user.dart';
-import 'package:noor_life/features/authentication/domain/repositories/auth_repository.dart';
+// FIX: GetIt doğrudan projenin kendi container'ından çekiliyor
+import 'package:noor_life/core/di/injection_container.dart';
 import 'package:noor_life/features/activity/domain/activity_models.dart';
-
-// FIX: Absolute import instead of relative to guarantee localization resolution
 import 'package:noor_life/l10n/generated/app_localizations.dart';
 import 'package:noor_life/features/profile/presentation/screens/profile_screen.dart';
-
-class FakeAuthRepository implements AuthRepository {
-  @override
-  Stream<AuthUser?> get authStateChanges => const Stream.empty();
-
-  @override
-  Future<(Failure?, AuthUser?)> getCurrentUser() async {
-    return (null, null); // Simulate Guest
-  }
-
-  @override
-  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
-}
 
 class FakeActivityRepository implements ActivityRepository {
   @override
   Future<Result<DailyActivity, ActivityFailure>> getDailyActivity(
-      String date,) async {
+    String date,
+  ) async {
     return Success(DailyActivity(date: date));
   }
 
@@ -47,10 +31,17 @@ class FakeActivityRepository implements ActivityRepository {
 
 void main() {
   setUp(() {
-    final getIt = GetIt.instance;
+    // FIX: Projenin kendi GetIt servisi üzerinden güvenli kayıt
+    if (!getIt.isRegistered<ActivityRepository>()) {
+      getIt.registerSingleton<ActivityRepository>(FakeActivityRepository());
+    } else {
+      getIt.unregister<ActivityRepository>();
+      getIt.registerSingleton<ActivityRepository>(FakeActivityRepository());
+    }
+  });
+
+  tearDown(() {
     getIt.reset();
-    getIt.registerSingleton<AuthRepository>(FakeAuthRepository());
-    getIt.registerSingleton<ActivityRepository>(FakeActivityRepository());
   });
 
   Widget buildTestableWidget() {
@@ -64,18 +55,17 @@ void main() {
         ],
         supportedLocales: [Locale('en')],
         locale: Locale('en'),
-        home: Scaffold(body: ProfileScreen()), // Wrapped in Scaffold for safety
+        home: Scaffold(body: ProfileScreen()),
       ),
     );
   }
 
-  testWidgets('Profile screen renders safely with basic user elements',
+  testWidgets('Profile screen renders safely with basic local data',
       (tester) async {
     await tester.pumpWidget(buildTestableWidget());
-
-    // FIX: pumpAndSettle guarantees that localizations delegate completes loading
     await tester.pumpAndSettle();
 
     expect(find.text('Your Progress'), findsOneWidget);
+    expect(find.text('IslamFull'), findsOneWidget);
   });
 }
