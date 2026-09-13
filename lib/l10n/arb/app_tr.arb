@@ -53,7 +53,7 @@
   "activityTitle": "İbadet Takibi",
   "activityDesc": "Günlük namaz, zikir ve oruç ibadetlerinizi buradan takip edin.",
   "profileTitle": "Kullanıcı Profili",
-  "profileDesc": "IslamFull hesabınızı, tercihlerinizi ve kişisel istatistiklerinizi yönetin.",
+  "profileDesc": "İslami yaşamınızı, tercihlerinizi ve kişisel istatistiklerinizi tek bir yerden yönetin.",
   "settingsTitle": "Ayarlar",
   "settingsDesc": "Bildirimleri, hesaplama yöntemlerini ve uygulama temalarını yapılandırın.",
   "openSettingsButton": "Ayarları Aç",
@@ -234,5 +234,6 @@
   "notificationsTitle": "Bildirimler",
   "notificationsEnabled": "Bildirimlere İzin Ver",
   "prayerReminders": "Namaz Hatırlatıcı",
-  "dailyVerseEnabled": "Günlük Kur'an Ayeti"
+  "dailyVerseEnabled": "Günlük Kur'an Ayeti",
+  "notificationPermissionDeniedMessage": "Bildirim izni reddedildi. Lütfen cihaz ayarlarından izin verin."
 }

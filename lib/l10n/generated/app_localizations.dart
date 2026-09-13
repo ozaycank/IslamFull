@@ -419,7 +419,7 @@ abstract class AppLocalizations {
   /// Profile placeholder page description
   ///
   /// In en, this message translates to:
-  /// **'Manage your IslamFull account, preferences, and personal statistics.'**
+  /// **'Manage your Islamic lifestyle, preferences, and personal statistics all in one place.'**
   String get profileDesc;
 
   /// Settings placeholder page title
@@ -1501,6 +1501,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Daily Quran Verse'**
   String get dailyVerseEnabled;
+
+  /// Notification permission denied message shown when notifications are blocked
+  ///
+  /// In en, this message translates to:
+  /// **'Notification permission denied. Please enable it in your device settings.'**
+  String get notificationPermissionDeniedMessage;
 }
 
 class _AppLocalizationsDelegate

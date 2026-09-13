@@ -183,7 +183,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileDesc =>
-      'Manage your IslamFull account, preferences, and personal statistics.';
+      'Manage your Islamic lifestyle, preferences, and personal statistics all in one place.';
 
   @override
   String get settingsTitle => 'Settings';
@@ -743,4 +743,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dailyVerseEnabled => 'Daily Quran Verse';
+
+  @override
+  String get notificationPermissionDeniedMessage =>
+      'Notification permission denied. Please enable it in your device settings.';
 }

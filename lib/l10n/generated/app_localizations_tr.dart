@@ -186,7 +186,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get profileDesc =>
-      'IslamFull hesabınızı, tercihlerinizi ve kişisel istatistiklerinizi yönetin.';
+      'İslami yaşamınızı, tercihlerinizi ve kişisel istatistiklerinizi tek bir yerden yönetin.';
 
   @override
   String get settingsTitle => 'Ayarlar';
@@ -748,4 +748,8 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get dailyVerseEnabled => 'Günlük Kur\'an Ayeti';
+
+  @override
+  String get notificationPermissionDeniedMessage =>
+      'Bildirim izni reddedildi. Lütfen cihaz ayarlarından izin verin.';
 }

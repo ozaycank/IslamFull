@@ -217,7 +217,7 @@
   "@profileTitle": {
     "description": "Profile placeholder page title"
   },
-  "profileDesc": "Manage your IslamFull account, preferences, and personal statistics.",
+  "profileDesc": "Manage your Islamic lifestyle, preferences, and personal statistics all in one place.",
   "@profileDesc": {
     "description": "Profile placeholder page description"
   },
@@ -910,5 +910,7 @@
   "prayerReminders": "Prayer Reminders",
   "@prayerReminders": { "description": "Prayer reminder setting label" },
   "dailyVerseEnabled": "Daily Quran Verse",
-  "@dailyVerseEnabled": { "description": "Toggle for daily verse" }
+  "@dailyVerseEnabled": { "description": "Toggle for daily verse" },
+  "notificationPermissionDeniedMessage": "Notification permission denied. Please enable it in your device settings.",
+  "@notificationPermissionDeniedMessage": { "description": "Notification permission denied message shown when notifications are blocked" }
 }

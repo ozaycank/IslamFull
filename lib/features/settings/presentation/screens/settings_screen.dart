@@ -15,6 +15,7 @@ import '../../application/providers/language_settings_notifier.dart';
 import '../../application/providers/notification_settings_provider.dart';
 import '../widgets/selection_bottom_sheet.dart';
 import '../widgets/settings_selection_tile.dart';
+import '../../../../core/services/notification_service.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -99,10 +100,21 @@ class _NotificationSection extends ConsumerWidget {
                   },
                 ),
                 const Divider(height: 1),
-                SwitchListTile(
-                  title: Text(l10n.dailyVerseEnabled),
-                  value: state.dailyVerseEnabled,
-                  onChanged: notifier.toggleDailyVerse,
+               SwitchListTile(
+                  title: Text(l10n.notificationsEnabled),
+                  value: state.masterEnabled,
+                  activeThumbColor: context.colorScheme.primary,
+                  onChanged: (val) async {
+                    // Sonucu bekliyoruz
+                    final success = await notifier.toggleMaster(val);
+
+                    // Eğer başarısız olduysa (izin reddedildiyse) SnackBar gösteriyoruz
+                    if (!success && context.mounted) {
+                      NotificationService.showError(
+                        l10n.notificationPermissionDeniedMessage, // Eklediğimiz yeni metin
+                      );
+                    }
+                  },
                 ),
               ],
             ],

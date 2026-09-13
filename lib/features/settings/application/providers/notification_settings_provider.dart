@@ -72,7 +72,7 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
     _rescheduleAll();
   }
 
-  Future<void> toggleMaster(bool val) async {
+  Future<bool> toggleMaster(bool val) async {
     await _storage.setNotificationsEnabled(val);
     state = state.copyWith(masterEnabled: val);
     if (val) {
@@ -80,10 +80,11 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
       if (!granted) {
         state = state.copyWith(masterEnabled: false);
         await _storage.setNotificationsEnabled(false);
-        return;
+        return false;
       }
     }
     _rescheduleAll();
+    return true;
   }
 
   Future<void> setReminderMinutes(int mins) async {
