@@ -766,4 +766,12 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get activityHistoryEmptyDesc =>
       'İbadetlerinizi kaydetmeye başladıkça burası manevi yolculuğunuzun haritası olacak.';
+
+  @override
+  String get homeShahadaArabic =>
+      'أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ ٱللَّٰهِ';
+
+  @override
+  String get homeShahadaTransliteration =>
+      'Eşhedü en lâ ilâhe illallah ve eşhedü enne Muhammeden Resûlullah.';
 }

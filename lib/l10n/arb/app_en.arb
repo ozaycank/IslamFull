@@ -919,5 +919,8 @@
   "activityTapToComplete": "Tap to complete",
   "@activityTapToComplete": { "description": "Hint text for worship cards" },
   "activityHistoryEmptyDesc": "As you record your worship, this space will become the map of your spiritual journey.",
-  "@activityHistoryEmptyDesc": { "description": "Empty state description for history" }
+  "@activityHistoryEmptyDesc": { "description": "Empty state description for history" },"homeShahadaArabic": "أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ ٱللَّٰهِ",
+  "@homeShahadaArabic": { "description": "Arabic text for the Shahada" },
+  "homeShahadaTransliteration": "Ash-hadu an la ilaha illallah, wa ash-hadu anna Muhammadan rasulullah.",
+  "@homeShahadaTransliteration": { "description": "Transliteration of the Shahada" }
 }

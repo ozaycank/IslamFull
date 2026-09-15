@@ -760,4 +760,12 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get activityHistoryEmptyDesc =>
       'As you record your worship, this space will become the map of your spiritual journey.';
+
+  @override
+  String get homeShahadaArabic =>
+      'أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ ٱللَّٰهِ';
+
+  @override
+  String get homeShahadaTransliteration =>
+      'Ash-hadu an la ilaha illallah, wa ash-hadu anna Muhammadan rasulullah.';
 }

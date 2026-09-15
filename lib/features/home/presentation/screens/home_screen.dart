@@ -55,6 +55,8 @@ class HomeScreen extends ConsumerWidget {
                 _QuranContinueReading(),
                 SizedBox(height: AppSpacing.xl),
                 _DailyVerseCard(),
+                SizedBox(height: AppSpacing.xl),
+                _ShahadaCard(),
                 SizedBox(height: AppSpacing.md),
                 _QuranBookmarkShortcut(),
                 SizedBox(height: AppSpacing.xl),
@@ -69,7 +71,6 @@ class HomeScreen extends ConsumerWidget {
   }
 }
 
-/// 1. HEADER: Location and Dates
 /// 1. HEADER: Location and Dates
 class _HomeHeader extends ConsumerWidget {
   const _HomeHeader();
@@ -438,7 +439,7 @@ class _QuranContinueReading extends ConsumerWidget {
   }
 }
 
-/// NEW: DAILY VERSE CARD
+/// 5. QURAN: Daily Verse
 class _DailyVerseCard extends ConsumerWidget {
   const _DailyVerseCard();
 
@@ -455,7 +456,6 @@ class _DailyVerseCard extends ConsumerWidget {
         ? dailyVerse.surah.nameTurkish
         : dailyVerse.surah.nameTransliteration;
 
-    // FIX: Watch the new content provider to get Arabic text and translation
     final languageCode = l10n.localeName == 'tr' ? 'tr' : 'en';
     final contentAsync = ref.watch(dailyVerseContentProvider(languageCode));
 
@@ -468,7 +468,6 @@ class _DailyVerseCard extends ConsumerWidget {
         ),
         const SizedBox(height: AppSpacing.md),
         InkWell(
-          // FIX: Added ?ayah= parameter to force scroll to this specific verse!
           onTap: () => context.push(
             '/quran/surah/${dailyVerse.surah.number}?ayah=${dailyVerse.ayahNumber}',
           ),
@@ -489,12 +488,10 @@ class _DailyVerseCard extends ConsumerWidget {
                     if (content == null) return const SizedBox.shrink();
                     return Column(
                       children: [
-                        // ARABIC TEXT
                         Text(
                           'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ',
                           style: textTheme.titleMedium?.copyWith(
-                            color: colorScheme
-                                .primary, // Besmele için tema ana rengi
+                            color: colorScheme.primary,
                             fontWeight: FontWeight.bold,
                           ),
                           textAlign: TextAlign.center,
@@ -509,7 +506,6 @@ class _DailyVerseCard extends ConsumerWidget {
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: AppSpacing.md),
-                        // TRANSLATION TEXT
                         Text(
                           content.translation,
                           style: textTheme.bodyMedium?.copyWith(
@@ -562,7 +558,58 @@ class _DailyVerseCard extends ConsumerWidget {
   }
 }
 
-/// 5. QURAN: Bookmark Shortcut
+///SHAHADA (ŞEHADET) CARD
+class _ShahadaCard extends ConsumerWidget {
+  const _ShahadaCard();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = context.l10n;
+    final colorScheme = context.colorScheme;
+    final textTheme = context.textTheme;
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(
+        vertical: AppSpacing.xl,
+        horizontal: AppSpacing.lg,
+      ),
+      decoration: BoxDecoration(
+        color: colorScheme.secondaryContainer.withValues(alpha: 0.3),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: colorScheme.secondary.withValues(alpha: 0.1),
+        ),
+      ),
+      child: Column(
+        children: [
+          // ARAPÇA METİN
+          Text(
+            l10n.homeShahadaArabic,
+            style: textTheme.headlineSmall?.copyWith(
+              color: colorScheme.primary,
+              fontWeight: FontWeight.bold,
+              height: 1.6,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: AppSpacing.md),
+          // OKUNUŞ (TRANSLITERATION)
+          Text(
+            l10n.homeShahadaTransliteration,
+            style: textTheme.bodyMedium?.copyWith(
+              fontStyle: FontStyle.italic,
+              color: colorScheme.onSurfaceVariant,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// 7. QURAN: Bookmark Shortcut
 class _QuranBookmarkShortcut extends ConsumerWidget {
   const _QuranBookmarkShortcut();
 
@@ -591,7 +638,7 @@ class _QuranBookmarkShortcut extends ConsumerWidget {
   }
 }
 
-/// 6. QUICK ACTIONS: Qibla & Settings
+/// 8. QUICK ACTIONS: Qibla & Settings
 class _QuickActions extends StatelessWidget {
   const _QuickActions();
 

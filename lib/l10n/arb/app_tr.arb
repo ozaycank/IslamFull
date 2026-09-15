@@ -239,5 +239,6 @@
   "activityMotivation": "Bugün kalbini ferahlatmak için harika bir gün.",
   "activityTodayProgress": "Günlük İlerleme",
   "activityTapToComplete": "Tamamlamak için dokun",
-  "activityHistoryEmptyDesc": "İbadetlerinizi kaydetmeye başladıkça burası manevi yolculuğunuzun haritası olacak."
+  "activityHistoryEmptyDesc": "İbadetlerinizi kaydetmeye başladıkça burası manevi yolculuğunuzun haritası olacak.","homeShahadaArabic": "أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ ٱللَّٰهِ",
+  "homeShahadaTransliteration": "Eşhedü en lâ ilâhe illallah ve eşhedü enne Muhammeden Resûlullah."
 }

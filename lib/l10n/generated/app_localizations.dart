@@ -1531,6 +1531,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'As you record your worship, this space will become the map of your spiritual journey.'**
   String get activityHistoryEmptyDesc;
+
+  /// Arabic text for the Shahada
+  ///
+  /// In en, this message translates to:
+  /// **'أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ ٱللَّٰهِ'**
+  String get homeShahadaArabic;
+
+  /// Transliteration of the Shahada
+  ///
+  /// In en, this message translates to:
+  /// **'Ash-hadu an la ilaha illallah, wa ash-hadu anna Muhammadan rasulullah.'**
+  String get homeShahadaTransliteration;
 }
 
 class _AppLocalizationsDelegate
