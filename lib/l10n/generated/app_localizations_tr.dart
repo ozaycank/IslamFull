@@ -752,4 +752,18 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get notificationPermissionDeniedMessage =>
       'Bildirim izni reddedildi. Lütfen cihaz ayarlarından izin verin.';
+
+  @override
+  String get activityMotivation =>
+      'Bugün kalbini ferahlatmak için harika bir gün.';
+
+  @override
+  String get activityTodayProgress => 'Günlük İlerleme';
+
+  @override
+  String get activityTapToComplete => 'Tamamlamak için dokun';
+
+  @override
+  String get activityHistoryEmptyDesc =>
+      'İbadetlerinizi kaydetmeye başladıkça burası manevi yolculuğunuzun haritası olacak.';
 }

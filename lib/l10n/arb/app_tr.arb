@@ -235,5 +235,9 @@
   "notificationsEnabled": "Bildirimlere İzin Ver",
   "prayerReminders": "Namaz Hatırlatıcı",
   "dailyVerseEnabled": "Günlük Kur'an Ayeti",
-  "notificationPermissionDeniedMessage": "Bildirim izni reddedildi. Lütfen cihaz ayarlarından izin verin."
+  "notificationPermissionDeniedMessage": "Bildirim izni reddedildi. Lütfen cihaz ayarlarından izin verin.",
+  "activityMotivation": "Bugün kalbini ferahlatmak için harika bir gün.",
+  "activityTodayProgress": "Günlük İlerleme",
+  "activityTapToComplete": "Tamamlamak için dokun",
+  "activityHistoryEmptyDesc": "İbadetlerinizi kaydetmeye başladıkça burası manevi yolculuğunuzun haritası olacak."
 }

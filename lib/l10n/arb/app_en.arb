@@ -912,5 +912,12 @@
   "dailyVerseEnabled": "Daily Quran Verse",
   "@dailyVerseEnabled": { "description": "Toggle for daily verse" },
   "notificationPermissionDeniedMessage": "Notification permission denied. Please enable it in your device settings.",
-  "@notificationPermissionDeniedMessage": { "description": "Notification permission denied message shown when notifications are blocked" }
+  "@notificationPermissionDeniedMessage": { "description": "Notification permission denied message shown when notifications are blocked" },"activityMotivation": "Today is a great day to purify your heart.",
+  "@activityMotivation": { "description": "Motivational message on activity screen" },
+  "activityTodayProgress": "Daily Progress",
+  "@activityTodayProgress": { "description": "Title for daily progress section" },
+  "activityTapToComplete": "Tap to complete",
+  "@activityTapToComplete": { "description": "Hint text for worship cards" },
+  "activityHistoryEmptyDesc": "As you record your worship, this space will become the map of your spiritual journey.",
+  "@activityHistoryEmptyDesc": { "description": "Empty state description for history" }
 }

@@ -1507,6 +1507,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Notification permission denied. Please enable it in your device settings.'**
   String get notificationPermissionDeniedMessage;
+
+  /// Motivational message on activity screen
+  ///
+  /// In en, this message translates to:
+  /// **'Today is a great day to purify your heart.'**
+  String get activityMotivation;
+
+  /// Title for daily progress section
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Progress'**
+  String get activityTodayProgress;
+
+  /// Hint text for worship cards
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to complete'**
+  String get activityTapToComplete;
+
+  /// Empty state description for history
+  ///
+  /// In en, this message translates to:
+  /// **'As you record your worship, this space will become the map of your spiritual journey.'**
+  String get activityHistoryEmptyDesc;
 }
 
 class _AppLocalizationsDelegate

@@ -747,4 +747,17 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get notificationPermissionDeniedMessage =>
       'Notification permission denied. Please enable it in your device settings.';
+
+  @override
+  String get activityMotivation => 'Today is a great day to purify your heart.';
+
+  @override
+  String get activityTodayProgress => 'Daily Progress';
+
+  @override
+  String get activityTapToComplete => 'Tap to complete';
+
+  @override
+  String get activityHistoryEmptyDesc =>
+      'As you record your worship, this space will become the map of your spiritual journey.';
 }
