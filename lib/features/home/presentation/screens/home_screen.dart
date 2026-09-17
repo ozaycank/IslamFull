@@ -638,7 +638,7 @@ class _QuranBookmarkShortcut extends ConsumerWidget {
   }
 }
 
-/// 8. QUICK ACTIONS: Qibla & Settings
+/// 8. QUICK ACTIONS: Qibla, Zakat & Settings
 class _QuickActions extends StatelessWidget {
   const _QuickActions();
 
@@ -653,6 +653,14 @@ class _QuickActions extends StatelessWidget {
             icon: Icons.explore,
             label: l10n.homeQibla,
             onTap: () => context.push(AppRoutes.qibla),
+          ),
+        ),
+        const SizedBox(width: AppSpacing.md),
+        Expanded(
+          child: _QuickActionCard(
+            icon: Icons.calculate_outlined, // YENİ EKLENDİ
+            label: l10n.menuZakatCalc,
+            onTap: () => context.push(AppRoutes.zakat),
           ),
         ),
         const SizedBox(width: AppSpacing.md),

@@ -14,4 +14,6 @@ class AppRoutes {
   // Standalone Module Pages
   static const String settings = '/settings';
   static const String qibla = '/qibla';
+  static const String zakat = '/zakat';
+  static const String hajj = '/hajj';
 }

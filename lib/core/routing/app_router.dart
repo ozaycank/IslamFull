@@ -6,13 +6,17 @@ import '../../features/activity/presentation/screens/activity_screen.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/prayer/qibla/presentation/qibla_screen.dart';
 import '../../features/prayer/shared/presentation/screens/prayer_home_screen.dart';
-import '../../features/profile/presentation/screens/profile_screen.dart';
 import '../../features/quran/presentation/screens/quran_bookmarks_screen.dart';
 import '../../features/quran/presentation/screens/quran_home_screen.dart';
 import '../../features/quran/presentation/screens/surah_detail_screen.dart';
 import '../../features/settings/presentation/screens/settings_screen.dart';
 import '../../features/shell/presentation/screens/app_shell_screen.dart';
 import '../../features/splash/presentation/splash_screen.dart';
+// NEW IMPORTS FOR MENU & TOOLS
+import '../../features/menu/presentation/screens/menu_screen.dart';
+import '../../features/zakat/presentation/screens/zakat_calculator_screen.dart';
+import '../../features/hajj/presentation/screens/hajj_guide_screen.dart';
+
 import '../di/injection_container.dart';
 import '../logging/logger_service.dart';
 import 'app_navigation_observer.dart';
@@ -36,6 +40,7 @@ class AppRouter {
           path: AppRoutes.splash,
           builder: (context, state) => const SplashScreen(),
         ),
+        // FULL SCREEN ROUTES (Overlaps Bottom Navigation)
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.settings,
@@ -45,6 +50,17 @@ class AppRouter {
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.qibla,
           builder: (context, state) => const QiblaScreen(),
+        ),
+        // NEW GLOBAL ROUTES FOR TOOLS
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.zakat,
+          builder: (context, state) => const ZakatCalculatorScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.hajj,
+          builder: (context, state) => const HajjGuideScreen(),
         ),
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) {
@@ -107,8 +123,10 @@ class AppRouter {
             StatefulShellBranch(
               routes: [
                 GoRoute(
-                  path: AppRoutes.profile,
-                  builder: (context, state) => const ProfileScreen(),
+                  path: AppRoutes
+                      .profile, // Technically AppRoutes.menu now, but keeping mapping safe
+                  builder: (context, state) =>
+                      const MenuScreen(), // CHANGED TO MENUSCREEN
                 ),
               ],
             ),

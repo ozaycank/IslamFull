@@ -1543,6 +1543,246 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Ash-hadu an la ilaha illallah, wa ash-hadu anna Muhammadan rasulullah.'**
   String get homeShahadaTransliteration;
+
+  /// Bottom navigation Menu label replacing Profile
+  ///
+  /// In en, this message translates to:
+  /// **'Menu'**
+  String get navMenu;
+
+  /// Settings group header in menu
+  ///
+  /// In en, this message translates to:
+  /// **'App Settings'**
+  String get menuSettingsGroup;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get menuLanguage;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get menuTheme;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get menuNotifications;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer Calculation'**
+  String get menuPrayerCalc;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get menuLocation;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Sounds'**
+  String get menuSounds;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Personalization'**
+  String get menuPersonalizationGroup;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Goals'**
+  String get menuDailyGoals;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Preferences'**
+  String get menuPreferences;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Tools & Information'**
+  String get menuToolsGroup;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Islamic Tools'**
+  String get menuIslamicTools;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Information Center'**
+  String get menuInfoCenter;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj Guide'**
+  String get menuHajjGuide;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Zakat Calculator'**
+  String get menuZakatCalc;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Application'**
+  String get menuAppGroup;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get menuAbout;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get menuPrivacy;
+
+  /// Menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Sources'**
+  String get menuSources;
+
+  /// Zakat screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Zakat Calculator'**
+  String get zakatTitle;
+
+  /// Input label
+  ///
+  /// In en, this message translates to:
+  /// **'Current Gold Price per Gram'**
+  String get zakatGoldPriceLabel;
+
+  /// Input group
+  ///
+  /// In en, this message translates to:
+  /// **'Your Assets (Subject to Zakat)'**
+  String get zakatAssetsGroup;
+
+  /// Input label
+  ///
+  /// In en, this message translates to:
+  /// **'Cash & Bank Accounts'**
+  String get zakatCashLabel;
+
+  /// Input label
+  ///
+  /// In en, this message translates to:
+  /// **'Owned Gold (Grams)'**
+  String get zakatGoldGramsLabel;
+
+  /// Input label
+  ///
+  /// In en, this message translates to:
+  /// **'Trade Goods Value'**
+  String get zakatTradeGoodsLabel;
+
+  /// Input label
+  ///
+  /// In en, this message translates to:
+  /// **'Receivables (Guaranteed)'**
+  String get zakatReceivablesLabel;
+
+  /// Input group
+  ///
+  /// In en, this message translates to:
+  /// **'Deductions'**
+  String get zakatDebtsGroup;
+
+  /// Input label
+  ///
+  /// In en, this message translates to:
+  /// **'Debts & Basic Needs'**
+  String get zakatDebtsLabel;
+
+  /// Button
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate Zakat'**
+  String get zakatCalculateButton;
+
+  /// Result header
+  ///
+  /// In en, this message translates to:
+  /// **'Calculation Result'**
+  String get zakatResultTitle;
+
+  /// Result row
+  ///
+  /// In en, this message translates to:
+  /// **'Total Net Wealth:'**
+  String get zakatTotalWealth;
+
+  /// Result row
+  ///
+  /// In en, this message translates to:
+  /// **'Nisab Threshold (80.18 gr):'**
+  String get zakatNisabAmount;
+
+  /// Result row
+  ///
+  /// In en, this message translates to:
+  /// **'Required Zakat Amount:'**
+  String get zakatRequiredAmount;
+
+  /// Result row
+  ///
+  /// In en, this message translates to:
+  /// **'Your net wealth is below the Nisab threshold. Zakat is not obligatory.'**
+  String get zakatNotRequired;
+
+  /// Disclaimer
+  ///
+  /// In en, this message translates to:
+  /// **'Note: This calculation uses the 80.18 grams of gold Nisab threshold according to the Presidency of Religious Affairs of Turkey. Your primary residence and personal vehicle are exempt. Please consult official sources for detailed jurisprudence.'**
+  String get zakatDiyanetNote;
+
+  /// Hajj screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj Guide'**
+  String get hajjTitle;
+
+  /// Hajj info
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj is one of the five pillars of Islam. In Turkey, Hajj registration and lottery processes are managed directly by the Presidency of Religious Affairs (Diyanet).'**
+  String get hajjDiyanetInfo;
+
+  /// Button
+  ///
+  /// In en, this message translates to:
+  /// **'Official Diyanet Hajj Page'**
+  String get hajjOfficialLinkButton;
+
+  /// Alert
+  ///
+  /// In en, this message translates to:
+  /// **'This feature will be added in the next phase.'**
+  String get comingSoonAlert;
 }
 
 class _AppLocalizationsDelegate

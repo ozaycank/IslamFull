@@ -768,4 +768,127 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get homeShahadaTransliteration =>
       'Ash-hadu an la ilaha illallah, wa ash-hadu anna Muhammadan rasulullah.';
+
+  @override
+  String get navMenu => 'Menu';
+
+  @override
+  String get menuSettingsGroup => 'App Settings';
+
+  @override
+  String get menuLanguage => 'Language';
+
+  @override
+  String get menuTheme => 'Theme';
+
+  @override
+  String get menuNotifications => 'Notifications';
+
+  @override
+  String get menuPrayerCalc => 'Prayer Calculation';
+
+  @override
+  String get menuLocation => 'Location';
+
+  @override
+  String get menuSounds => 'Notification Sounds';
+
+  @override
+  String get menuPersonalizationGroup => 'Personalization';
+
+  @override
+  String get menuDailyGoals => 'Daily Goals';
+
+  @override
+  String get menuPreferences => 'Preferences';
+
+  @override
+  String get menuToolsGroup => 'Tools & Information';
+
+  @override
+  String get menuIslamicTools => 'Islamic Tools';
+
+  @override
+  String get menuInfoCenter => 'Information Center';
+
+  @override
+  String get menuHajjGuide => 'Hajj Guide';
+
+  @override
+  String get menuZakatCalc => 'Zakat Calculator';
+
+  @override
+  String get menuAppGroup => 'Application';
+
+  @override
+  String get menuAbout => 'About';
+
+  @override
+  String get menuPrivacy => 'Privacy Policy';
+
+  @override
+  String get menuSources => 'Sources';
+
+  @override
+  String get zakatTitle => 'Zakat Calculator';
+
+  @override
+  String get zakatGoldPriceLabel => 'Current Gold Price per Gram';
+
+  @override
+  String get zakatAssetsGroup => 'Your Assets (Subject to Zakat)';
+
+  @override
+  String get zakatCashLabel => 'Cash & Bank Accounts';
+
+  @override
+  String get zakatGoldGramsLabel => 'Owned Gold (Grams)';
+
+  @override
+  String get zakatTradeGoodsLabel => 'Trade Goods Value';
+
+  @override
+  String get zakatReceivablesLabel => 'Receivables (Guaranteed)';
+
+  @override
+  String get zakatDebtsGroup => 'Deductions';
+
+  @override
+  String get zakatDebtsLabel => 'Debts & Basic Needs';
+
+  @override
+  String get zakatCalculateButton => 'Calculate Zakat';
+
+  @override
+  String get zakatResultTitle => 'Calculation Result';
+
+  @override
+  String get zakatTotalWealth => 'Total Net Wealth:';
+
+  @override
+  String get zakatNisabAmount => 'Nisab Threshold (80.18 gr):';
+
+  @override
+  String get zakatRequiredAmount => 'Required Zakat Amount:';
+
+  @override
+  String get zakatNotRequired =>
+      'Your net wealth is below the Nisab threshold. Zakat is not obligatory.';
+
+  @override
+  String get zakatDiyanetNote =>
+      'Note: This calculation uses the 80.18 grams of gold Nisab threshold according to the Presidency of Religious Affairs of Turkey. Your primary residence and personal vehicle are exempt. Please consult official sources for detailed jurisprudence.';
+
+  @override
+  String get hajjTitle => 'Hajj Guide';
+
+  @override
+  String get hajjDiyanetInfo =>
+      'Hajj is one of the five pillars of Islam. In Turkey, Hajj registration and lottery processes are managed directly by the Presidency of Religious Affairs (Diyanet).';
+
+  @override
+  String get hajjOfficialLinkButton => 'Official Diyanet Hajj Page';
+
+  @override
+  String get comingSoonAlert => 'This feature will be added in the next phase.';
 }

@@ -49,9 +49,10 @@ class AppShellScreen extends ConsumerWidget {
             label: l10n.navActivity,
           ),
           NavigationDestination(
-            icon: const Icon(Icons.person_outline),
-            selectedIcon: const Icon(Icons.person),
-            label: l10n.navProfile,
+            icon: const Icon(Icons
+                .menu_open_outlined,), // Profil ikonundan Menü ikonuna geçiş
+            selectedIcon: const Icon(Icons.menu),
+            label: l10n.navMenu, // YENİ: navMenu
           ),
         ],
       ),

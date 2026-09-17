@@ -9,7 +9,9 @@ import 'package:noor_life/core/base/result.dart';
 import 'package:noor_life/core/di/injection_container.dart';
 import 'package:noor_life/features/activity/domain/activity_models.dart';
 import 'package:noor_life/l10n/generated/app_localizations.dart';
-import 'package:noor_life/features/profile/presentation/screens/profile_screen.dart';
+
+// FIX: Profil ekranı yerine yeni MenuScreen import edildi
+import 'package:noor_life/features/menu/presentation/screens/menu_screen.dart';
 
 class FakeActivityRepository implements ActivityRepository {
   @override
@@ -23,6 +25,12 @@ class FakeActivityRepository implements ActivityRepository {
   Future<Result<List<DailyActivity>, ActivityFailure>>
       getAllActivities() async {
     return const Success([]);
+  }
+
+  @override
+  Future<Result<void, ActivityFailure>> saveDailyActivity(
+      DailyActivity activity,) async {
+    return const Success(null);
   }
 
   @override
@@ -54,18 +62,21 @@ void main() {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: [Locale('en')],
-        locale: Locale('en'),
-        home: Scaffold(body: ProfileScreen()),
+        locale: Locale('en'), // İngilizce test ediyoruz
+        // FIX: ProfileScreen() yerine MenuScreen() çağrıldı
+        home: Scaffold(body: MenuScreen()),
       ),
     );
   }
 
-  testWidgets('Profile screen renders safely with basic local data',
+  testWidgets('Menu screen renders safely with new architecture',
       (tester) async {
     await tester.pumpWidget(buildTestableWidget());
     await tester.pumpAndSettle();
 
-    expect(find.text('Your Progress'), findsOneWidget);
-    expect(find.text('IslamFull'), findsOneWidget);
+    // FIX: Test senaryosu artık yeni Menu ekranındaki metinleri (İngilizce olarak) arıyor
+    expect(find.text('Menu'), findsWidgets); // Appbar title
+    expect(find.text('App Settings'), findsOneWidget); // Section header
+    expect(find.text('Tools & Information'), findsOneWidget); // Section header
   });
 }

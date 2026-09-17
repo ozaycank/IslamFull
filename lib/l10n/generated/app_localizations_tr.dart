@@ -774,4 +774,127 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get homeShahadaTransliteration =>
       'Eşhedü en lâ ilâhe illallah ve eşhedü enne Muhammeden Resûlullah.';
+
+  @override
+  String get navMenu => 'Menü';
+
+  @override
+  String get menuSettingsGroup => 'Uygulama Ayarları';
+
+  @override
+  String get menuLanguage => 'Dil';
+
+  @override
+  String get menuTheme => 'Tema';
+
+  @override
+  String get menuNotifications => 'Bildirimler';
+
+  @override
+  String get menuPrayerCalc => 'Namaz Hesaplama Ayarları';
+
+  @override
+  String get menuLocation => 'Konum';
+
+  @override
+  String get menuSounds => 'Bildirim Sesleri';
+
+  @override
+  String get menuPersonalizationGroup => 'Kişiselleştirme';
+
+  @override
+  String get menuDailyGoals => 'Günlük Hedefler';
+
+  @override
+  String get menuPreferences => 'Tercihler';
+
+  @override
+  String get menuToolsGroup => 'Araçlar & Bilgi';
+
+  @override
+  String get menuIslamicTools => 'İslami Araçlar';
+
+  @override
+  String get menuInfoCenter => 'Bilgi Merkezi';
+
+  @override
+  String get menuHajjGuide => 'Hac Rehberi';
+
+  @override
+  String get menuZakatCalc => 'Zekât Hesaplama';
+
+  @override
+  String get menuAppGroup => 'Uygulama';
+
+  @override
+  String get menuAbout => 'Hakkında';
+
+  @override
+  String get menuPrivacy => 'Gizlilik';
+
+  @override
+  String get menuSources => 'Kaynaklar';
+
+  @override
+  String get zakatTitle => 'Zekât Hesaplama';
+
+  @override
+  String get zakatGoldPriceLabel => 'Güncel 1 Gram Altın Fiyatı (TL)';
+
+  @override
+  String get zakatAssetsGroup => 'Varlıklarınız (Nisab Kapsamı)';
+
+  @override
+  String get zakatCashLabel => 'Nakit Para & Banka (TL)';
+
+  @override
+  String get zakatGoldGramsLabel => 'Sahip Olunan Altın (Gram)';
+
+  @override
+  String get zakatTradeGoodsLabel => 'Ticari Mallar (TL)';
+
+  @override
+  String get zakatReceivablesLabel => 'Alacaklar (Kesin Dönecek) (TL)';
+
+  @override
+  String get zakatDebtsGroup => 'Düşülecekler';
+
+  @override
+  String get zakatDebtsLabel => 'Borçlar & Temel İhtiyaçlar (TL)';
+
+  @override
+  String get zakatCalculateButton => 'Zekâtı Hesapla';
+
+  @override
+  String get zakatResultTitle => 'Hesaplama Sonucu';
+
+  @override
+  String get zakatTotalWealth => 'Toplam Net Varlık:';
+
+  @override
+  String get zakatNisabAmount => 'Nisab Sınırı (80.18 gr):';
+
+  @override
+  String get zakatRequiredAmount => 'Verilmesi Gereken Zekât:';
+
+  @override
+  String get zakatNotRequired =>
+      'Net varlığınız Nisab miktarının altında olduğu için zekât farz değildir.';
+
+  @override
+  String get zakatDiyanetNote =>
+      'Not: Bu hesaplama Türkiye Diyanet İşleri Başkanlığı\'nın 80.18 gram altın (Nisab) fetvasına göre yapılmaktadır. Oturulan ev ve kullanılan araç zekâttan muaftır. Detaylı fıkhi durumlarınız için resmi Diyanet kaynaklarına başvurunuz.';
+
+  @override
+  String get hajjTitle => 'Hac Rehberi';
+
+  @override
+  String get hajjDiyanetInfo =>
+      'Hac ibadeti, İslam\'ın beş şartından biridir. Türkiye\'de Hac kura ve kayıt işlemleri doğrudan Türkiye Diyanet İşleri Başkanlığı tarafından yürütülmektedir.';
+
+  @override
+  String get hajjOfficialLinkButton => 'Resmi Diyanet Hac Sayfası';
+
+  @override
+  String get comingSoonAlert => 'Bu özellik bir sonraki fazda eklenecektir.';
 }
