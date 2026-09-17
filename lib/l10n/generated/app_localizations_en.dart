@@ -891,4 +891,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get comingSoonAlert => 'This feature will be added in the next phase.';
+
+  @override
+  String get aboutAppDescription =>
+      'IslamFull is a local, privacy-focused Islamic lifestyle assistant designed to help you track daily prayers, read the Quran, and reach your spiritual goals.';
+
+  @override
+  String get aboutVersion => 'Version 1.0.0';
+
+  @override
+  String get aboutCopyright => '© 2026 IslamFull. All rights reserved.';
+
+  @override
+  String get privacyPolicyContent =>
+      '1. Data Privacy and Security\nIslamFull places the highest priority on user privacy. All your worship history, dhikr, Quran reading progress, and bookmarks are stored entirely encrypted on your device\'s local storage (offline).\n\n2. Data Sharing\nYour personal data or usage habits are never transmitted to external servers, shared with third-party companies, or sold.\n\n3. Location Usage\nYour device\'s location is used momentarily to calculate precise prayer times and the Qibla direction. This data is only processed locally during the calculation and is not logged on remote servers.\n\n4. External Links\nModules such as the Hajj Guide may contain external links to official institutions. The privacy policies of these sites are not under our responsibility.\n\nYou can use IslamFull safely and peacefully.';
 }

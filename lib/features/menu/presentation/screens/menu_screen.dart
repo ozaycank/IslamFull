@@ -76,7 +76,7 @@ class MenuScreen extends ConsumerWidget {
                 _MenuTile(
                   icon: Icons.flag_outlined,
                   title: l10n.menuDailyGoals,
-                  onTap: () => _showComingSoon(context),
+                  onTap: () => context.go(AppRoutes.activity),
                 ),
                 const Divider(height: 1),
                 _MenuTile(
@@ -128,7 +128,7 @@ class MenuScreen extends ConsumerWidget {
           const SizedBox(height: AppSpacing.xxl),
 
           // 4. APP INFO
-          SectionHeader(title: l10n.menuAppGroup),
+         SectionHeader(title: l10n.menuAppGroup),
           AppCard(
             padding: EdgeInsets.zero,
             child: Column(
@@ -136,13 +136,14 @@ class MenuScreen extends ConsumerWidget {
                 _MenuTile(
                   icon: Icons.info_outline,
                   title: l10n.menuAbout,
-                  onTap: () => _showComingSoon(context),
+                  // YENİ
+                  onTap: () => context.push(AppRoutes.about),
                 ),
                 const Divider(height: 1),
                 _MenuTile(
                   icon: Icons.privacy_tip_outlined,
                   title: l10n.menuPrivacy,
-                  onTap: () => _showComingSoon(context),
+                  onTap: () => context.push(AppRoutes.privacy),
                 ),
               ],
             ),

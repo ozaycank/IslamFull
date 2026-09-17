@@ -897,4 +897,18 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get comingSoonAlert => 'Bu özellik bir sonraki fazda eklenecektir.';
+
+  @override
+  String get aboutAppDescription =>
+      'IslamFull, günlük ibadetlerinizi takip etmeniz, Kur\'an okumanız ve manevi hedeflerinize ulaşmanız için geliştirilmiş yerel ve gizlilik odaklı bir İslami yaşam asistanıdır.';
+
+  @override
+  String get aboutVersion => 'Sürüm 1.0.0';
+
+  @override
+  String get aboutCopyright => '© 2026 IslamFull. Tüm hakları saklıdır.';
+
+  @override
+  String get privacyPolicyContent =>
+      '1. Veri Gizliliği ve Güvenliği\nIslamFull, kullanıcı gizliliğine en üst düzeyde önem verir. Uygulama içerisindeki tüm ibadet geçmişiniz, zikirleriniz, okuduğunuz Kur\'an ayetleri ve yer imleriniz tamamen cihazınızın yerel depolama alanında (çevrimdışı olarak) şifrelenmiş bir şekilde saklanır.\n\n2. Veri Paylaşımı\nKişisel verileriniz veya kullanım alışkanlıklarınız hiçbir şekilde dış sunuculara aktarılmaz, üçüncü taraf şirketlerle paylaşılmaz veya satılmaz.\n\n3. Konum Kullanımı\nNamaz vakitleri ve Kıble pusulası özellikleri için cihazınızın konum bilgisi anlık olarak kullanılır. Bu veriler sadece hesaplama anında işlenir ve uzak sunucularda kayıt altına alınmaz.\n\n4. Dış Bağlantılar\nUygulama içerisindeki Hac Rehberi gibi modüller, resmi kurumlara (ör. Diyanet İşleri Başkanlığı) ait dış bağlantılar içerebilir. Bu sitelerin gizlilik politikaları uygulamamızın sorumluluğunda değildir.\n\nIslamFull\'u güvenle ve huzurla kullanabilirsiniz.';
 }

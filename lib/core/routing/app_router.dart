@@ -16,7 +16,8 @@ import '../../features/splash/presentation/splash_screen.dart';
 import '../../features/menu/presentation/screens/menu_screen.dart';
 import '../../features/zakat/presentation/screens/zakat_calculator_screen.dart';
 import '../../features/hajj/presentation/screens/hajj_guide_screen.dart';
-
+import '../../features/menu/presentation/screens/about_screen.dart';
+import '../../features/menu/presentation/screens/privacy_screen.dart';
 import '../di/injection_container.dart';
 import '../logging/logger_service.dart';
 import 'app_navigation_observer.dart';
@@ -61,6 +62,16 @@ class AppRouter {
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.hajj,
           builder: (context, state) => const HajjGuideScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.about,
+          builder: (context, state) => const AboutScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.privacy,
+          builder: (context, state) => const PrivacyScreen(),
         ),
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) {

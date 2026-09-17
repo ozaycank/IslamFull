@@ -16,4 +16,6 @@ class AppRoutes {
   static const String qibla = '/qibla';
   static const String zakat = '/zakat';
   static const String hajj = '/hajj';
+  static const String about = '/about';
+  static const String privacy = '/privacy';
 }
