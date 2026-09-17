@@ -4,9 +4,9 @@ import '../../../../core/extensions/context_extensions.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../../../../shared/widgets/app_card.dart';
 
-// Basit bir bellek-içi (in-memory) state provider, uygulamanın genelinde titreşimi kontrol edebilir.
+// FIX: Renamed from dailyVerseProvider to avoid conflict with Quran module
 final hapticFeedbackProvider = StateProvider<bool>((ref) => true);
-final dailyVerseProvider = StateProvider<bool>((ref) => true);
+final showDailyVerseSettingProvider = StateProvider<bool>((ref) => true);
 
 class PreferencesScreen extends ConsumerWidget {
   const PreferencesScreen({super.key});
@@ -17,7 +17,7 @@ class PreferencesScreen extends ConsumerWidget {
     final colorScheme = context.colorScheme;
 
     final hapticEnabled = ref.watch(hapticFeedbackProvider);
-    final verseEnabled = ref.watch(dailyVerseProvider);
+    final verseEnabled = ref.watch(showDailyVerseSettingProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -46,8 +46,9 @@ class PreferencesScreen extends ConsumerWidget {
                       style: TextStyle(color: colorScheme.onSurfaceVariant),),
                   value: verseEnabled,
                   activeThumbColor: colorScheme.primary,
-                  onChanged: (val) =>
-                      ref.read(dailyVerseProvider.notifier).state = val,
+                  onChanged: (val) => ref
+                      .read(showDailyVerseSettingProvider.notifier)
+                      .state = val,
                 ),
               ],
             ),

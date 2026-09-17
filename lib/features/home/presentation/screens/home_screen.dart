@@ -19,7 +19,7 @@ import '../../../prayer/prayer_times/application/providers/prayer_times_notifier
 import '../../../prayer/prayer_times/presentation/providers/prayer_live_state_provider.dart';
 import '../../../prayer/shared/presentation/utils/presentation_localizer.dart';
 import '../../../quran/application/providers/daily_verse_provider.dart';
-
+import '../../../menu/presentation/screens/preferences_screen.dart';
 // Prayer Domain Entities
 import '../../../prayer/prayer_times/domain/value_objects/prayer_name.dart';
 import '../../../prayer/prayer_times/domain/entities/prayer_time.dart';
@@ -445,10 +445,19 @@ class _DailyVerseCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // 1. KONTROL: Tercihlerden Günün Ayeti açık mı kapalı mı?
+    // FIX: Using the newly renamed settings provider
+    final showDailyVerse = ref.watch(showDailyVerseSettingProvider);
+    if (!showDailyVerse) {
+      return const SizedBox.shrink(); // Ayar kapalıysa gizle!
+    }
+
     final l10n = context.l10n;
     final colorScheme = context.colorScheme;
     final textTheme = context.textTheme;
 
+    // 2. KONTROL: Ayet var mı?
+    // FIX: Reverted back to your original Quran data provider name
     final dailyVerse = ref.watch(dailyVerseProvider);
     if (dailyVerse == null) return const SizedBox.shrink();
 
