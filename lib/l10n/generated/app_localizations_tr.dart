@@ -911,4 +911,105 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get privacyPolicyContent =>
       '1. Veri Gizliliği ve Güvenliği\nIslamFull, kullanıcı gizliliğine en üst düzeyde önem verir. Uygulama içerisindeki tüm ibadet geçmişiniz, zikirleriniz, okuduğunuz Kur\'an ayetleri ve yer imleriniz tamamen cihazınızın yerel depolama alanında (çevrimdışı olarak) şifrelenmiş bir şekilde saklanır.\n\n2. Veri Paylaşımı\nKişisel verileriniz veya kullanım alışkanlıklarınız hiçbir şekilde dış sunuculara aktarılmaz, üçüncü taraf şirketlerle paylaşılmaz veya satılmaz.\n\n3. Konum Kullanımı\nNamaz vakitleri ve Kıble pusulası özellikleri için cihazınızın konum bilgisi anlık olarak kullanılır. Bu veriler sadece hesaplama anında işlenir ve uzak sunucularda kayıt altına alınmaz.\n\n4. Dış Bağlantılar\nUygulama içerisindeki Hac Rehberi gibi modüller, resmi kurumlara (ör. Diyanet İşleri Başkanlığı) ait dış bağlantılar içerebilir. Bu sitelerin gizlilik politikaları uygulamamızın sorumluluğunda değildir.\n\nIslamFull\'u güvenle ve huzurla kullanabilirsiniz.';
+
+  @override
+  String get preferencesTitle => 'Tercihler';
+
+  @override
+  String get prefHapticFeedback => 'Titreşim Geri Bildirimi';
+
+  @override
+  String get prefHapticDesc => 'Zikirmatik ve butonlarda dokunmatik titreşim';
+
+  @override
+  String get prefDailyVerse => 'Günün Ayeti';
+
+  @override
+  String get prefDailyVerseDesc => 'Ana sayfada günlük ayet gösterimi';
+
+  @override
+  String get toolsTitle => 'İslami Araçlar';
+
+  @override
+  String get tasbihTitle => 'Zikirmatik';
+
+  @override
+  String get tasbihReset => 'Sıfırla';
+
+  @override
+  String get tasbihCount => 'Zikir Sayısı';
+
+  @override
+  String tasbihGoal(int goal) {
+    return 'Hedef: $goal';
+  }
+
+  @override
+  String get infoCenterTitle => 'Bilgi Merkezi';
+
+  @override
+  String get wuduGuideTitle => 'Nasıl Abdest Alınır?';
+
+  @override
+  String get wuduStep1Title => '1. Niyet ve Besmele';
+
+  @override
+  String get wuduStep1Desc =>
+      'Abdest almaya niyet edilir ve \'Eûzü billahis-semî\'il-alîmi mineş-şeytânir-racîm. Bismillâhirrahmânirrahîm\' denilir.';
+
+  @override
+  String get wuduStep2Title => '2. Elleri Yıkamak';
+
+  @override
+  String get wuduStep2Desc =>
+      'Eller bileklere kadar üç kere yıkanır. Parmak aralarının yıkanmasına dikkat edilir.';
+
+  @override
+  String get wuduStep3Title => '3. Ağza Su Vermek';
+
+  @override
+  String get wuduStep3Desc =>
+      'Sağ el ile ağza üç kere su verilerek ağız çalkalanır.';
+
+  @override
+  String get wuduStep4Title => '4. Burna Su Vermek';
+
+  @override
+  String get wuduStep4Desc =>
+      'Sağ el ile burna üç kere su çekilir ve sol el ile sümkürülerek temizlenir.';
+
+  @override
+  String get wuduStep5Title => '5. Yüzü Yıkamak';
+
+  @override
+  String get wuduStep5Desc =>
+      'Alın saç bitiminden çene altına kadar yüz üç kere yıkanır.';
+
+  @override
+  String get wuduStep6Title => '6. Kolları Yıkamak';
+
+  @override
+  String get wuduStep6Desc =>
+      'Önce sağ kol, sonra sol kol dirseklerle beraber üç kere yıkanır.';
+
+  @override
+  String get wuduStep7Title => '7. Başı Meshetmek';
+
+  @override
+  String get wuduStep7Desc =>
+      'Sağ el ıslatılarak başın dörtte biri (veya tamamı) meshedilir.';
+
+  @override
+  String get wuduStep8Title => '8. Kulak ve Boynu Meshetmek';
+
+  @override
+  String get wuduStep8Desc =>
+      'Eller ıslatılıp serçe parmaklarla kulak içi, baş parmaklarla kulak arkası, elin tersiyle boyun meshedilir.';
+
+  @override
+  String get wuduStep9Title => '9. Ayakları Yıkamak';
+
+  @override
+  String get wuduStep9Desc =>
+      'Önce sağ ayak, sonra sol ayak topuklarla beraber parmak uçlarından başlanarak üç kere yıkanır.';
 }

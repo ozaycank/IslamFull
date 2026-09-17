@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/routing/app_routes.dart';
-import '../../../../core/services/notification_service.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../../../../shared/widgets/app_card.dart';
 import '../../../../shared/widgets/section_header.dart';
@@ -16,18 +15,16 @@ import '../../../../shared/widgets/section_header.dart';
 class MenuScreen extends ConsumerWidget {
   const MenuScreen({super.key});
 
-  void _showComingSoon(BuildContext context) {
-    NotificationService.showInfo(context.l10n.comingSoonAlert);
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.navMenu,
-            style: const TextStyle(fontWeight: FontWeight.bold),),
+        title: Text(
+          l10n.navMenu,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
         elevation: 0,
       ),
       body: ListView(
@@ -67,7 +64,7 @@ class MenuScreen extends ConsumerWidget {
           ),
           const SizedBox(height: AppSpacing.xxl),
 
-          // 2. PERSONALIZATION (Future)
+          // 2. PERSONALIZATION
           SectionHeader(title: l10n.menuPersonalizationGroup),
           AppCard(
             padding: EdgeInsets.zero,
@@ -82,45 +79,29 @@ class MenuScreen extends ConsumerWidget {
                 _MenuTile(
                   icon: Icons.tune,
                   title: l10n.menuPreferences,
-                  onTap: () => _showComingSoon(context),
+                  onTap: () => context.push(AppRoutes.preferences),
                 ),
               ],
             ),
           ),
           const SizedBox(height: AppSpacing.xxl),
 
-          // 3. TOOLS & INFO (Extensible architecture for Future Learning Center)
+          // 3. TOOLS & INFO
           SectionHeader(title: l10n.menuToolsGroup),
           AppCard(
             padding: EdgeInsets.zero,
             child: Column(
               children: [
                 _MenuTile(
-                  icon: Icons.calculate_outlined,
-                  title: l10n.menuZakatCalc,
-                  onTap: () => context
-                      .push(AppRoutes.zakat), // Links to new Zakat module
-                ),
-                const Divider(height: 1),
-                _MenuTile(
-                  icon: Icons.mosque_outlined,
-                  title: l10n.menuHajjGuide,
-                  onTap: () =>
-                      context.push(AppRoutes.hajj), // Links to new Hajj module
-                ),
-                const Divider(height: 1),
-                _MenuTile(
                   icon: Icons.auto_awesome_mosaic_outlined,
                   title: l10n.menuIslamicTools,
-                  onTap: () =>
-                      _showComingSoon(context), // Future: Counter, Tasbih etc.
+                  onTap: () => context.push(AppRoutes.tools),
                 ),
                 const Divider(height: 1),
                 _MenuTile(
                   icon: Icons.menu_book_outlined,
                   title: l10n.menuInfoCenter,
-                  onTap: () => _showComingSoon(
-                      context,), // Future: How to pray, Wudu, Duas
+                  onTap: () => context.push(AppRoutes.infoCenter),
                 ),
               ],
             ),
@@ -128,7 +109,7 @@ class MenuScreen extends ConsumerWidget {
           const SizedBox(height: AppSpacing.xxl),
 
           // 4. APP INFO
-         SectionHeader(title: l10n.menuAppGroup),
+          SectionHeader(title: l10n.menuAppGroup),
           AppCard(
             padding: EdgeInsets.zero,
             child: Column(
@@ -136,7 +117,6 @@ class MenuScreen extends ConsumerWidget {
                 _MenuTile(
                   icon: Icons.info_outline,
                   title: l10n.menuAbout,
-                  // YENİ
                   onTap: () => context.push(AppRoutes.about),
                 ),
                 const Divider(height: 1),

@@ -905,4 +905,104 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get privacyPolicyContent =>
       '1. Data Privacy and Security\nIslamFull places the highest priority on user privacy. All your worship history, dhikr, Quran reading progress, and bookmarks are stored entirely encrypted on your device\'s local storage (offline).\n\n2. Data Sharing\nYour personal data or usage habits are never transmitted to external servers, shared with third-party companies, or sold.\n\n3. Location Usage\nYour device\'s location is used momentarily to calculate precise prayer times and the Qibla direction. This data is only processed locally during the calculation and is not logged on remote servers.\n\n4. External Links\nModules such as the Hajj Guide may contain external links to official institutions. The privacy policies of these sites are not under our responsibility.\n\nYou can use IslamFull safely and peacefully.';
+
+  @override
+  String get preferencesTitle => 'Preferences';
+
+  @override
+  String get prefHapticFeedback => 'Haptic Feedback';
+
+  @override
+  String get prefHapticDesc => 'Vibration on Tasbih and buttons';
+
+  @override
+  String get prefDailyVerse => 'Daily Verse';
+
+  @override
+  String get prefDailyVerseDesc => 'Show daily verse on home screen';
+
+  @override
+  String get toolsTitle => 'Islamic Tools';
+
+  @override
+  String get tasbihTitle => 'Tasbih (Dhikr)';
+
+  @override
+  String get tasbihReset => 'Reset';
+
+  @override
+  String get tasbihCount => 'Dhikr Count';
+
+  @override
+  String tasbihGoal(int goal) {
+    return 'Goal: $goal';
+  }
+
+  @override
+  String get infoCenterTitle => 'Information Center';
+
+  @override
+  String get wuduGuideTitle => 'How to perform Wudu?';
+
+  @override
+  String get wuduStep1Title => '1. Intention and Bismillah';
+
+  @override
+  String get wuduStep1Desc => 'Make intention for Wudu and say Bismillah.';
+
+  @override
+  String get wuduStep2Title => '2. Wash Hands';
+
+  @override
+  String get wuduStep2Desc =>
+      'Wash hands up to the wrists three times, ensuring water reaches between fingers.';
+
+  @override
+  String get wuduStep3Title => '3. Rinse Mouth';
+
+  @override
+  String get wuduStep3Desc =>
+      'Take water into the mouth with the right hand and rinse it three times.';
+
+  @override
+  String get wuduStep4Title => '4. Sniff Water into Nose';
+
+  @override
+  String get wuduStep4Desc =>
+      'Inhale water into the nose with the right hand and blow it out using the left hand, three times.';
+
+  @override
+  String get wuduStep5Title => '5. Wash Face';
+
+  @override
+  String get wuduStep5Desc =>
+      'Wash the whole face (from hairline to chin) three times.';
+
+  @override
+  String get wuduStep6Title => '6. Wash Arms';
+
+  @override
+  String get wuduStep6Desc =>
+      'Wash the right arm up to the elbow three times, then do the same for the left arm.';
+
+  @override
+  String get wuduStep7Title => '7. Wipe Head (Masah)';
+
+  @override
+  String get wuduStep7Desc =>
+      'Wet your hands and wipe at least a quarter of your head.';
+
+  @override
+  String get wuduStep8Title => '8. Wipe Ears and Neck';
+
+  @override
+  String get wuduStep8Desc =>
+      'Wipe the inside of the ears with index fingers, behind the ears with thumbs, and the neck with the back of the hands.';
+
+  @override
+  String get wuduStep9Title => '9. Wash Feet';
+
+  @override
+  String get wuduStep9Desc =>
+      'Wash the right foot up to the ankles three times, starting from the toes. Repeat for the left foot.';
 }

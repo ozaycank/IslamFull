@@ -12,12 +12,16 @@ import '../../features/quran/presentation/screens/surah_detail_screen.dart';
 import '../../features/settings/presentation/screens/settings_screen.dart';
 import '../../features/shell/presentation/screens/app_shell_screen.dart';
 import '../../features/splash/presentation/splash_screen.dart';
-// NEW IMPORTS FOR MENU & TOOLS
 import '../../features/menu/presentation/screens/menu_screen.dart';
 import '../../features/zakat/presentation/screens/zakat_calculator_screen.dart';
 import '../../features/hajj/presentation/screens/hajj_guide_screen.dart';
 import '../../features/menu/presentation/screens/about_screen.dart';
 import '../../features/menu/presentation/screens/privacy_screen.dart';
+import '../../features/menu/presentation/screens/preferences_screen.dart';
+import '../../features/tools/presentation/islamic_tools_screen.dart';
+import '../../features/tools/presentation/tasbih_screen.dart';
+import '../../features/info/presentation/info_center_screen.dart';
+import '../../features/info/presentation/wudu_guide_screen.dart';
 import '../di/injection_container.dart';
 import '../logging/logger_service.dart';
 import 'app_navigation_observer.dart';
@@ -52,7 +56,6 @@ class AppRouter {
           path: AppRoutes.qibla,
           builder: (context, state) => const QiblaScreen(),
         ),
-        // NEW GLOBAL ROUTES FOR TOOLS
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.zakat,
@@ -72,6 +75,31 @@ class AppRouter {
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.privacy,
           builder: (context, state) => const PrivacyScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.preferences,
+          builder: (context, state) => const PreferencesScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.tools,
+          builder: (context, state) => const IslamicToolsScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.tasbih,
+          builder: (context, state) => const TasbihScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.infoCenter,
+          builder: (context, state) => const InfoCenterScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.wuduGuide,
+          builder: (context, state) => const WuduGuideScreen(),
         ),
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) {

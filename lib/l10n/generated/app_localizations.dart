@@ -1807,6 +1807,186 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'1. Data Privacy and Security\nIslamFull places the highest priority on user privacy. All your worship history, dhikr, Quran reading progress, and bookmarks are stored entirely encrypted on your device\'s local storage (offline).\n\n2. Data Sharing\nYour personal data or usage habits are never transmitted to external servers, shared with third-party companies, or sold.\n\n3. Location Usage\nYour device\'s location is used momentarily to calculate precise prayer times and the Qibla direction. This data is only processed locally during the calculation and is not logged on remote servers.\n\n4. External Links\nModules such as the Hajj Guide may contain external links to official institutions. The privacy policies of these sites are not under our responsibility.\n\nYou can use IslamFull safely and peacefully.'**
   String get privacyPolicyContent;
+
+  /// Title
+  ///
+  /// In en, this message translates to:
+  /// **'Preferences'**
+  String get preferencesTitle;
+
+  /// Setting
+  ///
+  /// In en, this message translates to:
+  /// **'Haptic Feedback'**
+  String get prefHapticFeedback;
+
+  /// Setting desc
+  ///
+  /// In en, this message translates to:
+  /// **'Vibration on Tasbih and buttons'**
+  String get prefHapticDesc;
+
+  /// Setting
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Verse'**
+  String get prefDailyVerse;
+
+  /// Setting desc
+  ///
+  /// In en, this message translates to:
+  /// **'Show daily verse on home screen'**
+  String get prefDailyVerseDesc;
+
+  /// Title
+  ///
+  /// In en, this message translates to:
+  /// **'Islamic Tools'**
+  String get toolsTitle;
+
+  /// Title
+  ///
+  /// In en, this message translates to:
+  /// **'Tasbih (Dhikr)'**
+  String get tasbihTitle;
+
+  /// Button
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get tasbihReset;
+
+  /// Label
+  ///
+  /// In en, this message translates to:
+  /// **'Dhikr Count'**
+  String get tasbihCount;
+
+  /// Label
+  ///
+  /// In en, this message translates to:
+  /// **'Goal: {goal}'**
+  String tasbihGoal(int goal);
+
+  /// Title
+  ///
+  /// In en, this message translates to:
+  /// **'Information Center'**
+  String get infoCenterTitle;
+
+  /// Title
+  ///
+  /// In en, this message translates to:
+  /// **'How to perform Wudu?'**
+  String get wuduGuideTitle;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'1. Intention and Bismillah'**
+  String get wuduStep1Title;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'Make intention for Wudu and say Bismillah.'**
+  String get wuduStep1Desc;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'2. Wash Hands'**
+  String get wuduStep2Title;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'Wash hands up to the wrists three times, ensuring water reaches between fingers.'**
+  String get wuduStep2Desc;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'3. Rinse Mouth'**
+  String get wuduStep3Title;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'Take water into the mouth with the right hand and rinse it three times.'**
+  String get wuduStep3Desc;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'4. Sniff Water into Nose'**
+  String get wuduStep4Title;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'Inhale water into the nose with the right hand and blow it out using the left hand, three times.'**
+  String get wuduStep4Desc;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'5. Wash Face'**
+  String get wuduStep5Title;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'Wash the whole face (from hairline to chin) three times.'**
+  String get wuduStep5Desc;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'6. Wash Arms'**
+  String get wuduStep6Title;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'Wash the right arm up to the elbow three times, then do the same for the left arm.'**
+  String get wuduStep6Desc;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'7. Wipe Head (Masah)'**
+  String get wuduStep7Title;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'Wet your hands and wipe at least a quarter of your head.'**
+  String get wuduStep7Desc;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'8. Wipe Ears and Neck'**
+  String get wuduStep8Title;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'Wipe the inside of the ears with index fingers, behind the ears with thumbs, and the neck with the back of the hands.'**
+  String get wuduStep8Desc;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'9. Wash Feet'**
+  String get wuduStep9Title;
+
+  /// Step
+  ///
+  /// In en, this message translates to:
+  /// **'Wash the right foot up to the ankles three times, starting from the toes. Repeat for the left foot.'**
+  String get wuduStep9Desc;
 }
 
 class _AppLocalizationsDelegate

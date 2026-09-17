@@ -18,4 +18,9 @@ class AppRoutes {
   static const String hajj = '/hajj';
   static const String about = '/about';
   static const String privacy = '/privacy';
+  static const String preferences = '/preferences';
+  static const String tools = '/tools';
+  static const String tasbih = '/tasbih';
+  static const String infoCenter = '/info-center';
+  static const String wuduGuide = '/wudu-guide';
 }
