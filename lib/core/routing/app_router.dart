@@ -162,10 +162,8 @@ class AppRouter {
             StatefulShellBranch(
               routes: [
                 GoRoute(
-                  path: AppRoutes
-                      .profile, // Technically AppRoutes.menu now, but keeping mapping safe
-                  builder: (context, state) =>
-                      const MenuScreen(), // CHANGED TO MENUSCREEN
+                  path: AppRoutes.menu,
+                  builder: (context, state) => const MenuScreen(),
                 ),
               ],
             ),

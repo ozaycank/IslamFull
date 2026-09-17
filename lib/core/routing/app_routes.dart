@@ -9,7 +9,7 @@ class AppRoutes {
   static const String quran = '/quran';
   static const surahDetail = '/quran/surah/:id';
   static const String activity = '/activity';
-  static const String profile = '/profile';
+  static const String menu = '/menu';
 
   // Standalone Module Pages
   static const String settings = '/settings';
