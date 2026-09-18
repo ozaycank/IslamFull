@@ -54,6 +54,7 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
   @override
   NotificationSettingsState build() {
     _storage = getIt<SecureStorageService>();
+
     _notificationService = getIt<LocalNotificationService>();
 
     Future.microtask(_loadSettings);
@@ -65,8 +66,11 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
 
   Future<void> _loadSettings() async {
     final enabled = await _storage.getNotificationsEnabled();
+
     final reminderMinutes = await _storage.getPrayerReminderMinutes();
+
     final dailyVerseEnabled = await _storage.getDailyVerseEnabled();
+
     final dailyVerseTime = await _storage.getDailyVerseTime();
 
     state = state.copyWith(
@@ -80,7 +84,9 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
     await _rescheduleAll();
   }
 
-  Future<bool> toggleMaster(bool enabled) async {
+  Future<bool> toggleMaster(
+    bool enabled,
+  ) async {
     if (!state.platformSupported) {
       return false;
     }
@@ -89,20 +95,30 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
       final granted = await _notificationService.requestPermission();
 
       if (!granted) {
-        state = state.copyWith(masterEnabled: false);
+        state = state.copyWith(
+          masterEnabled: false,
+        );
+
         await _storage.setNotificationsEnabled(false);
+
         return false;
       }
     }
 
     await _storage.setNotificationsEnabled(enabled);
-    state = state.copyWith(masterEnabled: enabled);
+
+    state = state.copyWith(
+      masterEnabled: enabled,
+    );
 
     await _rescheduleAll();
+
     return true;
   }
 
-  Future<void> setReminderMinutes(int minutes) async {
+  Future<void> setReminderMinutes(
+    int minutes,
+  ) async {
     if (minutes < 0 || minutes > 180) {
       throw ArgumentError.value(
         minutes,
@@ -112,19 +128,29 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
     }
 
     await _storage.setPrayerReminderMinutes(minutes);
-    state = state.copyWith(prayerReminderMinutes: minutes);
+
+    state = state.copyWith(
+      prayerReminderMinutes: minutes,
+    );
 
     await _rescheduleAll();
   }
 
-  Future<void> toggleDailyVerse(bool enabled) async {
+  Future<void> toggleDailyVerse(
+    bool enabled,
+  ) async {
     await _storage.setDailyVerseEnabled(enabled);
-    state = state.copyWith(dailyVerseEnabled: enabled);
+
+    state = state.copyWith(
+      dailyVerseEnabled: enabled,
+    );
 
     await _rescheduleAll();
   }
 
-  Future<void> setDailyVerseTime(String time) async {
+  Future<void> setDailyVerseTime(
+    String time,
+  ) async {
     if (!_isValidTime(time)) {
       throw ArgumentError.value(
         time,
@@ -134,15 +160,18 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
     }
 
     await _storage.setDailyVerseTime(time);
-    state = state.copyWith(dailyVerseTime: time);
+
+    state = state.copyWith(
+      dailyVerseTime: time,
+    );
 
     await _rescheduleAll();
   }
 
-  /// Called by the application-level notification coordinator whenever the
-  /// calculated prayer schedule changes.
   Future<void> syncPrayerSchedule() async {
-    if (!state.isLoaded) return;
+    if (!state.isLoaded) {
+      return;
+    }
 
     await _rescheduleAll();
   }
@@ -158,13 +187,12 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
     }
 
     final prayerState = ref.read(prayerTimesNotifierProvider);
+
     final timezoneId = prayerState.location?.timezoneIdentifier;
 
     if (!state.dailyVerseEnabled) {
       await _notificationService.cancelDailyVerse();
     } else if (timezoneId != null) {
-      // Phase 2 replaces this static reminder with actual verse content and
-      // the translation matching the selected application language.
       await _notificationService.scheduleDailyVerse(
         state.dailyVerseTime,
         'Verse of the Day',
@@ -174,6 +202,7 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
     }
 
     final schedule = prayerState.schedule;
+
     final location = prayerState.location;
 
     if (schedule == null || location == null) {
@@ -191,7 +220,9 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
     }
   }
 
-  bool _isValidTime(String value) {
+  bool _isValidTime(
+    String value,
+  ) {
     final parts = value.split(':');
 
     if (parts.length != 2) {
@@ -199,6 +230,7 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
     }
 
     final hour = int.tryParse(parts[0]);
+
     final minute = int.tryParse(parts[1]);
 
     return hour != null &&

@@ -11,7 +11,6 @@ import '../../features/settings/application/providers/notification_settings_prov
 /// application-level coordinator reacts to prayer-state changes and requests a
 /// notification schedule refresh.
 final notificationCoordinatorProvider = Provider<void>((ref) {
-  // Initialize persisted notification preferences at application startup.
   ref.watch(notificationSettingsProvider);
 
   ref.listen(
@@ -31,7 +30,11 @@ final notificationCoordinatorProvider = Provider<void>((ref) {
       }
 
       unawaited(
-        ref.read(notificationSettingsProvider.notifier).syncPrayerSchedule(),
+        ref
+            .read(
+              notificationSettingsProvider.notifier,
+            )
+            .syncPrayerSchedule(),
       );
     },
   );

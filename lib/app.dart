@@ -26,18 +26,22 @@ class _NoorLifeAppState extends ConsumerState<NoorLifeApp> {
   void initState() {
     super.initState();
 
-    // Keep one router instance for the whole application lifetime.
-    // Recreating GoRouter on locale or theme changes may reset navigation state.
     _router = AppRouter.createRouter(ref);
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     final themeMode = ref.watch(themeModeProvider);
-    final localeState = ref.watch(languageSettingsNotifierProvider);
 
-    // Activate application-level notification orchestration.
-    ref.watch(notificationCoordinatorProvider);
+    final localeState = ref.watch(
+      languageSettingsNotifierProvider,
+    );
+
+    ref.watch(
+      notificationCoordinatorProvider,
+    );
 
     return MaterialApp.router(
       title: 'IslamFull',

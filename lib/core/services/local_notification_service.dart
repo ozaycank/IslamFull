@@ -16,20 +16,20 @@ class LocalNotificationService {
 
   bool _isInitialized = false;
 
-  /// flutter_local_notifications in the current project is configured only for
-  /// Android and iOS. Windows support will be provided by the cross-platform
-  /// notification backend introduced in Phase 2.
   bool get isSupportedPlatform {
-    if (kIsWeb) return false;
+    if (kIsWeb) {
+      return false;
+    }
 
     return defaultTargetPlatform == TargetPlatform.android ||
         defaultTargetPlatform == TargetPlatform.iOS;
   }
 
   Future<void> init() async {
-    if (_isInitialized) return;
+    if (_isInitialized) {
+      return;
+    }
 
-    // Mark unsupported platforms as initialized so repeated calls remain cheap.
     if (!isSupportedPlatform) {
       _isInitialized = true;
       return;
@@ -37,8 +37,9 @@ class LocalNotificationService {
 
     tz.initializeTimeZones();
 
-    const androidInitializationSettings =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
+    const androidInitializationSettings = AndroidInitializationSettings(
+      '@mipmap/ic_launcher',
+    );
 
     const iosInitializationSettings = DarwinInitializationSettings(
       requestAlertPermission: false,
@@ -51,12 +52,17 @@ class LocalNotificationService {
       iOS: iosInitializationSettings,
     );
 
-    await _plugin.initialize(initializationSettings);
+    await _plugin.initialize(
+      initializationSettings,
+    );
+
     _isInitialized = true;
   }
 
   Future<bool> requestPermission() async {
-    if (!isSupportedPlatform) return false;
+    if (!isSupportedPlatform) {
+      return false;
+    }
 
     await _ensureInitialized();
 
@@ -67,15 +73,10 @@ class LocalNotificationService {
       final notificationPermission =
           await androidPlugin.requestNotificationsPermission();
 
-      // Exact alarms improve prayer reminder precision on supported Android
-      // versions. Scheduling still has an inexact fallback if this permission
-      // is unavailable.
       try {
         await androidPlugin.requestExactAlarmsPermission();
       } on PlatformException {
-        // Notification permission and exact alarm permission are independent.
-        // Do not disable all notifications merely because exact alarms were
-        // rejected by the operating system.
+        // Exact alarm permission is independent from notification permission.
       }
 
       return notificationPermission ?? false;
@@ -98,23 +99,32 @@ class LocalNotificationService {
   }
 
   Future<void> cancelAll() async {
-    if (!isSupportedPlatform) return;
+    if (!isSupportedPlatform) {
+      return;
+    }
 
     await _ensureInitialized();
     await _plugin.cancelAll();
   }
 
   Future<void> cancelDailyVerse() async {
-    if (!isSupportedPlatform) return;
+    if (!isSupportedPlatform) {
+      return;
+    }
 
     await _ensureInitialized();
+
     await _plugin.cancel(
       NotificationSchedulePolicy.dailyVerseNotificationId,
     );
   }
 
-  Future<void> cancelPrayer(PrayerTime prayer) async {
-    if (!isSupportedPlatform) return;
+  Future<void> cancelPrayer(
+    PrayerTime prayer,
+  ) async {
+    if (!isSupportedPlatform) {
+      return;
+    }
 
     await _ensureInitialized();
 
@@ -142,18 +152,21 @@ class LocalNotificationService {
     String body,
     String timezoneId,
   ) async {
-    if (!isSupportedPlatform) return;
+    if (!isSupportedPlatform) {
+      return;
+    }
 
-    // Sunrise is displayed in prayer schedules but it is not a prayer reminder.
-    if (prayer.name == PrayerName.sunrise) return;
+    if (prayer.name == PrayerName.sunrise) {
+      return;
+    }
 
     await _ensureInitialized();
 
     final location = _resolveLocation(timezoneId);
 
-    // A prayer notification at the wrong timezone is more harmful than a
-    // skipped notification, so fail safely if the timezone cannot be resolved.
-    if (location == null) return;
+    if (location == null) {
+      return;
+    }
 
     final prayerDateTime = tz.TZDateTime.from(
       prayer.time,
@@ -181,8 +194,6 @@ class LocalNotificationService {
       prayer.time,
     );
 
-    // Remove both the Phase 1 ID and the legacy ID before replacing the
-    // notification. This prevents duplicate reminders during app upgrades.
     await cancelPrayer(prayer);
 
     const details = NotificationDetails(
@@ -206,26 +217,29 @@ class LocalNotificationService {
     );
   }
 
-  /// Schedules the existing recurring daily-verse reminder.
-  ///
-  /// Phase 2 will replace this recurring static notification with a rolling
-  /// schedule containing the actual deterministic verse and localized
-  /// translation for each calendar day.
   Future<void> scheduleDailyVerse(
     String timeString,
     String title,
     String body,
     String timezoneId,
   ) async {
-    if (!isSupportedPlatform) return;
+    if (!isSupportedPlatform) {
+      return;
+    }
 
     await _ensureInitialized();
 
     final parsedTime = _parseTime(timeString);
-    if (parsedTime == null) return;
+
+    if (parsedTime == null) {
+      return;
+    }
 
     final location = _resolveLocation(timezoneId);
-    if (location == null) return;
+
+    if (location == null) {
+      return;
+    }
 
     final now = tz.TZDateTime.now(location);
 
@@ -256,7 +270,9 @@ class LocalNotificationService {
         channelDescription: 'Daily Quran verse reminders',
         importance: Importance.defaultImportance,
         priority: Priority.defaultPriority,
-        styleInformation: BigTextStyleInformation(body),
+        styleInformation: BigTextStyleInformation(
+          body,
+        ),
       ),
       iOS: const DarwinNotificationDetails(),
     );
@@ -303,8 +319,6 @@ class LocalNotificationService {
         rethrow;
       }
 
-      // Android can deny exact-alarm access even when ordinary notification
-      // permission is granted. Falling back keeps the reminder functional.
       await _plugin.zonedSchedule(
         id,
         title,
@@ -320,19 +334,25 @@ class LocalNotificationService {
     }
   }
 
-  tz.Location? _resolveLocation(String timezoneId) {
+  tz.Location? _resolveLocation(
+    String timezoneId,
+  ) {
     if (timezoneId.trim().isEmpty) {
       return null;
     }
 
     try {
-      return tz.getLocation(timezoneId);
+      return tz.getLocation(
+        timezoneId,
+      );
     } catch (_) {
       return null;
     }
   }
 
-  ({int hour, int minute})? _parseTime(String value) {
+  ({int hour, int minute})? _parseTime(
+    String value,
+  ) {
     final parts = value.split(':');
 
     if (parts.length != 2) {
@@ -340,6 +360,7 @@ class LocalNotificationService {
     }
 
     final hour = int.tryParse(parts[0]);
+
     final minute = int.tryParse(parts[1]);
 
     if (hour == null ||
@@ -351,7 +372,10 @@ class LocalNotificationService {
       return null;
     }
 
-    return (hour: hour, minute: minute);
+    return (
+      hour: hour,
+      minute: minute,
+    );
   }
 
   Future<void> _ensureInitialized() async {

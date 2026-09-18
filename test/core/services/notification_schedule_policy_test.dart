@@ -109,4 +109,52 @@ void main() {
       );
     });
   });
+  group('daily verse notification IDs', () {
+    test(
+      'are unique across different calendar dates',
+      () {
+        final ids = <int>{};
+
+        for (var day = 1; day <= 30; day++) {
+          final date = DateTime(
+            2026,
+            9,
+            day,
+          );
+
+          const id = NotificationSchedulePolicy.dailyVerseNotificationId;
+          expect(
+            ids.add(id),
+            isTrue,
+            reason: 'Duplicate daily verse ID for $date',
+          );
+        }
+      },
+    );
+
+    test(
+      'do not collide with prayer notification IDs',
+      () {
+        for (var day = 1; day <= 30; day++) {
+          final date = DateTime(
+            2026,
+            9,
+            day,
+          );
+
+          for (final prayer in PrayerName.values) {
+            final prayerId = NotificationSchedulePolicy.prayerNotificationId(
+              prayer,
+              date,
+            );
+            const verseId = NotificationSchedulePolicy.dailyVerseNotificationId;
+            expect(
+              verseId,
+              isNot(prayerId),
+            );
+          }
+        }
+      },
+    );
+  });
 }

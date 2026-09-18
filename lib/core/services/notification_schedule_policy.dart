@@ -8,21 +8,12 @@ final class NotificationSchedulePolicy {
   NotificationSchedulePolicy._();
 
   /// Stable ID reserved for the recurring daily verse notification.
-  ///
-  /// Prayer notification IDs are generated from dates and therefore live in a
-  /// completely different numeric range.
   static const int dailyVerseNotificationId = 999900001;
 
   /// Maximum prayer reminder offset currently supported by the application.
   static const int maxPrayerReminderMinutes = 180;
 
   /// Creates a collision-safe deterministic prayer notification ID.
-  ///
-  /// Example:
-  /// 2026-09-18 / Isha -> 202609185
-  ///
-  /// Multiplying the calendar key by ten reserves the final digit for the
-  /// prayer index. This prevents collisions between prayers on different days.
   static int prayerNotificationId(
     PrayerName name,
     DateTime prayerTime,
@@ -33,8 +24,8 @@ final class NotificationSchedulePolicy {
 
   /// Returns the ID format used by the legacy implementation.
   ///
-  /// This is intentionally retained temporarily so Phase 1 can remove
-  /// notifications scheduled by previous application versions.
+  /// Kept temporarily so notifications created by previous versions can be
+  /// removed safely.
   static int legacyPrayerNotificationId(
     PrayerName name,
     DateTime prayerTime,
@@ -58,7 +49,9 @@ final class NotificationSchedulePolicy {
       );
     }
 
-    return prayerTime.subtract(Duration(minutes: reminderMinutes));
+    return prayerTime.subtract(
+      Duration(minutes: reminderMinutes),
+    );
   }
 
   static int _dateKey(DateTime dateTime) {
