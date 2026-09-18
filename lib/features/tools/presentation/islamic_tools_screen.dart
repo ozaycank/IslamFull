@@ -24,16 +24,20 @@ class IslamicToolsScreen extends StatelessWidget {
             child: Column(
               children: [
                 ListTile(
-                  leading: Icon(Icons.touch_app_outlined,
-                      color: context.colorScheme.primary,),
+                  leading: Icon(
+                    Icons.touch_app_outlined,
+                    color: context.colorScheme.primary,
+                  ),
                   title: Text(l10n.tasbihTitle),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () => context.push(AppRoutes.tasbih),
                 ),
                 const Divider(height: 1),
                 ListTile(
-                  leading: Icon(Icons.calculate_outlined,
-                      color: context.colorScheme.primary,),
+                  leading: Icon(
+                    Icons.calculate_outlined,
+                    color: context.colorScheme.primary,
+                  ),
                   title: Text(l10n.menuZakatCalc),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () => context.push(AppRoutes.zakat),

@@ -32,8 +32,11 @@ class HajjGuideScreen extends StatelessWidget {
             AppCard(
               child: Column(
                 children: [
-                  Icon(Icons.mosque_outlined,
-                      size: 64, color: colorScheme.primary,),
+                  Icon(
+                    Icons.mosque_outlined,
+                    size: 64,
+                    color: colorScheme.primary,
+                  ),
                   const SizedBox(height: AppSpacing.lg),
                   Text(
                     l10n.hajjDiyanetInfo,

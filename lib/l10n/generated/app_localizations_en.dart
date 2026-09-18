@@ -1005,4 +1005,16 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get wuduStep9Desc =>
       'Wash the right foot up to the ankles three times, starting from the toes. Repeat for the left foot.';
+
+  @override
+  String notificationMinutesBefore(int minutes) {
+    return '$minutes minutes before';
+  }
+
+  @override
+  String get dailyVerseTime => 'Daily verse time';
+
+  @override
+  String get notificationsUnsupportedPlatform =>
+      'Local notifications are not supported on this platform yet.';
 }

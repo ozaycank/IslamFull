@@ -29,7 +29,8 @@ class FakeActivityRepository implements ActivityRepository {
 
   @override
   Future<Result<void, ActivityFailure>> saveDailyActivity(
-      DailyActivity activity,) async {
+    DailyActivity activity,
+  ) async {
     return const Success(null);
   }
 

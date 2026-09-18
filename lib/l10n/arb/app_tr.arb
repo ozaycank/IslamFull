@@ -311,5 +311,22 @@
   "wuduStep8Title": "8. Kulak ve Boynu Meshetmek",
   "wuduStep8Desc": "Eller ıslatılıp serçe parmaklarla kulak içi, baş parmaklarla kulak arkası, elin tersiyle boyun meshedilir.",
   "wuduStep9Title": "9. Ayakları Yıkamak",
-  "wuduStep9Desc": "Önce sağ ayak, sonra sol ayak topuklarla beraber parmak uçlarından başlanarak üç kere yıkanır."
+  "wuduStep9Desc": "Önce sağ ayak, sonra sol ayak topuklarla beraber parmak uçlarından başlanarak üç kere yıkanır.",
+  "notificationMinutesBefore": "{minutes} minutes before",
+"@notificationMinutesBefore": {
+  "description": "Prayer reminder offset in minutes",
+  "placeholders": {
+    "minutes": {
+      "type": "int"
+    }
+  }
+},
+"dailyVerseTime": "Daily verse time",
+"@dailyVerseTime": {
+  "description": "Time of day for the daily Quran verse notification"
+},
+"notificationsUnsupportedPlatform": "Local notifications are not supported on this platform yet.",
+"@notificationsUnsupportedPlatform": {
+  "description": "Displayed when local notifications are unavailable on the current platform"
+}
 }

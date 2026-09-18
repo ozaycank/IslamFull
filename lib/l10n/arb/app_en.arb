@@ -1069,5 +1069,21 @@
   "wuduStep9Title": "9. Wash Feet",
   "@wuduStep9Title": { "description": "Step" },
   "wuduStep9Desc": "Wash the right foot up to the ankles three times, starting from the toes. Repeat for the left foot.",
-  "@wuduStep9Desc": { "description": "Step" }
+  "@wuduStep9Desc": { "description": "Step" },"notificationMinutesBefore": "{minutes} minutes before",
+"@notificationMinutesBefore": {
+  "description": "Prayer reminder offset in minutes",
+  "placeholders": {
+    "minutes": {
+      "type": "int"
+    }
+  }
+},
+"dailyVerseTime": "Daily verse time",
+"@dailyVerseTime": {
+  "description": "Time of day for the daily Quran verse notification"
+},
+"notificationsUnsupportedPlatform": "Local notifications are not supported on this platform yet.",
+"@notificationsUnsupportedPlatform": {
+  "description": "Displayed when local notifications are unavailable on the current platform"
+}
 }

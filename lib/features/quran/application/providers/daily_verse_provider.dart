@@ -57,10 +57,12 @@ final dailyVerseContentProvider =
 
   // Fetch translation dynamically based on Locale
   final translationMap = await ref.watch(
-    quranTranslationProvider((
-      surahNumber: dailyVerse.surah.number,
-      languageCode: languageCode,
-    ),).future,
+    quranTranslationProvider(
+      (
+        surahNumber: dailyVerse.surah.number,
+        languageCode: languageCode,
+      ),
+    ).future,
   );
 
   return DailyVerseContent(

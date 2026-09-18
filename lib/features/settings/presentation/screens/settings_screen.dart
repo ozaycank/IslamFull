@@ -50,78 +50,144 @@ class SettingsScreen extends ConsumerWidget {
 class _NotificationSection extends ConsumerWidget {
   const _NotificationSection();
 
+  static const List<int> _reminderOptions = [
+    5,
+    10,
+    15,
+    30,
+    45,
+    60,
+  ];
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
     final state = ref.watch(notificationSettingsProvider);
     final notifier = ref.read(notificationSettingsProvider.notifier);
 
-    if (!state.isLoaded) return const SizedBox.shrink();
+    if (!state.isLoaded) {
+      return const SizedBox.shrink();
+    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SectionHeader(
-            title: l10n.notificationsTitle,), // We will add to ARB
+          title: l10n.notificationsTitle,
+        ),
         AppCard(
           padding: EdgeInsets.zero,
           child: Column(
             children: [
               SwitchListTile(
-                title:
-                    Text(l10n.notificationsEnabled,),
-                value: state.masterEnabled,
-                onChanged: notifier.toggleMaster,
+                title: Text(l10n.notificationsEnabled),
+                subtitle: !state.platformSupported
+                    ? Text(l10n.notificationsUnsupportedPlatform)
+                    : null,
+                value: state.platformSupported && state.masterEnabled,
                 activeThumbColor: context.colorScheme.primary,
+                onChanged: !state.platformSupported
+                    ? null
+                    : (enabled) async {
+                        final success = await notifier.toggleMaster(enabled);
+
+                        if (!success && enabled && context.mounted) {
+                          NotificationService.showError(
+                            l10n.notificationPermissionDeniedMessage,
+                          );
+                        }
+                      },
               ),
-              if (state.masterEnabled) ...[
+              if (state.masterEnabled && state.platformSupported) ...[
                 const Divider(height: 1),
                 SettingsSelectionTile(
                   title: l10n.prayerReminders,
-                  value: '${state.prayerReminderMinutes} mins before',
+                  value: l10n.notificationMinutesBefore(
+                    state.prayerReminderMinutes,
+                  ),
                   onTap: () {
                     showModalBottomSheet<void>(
                       context: context,
-                      builder: (ctx) => SelectionBottomSheet(
+                      builder: (sheetContext) => SelectionBottomSheet(
                         title: l10n.prayerReminders,
-                        items: const [
-                          SelectionItem('5', '5 Minutes'),
-                          SelectionItem('10', '10 Minutes'),
-                          SelectionItem('15', '15 Minutes'),
-                          SelectionItem('30', '30 Minutes'),
-                          SelectionItem('45', '45 Minutes'),
-                          SelectionItem('60', '60 Minutes'),
-                        ],
+                        items: _reminderOptions
+                            .map(
+                              (minutes) => SelectionItem(
+                                minutes.toString(),
+                                l10n.notificationMinutesBefore(minutes),
+                              ),
+                            )
+                            .toList(),
                         selectedId: state.prayerReminderMinutes.toString(),
-                        onSelected: (id) =>
-                            notifier.setReminderMinutes(int.parse(id)),
+                        onSelected: (id) {
+                          notifier.setReminderMinutes(
+                            int.parse(id),
+                          );
+                        },
                       ),
                     );
                   },
                 ),
                 const Divider(height: 1),
-               SwitchListTile(
-                  title: Text(l10n.notificationsEnabled),
-                  value: state.masterEnabled,
+                SwitchListTile(
+                  title: Text(l10n.dailyVerseEnabled),
+                  value: state.dailyVerseEnabled,
                   activeThumbColor: context.colorScheme.primary,
-                  onChanged: (val) async {
-                    // Sonucu bekliyoruz
-                    final success = await notifier.toggleMaster(val);
-
-                    // Eğer başarısız olduysa (izin reddedildiyse) SnackBar gösteriyoruz
-                    if (!success && context.mounted) {
-                      NotificationService.showError(
-                        l10n.notificationPermissionDeniedMessage, // Eklediğimiz yeni metin
-                      );
-                    }
+                  onChanged: (enabled) {
+                    notifier.toggleDailyVerse(enabled);
                   },
                 ),
+                if (state.dailyVerseEnabled) ...[
+                  const Divider(height: 1),
+                  SettingsSelectionTile(
+                    title: l10n.dailyVerseTime,
+                    value: _parseTime(
+                      state.dailyVerseTime,
+                    ).format(context),
+                    onTap: () async {
+                      final selectedTime = await showTimePicker(
+                        context: context,
+                        initialTime: _parseTime(
+                          state.dailyVerseTime,
+                        ),
+                      );
+
+                      if (selectedTime == null) {
+                        return;
+                      }
+
+                      await notifier.setDailyVerseTime(
+                        _serializeTime(selectedTime),
+                      );
+                    },
+                  ),
+                ],
               ],
             ],
           ),
         ),
       ],
     );
+  }
+
+  TimeOfDay _parseTime(String value) {
+    final parts = value.split(':');
+
+    final hour = parts.isNotEmpty ? int.tryParse(parts.first) : null;
+
+    final minute = parts.length > 1 ? int.tryParse(parts[1]) : null;
+
+    return TimeOfDay(
+      hour: hour != null && hour >= 0 && hour <= 23 ? hour : 20,
+      minute: minute != null && minute >= 0 && minute <= 59 ? minute : 0,
+    );
+  }
+
+  String _serializeTime(TimeOfDay value) {
+    final hour = value.hour.toString().padLeft(2, '0');
+    final minute = value.minute.toString().padLeft(2, '0');
+
+    return '$hour:$minute';
   }
 }
 

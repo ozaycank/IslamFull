@@ -32,8 +32,10 @@ class PreferencesScreen extends ConsumerWidget {
               children: [
                 SwitchListTile(
                   title: Text(l10n.prefHapticFeedback),
-                  subtitle: Text(l10n.prefHapticDesc,
-                      style: TextStyle(color: colorScheme.onSurfaceVariant),),
+                  subtitle: Text(
+                    l10n.prefHapticDesc,
+                    style: TextStyle(color: colorScheme.onSurfaceVariant),
+                  ),
                   value: hapticEnabled,
                   activeThumbColor: colorScheme.primary,
                   onChanged: (val) =>
@@ -42,8 +44,10 @@ class PreferencesScreen extends ConsumerWidget {
                 const Divider(height: 1),
                 SwitchListTile(
                   title: Text(l10n.prefDailyVerse),
-                  subtitle: Text(l10n.prefDailyVerseDesc,
-                      style: TextStyle(color: colorScheme.onSurfaceVariant),),
+                  subtitle: Text(
+                    l10n.prefDailyVerseDesc,
+                    style: TextStyle(color: colorScheme.onSurfaceVariant),
+                  ),
                   value: verseEnabled,
                   activeThumbColor: colorScheme.primary,
                   onChanged: (val) => ref

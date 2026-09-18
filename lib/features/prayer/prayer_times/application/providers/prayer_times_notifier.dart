@@ -9,7 +9,6 @@ import '../../../location/domain/entities/prayer_location.dart';
 import '../../../shared/infrastructure/datasources/prayer_local_data_source.dart';
 import '../services/prayer_orchestrator_service.dart';
 import '../states/prayer_times_state.dart';
-import '../../../../settings/application/providers/notification_settings_provider.dart';
 
 final prayerTimesNotifierProvider =
     NotifierProvider<PrayerTimesNotifier, PrayerTimesState>(
@@ -66,7 +65,6 @@ class PrayerTimesNotifier extends Notifier<PrayerTimesState> {
           schedule: () => data,
           location: () => loc,
         );
-        ref.read(notificationSettingsProvider.notifier).syncPrayerSchedule();
 
       case ResultFailure(failure: final f):
         _logger.logPrayer('Failed to load prayer schedule: ${f.message}');

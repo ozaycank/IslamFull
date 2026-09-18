@@ -24,8 +24,10 @@ class InfoCenterScreen extends StatelessWidget {
             child: Column(
               children: [
                 ListTile(
-                  leading: Icon(Icons.clean_hands_outlined,
-                      color: context.colorScheme.primary,),
+                  leading: Icon(
+                    Icons.clean_hands_outlined,
+                    color: context.colorScheme.primary,
+                  ),
                   title: Text(l10n.wuduGuideTitle),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () => context.push(AppRoutes.wuduGuide),

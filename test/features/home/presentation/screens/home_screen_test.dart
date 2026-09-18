@@ -98,7 +98,8 @@ void main() {
     getIt.reset();
     getIt.registerSingleton<QuranRepository>(FakeQuranRepository());
     getIt.registerSingleton<QuranBookmarkRepository>(
-        FakeQuranBookmarkRepository(),);
+      FakeQuranBookmarkRepository(),
+    );
   });
 
   Widget buildTestableWidget(

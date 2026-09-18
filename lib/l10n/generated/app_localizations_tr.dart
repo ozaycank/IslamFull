@@ -1012,4 +1012,16 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get wuduStep9Desc =>
       'Önce sağ ayak, sonra sol ayak topuklarla beraber parmak uçlarından başlanarak üç kere yıkanır.';
+
+  @override
+  String notificationMinutesBefore(int minutes) {
+    return '$minutes minutes before';
+  }
+
+  @override
+  String get dailyVerseTime => 'Daily verse time';
+
+  @override
+  String get notificationsUnsupportedPlatform =>
+      'Local notifications are not supported on this platform yet.';
 }

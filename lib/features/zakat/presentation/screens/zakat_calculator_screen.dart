@@ -139,7 +139,8 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
                 color: colorScheme.secondaryContainer.withValues(alpha: 0.3),
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                    color: colorScheme.secondary.withValues(alpha: 0.2),),
+                  color: colorScheme.secondary.withValues(alpha: 0.2),
+                ),
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -172,16 +173,21 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
               child: Column(
                 children: [
                   _buildInputField(
-                      label: l10n.zakatCashLabel, controller: _cashController,),
+                    label: l10n.zakatCashLabel,
+                    controller: _cashController,
+                  ),
                   _buildInputField(
-                      label: l10n.zakatGoldGramsLabel,
-                      controller: _goldGramsController,),
+                    label: l10n.zakatGoldGramsLabel,
+                    controller: _goldGramsController,
+                  ),
                   _buildInputField(
-                      label: l10n.zakatTradeGoodsLabel,
-                      controller: _tradeGoodsController,),
+                    label: l10n.zakatTradeGoodsLabel,
+                    controller: _tradeGoodsController,
+                  ),
                   _buildInputField(
-                      label: l10n.zakatReceivablesLabel,
-                      controller: _receivablesController,),
+                    label: l10n.zakatReceivablesLabel,
+                    controller: _receivablesController,
+                  ),
                 ],
               ),
             ),
@@ -191,7 +197,9 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
             SectionHeader(title: l10n.zakatDebtsGroup),
             AppCard(
               child: _buildInputField(
-                  label: l10n.zakatDebtsLabel, controller: _debtsController,),
+                label: l10n.zakatDebtsLabel,
+                controller: _debtsController,
+              ),
             ),
             const SizedBox(height: AppSpacing.xl),
 
@@ -214,12 +222,14 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _ResultRow(
-                        label: l10n.zakatTotalWealth,
-                        value: '₺${_totalNetWealth.toStringAsFixed(2)}',),
+                      label: l10n.zakatTotalWealth,
+                      value: '₺${_totalNetWealth.toStringAsFixed(2)}',
+                    ),
                     const Divider(),
                     _ResultRow(
-                        label: l10n.zakatNisabAmount,
-                        value: '₺${_nisabThreshold.toStringAsFixed(2)}',),
+                      label: l10n.zakatNisabAmount,
+                      value: '₺${_nisabThreshold.toStringAsFixed(2)}',
+                    ),
                     const Divider(thickness: 2),
                     if (_zakatAmount > 0)
                       Padding(
@@ -278,12 +288,16 @@ class _ResultRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label,
-              style: context.textTheme.bodyMedium
-                  ?.copyWith(color: context.colorScheme.onSurfaceVariant),),
-          Text(value,
-              style: context.textTheme.titleMedium
-                  ?.copyWith(fontWeight: FontWeight.bold),),
+          Text(
+            label,
+            style: context.textTheme.bodyMedium
+                ?.copyWith(color: context.colorScheme.onSurfaceVariant),
+          ),
+          Text(
+            value,
+            style: context.textTheme.titleMedium
+                ?.copyWith(fontWeight: FontWeight.bold),
+          ),
         ],
       ),
     );

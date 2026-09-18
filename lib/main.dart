@@ -1,65 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
-// Saat dilimi (timezone) veritabanı başlatıcısı
 import 'package:timezone/data/latest_all.dart' as tz;
-import 'package:noor_life/core/services/local_notification_service.dart';
-import 'core/di/injection_container.dart';
-import 'core/routing/app_router.dart';
-import 'core/theme/light_theme.dart';
-import 'core/theme/dark_theme.dart';
-import 'features/settings/application/providers/language_settings_notifier.dart';
-import 'l10n/generated/app_localizations.dart';
 
-void main() async {
-  // 1. Flutter widget binding'i başlat
+import 'app.dart';
+import 'core/config/environment_config.dart';
+import 'core/di/injection_container.dart';
+import 'core/services/local_notification_service.dart';
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // 2. Çevresel değişkenleri (.env dosyasını) yükle.
-  await dotenv.load(fileName: '.env');
+  await EnvironmentConfig.init();
 
-  // 3. Saat dilimleri veritabanını başlat (Burası "Timezone conversion failed" hatasını çözer)
   tz.initializeTimeZones();
 
-  // 5. DI (Dependency Injection) yapılandırmasını başlat
   await configureDependencies();
+
   await getIt<LocalNotificationService>().init();
-  // 6. Uygulamayı çalıştır
+
   runApp(
     const ProviderScope(
       child: NoorLifeApp(),
     ),
   );
-}
-
-class NoorLifeApp extends ConsumerWidget {
-  const NoorLifeApp({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final router = AppRouter.createRouter(ref);
-    final localeState = ref.watch(languageSettingsNotifierProvider);
-
-    return MaterialApp.router(
-      title: 'IslamFull',
-      theme: LightTheme.theme,
-      darkTheme: DarkTheme.theme,
-      themeMode: ThemeMode.system,
-      routerConfig: router,
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en'),
-        Locale('tr'),
-      ],
-      locale: localeState.locale,
-      debugShowCheckedModeBanner: false,
-    );
-  }
 }

@@ -1987,6 +1987,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Wash the right foot up to the ankles three times, starting from the toes. Repeat for the left foot.'**
   String get wuduStep9Desc;
+
+  /// Prayer reminder offset in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'{minutes} minutes before'**
+  String notificationMinutesBefore(int minutes);
+
+  /// Time of day for the daily Quran verse notification
+  ///
+  /// In en, this message translates to:
+  /// **'Daily verse time'**
+  String get dailyVerseTime;
+
+  /// Displayed when local notifications are unavailable on the current platform
+  ///
+  /// In en, this message translates to:
+  /// **'Local notifications are not supported on this platform yet.'**
+  String get notificationsUnsupportedPlatform;
 }
 
 class _AppLocalizationsDelegate

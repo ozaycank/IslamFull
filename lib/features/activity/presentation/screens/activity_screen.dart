@@ -211,7 +211,8 @@ class _ActivityScreenState extends ConsumerState<ActivityScreen> {
                               context,
                               l10n.statsStreak,
                               l10n.statsDays(
-                                  state.statistics?.currentStreak ?? 0,),
+                                state.statistics?.currentStreak ?? 0,
+                              ),
                               Icons.local_fire_department,
                             ),
                             const SizedBox(width: AppSpacing.sm),
@@ -226,7 +227,8 @@ class _ActivityScreenState extends ConsumerState<ActivityScreen> {
                               context,
                               l10n.statsQuranDays,
                               l10n.statsDays(
-                                  state.statistics?.last7DaysQuran ?? 0,),
+                                state.statistics?.last7DaysQuran ?? 0,
+                              ),
                               Icons.auto_stories,
                             ),
                           ],
@@ -249,8 +251,10 @@ class _ActivityScreenState extends ConsumerState<ActivityScreen> {
                               ),
                               child: Column(
                                 children: state.history
-                                    .where((r) =>
-                                        r.date != ActivityDateUtils.today(),)
+                                    .where(
+                                      (r) =>
+                                          r.date != ActivityDateUtils.today(),
+                                    )
                                     .take(10) // Limit to 10 for performance
                                     .map((r) => _buildHistoryItem(context, r))
                                     .toList(),
