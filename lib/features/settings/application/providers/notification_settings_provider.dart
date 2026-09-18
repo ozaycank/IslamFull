@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/di/injection_container.dart';
 import '../../../../core/services/local_notification_service.dart';
+import '../../../../core/services/notification_schedule_policy.dart';
 import '../../../../core/storage/secure_storage_service.dart';
 import '../../../prayer/prayer_times/application/providers/prayer_times_notifier.dart';
 
@@ -54,7 +55,6 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
   @override
   NotificationSettingsState build() {
     _storage = getIt<SecureStorageService>();
-
     _notificationService = getIt<LocalNotificationService>();
 
     Future.microtask(_loadSettings);
@@ -66,11 +66,8 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
 
   Future<void> _loadSettings() async {
     final enabled = await _storage.getNotificationsEnabled();
-
     final reminderMinutes = await _storage.getPrayerReminderMinutes();
-
     final dailyVerseEnabled = await _storage.getDailyVerseEnabled();
-
     final dailyVerseTime = await _storage.getDailyVerseTime();
 
     state = state.copyWith(
@@ -81,7 +78,7 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
       isLoaded: true,
     );
 
-    await _rescheduleAll();
+    await _reschedulePrayerNotifications();
   }
 
   Future<bool> toggleMaster(
@@ -99,19 +96,23 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
           masterEnabled: false,
         );
 
-        await _storage.setNotificationsEnabled(false);
+        await _storage.setNotificationsEnabled(
+          false,
+        );
 
         return false;
       }
     }
 
-    await _storage.setNotificationsEnabled(enabled);
+    await _storage.setNotificationsEnabled(
+      enabled,
+    );
 
     state = state.copyWith(
       masterEnabled: enabled,
     );
 
-    await _rescheduleAll();
+    await _reschedulePrayerNotifications();
 
     return true;
   }
@@ -119,33 +120,39 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
   Future<void> setReminderMinutes(
     int minutes,
   ) async {
-    if (minutes < 0 || minutes > 180) {
+    if (minutes < 0 ||
+        minutes > NotificationSchedulePolicy.maxPrayerReminderMinutes) {
       throw ArgumentError.value(
         minutes,
         'minutes',
-        'Prayer reminder must be between 0 and 180 minutes.',
+        'Prayer reminder must be between 0 and '
+            '${NotificationSchedulePolicy.maxPrayerReminderMinutes} minutes.',
       );
     }
 
-    await _storage.setPrayerReminderMinutes(minutes);
+    await _storage.setPrayerReminderMinutes(
+      minutes,
+    );
 
     state = state.copyWith(
       prayerReminderMinutes: minutes,
     );
 
-    await _rescheduleAll();
+    await _reschedulePrayerNotifications();
   }
 
   Future<void> toggleDailyVerse(
     bool enabled,
   ) async {
-    await _storage.setDailyVerseEnabled(enabled);
+    await _storage.setDailyVerseEnabled(
+      enabled,
+    );
 
     state = state.copyWith(
       dailyVerseEnabled: enabled,
     );
 
-    await _rescheduleAll();
+    // Daily Verse scheduling is owned by NotificationCoordinator.
   }
 
   Future<void> setDailyVerseTime(
@@ -159,13 +166,15 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
       );
     }
 
-    await _storage.setDailyVerseTime(time);
+    await _storage.setDailyVerseTime(
+      time,
+    );
 
     state = state.copyWith(
       dailyVerseTime: time,
     );
 
-    await _rescheduleAll();
+    // Daily Verse scheduling is owned by NotificationCoordinator.
   }
 
   Future<void> syncPrayerSchedule() async {
@@ -173,36 +182,26 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
       return;
     }
 
-    await _rescheduleAll();
+    await _reschedulePrayerNotifications();
   }
 
-  Future<void> _rescheduleAll() async {
+  Future<void> _reschedulePrayerNotifications() async {
     if (!state.platformSupported) {
       return;
     }
 
     if (!state.masterEnabled) {
+      // Master disable owns the global cancellation operation because every
+      // notification category must be removed immediately.
       await _notificationService.cancelAll();
       return;
     }
 
-    final prayerState = ref.read(prayerTimesNotifierProvider);
-
-    final timezoneId = prayerState.location?.timezoneIdentifier;
-
-    if (!state.dailyVerseEnabled) {
-      await _notificationService.cancelDailyVerse();
-    } else if (timezoneId != null) {
-      await _notificationService.scheduleDailyVerse(
-        state.dailyVerseTime,
-        'Verse of the Day',
-        'Tap to read today\'s verse.',
-        timezoneId,
-      );
-    }
+    final prayerState = ref.read(
+      prayerTimesNotifierProvider,
+    );
 
     final schedule = prayerState.schedule;
-
     final location = prayerState.location;
 
     if (schedule == null || location == null) {
@@ -229,9 +228,13 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
       return false;
     }
 
-    final hour = int.tryParse(parts[0]);
+    final hour = int.tryParse(
+      parts[0],
+    );
 
-    final minute = int.tryParse(parts[1]);
+    final minute = int.tryParse(
+      parts[1],
+    );
 
     return hour != null &&
         minute != null &&

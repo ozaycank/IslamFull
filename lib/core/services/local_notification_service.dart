@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -14,7 +16,11 @@ class LocalNotificationService {
   final FlutterLocalNotificationsPlugin _plugin =
       FlutterLocalNotificationsPlugin();
 
+  final StreamController<String> _notificationPayloadController =
+      StreamController<String>.broadcast();
+
   bool _isInitialized = false;
+  String? _initialNotificationPayload;
 
   bool get isSupportedPlatform {
     if (kIsWeb) {
@@ -23,6 +29,23 @@ class LocalNotificationService {
 
     return defaultTargetPlatform == TargetPlatform.android ||
         defaultTargetPlatform == TargetPlatform.iOS;
+  }
+
+  /// Emits notification payloads tapped while the application process is
+  /// already running.
+  Stream<String> get notificationPayloads =>
+      _notificationPayloadController.stream;
+
+  /// Returns and clears the payload that launched the application from a
+  /// terminated state.
+  ///
+  /// The value is consumed only once to prevent duplicate navigation if the
+  /// root application widget is rebuilt.
+  String? takeInitialNotificationPayload() {
+    final payload = _initialNotificationPayload;
+    _initialNotificationPayload = null;
+
+    return payload;
   }
 
   Future<void> init() async {
@@ -54,7 +77,10 @@ class LocalNotificationService {
 
     await _plugin.initialize(
       initializationSettings,
+      onDidReceiveNotificationResponse: _handleNotificationResponse,
     );
+
+    await _captureInitialNotificationPayload();
 
     _isInitialized = true;
   }
@@ -107,7 +133,9 @@ class LocalNotificationService {
     await _plugin.cancelAll();
   }
 
-  Future<void> cancelDailyVerse() async {
+  /// Cancels the recurring daily verse IDs used by implementations before the
+  /// date-specific rolling scheduler.
+  Future<void> cancelLegacyDailyVerseSchedules() async {
     if (!isSupportedPlatform) {
       return;
     }
@@ -115,8 +143,68 @@ class LocalNotificationService {
     await _ensureInitialized();
 
     await _plugin.cancel(
+      NotificationSchedulePolicy.legacyDailyVerseNotificationId,
+    );
+
+    await _plugin.cancel(
       NotificationSchedulePolicy.dailyVerseNotificationId,
     );
+  }
+
+  /// Compatibility API used by older application-level callers.
+  Future<void> cancelDailyVerse() async {
+    await cancelLegacyDailyVerseSchedules();
+  }
+
+  /// Cancels the date-specific Daily Verse notification for one calendar day.
+  Future<void> cancelDailyVerseForDate(
+    DateTime date,
+  ) async {
+    if (!isSupportedPlatform) {
+      return;
+    }
+
+    await _ensureInitialized();
+
+    await _plugin.cancel(
+      NotificationSchedulePolicy.dailyVerseNotificationIdForDate(
+        date,
+      ),
+    );
+  }
+
+  /// Cancels a contiguous range of date-specific Daily Verse notifications.
+  Future<void> cancelDailyVerseWindow(
+    DateTime startDate, {
+    required int days,
+  }) async {
+    if (days < 1) {
+      throw RangeError.value(
+        days,
+        'days',
+        'The cancellation window must contain at least one day.',
+      );
+    }
+
+    if (!isSupportedPlatform) {
+      return;
+    }
+
+    await _ensureInitialized();
+
+    for (var offset = 0; offset < days; offset++) {
+      final date = DateTime(
+        startDate.year,
+        startDate.month,
+        startDate.day + offset,
+      );
+
+      await _plugin.cancel(
+        NotificationSchedulePolicy.dailyVerseNotificationIdForDate(
+          date,
+        ),
+      );
+    }
   }
 
   Future<void> cancelPrayer(
@@ -162,7 +250,9 @@ class LocalNotificationService {
 
     await _ensureInitialized();
 
-    final location = _resolveLocation(timezoneId);
+    final location = _resolveLocation(
+      timezoneId,
+    );
 
     if (location == null) {
       return;
@@ -183,7 +273,9 @@ class LocalNotificationService {
       location,
     );
 
-    final now = tz.TZDateTime.now(location);
+    final now = tz.TZDateTime.now(
+      location,
+    );
 
     if (!scheduledDate.isAfter(now)) {
       return;
@@ -194,7 +286,9 @@ class LocalNotificationService {
       prayer.time,
     );
 
-    await cancelPrayer(prayer);
+    await cancelPrayer(
+      prayer,
+    );
 
     const details = NotificationDetails(
       android: AndroidNotificationDetails(
@@ -217,6 +311,10 @@ class LocalNotificationService {
     );
   }
 
+  /// Current Phase 1 recurring Daily Verse scheduler.
+  ///
+  /// Kept temporarily for backwards compatibility while rolling scheduling is
+  /// being migrated across the application.
   Future<void> scheduleDailyVerse(
     String timeString,
     String title,
@@ -229,19 +327,25 @@ class LocalNotificationService {
 
     await _ensureInitialized();
 
-    final parsedTime = _parseTime(timeString);
+    final parsedTime = _parseTime(
+      timeString,
+    );
 
     if (parsedTime == null) {
       return;
     }
 
-    final location = _resolveLocation(timezoneId);
+    final location = _resolveLocation(
+      timezoneId,
+    );
 
     if (location == null) {
       return;
     }
 
-    final now = tz.TZDateTime.now(location);
+    final now = tz.TZDateTime.now(
+      location,
+    );
 
     var scheduledDate = tz.TZDateTime(
       location,
@@ -263,7 +367,95 @@ class LocalNotificationService {
       );
     }
 
-    final details = NotificationDetails(
+    await cancelLegacyDailyVerseSchedules();
+
+    await _scheduleWithAndroidFallback(
+      id: NotificationSchedulePolicy.dailyVerseNotificationId,
+      title: title,
+      body: body,
+      scheduledDate: scheduledDate,
+      details: _dailyVerseNotificationDetails(
+        body,
+      ),
+      payload: 'daily-verse',
+      matchDateTimeComponents: DateTimeComponents.time,
+    );
+  }
+
+  /// Schedules one Daily Verse notification for one specific calendar date.
+  Future<bool> scheduleDailyVerseForDate({
+    required DateTime date,
+    required String timeString,
+    required String title,
+    required String body,
+    required String timezoneId,
+    required String payload,
+  }) async {
+    if (!isSupportedPlatform) {
+      return false;
+    }
+
+    await _ensureInitialized();
+
+    final parsedTime = _parseTime(
+      timeString,
+    );
+
+    if (parsedTime == null) {
+      return false;
+    }
+
+    final location = _resolveLocation(
+      timezoneId,
+    );
+
+    if (location == null) {
+      return false;
+    }
+
+    final scheduledDate = tz.TZDateTime(
+      location,
+      date.year,
+      date.month,
+      date.day,
+      parsedTime.hour,
+      parsedTime.minute,
+    );
+
+    final now = tz.TZDateTime.now(
+      location,
+    );
+
+    if (!scheduledDate.isAfter(now)) {
+      return false;
+    }
+
+    final id = NotificationSchedulePolicy.dailyVerseNotificationIdForDate(
+      date,
+    );
+
+    await _plugin.cancel(
+      id,
+    );
+
+    await _scheduleWithAndroidFallback(
+      id: id,
+      title: title,
+      body: body,
+      scheduledDate: scheduledDate,
+      details: _dailyVerseNotificationDetails(
+        body,
+      ),
+      payload: payload,
+    );
+
+    return true;
+  }
+
+  NotificationDetails _dailyVerseNotificationDetails(
+    String body,
+  ) {
+    return NotificationDetails(
       android: AndroidNotificationDetails(
         'daily_verse',
         'Daily Verse',
@@ -276,20 +468,41 @@ class LocalNotificationService {
       ),
       iOS: const DarwinNotificationDetails(),
     );
+  }
 
-    await _plugin.cancel(
-      NotificationSchedulePolicy.dailyVerseNotificationId,
-    );
+  void _handleNotificationResponse(
+    NotificationResponse response,
+  ) {
+    final payload = response.payload?.trim();
 
-    await _scheduleWithAndroidFallback(
-      id: NotificationSchedulePolicy.dailyVerseNotificationId,
-      title: title,
-      body: body,
-      scheduledDate: scheduledDate,
-      details: details,
-      payload: 'daily-verse',
-      matchDateTimeComponents: DateTimeComponents.time,
+    if (payload == null || payload.isEmpty) {
+      return;
+    }
+
+    _notificationPayloadController.add(
+      payload,
     );
+  }
+
+  Future<void> _captureInitialNotificationPayload() async {
+    try {
+      final launchDetails = await _plugin.getNotificationAppLaunchDetails();
+
+      if (!(launchDetails?.didNotificationLaunchApp ?? false)) {
+        return;
+      }
+
+      final payload = launchDetails?.notificationResponse?.payload?.trim();
+
+      if (payload == null || payload.isEmpty) {
+        return;
+      }
+
+      _initialNotificationPayload = payload;
+    } on PlatformException {
+      // Notification launch details are an enhancement. A platform failure
+      // must never prevent normal application startup.
+    }
   }
 
   Future<void> _scheduleWithAndroidFallback({
@@ -359,9 +572,13 @@ class LocalNotificationService {
       return null;
     }
 
-    final hour = int.tryParse(parts[0]);
+    final hour = int.tryParse(
+      parts[0],
+    );
 
-    final minute = int.tryParse(parts[1]);
+    final minute = int.tryParse(
+      parts[1],
+    );
 
     if (hour == null ||
         minute == null ||

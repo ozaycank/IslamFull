@@ -158,7 +158,26 @@ void main() {
 
   group('NotificationSchedulePolicy - daily verse', () {
     test(
-      'uses a stable reserved notification ID',
+      'keeps historical daily verse IDs stable for migration',
+      () {
+        expect(
+          NotificationSchedulePolicy.legacyDailyVerseNotificationId,
+          9999,
+        );
+
+        expect(
+          NotificationSchedulePolicy.dailyVerseNotificationId,
+          999900001,
+        );
+
+        expect(
+          NotificationSchedulePolicy.legacyDailyVerseNotificationId,
+          isNot(NotificationSchedulePolicy.dailyVerseNotificationId),
+        );
+      },
+    );
+    test(
+      'keeps the Phase 1 recurring notification ID stable',
       () {
         expect(
           NotificationSchedulePolicy.dailyVerseNotificationId,
@@ -168,7 +187,123 @@ void main() {
     );
 
     test(
-      'reserved daily verse ID does not collide with prayer IDs',
+      'creates a stable ID for the same calendar date',
+      () {
+        final morning =
+            NotificationSchedulePolicy.dailyVerseNotificationIdForDate(
+          DateTime(
+            2026,
+            9,
+            18,
+            6,
+          ),
+        );
+
+        final evening =
+            NotificationSchedulePolicy.dailyVerseNotificationIdForDate(
+          DateTime(
+            2026,
+            9,
+            18,
+            22,
+            30,
+          ),
+        );
+
+        expect(
+          morning,
+          evening,
+        );
+      },
+    );
+
+    test(
+      'creates unique IDs across different calendar dates',
+      () {
+        final ids = <int>{};
+
+        final startDate = DateTime(2026, 1, 1);
+
+        for (var dayOffset = 0; dayOffset < 365; dayOffset++) {
+          final date = startDate.add(
+            Duration(days: dayOffset),
+          );
+
+          final id = NotificationSchedulePolicy.dailyVerseNotificationIdForDate(
+            date,
+          );
+
+          expect(
+            ids.add(id),
+            isTrue,
+            reason: 'Duplicate daily verse notification ID for $date',
+          );
+        }
+
+        expect(
+          ids.length,
+          365,
+        );
+      },
+    );
+
+    test(
+      'date-specific daily verse IDs do not collide with prayer IDs',
+      () {
+        final startDate = DateTime(2026, 1, 1);
+
+        for (var dayOffset = 0; dayOffset < 365; dayOffset++) {
+          final date = startDate.add(
+            Duration(days: dayOffset),
+          );
+
+          final verseId =
+              NotificationSchedulePolicy.dailyVerseNotificationIdForDate(
+            date,
+          );
+
+          for (final prayer in PrayerName.values) {
+            final prayerId = NotificationSchedulePolicy.prayerNotificationId(
+              prayer,
+              date,
+            );
+
+            expect(
+              verseId,
+              isNot(prayerId),
+              reason: 'Daily verse ID collided with '
+                  '${prayer.name} on $date',
+            );
+          }
+        }
+      },
+    );
+
+    test(
+      'date-specific IDs stay within signed 32-bit integer range',
+      () {
+        final id = NotificationSchedulePolicy.dailyVerseNotificationIdForDate(
+          DateTime(
+            9999,
+            12,
+            31,
+          ),
+        );
+
+        expect(
+          id,
+          lessThanOrEqualTo(2147483647),
+        );
+
+        expect(
+          id,
+          greaterThan(0),
+        );
+      },
+    );
+
+    test(
+      'legacy recurring daily verse ID does not collide with current prayer IDs',
       () {
         const verseId = NotificationSchedulePolicy.dailyVerseNotificationId;
 
@@ -189,8 +324,6 @@ void main() {
               expect(
                 verseId,
                 isNot(prayerId),
-                reason: 'Daily verse ID collided with '
-                    '${prayer.name} on $date',
               );
             }
           }
