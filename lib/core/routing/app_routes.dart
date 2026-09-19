@@ -7,7 +7,7 @@ class AppRoutes {
   static const String home = '/home';
   static const String prayer = '/prayer';
   static const String quran = '/quran';
-  static const surahDetail = '/quran/surah/:id';
+  static const String surahDetail = '/quran/surah/:id';
   static const String activity = '/activity';
   static const String menu = '/menu';
 
@@ -23,4 +23,8 @@ class AppRoutes {
   static const String tasbih = '/tasbih';
   static const String infoCenter = '/info-center';
   static const String wuduGuide = '/wudu-guide';
+
+  // Guidance
+  static const String newMuslimJourney = '/new-muslim-journey';
+  static const String islamFoundations = '/islam-foundations';
 }

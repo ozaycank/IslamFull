@@ -172,9 +172,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'Holy Quran reading, audio recitations, and bookmarks will be available here.';
 
   @override
-  String get activityTitle => 'Activity';
-
-  @override
   String get activityDesc =>
       'Track your daily prayers, dhikr, and fasting progress here.';
 
@@ -674,6 +671,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get descMakkah => 'Standard method in Arabian Peninsula.';
 
   @override
+  String get activityTitle => 'Activity';
+
+  @override
   String get activityToday => 'Today\'s Activity';
 
   @override
@@ -1017,4 +1017,179 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get notificationsUnsupportedPlatform =>
       'Local notifications are not supported on this platform yet.';
+
+  @override
+  String get infoCenterWelcomeTitle => 'Learn at Your Own Pace';
+
+  @override
+  String get infoCenterWelcomeDesc =>
+      'Explore clear, practical guides about the foundations of Islam and everyday worship.';
+
+  @override
+  String get infoCenterLearningGuides => 'Learning Guides';
+
+  @override
+  String get infoCenterWorshipGuides => 'Worship Guides';
+
+  @override
+  String get newMuslimJourneyTitle => 'New Muslim Journey';
+
+  @override
+  String get newMuslimJourneyMenuDesc =>
+      'A simple starting path for learning the essentials of Islam.';
+
+  @override
+  String get newMuslimJourneyWelcomeTitle => 'Welcome to Your Journey';
+
+  @override
+  String get newMuslimJourneySubtitle =>
+      'You do not need to learn everything at once. Begin with the foundations, then build your knowledge and worship step by step.';
+
+  @override
+  String get newMuslimJourneyStartHere => 'Start Here';
+
+  @override
+  String get newMuslimJourneyFoundationsTitle => 'Learn the Foundations';
+
+  @override
+  String get newMuslimJourneyFoundationsDesc =>
+      'Understand the five pillars of Islam and the six articles of faith.';
+
+  @override
+  String get newMuslimJourneyWuduTitle => 'Learn Wudu';
+
+  @override
+  String get newMuslimJourneyWuduDesc =>
+      'Learn the basic steps of purification before prayer.';
+
+  @override
+  String get newMuslimJourneyPrayerTitle => 'Become Familiar with Prayer';
+
+  @override
+  String get newMuslimJourneyPrayerDesc =>
+      'Explore daily prayer times and begin becoming familiar with the rhythm of the five prayers.';
+
+  @override
+  String get newMuslimJourneyQuranTitle => 'Read the Quran';
+
+  @override
+  String get newMuslimJourneyQuranDesc =>
+      'Read the Quran together with a translation in the language you understand best.';
+
+  @override
+  String get newMuslimJourneyNoteTitle => 'Learn Gradually';
+
+  @override
+  String get newMuslimJourneyNoteBody =>
+      'IslamFull provides introductory guidance. For personal religious rulings or circumstances that require detailed guidance, consult a qualified and trusted scholar.';
+
+  @override
+  String get islamFoundationsTitle => 'Foundations of Islam';
+
+  @override
+  String get islamFoundationsMenuDesc =>
+      'Learn the five pillars of Islam and the core articles of faith.';
+
+  @override
+  String get islamFoundationsIntro =>
+      'The pillars of Islam describe core acts of worship, while the articles of faith summarize fundamental beliefs. This guide offers a concise introduction.';
+
+  @override
+  String get fivePillarsTitle => 'The Five Pillars of Islam';
+
+  @override
+  String get fivePillarsIntro =>
+      'The five pillars form the central framework of Muslim worship and practice.';
+
+  @override
+  String get pillarShahadaTitle => 'Shahada';
+
+  @override
+  String get pillarShahadaDesc =>
+      'Bearing witness that there is no deity worthy of worship except Allah and that Muhammad is His Messenger.';
+
+  @override
+  String get pillarPrayerTitle => 'Salah';
+
+  @override
+  String get pillarPrayerDesc =>
+      'Performing the five daily prayers at their prescribed times.';
+
+  @override
+  String get pillarZakatTitle => 'Zakat';
+
+  @override
+  String get pillarZakatDesc =>
+      'Giving obligatory charity when its religious conditions are met.';
+
+  @override
+  String get pillarFastingTitle => 'Fasting in Ramadan';
+
+  @override
+  String get pillarFastingDesc =>
+      'Fasting during the month of Ramadan from dawn until sunset for those required and able to fast.';
+
+  @override
+  String get pillarHajjTitle => 'Hajj';
+
+  @override
+  String get pillarHajjDesc =>
+      'Making the pilgrimage to Makkah once in a lifetime for Muslims who are able to undertake it.';
+
+  @override
+  String get articlesOfFaithTitle => 'The Six Articles of Faith';
+
+  @override
+  String get articlesOfFaithIntro =>
+      'These six principles summarize the foundational beliefs traditionally taught in Islamic creed.';
+
+  @override
+  String get faithAllahTitle => 'Belief in Allah';
+
+  @override
+  String get faithAllahDesc =>
+      'Believing in Allah, His oneness, and that He alone is worthy of worship.';
+
+  @override
+  String get faithAngelsTitle => 'Belief in the Angels';
+
+  @override
+  String get faithAngelsDesc =>
+      'Believing in the angels created by Allah and in the duties assigned to them.';
+
+  @override
+  String get faithBooksTitle => 'Belief in the Revealed Books';
+
+  @override
+  String get faithBooksDesc =>
+      'Believing in the scriptures revealed by Allah to His messengers.';
+
+  @override
+  String get faithMessengersTitle => 'Belief in the Messengers';
+
+  @override
+  String get faithMessengersDesc =>
+      'Believing in the prophets and messengers sent by Allah to guide humanity.';
+
+  @override
+  String get faithLastDayTitle => 'Belief in the Last Day';
+
+  @override
+  String get faithLastDayDesc =>
+      'Believing in resurrection, judgment, and the life of the Hereafter.';
+
+  @override
+  String get faithDivineDecreeTitle => 'Belief in Divine Decree';
+
+  @override
+  String get faithDivineDecreeDesc =>
+      'Believing in Allah\'s complete knowledge and decree while recognizing human responsibility for choices.';
+
+  @override
+  String get islamFoundationsDisclaimer =>
+      'This section provides a concise educational overview and is not intended to replace detailed religious instruction.';
+
+  @override
+  String get wuduGuideMenuDesc =>
+      'Follow the basic steps of ablution before prayer.';
 }

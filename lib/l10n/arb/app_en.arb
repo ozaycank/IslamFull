@@ -205,10 +205,6 @@
   "@quranDesc": {
     "description": "Quran placeholder page description"
   },
-  "activityTitle": "Worship Activity",
-  "@activityTitle": {
-    "description": "Activity placeholder page title"
-  },
   "activityDesc": "Track your daily prayers, dhikr, and fasting progress here.",
   "@activityDesc": {
     "description": "Activity placeholder page description"
@@ -1085,5 +1081,204 @@
 "notificationsUnsupportedPlatform": "Local notifications are not supported on this platform yet.",
 "@notificationsUnsupportedPlatform": {
   "description": "Displayed when local notifications are unavailable on the current platform"
+},"infoCenterWelcomeTitle": "Learn at Your Own Pace",
+"@infoCenterWelcomeTitle": {
+  "description": "Information center introduction title"
+},
+"infoCenterWelcomeDesc": "Explore clear, practical guides about the foundations of Islam and everyday worship.",
+"@infoCenterWelcomeDesc": {
+  "description": "Information center introduction"
+},
+"infoCenterLearningGuides": "Learning Guides",
+"@infoCenterLearningGuides": {
+  "description": "Information center learning guides section"
+},
+"infoCenterWorshipGuides": "Worship Guides",
+"@infoCenterWorshipGuides": {
+  "description": "Information center worship guides section"
+},
+"newMuslimJourneyTitle": "New Muslim Journey",
+"@newMuslimJourneyTitle": {
+  "description": "New Muslim journey screen title"
+},
+"newMuslimJourneyMenuDesc": "A simple starting path for learning the essentials of Islam.",
+"@newMuslimJourneyMenuDesc": {
+  "description": "New Muslim journey menu description"
+},
+"newMuslimJourneyWelcomeTitle": "Welcome to Your Journey",
+"@newMuslimJourneyWelcomeTitle": {
+  "description": "New Muslim journey welcome title"
+},
+"newMuslimJourneySubtitle": "You do not need to learn everything at once. Begin with the foundations, then build your knowledge and worship step by step.",
+"@newMuslimJourneySubtitle": {
+  "description": "New Muslim journey introduction"
+},
+"newMuslimJourneyStartHere": "Start Here",
+"@newMuslimJourneyStartHere": {
+  "description": "New Muslim journey first steps header"
+},
+"newMuslimJourneyFoundationsTitle": "Learn the Foundations",
+"@newMuslimJourneyFoundationsTitle": {
+  "description": "Journey foundations step title"
+},
+"newMuslimJourneyFoundationsDesc": "Understand the five pillars of Islam and the six articles of faith.",
+"@newMuslimJourneyFoundationsDesc": {
+  "description": "Journey foundations step description"
+},
+"newMuslimJourneyWuduTitle": "Learn Wudu",
+"@newMuslimJourneyWuduTitle": {
+  "description": "Journey wudu step title"
+},
+"newMuslimJourneyWuduDesc": "Learn the basic steps of purification before prayer.",
+"@newMuslimJourneyWuduDesc": {
+  "description": "Journey wudu step description"
+},
+"newMuslimJourneyPrayerTitle": "Become Familiar with Prayer",
+"@newMuslimJourneyPrayerTitle": {
+  "description": "Journey prayer step title"
+},
+"newMuslimJourneyPrayerDesc": "Explore daily prayer times and begin becoming familiar with the rhythm of the five prayers.",
+"@newMuslimJourneyPrayerDesc": {
+  "description": "Journey prayer step description"
+},
+"newMuslimJourneyQuranTitle": "Read the Quran",
+"@newMuslimJourneyQuranTitle": {
+  "description": "Journey Quran step title"
+},
+"newMuslimJourneyQuranDesc": "Read the Quran together with a translation in the language you understand best.",
+"@newMuslimJourneyQuranDesc": {
+  "description": "Journey Quran step description"
+},
+"newMuslimJourneyNoteTitle": "Learn Gradually",
+"@newMuslimJourneyNoteTitle": {
+  "description": "Journey guidance note title"
+},
+"newMuslimJourneyNoteBody": "IslamFull provides introductory guidance. For personal religious rulings or circumstances that require detailed guidance, consult a qualified and trusted scholar.",
+"@newMuslimJourneyNoteBody": {
+  "description": "Journey guidance disclaimer"
+},
+"islamFoundationsTitle": "Foundations of Islam",
+"@islamFoundationsTitle": {
+  "description": "Islam foundations screen title"
+},
+"islamFoundationsMenuDesc": "Learn the five pillars of Islam and the core articles of faith.",
+"@islamFoundationsMenuDesc": {
+  "description": "Foundations menu description"
+},
+"islamFoundationsIntro": "The pillars of Islam describe core acts of worship, while the articles of faith summarize fundamental beliefs. This guide offers a concise introduction.",
+"@islamFoundationsIntro": {
+  "description": "Islam foundations introduction"
+},
+"fivePillarsTitle": "The Five Pillars of Islam",
+"@fivePillarsTitle": {
+  "description": "Five pillars section title"
+},
+"fivePillarsIntro": "The five pillars form the central framework of Muslim worship and practice.",
+"@fivePillarsIntro": {
+  "description": "Five pillars section introduction"
+},
+"pillarShahadaTitle": "Shahada",
+"@pillarShahadaTitle": {
+  "description": "Shahada pillar title"
+},
+"pillarShahadaDesc": "Bearing witness that there is no deity worthy of worship except Allah and that Muhammad is His Messenger.",
+"@pillarShahadaDesc": {
+  "description": "Shahada pillar description"
+},
+"pillarPrayerTitle": "Salah",
+"@pillarPrayerTitle": {
+  "description": "Prayer pillar title"
+},
+"pillarPrayerDesc": "Performing the five daily prayers at their prescribed times.",
+"@pillarPrayerDesc": {
+  "description": "Prayer pillar description"
+},
+"pillarZakatTitle": "Zakat",
+"@pillarZakatTitle": {
+  "description": "Zakat pillar title"
+},
+"pillarZakatDesc": "Giving obligatory charity when its religious conditions are met.",
+"@pillarZakatDesc": {
+  "description": "Zakat pillar description"
+},
+"pillarFastingTitle": "Fasting in Ramadan",
+"@pillarFastingTitle": {
+  "description": "Fasting pillar title"
+},
+"pillarFastingDesc": "Fasting during the month of Ramadan from dawn until sunset for those required and able to fast.",
+"@pillarFastingDesc": {
+  "description": "Fasting pillar description"
+},
+"pillarHajjTitle": "Hajj",
+"@pillarHajjTitle": {
+  "description": "Hajj pillar title"
+},
+"pillarHajjDesc": "Making the pilgrimage to Makkah once in a lifetime for Muslims who are able to undertake it.",
+"@pillarHajjDesc": {
+  "description": "Hajj pillar description"
+},
+"articlesOfFaithTitle": "The Six Articles of Faith",
+"@articlesOfFaithTitle": {
+  "description": "Articles of faith section title"
+},
+"articlesOfFaithIntro": "These six principles summarize the foundational beliefs traditionally taught in Islamic creed.",
+"@articlesOfFaithIntro": {
+  "description": "Articles of faith introduction"
+},
+"faithAllahTitle": "Belief in Allah",
+"@faithAllahTitle": {
+  "description": "Belief in Allah title"
+},
+"faithAllahDesc": "Believing in Allah, His oneness, and that He alone is worthy of worship.",
+"@faithAllahDesc": {
+  "description": "Belief in Allah description"
+},
+"faithAngelsTitle": "Belief in the Angels",
+"@faithAngelsTitle": {
+  "description": "Belief in angels title"
+},
+"faithAngelsDesc": "Believing in the angels created by Allah and in the duties assigned to them.",
+"@faithAngelsDesc": {
+  "description": "Belief in angels description"
+},
+"faithBooksTitle": "Belief in the Revealed Books",
+"@faithBooksTitle": {
+  "description": "Belief in revealed books title"
+},
+"faithBooksDesc": "Believing in the scriptures revealed by Allah to His messengers.",
+"@faithBooksDesc": {
+  "description": "Belief in revealed books description"
+},
+"faithMessengersTitle": "Belief in the Messengers",
+"@faithMessengersTitle": {
+  "description": "Belief in messengers title"
+},
+"faithMessengersDesc": "Believing in the prophets and messengers sent by Allah to guide humanity.",
+"@faithMessengersDesc": {
+  "description": "Belief in messengers description"
+},
+"faithLastDayTitle": "Belief in the Last Day",
+"@faithLastDayTitle": {
+  "description": "Belief in the Last Day title"
+},
+"faithLastDayDesc": "Believing in resurrection, judgment, and the life of the Hereafter.",
+"@faithLastDayDesc": {
+  "description": "Belief in the Last Day description"
+},
+"faithDivineDecreeTitle": "Belief in Divine Decree",
+"@faithDivineDecreeTitle": {
+  "description": "Belief in divine decree title"
+},
+"faithDivineDecreeDesc": "Believing in Allah's complete knowledge and decree while recognizing human responsibility for choices.",
+"@faithDivineDecreeDesc": {
+  "description": "Belief in divine decree description"
+},
+"islamFoundationsDisclaimer": "This section provides a concise educational overview and is not intended to replace detailed religious instruction.",
+"@islamFoundationsDisclaimer": {
+  "description": "Foundations educational disclaimer"
+},
+"wuduGuideMenuDesc": "Follow the basic steps of ablution before prayer.",
+"@wuduGuideMenuDesc": {
+  "description": "Wudu guide menu description"
 }
 }

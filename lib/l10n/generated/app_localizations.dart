@@ -398,12 +398,6 @@ abstract class AppLocalizations {
   /// **'Holy Quran reading, audio recitations, and bookmarks will be available here.'**
   String get quranDesc;
 
-  /// Activity tab title
-  ///
-  /// In en, this message translates to:
-  /// **'Activity'**
-  String get activityTitle;
-
   /// Activity placeholder page description
   ///
   /// In en, this message translates to:
@@ -1364,6 +1358,12 @@ abstract class AppLocalizations {
   /// **'Standard method in Arabian Peninsula.'**
   String get descMakkah;
 
+  /// Activity tab title
+  ///
+  /// In en, this message translates to:
+  /// **'Activity'**
+  String get activityTitle;
+
   /// Activity today section header
   ///
   /// In en, this message translates to:
@@ -2005,6 +2005,306 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Local notifications are not supported on this platform yet.'**
   String get notificationsUnsupportedPlatform;
+
+  /// Information center introduction title
+  ///
+  /// In en, this message translates to:
+  /// **'Learn at Your Own Pace'**
+  String get infoCenterWelcomeTitle;
+
+  /// Information center introduction
+  ///
+  /// In en, this message translates to:
+  /// **'Explore clear, practical guides about the foundations of Islam and everyday worship.'**
+  String get infoCenterWelcomeDesc;
+
+  /// Information center learning guides section
+  ///
+  /// In en, this message translates to:
+  /// **'Learning Guides'**
+  String get infoCenterLearningGuides;
+
+  /// Information center worship guides section
+  ///
+  /// In en, this message translates to:
+  /// **'Worship Guides'**
+  String get infoCenterWorshipGuides;
+
+  /// New Muslim journey screen title
+  ///
+  /// In en, this message translates to:
+  /// **'New Muslim Journey'**
+  String get newMuslimJourneyTitle;
+
+  /// New Muslim journey menu description
+  ///
+  /// In en, this message translates to:
+  /// **'A simple starting path for learning the essentials of Islam.'**
+  String get newMuslimJourneyMenuDesc;
+
+  /// New Muslim journey welcome title
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Your Journey'**
+  String get newMuslimJourneyWelcomeTitle;
+
+  /// New Muslim journey introduction
+  ///
+  /// In en, this message translates to:
+  /// **'You do not need to learn everything at once. Begin with the foundations, then build your knowledge and worship step by step.'**
+  String get newMuslimJourneySubtitle;
+
+  /// New Muslim journey first steps header
+  ///
+  /// In en, this message translates to:
+  /// **'Start Here'**
+  String get newMuslimJourneyStartHere;
+
+  /// Journey foundations step title
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the Foundations'**
+  String get newMuslimJourneyFoundationsTitle;
+
+  /// Journey foundations step description
+  ///
+  /// In en, this message translates to:
+  /// **'Understand the five pillars of Islam and the six articles of faith.'**
+  String get newMuslimJourneyFoundationsDesc;
+
+  /// Journey wudu step title
+  ///
+  /// In en, this message translates to:
+  /// **'Learn Wudu'**
+  String get newMuslimJourneyWuduTitle;
+
+  /// Journey wudu step description
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the basic steps of purification before prayer.'**
+  String get newMuslimJourneyWuduDesc;
+
+  /// Journey prayer step title
+  ///
+  /// In en, this message translates to:
+  /// **'Become Familiar with Prayer'**
+  String get newMuslimJourneyPrayerTitle;
+
+  /// Journey prayer step description
+  ///
+  /// In en, this message translates to:
+  /// **'Explore daily prayer times and begin becoming familiar with the rhythm of the five prayers.'**
+  String get newMuslimJourneyPrayerDesc;
+
+  /// Journey Quran step title
+  ///
+  /// In en, this message translates to:
+  /// **'Read the Quran'**
+  String get newMuslimJourneyQuranTitle;
+
+  /// Journey Quran step description
+  ///
+  /// In en, this message translates to:
+  /// **'Read the Quran together with a translation in the language you understand best.'**
+  String get newMuslimJourneyQuranDesc;
+
+  /// Journey guidance note title
+  ///
+  /// In en, this message translates to:
+  /// **'Learn Gradually'**
+  String get newMuslimJourneyNoteTitle;
+
+  /// Journey guidance disclaimer
+  ///
+  /// In en, this message translates to:
+  /// **'IslamFull provides introductory guidance. For personal religious rulings or circumstances that require detailed guidance, consult a qualified and trusted scholar.'**
+  String get newMuslimJourneyNoteBody;
+
+  /// Islam foundations screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Foundations of Islam'**
+  String get islamFoundationsTitle;
+
+  /// Foundations menu description
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the five pillars of Islam and the core articles of faith.'**
+  String get islamFoundationsMenuDesc;
+
+  /// Islam foundations introduction
+  ///
+  /// In en, this message translates to:
+  /// **'The pillars of Islam describe core acts of worship, while the articles of faith summarize fundamental beliefs. This guide offers a concise introduction.'**
+  String get islamFoundationsIntro;
+
+  /// Five pillars section title
+  ///
+  /// In en, this message translates to:
+  /// **'The Five Pillars of Islam'**
+  String get fivePillarsTitle;
+
+  /// Five pillars section introduction
+  ///
+  /// In en, this message translates to:
+  /// **'The five pillars form the central framework of Muslim worship and practice.'**
+  String get fivePillarsIntro;
+
+  /// Shahada pillar title
+  ///
+  /// In en, this message translates to:
+  /// **'Shahada'**
+  String get pillarShahadaTitle;
+
+  /// Shahada pillar description
+  ///
+  /// In en, this message translates to:
+  /// **'Bearing witness that there is no deity worthy of worship except Allah and that Muhammad is His Messenger.'**
+  String get pillarShahadaDesc;
+
+  /// Prayer pillar title
+  ///
+  /// In en, this message translates to:
+  /// **'Salah'**
+  String get pillarPrayerTitle;
+
+  /// Prayer pillar description
+  ///
+  /// In en, this message translates to:
+  /// **'Performing the five daily prayers at their prescribed times.'**
+  String get pillarPrayerDesc;
+
+  /// Zakat pillar title
+  ///
+  /// In en, this message translates to:
+  /// **'Zakat'**
+  String get pillarZakatTitle;
+
+  /// Zakat pillar description
+  ///
+  /// In en, this message translates to:
+  /// **'Giving obligatory charity when its religious conditions are met.'**
+  String get pillarZakatDesc;
+
+  /// Fasting pillar title
+  ///
+  /// In en, this message translates to:
+  /// **'Fasting in Ramadan'**
+  String get pillarFastingTitle;
+
+  /// Fasting pillar description
+  ///
+  /// In en, this message translates to:
+  /// **'Fasting during the month of Ramadan from dawn until sunset for those required and able to fast.'**
+  String get pillarFastingDesc;
+
+  /// Hajj pillar title
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj'**
+  String get pillarHajjTitle;
+
+  /// Hajj pillar description
+  ///
+  /// In en, this message translates to:
+  /// **'Making the pilgrimage to Makkah once in a lifetime for Muslims who are able to undertake it.'**
+  String get pillarHajjDesc;
+
+  /// Articles of faith section title
+  ///
+  /// In en, this message translates to:
+  /// **'The Six Articles of Faith'**
+  String get articlesOfFaithTitle;
+
+  /// Articles of faith introduction
+  ///
+  /// In en, this message translates to:
+  /// **'These six principles summarize the foundational beliefs traditionally taught in Islamic creed.'**
+  String get articlesOfFaithIntro;
+
+  /// Belief in Allah title
+  ///
+  /// In en, this message translates to:
+  /// **'Belief in Allah'**
+  String get faithAllahTitle;
+
+  /// Belief in Allah description
+  ///
+  /// In en, this message translates to:
+  /// **'Believing in Allah, His oneness, and that He alone is worthy of worship.'**
+  String get faithAllahDesc;
+
+  /// Belief in angels title
+  ///
+  /// In en, this message translates to:
+  /// **'Belief in the Angels'**
+  String get faithAngelsTitle;
+
+  /// Belief in angels description
+  ///
+  /// In en, this message translates to:
+  /// **'Believing in the angels created by Allah and in the duties assigned to them.'**
+  String get faithAngelsDesc;
+
+  /// Belief in revealed books title
+  ///
+  /// In en, this message translates to:
+  /// **'Belief in the Revealed Books'**
+  String get faithBooksTitle;
+
+  /// Belief in revealed books description
+  ///
+  /// In en, this message translates to:
+  /// **'Believing in the scriptures revealed by Allah to His messengers.'**
+  String get faithBooksDesc;
+
+  /// Belief in messengers title
+  ///
+  /// In en, this message translates to:
+  /// **'Belief in the Messengers'**
+  String get faithMessengersTitle;
+
+  /// Belief in messengers description
+  ///
+  /// In en, this message translates to:
+  /// **'Believing in the prophets and messengers sent by Allah to guide humanity.'**
+  String get faithMessengersDesc;
+
+  /// Belief in the Last Day title
+  ///
+  /// In en, this message translates to:
+  /// **'Belief in the Last Day'**
+  String get faithLastDayTitle;
+
+  /// Belief in the Last Day description
+  ///
+  /// In en, this message translates to:
+  /// **'Believing in resurrection, judgment, and the life of the Hereafter.'**
+  String get faithLastDayDesc;
+
+  /// Belief in divine decree title
+  ///
+  /// In en, this message translates to:
+  /// **'Belief in Divine Decree'**
+  String get faithDivineDecreeTitle;
+
+  /// Belief in divine decree description
+  ///
+  /// In en, this message translates to:
+  /// **'Believing in Allah\'s complete knowledge and decree while recognizing human responsibility for choices.'**
+  String get faithDivineDecreeDesc;
+
+  /// Foundations educational disclaimer
+  ///
+  /// In en, this message translates to:
+  /// **'This section provides a concise educational overview and is not intended to replace detailed religious instruction.'**
+  String get islamFoundationsDisclaimer;
+
+  /// Wudu guide menu description
+  ///
+  /// In en, this message translates to:
+  /// **'Follow the basic steps of ablution before prayer.'**
+  String get wuduGuideMenuDesc;
 }
 
 class _AppLocalizationsDelegate

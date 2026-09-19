@@ -175,9 +175,6 @@ class AppLocalizationsTr extends AppLocalizations {
       'Kur\'an okuma, sesli tilavetler ve yer işaretleri burada yer alacaktır.';
 
   @override
-  String get activityTitle => 'İbadetlerim';
-
-  @override
   String get activityDesc =>
       'Günlük namaz, zikir ve oruç ibadetlerinizi buradan takip edin.';
 
@@ -679,6 +676,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get descMakkah => 'Arap Yarımadası\'ndaki standart yöntem.';
 
   @override
+  String get activityTitle => 'İbadetlerim';
+
+  @override
   String get activityToday => 'Bugünkü İbadetler';
 
   @override
@@ -1024,4 +1024,178 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get notificationsUnsupportedPlatform =>
       'Local notifications are not supported on this platform yet.';
+
+  @override
+  String get infoCenterWelcomeTitle => 'Kendi Hızınızda Öğrenin';
+
+  @override
+  String get infoCenterWelcomeDesc =>
+      'İslam\'ın temellerini ve günlük ibadetleri açık, sade ve adım adım rehberlerle keşfedin.';
+
+  @override
+  String get infoCenterLearningGuides => 'Öğrenme Rehberleri';
+
+  @override
+  String get infoCenterWorshipGuides => 'İbadet Rehberleri';
+
+  @override
+  String get newMuslimJourneyTitle => 'Yeni Müslüman Rehberi';
+
+  @override
+  String get newMuslimJourneyMenuDesc =>
+      'İslam\'ın temel bilgilerini öğrenmek için sade bir başlangıç yolu.';
+
+  @override
+  String get newMuslimJourneyWelcomeTitle => 'Yolculuğunuza Hoş Geldiniz';
+
+  @override
+  String get newMuslimJourneySubtitle =>
+      'Her şeyi bir anda öğrenmeniz gerekmez. Önce temel bilgilerden başlayın; bilginizi ve ibadetlerinizi adım adım geliştirin.';
+
+  @override
+  String get newMuslimJourneyStartHere => 'Buradan Başlayın';
+
+  @override
+  String get newMuslimJourneyFoundationsTitle => 'Temel Bilgileri Öğrenin';
+
+  @override
+  String get newMuslimJourneyFoundationsDesc =>
+      'İslam\'ın beş şartını ve imanın altı esasını öğrenin.';
+
+  @override
+  String get newMuslimJourneyWuduTitle => 'Abdesti Öğrenin';
+
+  @override
+  String get newMuslimJourneyWuduDesc =>
+      'Namaz öncesi temizliğin temel adımlarını öğrenin.';
+
+  @override
+  String get newMuslimJourneyPrayerTitle => 'Namazla Tanışın';
+
+  @override
+  String get newMuslimJourneyPrayerDesc =>
+      'Günlük namaz vakitlerini inceleyin ve beş vakit namazın günlük düzenine aşina olun.';
+
+  @override
+  String get newMuslimJourneyQuranTitle => 'Kur\'an-ı Kerim Okuyun';
+
+  @override
+  String get newMuslimJourneyQuranDesc =>
+      'Kur\'an-ı Kerim\'i, en iyi anladığınız dildeki meal ile birlikte okuyun.';
+
+  @override
+  String get newMuslimJourneyNoteTitle => 'Adım Adım İlerleyin';
+
+  @override
+  String get newMuslimJourneyNoteBody =>
+      'IslamFull temel ve öğretici bir rehber sunar. Kişisel durumunuza özel dini hükümler veya ayrıntılı konular için güvenilir ve yetkin bir din âlimine danışın.';
+
+  @override
+  String get islamFoundationsTitle => 'İslam\'ın Temelleri';
+
+  @override
+  String get islamFoundationsMenuDesc =>
+      'İslam\'ın beş şartını ve imanın temel esaslarını öğrenin.';
+
+  @override
+  String get islamFoundationsIntro =>
+      'İslam\'ın şartları temel ibadetleri, imanın esasları ise temel inançları özetler. Bu rehber konuya sade bir başlangıç sunar.';
+
+  @override
+  String get fivePillarsTitle => 'İslam\'ın Beş Şartı';
+
+  @override
+  String get fivePillarsIntro =>
+      'İslam\'ın beş şartı, Müslümanın temel ibadet ve uygulama çerçevesini oluşturur.';
+
+  @override
+  String get pillarShahadaTitle => 'Kelime-i Şehadet';
+
+  @override
+  String get pillarShahadaDesc =>
+      'Allah\'tan başka ibadete layık ilah olmadığına ve Hz. Muhammed\'in Allah\'ın elçisi olduğuna şahitlik etmektir.';
+
+  @override
+  String get pillarPrayerTitle => 'Namaz';
+
+  @override
+  String get pillarPrayerDesc => 'Beş vakit namazı vakitlerinde eda etmektir.';
+
+  @override
+  String get pillarZakatTitle => 'Zekât';
+
+  @override
+  String get pillarZakatDesc =>
+      'Dini şartları oluştuğunda malın belirli bir kısmını zekât olarak vermektir.';
+
+  @override
+  String get pillarFastingTitle => 'Ramazan Orucu';
+
+  @override
+  String get pillarFastingDesc =>
+      'Oruçla yükümlü ve gücü yeten kimselerin Ramazan ayında imsak vaktinden güneş batımına kadar oruç tutmasıdır.';
+
+  @override
+  String get pillarHajjTitle => 'Hac';
+
+  @override
+  String get pillarHajjDesc =>
+      'Gücü ve imkânı yeten Müslümanın ömründe bir kez hac ibadetini yerine getirmesidir.';
+
+  @override
+  String get articlesOfFaithTitle => 'İmanın Altı Esası';
+
+  @override
+  String get articlesOfFaithIntro =>
+      'Bu altı esas, İslam inancında geleneksel olarak öğretilen temel iman konularını özetler.';
+
+  @override
+  String get faithAllahTitle => 'Allah\'a İman';
+
+  @override
+  String get faithAllahDesc =>
+      'Allah\'ın varlığına, birliğine ve yalnız O\'nun ibadete layık olduğuna inanmaktır.';
+
+  @override
+  String get faithAngelsTitle => 'Meleklere İman';
+
+  @override
+  String get faithAngelsDesc =>
+      'Allah\'ın yarattığı meleklere ve onlara verilen görevlere inanmaktır.';
+
+  @override
+  String get faithBooksTitle => 'Kitaplara İman';
+
+  @override
+  String get faithBooksDesc =>
+      'Allah\'ın peygamberlerine vahyettiği ilahi kitaplara inanmaktır.';
+
+  @override
+  String get faithMessengersTitle => 'Peygamberlere İman';
+
+  @override
+  String get faithMessengersDesc =>
+      'Allah\'ın insanlara rehber olarak gönderdiği peygamberlere ve elçilere inanmaktır.';
+
+  @override
+  String get faithLastDayTitle => 'Ahiret Gününe İman';
+
+  @override
+  String get faithLastDayDesc =>
+      'Ölümden sonra dirilişe, hesaba ve ahiret hayatına inanmaktır.';
+
+  @override
+  String get faithDivineDecreeTitle => 'Kaza ve Kadere İman';
+
+  @override
+  String get faithDivineDecreeDesc =>
+      'Allah\'ın her şeyi kuşatan ilmine ve takdirine inanırken insanın yaptığı tercihlerden sorumlu olduğunu kabul etmektir.';
+
+  @override
+  String get islamFoundationsDisclaimer =>
+      'Bu bölüm kısa bir eğitim özeti sunar; ayrıntılı dini eğitimin veya kişiye özel dini danışmanlığın yerine geçmez.';
+
+  @override
+  String get wuduGuideMenuDesc =>
+      'Namaz öncesinde abdestin temel adımlarını takip edin.';
 }
