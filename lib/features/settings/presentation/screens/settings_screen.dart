@@ -16,6 +16,7 @@ import '../../application/providers/notification_settings_provider.dart';
 import '../widgets/selection_bottom_sheet.dart';
 import '../widgets/settings_selection_tile.dart';
 import '../../../../core/services/notification_service.dart';
+import '../../../../core/theme/theme_provider.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -32,11 +33,13 @@ class SettingsScreen extends ConsumerWidget {
         child: ListView(
           padding: const EdgeInsets.all(AppSpacing.lg),
           children: const [
-            _NotificationSection(), // NEW
+            _NotificationSection(),
             SizedBox(height: AppSpacing.lg),
             _LocationSection(),
             SizedBox(height: AppSpacing.lg),
             _PrayerCalculationSection(),
+            SizedBox(height: AppSpacing.lg),
+            _ThemeSection(),
             SizedBox(height: AppSpacing.lg),
             _LanguageSection(),
           ],
@@ -479,18 +482,125 @@ class _InfoRow extends StatelessWidget {
     final textTheme = context.textTheme;
     final colorScheme = context.colorScheme;
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: textTheme.bodyMedium?.copyWith(
-            color: colorScheme.onSurfaceVariant,
+        Expanded(
+          child: Text(
+            label,
+            style: textTheme.bodyMedium?.copyWith(
+              color: colorScheme.onSurfaceVariant,
+            ),
           ),
         ),
-        Text(
-          value,
-          style: textTheme.bodyMedium?.copyWith(
-            fontWeight: FontWeight.w500,
+        const SizedBox(
+          width: AppSpacing.md,
+        ),
+        Flexible(
+          child: Text(
+            value,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.end,
+            style: textTheme.bodyMedium?.copyWith(
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _ThemeSection extends ConsumerWidget {
+  const _ThemeSection();
+
+  @override
+  Widget build(
+    BuildContext context,
+    WidgetRef ref,
+  ) {
+    final l10n = context.l10n;
+
+    final themeMode = ref.watch(
+      themeModeProvider,
+    );
+
+    final notifier = ref.read(
+      themeModeProvider.notifier,
+    );
+
+    String themeLabel(
+      ThemeMode mode,
+    ) {
+      return switch (mode) {
+        ThemeMode.system => l10n.themeSystem,
+        ThemeMode.light => l10n.themeLight,
+        ThemeMode.dark => l10n.themeDark,
+      };
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SectionHeader(
+          title: l10n.themeTitle,
+        ),
+        AppCard(
+          padding: EdgeInsets.zero,
+          child: SettingsSelectionTile(
+            title: l10n.themeTitle,
+            value: themeLabel(
+              themeMode,
+            ),
+            onTap: () {
+              showModalBottomSheet<void>(
+                context: context,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(16),
+                  ),
+                ),
+                builder: (sheetContext) {
+                  return SelectionBottomSheet(
+                    title: l10n.themeTitle,
+                    items: [
+                      SelectionItem(
+                        ThemeMode.system.name,
+                        l10n.themeSystem,
+                      ),
+                      SelectionItem(
+                        ThemeMode.light.name,
+                        l10n.themeLight,
+                      ),
+                      SelectionItem(
+                        ThemeMode.dark.name,
+                        l10n.themeDark,
+                      ),
+                    ],
+                    selectedId: themeMode.name,
+                    onSelected: (id) async {
+                      final selectedMode = switch (id) {
+                        'light' => ThemeMode.light,
+                        'dark' => ThemeMode.dark,
+                        _ => ThemeMode.system,
+                      };
+
+                      try {
+                        await notifier.setThemeMode(
+                          selectedMode,
+                        );
+                      } catch (_) {
+                        if (context.mounted) {
+                          NotificationService.showError(
+                            l10n.settingsSaveFailed,
+                          );
+                        }
+                      }
+                    },
+                  );
+                },
+              );
+            },
           ),
         ),
       ],
