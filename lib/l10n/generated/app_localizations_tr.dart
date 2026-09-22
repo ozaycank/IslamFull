@@ -889,14 +889,14 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get wuduStep7Desc =>
-      'Sağ el ıslatılarak başın dörtte biri (veya tamamı) meshedilir.';
+      'Islak elle baş bir defa mesh edilir. Diyanet\'in Hanefî uygulama açıklamasında başın en az dörtte birinin mesh edilmesi yeterli kabul edilir; bu miktar mezheplere göre farklılık gösterebilir.';
 
   @override
   String get wuduStep8Title => '8. Kulak ve Boynu Meshetmek';
 
   @override
   String get wuduStep8Desc =>
-      'Eller ıslatılıp serçe parmaklarla kulak içi, baş parmaklarla kulak arkası, elin tersiyle boyun meshedilir.';
+      'Kulakların içi ve dışı mesh edilir. Diyanet\'in yaygın anlatımında ardından ellerin arkasıyla boyun da mesh edilir. Bu adımdaki bazı ayrıntılar mezheplere göre farklılık gösterebilir.';
 
   @override
   String get wuduStep9Title => '9. Ayakları Yıkamak';
@@ -1090,4 +1090,172 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get wuduGuideMenuDesc =>
       'Namaz öncesinde abdestin temel adımlarını takip edin.';
+
+  @override
+  String get guidanceSourceNote =>
+      'İçerik temeli: T.C. Diyanet İşleri Başkanlığı. Mezhepler arasında farklılık bulunan ayrıntılar ayrıca belirtilmiştir.';
+
+  @override
+  String get wuduGuideIntro =>
+      'Abdest; namaz ve bazı ibadetlerden önce yapılan hükmî temizliktir. Aşağıdaki uygulama Diyanet\'in yaygın olarak öğrettiği sıra temel alınarak hazırlanmıştır.';
+
+  @override
+  String get wuduGuideSchoolNote =>
+      'Başın ne kadarının mesh edileceği ve bazı sünnet/âdap ayrıntıları mezheplere göre farklılık gösterebilir.';
+
+  @override
+  String get prayerGuideTitle => 'Namaz Nasıl Kılınır?';
+
+  @override
+  String get prayerGuideMenuDesc =>
+      'Namaza hazırlığı ve temel namaz akışını adım adım öğrenin.';
+
+  @override
+  String get prayerGuideShortcutDesc =>
+      'Namazın temel hareketlerini ve sırasını öğrenin.';
+
+  @override
+  String get prayerGuideIntro =>
+      'Bu rehber, namazın temel yapısını öğrenmek için iki rekâtlı namazı başlangıç modeli olarak kullanır.';
+
+  @override
+  String get prayerGuidePreparationTitle => 'Namazdan Önce';
+
+  @override
+  String get prayerGuidePreparationDesc =>
+      'Namazdan önce hadesten ve necasetten temizlik, gerekli yerlerin örtülmesi, namaz vaktinin girmiş olması, kıbleye yönelme ve kılınacak namaza niyet şartlarına dikkat edilir.';
+
+  @override
+  String get prayerGuideFarzRakahsTitle => 'Beş Vakit Farz Rekâtları';
+
+  @override
+  String get prayerGuideFarzRakahsDesc =>
+      'Sabah: 2 • Öğle: 4 • İkindi: 4 • Akşam: 3 • Yatsı: 4';
+
+  @override
+  String get prayerGuideTwoRakahTitle => 'Temel İki Rekât Akışı';
+
+  @override
+  String get prayerGuideStep1Title => '1. Niyet ve İftitah Tekbiri';
+
+  @override
+  String get prayerGuideStep1Desc =>
+      'Kılınacak namaza kalben niyet edilir. Ardından \'Allahu ekber\' denilerek namaza başlanır.';
+
+  @override
+  String get prayerGuideStep2Title => '2. Kıyam ve Kıraat';
+
+  @override
+  String get prayerGuideStep2Desc =>
+      'Ayakta kıraat yapılır. Diyanet\'in yaygın iki rekât anlatımında Sübhaneke\'den sonra eûzü-besmele, Fâtiha ve Kur\'an\'dan bir bölüm okunur.';
+
+  @override
+  String get prayerGuideStep3Title => '3. Rükû';
+
+  @override
+  String get prayerGuideStep3Desc =>
+      '\'Allahu ekber\' denilerek rükûya eğilinir. Diyanet\'in yaygın uygulama anlatımında üç defa \'Sübhâne Rabbiye\'l-Azîm\' denilir.';
+
+  @override
+  String get prayerGuideStep4Title => '4. Rükûdan Doğrulma';
+
+  @override
+  String get prayerGuideStep4Desc =>
+      'Rükûdan tamamen doğrularak ayağa kalkılır ve secdeye geçmeden önce kısa bir süre sükûnetle durulur.';
+
+  @override
+  String get prayerGuideStep5Title => '5. İki Secde';
+
+  @override
+  String get prayerGuideStep5Desc =>
+      'Secdeye varılır, ardından kısa bir süre oturulur ve ikinci secde yapılır. Yaygın uygulamada her secdede üç defa \'Sübhâne Rabbiye\'l-A\'lâ\' denilir.';
+
+  @override
+  String get prayerGuideStep6Title => '6. İkinci Rekât';
+
+  @override
+  String get prayerGuideStep6Desc =>
+      'İkinci rekâta kalkılır. Fâtiha ve Kur\'an\'dan bir bölüm okunduktan sonra rükû ve iki secde tekrar edilir.';
+
+  @override
+  String get prayerGuideStep7Title => '7. Son Oturuş';
+
+  @override
+  String get prayerGuideStep7Desc =>
+      'İkinci rekâtın ardından son oturuşa geçilir. Diyanet\'in yaygın öğretiminde burada Ettehiyyâtü ile salavat duaları okunur.';
+
+  @override
+  String get prayerGuideStep8Title => '8. Selam ile Tamamlama';
+
+  @override
+  String get prayerGuideStep8Desc =>
+      'Önce sağa, ardından sola dönülerek \'Esselâmü aleyküm ve rahmetullah\' denilir ve namaz tamamlanır.';
+
+  @override
+  String get prayerGuideSchoolNote =>
+      'Namazın temel rükünleri ortak olmakla birlikte el bağlama yeri, bazı kıraat ve tesbih ayrıntıları ile oturuş biçimi mezheplere göre farklılık gösterebilir. Bu rehber Diyanet\'in Türkiye\'de yaygın öğretimini temel alır ve mezhebe özgü ayrıntıları evrensel hüküm olarak sunmaz.';
+
+  @override
+  String get ghuslGuideTitle => 'Gusül Abdesti Nasıl Alınır?';
+
+  @override
+  String get ghuslGuideMenuDesc =>
+      'Guslün ne zaman gerektiğini ve nasıl yapıldığını adım adım öğrenin.';
+
+  @override
+  String get ghuslGuideIntro =>
+      'Gusül; hükmî kirlilik hâlinden temizlenmek amacıyla bütün bedenin gerekli şekilde yıkanmasıyla yapılan boy abdestidir.';
+
+  @override
+  String get ghuslWhenRequiredTitle => 'Gusül Ne Zaman Gerekir?';
+
+  @override
+  String get ghuslWhenRequiredDesc =>
+      'Gusül; cünüplük hâlinden sonra, hayızın sona ermesi ve nifasın sona ermesi gibi durumlarda gerekir.';
+
+  @override
+  String get ghuslStep1Title => '1. Niyet ve Besmele';
+
+  @override
+  String get ghuslStep1Desc =>
+      'Gusül ile temizlenmeye niyet edilir ve besmele çekilir.';
+
+  @override
+  String get ghuslStep2Title => '2. Elleri ve Maddi Kirliliği Temizlemek';
+
+  @override
+  String get ghuslStep2Desc =>
+      'Eller yıkanır; vücutta maddi bir kirlilik varsa temizlenir ve avret yerleri yıkanır.';
+
+  @override
+  String get ghuslStep3Title => '3. Ağza ve Burna Su Vermek';
+
+  @override
+  String get ghuslStep3Desc =>
+      'Ağız iyice çalkalanır ve burun su ile temizlenir. Diyanet, bunları bütün bedenin yıkanmasıyla birlikte Hanefî mezhebine göre guslün farzları arasında belirtir.';
+
+  @override
+  String get ghuslStep4Title => '4. Namaz Abdesti Almak';
+
+  @override
+  String get ghuslStep4Desc =>
+      'Namaz abdesti gibi abdest alınır. Gusledilen yerde su birikiyorsa ayaklar guslün sonunda yıkanabilir.';
+
+  @override
+  String get ghuslStep5Title => '5. Başı ve Saç Diplerini Yıkamak';
+
+  @override
+  String get ghuslStep5Desc =>
+      'Başa su dökülür; suyun saç diplerine ve başın tamamına ulaşmasına dikkat edilir.';
+
+  @override
+  String get ghuslStep6Title => '6. Bütün Bedeni Yıkamak';
+
+  @override
+  String get ghuslStep6Desc =>
+      'Bütün beden hiç kuru yer kalmayacak şekilde iyice yıkanır. Suyun ulaşmasının zor olabileceği bölgelere özellikle dikkat edilir.';
+
+  @override
+  String get ghuslSchoolNote =>
+      'Guslün farzlarıyla ilgili bazı ayrıntılar mezheplere göre farklılık gösterir. Bu rehber Diyanet\'in Hanefî ağırlıklı yaygın anlatımını temel alır ve ortak amaç olan tam hükmî temizliği esas alır.';
 }

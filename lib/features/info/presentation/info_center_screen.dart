@@ -111,23 +111,65 @@ class InfoCenterScreen extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           AppCard(
             padding: EdgeInsets.zero,
-            child: ListTile(
-              leading: Icon(
-                Icons.clean_hands_outlined,
-                color: colorScheme.primary,
-              ),
-              title: Text(
-                l10n.wuduGuideTitle,
-              ),
-              subtitle: Text(
-                l10n.wuduGuideMenuDesc,
-              ),
-              trailing: const Icon(
-                Icons.chevron_right,
-              ),
-              onTap: () => context.push(
-                AppRoutes.wuduGuide,
-              ),
+            child: Column(
+              children: [
+                ListTile(
+                  leading: Icon(
+                    Icons.mosque_outlined,
+                    color: colorScheme.primary,
+                  ),
+                  title: Text(
+                    l10n.prayerGuideTitle,
+                  ),
+                  subtitle: Text(
+                    l10n.prayerGuideMenuDesc,
+                  ),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                  ),
+                  onTap: () => context.push(
+                    AppRoutes.prayerGuide,
+                  ),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: Icon(
+                    Icons.clean_hands_outlined,
+                    color: colorScheme.primary,
+                  ),
+                  title: Text(
+                    l10n.wuduGuideTitle,
+                  ),
+                  subtitle: Text(
+                    l10n.wuduGuideMenuDesc,
+                  ),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                  ),
+                  onTap: () => context.push(
+                    AppRoutes.wuduGuide,
+                  ),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: Icon(
+                    Icons.shower_outlined,
+                    color: colorScheme.primary,
+                  ),
+                  title: Text(
+                    l10n.ghuslGuideTitle,
+                  ),
+                  subtitle: Text(
+                    l10n.ghuslGuideMenuDesc,
+                  ),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                  ),
+                  onTap: () => context.push(
+                    AppRoutes.ghuslGuide,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

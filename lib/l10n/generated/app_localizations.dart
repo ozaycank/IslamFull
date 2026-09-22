@@ -1769,7 +1769,7 @@ abstract class AppLocalizations {
   /// Step
   ///
   /// In en, this message translates to:
-  /// **'Wet your hands and wipe at least a quarter of your head.'**
+  /// **'Wipe the head once with wet hands. In Diyanet\'s Hanafi guidance, wiping at least one quarter of the head fulfills this requirement; details differ between schools of Islamic law.'**
   String get wuduStep7Desc;
 
   /// Step
@@ -1781,7 +1781,7 @@ abstract class AppLocalizations {
   /// Step
   ///
   /// In en, this message translates to:
-  /// **'Wipe the inside of the ears with index fingers, behind the ears with thumbs, and the neck with the back of the hands.'**
+  /// **'Wipe the ears. Diyanet\'s commonly taught sequence also includes wiping the neck with the backs of the hands. Some details of this step vary between schools of Islamic law.'**
   String get wuduStep8Desc;
 
   /// Step
@@ -2113,6 +2113,288 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Follow the basic steps of ablution before prayer.'**
   String get wuduGuideMenuDesc;
+
+  /// Source note for religious guidance content
+  ///
+  /// In en, this message translates to:
+  /// **'Content basis: Presidency of Religious Affairs (Diyanet), with differences between Islamic legal schools noted where relevant.'**
+  String get guidanceSourceNote;
+
+  /// Introduction shown at the top of the wudu guide
+  ///
+  /// In en, this message translates to:
+  /// **'Wudu is the ritual purification performed before prayer and certain other acts of worship. The steps below follow the commonly taught Diyanet sequence.'**
+  String get wuduGuideIntro;
+
+  /// Note explaining school-specific differences in wudu
+  ///
+  /// In en, this message translates to:
+  /// **'Some details of wudu, including how much of the head is wiped and certain recommended actions, differ between schools of Islamic law.'**
+  String get wuduGuideSchoolNote;
+
+  /// Prayer guide screen title
+  ///
+  /// In en, this message translates to:
+  /// **'How to Perform Prayer'**
+  String get prayerGuideTitle;
+
+  /// Prayer guide description shown in the information center
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the preparation and basic sequence of Salah step by step.'**
+  String get prayerGuideMenuDesc;
+
+  /// Short prayer guide description shown on the prayer screen
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the basic movements and sequence of prayer.'**
+  String get prayerGuideShortcutDesc;
+
+  /// Introduction shown at the top of the prayer guide
+  ///
+  /// In en, this message translates to:
+  /// **'This guide introduces the essential structure of Salah using a two-rak\'ah prayer as the learning model.'**
+  String get prayerGuideIntro;
+
+  /// Prayer preparation section title
+  ///
+  /// In en, this message translates to:
+  /// **'Before Prayer'**
+  String get prayerGuidePreparationTitle;
+
+  /// Prayer preparation requirements summary
+  ///
+  /// In en, this message translates to:
+  /// **'Before prayer, ensure ritual purity, cleanliness of the body, clothing and place, appropriate covering, the correct prayer time, facing the Qiblah, and intention for the prayer.'**
+  String get prayerGuidePreparationDesc;
+
+  /// Title for obligatory rakah count summary
+  ///
+  /// In en, this message translates to:
+  /// **'Obligatory Rak\'ahs'**
+  String get prayerGuideFarzRakahsTitle;
+
+  /// Obligatory rakah counts for the five daily prayers
+  ///
+  /// In en, this message translates to:
+  /// **'Fajr: 2 • Dhuhr: 4 • Asr: 4 • Maghrib: 3 • Isha: 4'**
+  String get prayerGuideFarzRakahsDesc;
+
+  /// Title for the basic two-rakah prayer sequence
+  ///
+  /// In en, this message translates to:
+  /// **'Basic Two-Rak\'ah Sequence'**
+  String get prayerGuideTwoRakahTitle;
+
+  /// Prayer guide step 1 title
+  ///
+  /// In en, this message translates to:
+  /// **'1. Intention and Opening Takbir'**
+  String get prayerGuideStep1Title;
+
+  /// Prayer guide step 1 description
+  ///
+  /// In en, this message translates to:
+  /// **'Make the intention in your heart for the prayer you are about to perform. Begin the prayer by saying \'Allahu Akbar\'.'**
+  String get prayerGuideStep1Desc;
+
+  /// Prayer guide step 2 title
+  ///
+  /// In en, this message translates to:
+  /// **'2. Standing and Recitation'**
+  String get prayerGuideStep2Title;
+
+  /// Prayer guide step 2 description
+  ///
+  /// In en, this message translates to:
+  /// **'Remain standing for the recitation. In Diyanet\'s common two-rak\'ah example, the opening supplication is followed by seeking refuge, Bismillah, Al-Fatihah and a passage from the Quran.'**
+  String get prayerGuideStep2Desc;
+
+  /// Prayer guide step 3 title
+  ///
+  /// In en, this message translates to:
+  /// **'3. Bowing (Ruku)'**
+  String get prayerGuideStep3Title;
+
+  /// Prayer guide step 3 description
+  ///
+  /// In en, this message translates to:
+  /// **'Say \'Allahu Akbar\' and bow. In the commonly taught Diyanet practice, \'Subhana Rabbiyal Azim\' is recited three times.'**
+  String get prayerGuideStep3Desc;
+
+  /// Prayer guide step 4 title
+  ///
+  /// In en, this message translates to:
+  /// **'4. Rise from Ruku'**
+  String get prayerGuideStep4Title;
+
+  /// Prayer guide step 4 description
+  ///
+  /// In en, this message translates to:
+  /// **'Rise to a fully upright position after bowing. Take a brief moment of stillness before proceeding to prostration.'**
+  String get prayerGuideStep4Desc;
+
+  /// Prayer guide step 5 title
+  ///
+  /// In en, this message translates to:
+  /// **'5. Two Prostrations'**
+  String get prayerGuideStep5Title;
+
+  /// Prayer guide step 5 description
+  ///
+  /// In en, this message translates to:
+  /// **'Go into prostration, rise briefly to a sitting position, and then perform the second prostration. In the commonly taught practice, \'Subhana Rabbiyal A\'la\' is recited three times in each prostration.'**
+  String get prayerGuideStep5Desc;
+
+  /// Prayer guide step 6 title
+  ///
+  /// In en, this message translates to:
+  /// **'6. Second Rak\'ah'**
+  String get prayerGuideStep6Title;
+
+  /// Prayer guide step 6 description
+  ///
+  /// In en, this message translates to:
+  /// **'Stand for the second rak\'ah. Recite Al-Fatihah and a passage from the Quran, then repeat the bowing and two prostrations.'**
+  String get prayerGuideStep6Desc;
+
+  /// Prayer guide step 7 title
+  ///
+  /// In en, this message translates to:
+  /// **'7. Final Sitting'**
+  String get prayerGuideStep7Title;
+
+  /// Prayer guide step 7 description
+  ///
+  /// In en, this message translates to:
+  /// **'After the second rak\'ah, remain seated for the final sitting. In Diyanet\'s common teaching, the Tashahhud and the Salawat prayers are recited here.'**
+  String get prayerGuideStep7Desc;
+
+  /// Prayer guide step 8 title
+  ///
+  /// In en, this message translates to:
+  /// **'8. Complete with Salam'**
+  String get prayerGuideStep8Title;
+
+  /// Prayer guide step 8 description
+  ///
+  /// In en, this message translates to:
+  /// **'Complete the prayer by turning first to the right and then to the left, saying \'Assalamu alaykum wa rahmatullah\'.'**
+  String get prayerGuideStep8Desc;
+
+  /// Note explaining school-specific differences in prayer
+  ///
+  /// In en, this message translates to:
+  /// **'The essential pillars of prayer are shared, while details such as hand placement, some recitations and sitting positions may differ between schools of Islamic law. This guide follows the commonly taught Diyanet sequence without presenting school-specific details as universal.'**
+  String get prayerGuideSchoolNote;
+
+  /// Ghusl guide screen title
+  ///
+  /// In en, this message translates to:
+  /// **'How to Perform Ghusl'**
+  String get ghuslGuideTitle;
+
+  /// Ghusl guide description shown in the information center
+  ///
+  /// In en, this message translates to:
+  /// **'Learn when full ritual purification is required and how it is performed.'**
+  String get ghuslGuideMenuDesc;
+
+  /// Introduction shown at the top of the ghusl guide
+  ///
+  /// In en, this message translates to:
+  /// **'Ghusl is full ritual purification in which the body is washed thoroughly so that water reaches every required area.'**
+  String get ghuslGuideIntro;
+
+  /// Title for situations requiring ghusl
+  ///
+  /// In en, this message translates to:
+  /// **'When is Ghusl Required?'**
+  String get ghuslWhenRequiredTitle;
+
+  /// Summary of situations requiring ghusl
+  ///
+  /// In en, this message translates to:
+  /// **'Ghusl is required after major ritual impurity such as janabah, and after menstruation or postnatal bleeding has ended.'**
+  String get ghuslWhenRequiredDesc;
+
+  /// Ghusl guide step 1 title
+  ///
+  /// In en, this message translates to:
+  /// **'1. Intention and Bismillah'**
+  String get ghuslStep1Title;
+
+  /// Ghusl guide step 1 description
+  ///
+  /// In en, this message translates to:
+  /// **'Form the intention for purification and begin with Bismillah.'**
+  String get ghuslStep1Desc;
+
+  /// Ghusl guide step 2 title
+  ///
+  /// In en, this message translates to:
+  /// **'2. Wash the Hands and Remove Impurity'**
+  String get ghuslStep2Title;
+
+  /// Ghusl guide step 2 description
+  ///
+  /// In en, this message translates to:
+  /// **'Wash the hands and clean any physical impurity from the body and private area.'**
+  String get ghuslStep2Desc;
+
+  /// Ghusl guide step 3 title
+  ///
+  /// In en, this message translates to:
+  /// **'3. Rinse the Mouth and Nose'**
+  String get ghuslStep3Title;
+
+  /// Ghusl guide step 3 description
+  ///
+  /// In en, this message translates to:
+  /// **'Rinse the mouth thoroughly and clean the nose with water. Diyanet identifies these, together with washing the whole body, as obligatory elements of ghusl in the Hanafi school.'**
+  String get ghuslStep3Desc;
+
+  /// Ghusl guide step 4 title
+  ///
+  /// In en, this message translates to:
+  /// **'4. Perform Wudu'**
+  String get ghuslStep4Title;
+
+  /// Ghusl guide step 4 description
+  ///
+  /// In en, this message translates to:
+  /// **'Perform wudu as you would for prayer. If water is collecting around the feet, they may be washed at the end.'**
+  String get ghuslStep4Desc;
+
+  /// Ghusl guide step 5 title
+  ///
+  /// In en, this message translates to:
+  /// **'5. Wash the Head and Hair'**
+  String get ghuslStep5Title;
+
+  /// Ghusl guide step 5 description
+  ///
+  /// In en, this message translates to:
+  /// **'Pour water over the head and make sure it reaches the scalp and roots of the hair.'**
+  String get ghuslStep5Desc;
+
+  /// Ghusl guide step 6 title
+  ///
+  /// In en, this message translates to:
+  /// **'6. Wash the Entire Body'**
+  String get ghuslStep6Title;
+
+  /// Ghusl guide step 6 description
+  ///
+  /// In en, this message translates to:
+  /// **'Wash the entire body thoroughly, leaving no dry area. Pay attention to places that water may not easily reach.'**
+  String get ghuslStep6Desc;
+
+  /// Note explaining school-specific differences in ghusl
+  ///
+  /// In en, this message translates to:
+  /// **'Details concerning the obligatory elements of ghusl differ between Islamic legal schools. The sequence above follows Diyanet\'s commonly taught Hanafi-oriented explanation while identifying the shared goal of complete ritual purification.'**
+  String get ghuslSchoolNote;
 }
 
 class _AppLocalizationsDelegate

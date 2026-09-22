@@ -14,6 +14,7 @@ import '../utils/presentation_localizer.dart';
 import '../widgets/prayer_error_widget.dart';
 import '../widgets/prayer_header.dart';
 import 'prayer_loading_screen.dart';
+import '../../../../../shared/widgets/app_card.dart';
 
 class PrayerHomeScreen extends ConsumerWidget {
   const PrayerHomeScreen({super.key});
@@ -102,6 +103,31 @@ class PrayerHomeScreen extends ConsumerWidget {
                   prayerTimes: today.prayerTimes,
                   liveState: liveState,
                 ),
+              const SizedBox(height: AppSpacing.lg),
+              SectionHeader(
+                title: l10n.prayerGuideTitle,
+              ),
+              AppCard(
+                padding: EdgeInsets.zero,
+                child: ListTile(
+                  leading: Icon(
+                    Icons.menu_book_outlined,
+                    color: context.colorScheme.primary,
+                  ),
+                  title: Text(
+                    l10n.prayerGuideTitle,
+                  ),
+                  subtitle: Text(
+                    l10n.prayerGuideShortcutDesc,
+                  ),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                  ),
+                  onTap: () => context.push(
+                    AppRoutes.prayerGuide,
+                  ),
+                ),
+              ),
               const SizedBox(height: AppSpacing.xxl),
             ],
           ),

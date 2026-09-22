@@ -923,11 +923,11 @@
   "@wuduStep6Desc": { "description": "Step" },
   "wuduStep7Title": "7. Wipe Head (Masah)",
   "@wuduStep7Title": { "description": "Step" },
-  "wuduStep7Desc": "Wet your hands and wipe at least a quarter of your head.",
+  "wuduStep7Desc": "Wipe the head once with wet hands. In Diyanet's Hanafi guidance, wiping at least one quarter of the head fulfills this requirement; details differ between schools of Islamic law.",
   "@wuduStep7Desc": { "description": "Step" },
   "wuduStep8Title": "8. Wipe Ears and Neck",
   "@wuduStep8Title": { "description": "Step" },
-  "wuduStep8Desc": "Wipe the inside of the ears with index fingers, behind the ears with thumbs, and the neck with the back of the hands.",
+  "wuduStep8Desc": "Wipe the ears. Diyanet's commonly taught sequence also includes wiping the neck with the backs of the hands. Some details of this step vary between schools of Islamic law.",
   "@wuduStep8Desc": { "description": "Step" },
   "wuduStep9Title": "9. Wash Feet",
   "@wuduStep9Title": { "description": "Step" },
@@ -1147,5 +1147,212 @@
 "wuduGuideMenuDesc": "Follow the basic steps of ablution before prayer.",
 "@wuduGuideMenuDesc": {
   "description": "Wudu guide menu description"
+},
+"guidanceSourceNote": "Content basis: Presidency of Religious Affairs (Diyanet), with differences between Islamic legal schools noted where relevant.",
+"@guidanceSourceNote": {
+  "description": "Source note for religious guidance content"
+},
+
+"wuduGuideIntro": "Wudu is the ritual purification performed before prayer and certain other acts of worship. The steps below follow the commonly taught Diyanet sequence.",
+"@wuduGuideIntro": {
+  "description": "Introduction shown at the top of the wudu guide"
+},
+"wuduGuideSchoolNote": "Some details of wudu, including how much of the head is wiped and certain recommended actions, differ between schools of Islamic law.",
+"@wuduGuideSchoolNote": {
+  "description": "Note explaining school-specific differences in wudu"
+},
+
+"prayerGuideTitle": "How to Perform Prayer",
+"@prayerGuideTitle": {
+  "description": "Prayer guide screen title"
+},
+"prayerGuideMenuDesc": "Learn the preparation and basic sequence of Salah step by step.",
+"@prayerGuideMenuDesc": {
+  "description": "Prayer guide description shown in the information center"
+},
+"prayerGuideShortcutDesc": "Learn the basic movements and sequence of prayer.",
+"@prayerGuideShortcutDesc": {
+  "description": "Short prayer guide description shown on the prayer screen"
+},
+"prayerGuideIntro": "This guide introduces the essential structure of Salah using a two-rak'ah prayer as the learning model.",
+"@prayerGuideIntro": {
+  "description": "Introduction shown at the top of the prayer guide"
+},
+"prayerGuidePreparationTitle": "Before Prayer",
+"@prayerGuidePreparationTitle": {
+  "description": "Prayer preparation section title"
+},
+"prayerGuidePreparationDesc": "Before prayer, ensure ritual purity, cleanliness of the body, clothing and place, appropriate covering, the correct prayer time, facing the Qiblah, and intention for the prayer.",
+"@prayerGuidePreparationDesc": {
+  "description": "Prayer preparation requirements summary"
+},
+"prayerGuideFarzRakahsTitle": "Obligatory Rak'ahs",
+"@prayerGuideFarzRakahsTitle": {
+  "description": "Title for obligatory rakah count summary"
+},
+"prayerGuideFarzRakahsDesc": "Fajr: 2 • Dhuhr: 4 • Asr: 4 • Maghrib: 3 • Isha: 4",
+"@prayerGuideFarzRakahsDesc": {
+  "description": "Obligatory rakah counts for the five daily prayers"
+},
+"prayerGuideTwoRakahTitle": "Basic Two-Rak'ah Sequence",
+"@prayerGuideTwoRakahTitle": {
+  "description": "Title for the basic two-rakah prayer sequence"
+},
+
+"prayerGuideStep1Title": "1. Intention and Opening Takbir",
+"@prayerGuideStep1Title": {
+  "description": "Prayer guide step 1 title"
+},
+"prayerGuideStep1Desc": "Make the intention in your heart for the prayer you are about to perform. Begin the prayer by saying 'Allahu Akbar'.",
+"@prayerGuideStep1Desc": {
+  "description": "Prayer guide step 1 description"
+},
+
+"prayerGuideStep2Title": "2. Standing and Recitation",
+"@prayerGuideStep2Title": {
+  "description": "Prayer guide step 2 title"
+},
+"prayerGuideStep2Desc": "Remain standing for the recitation. In Diyanet's common two-rak'ah example, the opening supplication is followed by seeking refuge, Bismillah, Al-Fatihah and a passage from the Quran.",
+"@prayerGuideStep2Desc": {
+  "description": "Prayer guide step 2 description"
+},
+
+"prayerGuideStep3Title": "3. Bowing (Ruku)",
+"@prayerGuideStep3Title": {
+  "description": "Prayer guide step 3 title"
+},
+"prayerGuideStep3Desc": "Say 'Allahu Akbar' and bow. In the commonly taught Diyanet practice, 'Subhana Rabbiyal Azim' is recited three times.",
+"@prayerGuideStep3Desc": {
+  "description": "Prayer guide step 3 description"
+},
+
+"prayerGuideStep4Title": "4. Rise from Ruku",
+"@prayerGuideStep4Title": {
+  "description": "Prayer guide step 4 title"
+},
+"prayerGuideStep4Desc": "Rise to a fully upright position after bowing. Take a brief moment of stillness before proceeding to prostration.",
+"@prayerGuideStep4Desc": {
+  "description": "Prayer guide step 4 description"
+},
+
+"prayerGuideStep5Title": "5. Two Prostrations",
+"@prayerGuideStep5Title": {
+  "description": "Prayer guide step 5 title"
+},
+"prayerGuideStep5Desc": "Go into prostration, rise briefly to a sitting position, and then perform the second prostration. In the commonly taught practice, 'Subhana Rabbiyal A'la' is recited three times in each prostration.",
+"@prayerGuideStep5Desc": {
+  "description": "Prayer guide step 5 description"
+},
+
+"prayerGuideStep6Title": "6. Second Rak'ah",
+"@prayerGuideStep6Title": {
+  "description": "Prayer guide step 6 title"
+},
+"prayerGuideStep6Desc": "Stand for the second rak'ah. Recite Al-Fatihah and a passage from the Quran, then repeat the bowing and two prostrations.",
+"@prayerGuideStep6Desc": {
+  "description": "Prayer guide step 6 description"
+},
+
+"prayerGuideStep7Title": "7. Final Sitting",
+"@prayerGuideStep7Title": {
+  "description": "Prayer guide step 7 title"
+},
+"prayerGuideStep7Desc": "After the second rak'ah, remain seated for the final sitting. In Diyanet's common teaching, the Tashahhud and the Salawat prayers are recited here.",
+"@prayerGuideStep7Desc": {
+  "description": "Prayer guide step 7 description"
+},
+
+"prayerGuideStep8Title": "8. Complete with Salam",
+"@prayerGuideStep8Title": {
+  "description": "Prayer guide step 8 title"
+},
+"prayerGuideStep8Desc": "Complete the prayer by turning first to the right and then to the left, saying 'Assalamu alaykum wa rahmatullah'.",
+"@prayerGuideStep8Desc": {
+  "description": "Prayer guide step 8 description"
+},
+
+"prayerGuideSchoolNote": "The essential pillars of prayer are shared, while details such as hand placement, some recitations and sitting positions may differ between schools of Islamic law. This guide follows the commonly taught Diyanet sequence without presenting school-specific details as universal.",
+"@prayerGuideSchoolNote": {
+  "description": "Note explaining school-specific differences in prayer"
+},
+
+"ghuslGuideTitle": "How to Perform Ghusl",
+"@ghuslGuideTitle": {
+  "description": "Ghusl guide screen title"
+},
+"ghuslGuideMenuDesc": "Learn when full ritual purification is required and how it is performed.",
+"@ghuslGuideMenuDesc": {
+  "description": "Ghusl guide description shown in the information center"
+},
+"ghuslGuideIntro": "Ghusl is full ritual purification in which the body is washed thoroughly so that water reaches every required area.",
+"@ghuslGuideIntro": {
+  "description": "Introduction shown at the top of the ghusl guide"
+},
+"ghuslWhenRequiredTitle": "When is Ghusl Required?",
+"@ghuslWhenRequiredTitle": {
+  "description": "Title for situations requiring ghusl"
+},
+"ghuslWhenRequiredDesc": "Ghusl is required after major ritual impurity such as janabah, and after menstruation or postnatal bleeding has ended.",
+"@ghuslWhenRequiredDesc": {
+  "description": "Summary of situations requiring ghusl"
+},
+
+"ghuslStep1Title": "1. Intention and Bismillah",
+"@ghuslStep1Title": {
+  "description": "Ghusl guide step 1 title"
+},
+"ghuslStep1Desc": "Form the intention for purification and begin with Bismillah.",
+"@ghuslStep1Desc": {
+  "description": "Ghusl guide step 1 description"
+},
+
+"ghuslStep2Title": "2. Wash the Hands and Remove Impurity",
+"@ghuslStep2Title": {
+  "description": "Ghusl guide step 2 title"
+},
+"ghuslStep2Desc": "Wash the hands and clean any physical impurity from the body and private area.",
+"@ghuslStep2Desc": {
+  "description": "Ghusl guide step 2 description"
+},
+
+"ghuslStep3Title": "3. Rinse the Mouth and Nose",
+"@ghuslStep3Title": {
+  "description": "Ghusl guide step 3 title"
+},
+"ghuslStep3Desc": "Rinse the mouth thoroughly and clean the nose with water. Diyanet identifies these, together with washing the whole body, as obligatory elements of ghusl in the Hanafi school.",
+"@ghuslStep3Desc": {
+  "description": "Ghusl guide step 3 description"
+},
+
+"ghuslStep4Title": "4. Perform Wudu",
+"@ghuslStep4Title": {
+  "description": "Ghusl guide step 4 title"
+},
+"ghuslStep4Desc": "Perform wudu as you would for prayer. If water is collecting around the feet, they may be washed at the end.",
+"@ghuslStep4Desc": {
+  "description": "Ghusl guide step 4 description"
+},
+
+"ghuslStep5Title": "5. Wash the Head and Hair",
+"@ghuslStep5Title": {
+  "description": "Ghusl guide step 5 title"
+},
+"ghuslStep5Desc": "Pour water over the head and make sure it reaches the scalp and roots of the hair.",
+"@ghuslStep5Desc": {
+  "description": "Ghusl guide step 5 description"
+},
+
+"ghuslStep6Title": "6. Wash the Entire Body",
+"@ghuslStep6Title": {
+  "description": "Ghusl guide step 6 title"
+},
+"ghuslStep6Desc": "Wash the entire body thoroughly, leaving no dry area. Pay attention to places that water may not easily reach.",
+"@ghuslStep6Desc": {
+  "description": "Ghusl guide step 6 description"
+},
+
+"ghuslSchoolNote": "Details concerning the obligatory elements of ghusl differ between Islamic legal schools. The sequence above follows Diyanet's commonly taught Hanafi-oriented explanation while identifying the shared goal of complete ritual purification.",
+"@ghuslSchoolNote": {
+  "description": "Note explaining school-specific differences in ghusl"
 }
 }

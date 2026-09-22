@@ -884,14 +884,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get wuduStep7Desc =>
-      'Wet your hands and wipe at least a quarter of your head.';
+      'Wipe the head once with wet hands. In Diyanet\'s Hanafi guidance, wiping at least one quarter of the head fulfills this requirement; details differ between schools of Islamic law.';
 
   @override
   String get wuduStep8Title => '8. Wipe Ears and Neck';
 
   @override
   String get wuduStep8Desc =>
-      'Wipe the inside of the ears with index fingers, behind the ears with thumbs, and the neck with the back of the hands.';
+      'Wipe the ears. Diyanet\'s commonly taught sequence also includes wiping the neck with the backs of the hands. Some details of this step vary between schools of Islamic law.';
 
   @override
   String get wuduStep9Title => '9. Wash Feet';
@@ -1086,4 +1086,172 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get wuduGuideMenuDesc =>
       'Follow the basic steps of ablution before prayer.';
+
+  @override
+  String get guidanceSourceNote =>
+      'Content basis: Presidency of Religious Affairs (Diyanet), with differences between Islamic legal schools noted where relevant.';
+
+  @override
+  String get wuduGuideIntro =>
+      'Wudu is the ritual purification performed before prayer and certain other acts of worship. The steps below follow the commonly taught Diyanet sequence.';
+
+  @override
+  String get wuduGuideSchoolNote =>
+      'Some details of wudu, including how much of the head is wiped and certain recommended actions, differ between schools of Islamic law.';
+
+  @override
+  String get prayerGuideTitle => 'How to Perform Prayer';
+
+  @override
+  String get prayerGuideMenuDesc =>
+      'Learn the preparation and basic sequence of Salah step by step.';
+
+  @override
+  String get prayerGuideShortcutDesc =>
+      'Learn the basic movements and sequence of prayer.';
+
+  @override
+  String get prayerGuideIntro =>
+      'This guide introduces the essential structure of Salah using a two-rak\'ah prayer as the learning model.';
+
+  @override
+  String get prayerGuidePreparationTitle => 'Before Prayer';
+
+  @override
+  String get prayerGuidePreparationDesc =>
+      'Before prayer, ensure ritual purity, cleanliness of the body, clothing and place, appropriate covering, the correct prayer time, facing the Qiblah, and intention for the prayer.';
+
+  @override
+  String get prayerGuideFarzRakahsTitle => 'Obligatory Rak\'ahs';
+
+  @override
+  String get prayerGuideFarzRakahsDesc =>
+      'Fajr: 2 • Dhuhr: 4 • Asr: 4 • Maghrib: 3 • Isha: 4';
+
+  @override
+  String get prayerGuideTwoRakahTitle => 'Basic Two-Rak\'ah Sequence';
+
+  @override
+  String get prayerGuideStep1Title => '1. Intention and Opening Takbir';
+
+  @override
+  String get prayerGuideStep1Desc =>
+      'Make the intention in your heart for the prayer you are about to perform. Begin the prayer by saying \'Allahu Akbar\'.';
+
+  @override
+  String get prayerGuideStep2Title => '2. Standing and Recitation';
+
+  @override
+  String get prayerGuideStep2Desc =>
+      'Remain standing for the recitation. In Diyanet\'s common two-rak\'ah example, the opening supplication is followed by seeking refuge, Bismillah, Al-Fatihah and a passage from the Quran.';
+
+  @override
+  String get prayerGuideStep3Title => '3. Bowing (Ruku)';
+
+  @override
+  String get prayerGuideStep3Desc =>
+      'Say \'Allahu Akbar\' and bow. In the commonly taught Diyanet practice, \'Subhana Rabbiyal Azim\' is recited three times.';
+
+  @override
+  String get prayerGuideStep4Title => '4. Rise from Ruku';
+
+  @override
+  String get prayerGuideStep4Desc =>
+      'Rise to a fully upright position after bowing. Take a brief moment of stillness before proceeding to prostration.';
+
+  @override
+  String get prayerGuideStep5Title => '5. Two Prostrations';
+
+  @override
+  String get prayerGuideStep5Desc =>
+      'Go into prostration, rise briefly to a sitting position, and then perform the second prostration. In the commonly taught practice, \'Subhana Rabbiyal A\'la\' is recited three times in each prostration.';
+
+  @override
+  String get prayerGuideStep6Title => '6. Second Rak\'ah';
+
+  @override
+  String get prayerGuideStep6Desc =>
+      'Stand for the second rak\'ah. Recite Al-Fatihah and a passage from the Quran, then repeat the bowing and two prostrations.';
+
+  @override
+  String get prayerGuideStep7Title => '7. Final Sitting';
+
+  @override
+  String get prayerGuideStep7Desc =>
+      'After the second rak\'ah, remain seated for the final sitting. In Diyanet\'s common teaching, the Tashahhud and the Salawat prayers are recited here.';
+
+  @override
+  String get prayerGuideStep8Title => '8. Complete with Salam';
+
+  @override
+  String get prayerGuideStep8Desc =>
+      'Complete the prayer by turning first to the right and then to the left, saying \'Assalamu alaykum wa rahmatullah\'.';
+
+  @override
+  String get prayerGuideSchoolNote =>
+      'The essential pillars of prayer are shared, while details such as hand placement, some recitations and sitting positions may differ between schools of Islamic law. This guide follows the commonly taught Diyanet sequence without presenting school-specific details as universal.';
+
+  @override
+  String get ghuslGuideTitle => 'How to Perform Ghusl';
+
+  @override
+  String get ghuslGuideMenuDesc =>
+      'Learn when full ritual purification is required and how it is performed.';
+
+  @override
+  String get ghuslGuideIntro =>
+      'Ghusl is full ritual purification in which the body is washed thoroughly so that water reaches every required area.';
+
+  @override
+  String get ghuslWhenRequiredTitle => 'When is Ghusl Required?';
+
+  @override
+  String get ghuslWhenRequiredDesc =>
+      'Ghusl is required after major ritual impurity such as janabah, and after menstruation or postnatal bleeding has ended.';
+
+  @override
+  String get ghuslStep1Title => '1. Intention and Bismillah';
+
+  @override
+  String get ghuslStep1Desc =>
+      'Form the intention for purification and begin with Bismillah.';
+
+  @override
+  String get ghuslStep2Title => '2. Wash the Hands and Remove Impurity';
+
+  @override
+  String get ghuslStep2Desc =>
+      'Wash the hands and clean any physical impurity from the body and private area.';
+
+  @override
+  String get ghuslStep3Title => '3. Rinse the Mouth and Nose';
+
+  @override
+  String get ghuslStep3Desc =>
+      'Rinse the mouth thoroughly and clean the nose with water. Diyanet identifies these, together with washing the whole body, as obligatory elements of ghusl in the Hanafi school.';
+
+  @override
+  String get ghuslStep4Title => '4. Perform Wudu';
+
+  @override
+  String get ghuslStep4Desc =>
+      'Perform wudu as you would for prayer. If water is collecting around the feet, they may be washed at the end.';
+
+  @override
+  String get ghuslStep5Title => '5. Wash the Head and Hair';
+
+  @override
+  String get ghuslStep5Desc =>
+      'Pour water over the head and make sure it reaches the scalp and roots of the hair.';
+
+  @override
+  String get ghuslStep6Title => '6. Wash the Entire Body';
+
+  @override
+  String get ghuslStep6Desc =>
+      'Wash the entire body thoroughly, leaving no dry area. Pay attention to places that water may not easily reach.';
+
+  @override
+  String get ghuslSchoolNote =>
+      'Details concerning the obligatory elements of ghusl differ between Islamic legal schools. The sequence above follows Diyanet\'s commonly taught Hanafi-oriented explanation while identifying the shared goal of complete ritual purification.';
 }

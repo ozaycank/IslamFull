@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../../../../shared/widgets/app_card.dart';
-import '../../guidance/presentation/widgets/guidance_step_card.dart';
+import '../../../../shared/widgets/section_header.dart';
+import '../widgets/guidance_step_card.dart';
 
-class WuduGuideScreen extends StatelessWidget {
-  const WuduGuideScreen({super.key});
+class GhuslGuideScreen extends StatelessWidget {
+  const GhuslGuideScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,64 +17,46 @@ class WuduGuideScreen extends StatelessWidget {
     final steps = [
       (
         icon: Icons.favorite_outline,
-        title: l10n.wuduStep1Title,
-        description: l10n.wuduStep1Desc,
-        imagePath: 'assets/images/wudu/step1.png',
+        title: l10n.ghuslStep1Title,
+        description: l10n.ghuslStep1Desc,
+        imagePath: 'assets/images/ghusl/step1.png',
       ),
       (
-        icon: Icons.wash_outlined,
-        title: l10n.wuduStep2Title,
-        description: l10n.wuduStep2Desc,
-        imagePath: 'assets/images/wudu/step2.png',
+        icon: Icons.cleaning_services_outlined,
+        title: l10n.ghuslStep2Title,
+        description: l10n.ghuslStep2Desc,
+        imagePath: 'assets/images/ghusl/step2.png',
       ),
       (
         icon: Icons.water_drop_outlined,
-        title: l10n.wuduStep3Title,
-        description: l10n.wuduStep3Desc,
-        imagePath: 'assets/images/wudu/step3.png',
+        title: l10n.ghuslStep3Title,
+        description: l10n.ghuslStep3Desc,
+        imagePath: 'assets/images/ghusl/step3.png',
       ),
       (
-        icon: Icons.air_outlined,
-        title: l10n.wuduStep4Title,
-        description: l10n.wuduStep4Desc,
-        imagePath: 'assets/images/wudu/step4.png',
+        icon: Icons.wash_outlined,
+        title: l10n.ghuslStep4Title,
+        description: l10n.ghuslStep4Desc,
+        imagePath: 'assets/images/ghusl/step4.png',
       ),
       (
-        icon: Icons.face_outlined,
-        title: l10n.wuduStep5Title,
-        description: l10n.wuduStep5Desc,
-        imagePath: 'assets/images/wudu/step5.png',
-      ),
-      (
-        icon: Icons.back_hand_outlined,
-        title: l10n.wuduStep6Title,
-        description: l10n.wuduStep6Desc,
-        imagePath: 'assets/images/wudu/step6.png',
+        icon: Icons.shower_outlined,
+        title: l10n.ghuslStep5Title,
+        description: l10n.ghuslStep5Desc,
+        imagePath: 'assets/images/ghusl/step5.png',
       ),
       (
         icon: Icons.accessibility_new_outlined,
-        title: l10n.wuduStep7Title,
-        description: l10n.wuduStep7Desc,
-        imagePath: 'assets/images/wudu/step7.png',
-      ),
-      (
-        icon: Icons.hearing_outlined,
-        title: l10n.wuduStep8Title,
-        description: l10n.wuduStep8Desc,
-        imagePath: 'assets/images/wudu/step8.png',
-      ),
-      (
-        icon: Icons.directions_walk_outlined,
-        title: l10n.wuduStep9Title,
-        description: l10n.wuduStep9Desc,
-        imagePath: 'assets/images/wudu/step9.png',
+        title: l10n.ghuslStep6Title,
+        description: l10n.ghuslStep6Desc,
+        imagePath: 'assets/images/ghusl/step6.png',
       ),
     ];
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          l10n.wuduGuideTitle,
+          l10n.ghuslGuideTitle,
         ),
       ),
       body: ListView(
@@ -81,14 +64,26 @@ class WuduGuideScreen extends StatelessWidget {
         children: [
           AppCard(
             child: Text(
-              l10n.wuduGuideIntro,
+              l10n.ghuslGuideIntro,
               style: context.textTheme.bodyLarge?.copyWith(
+                height: 1.5,
                 color: colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ),
+          const SizedBox(height: AppSpacing.xl),
+          SectionHeader(
+            title: l10n.ghuslWhenRequiredTitle,
+          ),
+          AppCard(
+            child: Text(
+              l10n.ghuslWhenRequiredDesc,
+              style: context.textTheme.bodyMedium?.copyWith(
                 height: 1.5,
               ),
             ),
           ),
-          const SizedBox(height: AppSpacing.lg),
+          const SizedBox(height: AppSpacing.xl),
           for (var index = 0; index < steps.length; index++) ...[
             GuidanceStepCard(
               icon: steps[index].icon,
@@ -107,7 +102,7 @@ class WuduGuideScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  l10n.wuduGuideSchoolNote,
+                  l10n.ghuslSchoolNote,
                   style: context.textTheme.bodyMedium?.copyWith(
                     height: 1.5,
                   ),

@@ -273,12 +273,11 @@
   "wuduStep6Title": "6. Kolları Yıkamak",
   "wuduStep6Desc": "Önce sağ kol, sonra sol kol dirseklerle beraber üç kere yıkanır.",
   "wuduStep7Title": "7. Başı Meshetmek",
-  "wuduStep7Desc": "Sağ el ıslatılarak başın dörtte biri (veya tamamı) meshedilir.",
+  "wuduStep7Desc": "Islak elle baş bir defa mesh edilir. Diyanet'in Hanefî uygulama açıklamasında başın en az dörtte birinin mesh edilmesi yeterli kabul edilir; bu miktar mezheplere göre farklılık gösterebilir.",
   "wuduStep8Title": "8. Kulak ve Boynu Meshetmek",
-  "wuduStep8Desc": "Eller ıslatılıp serçe parmaklarla kulak içi, baş parmaklarla kulak arkası, elin tersiyle boyun meshedilir.",
+ "wuduStep8Desc": "Kulakların içi ve dışı mesh edilir. Diyanet'in yaygın anlatımında ardından ellerin arkasıyla boyun da mesh edilir. Bu adımdaki bazı ayrıntılar mezheplere göre farklılık gösterebilir.",
   "wuduStep9Title": "9. Ayakları Yıkamak",
   "wuduStep9Desc": "Önce sağ ayak, sonra sol ayak topuklarla beraber parmak uçlarından başlanarak üç kere yıkanır.",
-  "notificationMinutesBefore": "{minutes} minutes before",
 "notificationMinutesBefore": "{minutes} dakika önce",
 "@notificationMinutesBefore": {
   "description": "Namaz hatırlatıcısının dakika cinsinden zaman farkı",
@@ -345,5 +344,71 @@
 "faithDivineDecreeTitle": "Kaza ve Kadere İman",
 "faithDivineDecreeDesc": "Allah'ın her şeyi kuşatan ilmine ve takdirine inanırken insanın yaptığı tercihlerden sorumlu olduğunu kabul etmektir.",
 "islamFoundationsDisclaimer": "Bu bölüm kısa bir eğitim özeti sunar; ayrıntılı dini eğitimin veya kişiye özel dini danışmanlığın yerine geçmez.",
-"wuduGuideMenuDesc": "Namaz öncesinde abdestin temel adımlarını takip edin."
+"wuduGuideMenuDesc": "Namaz öncesinde abdestin temel adımlarını takip edin.",
+"guidanceSourceNote": "İçerik temeli: T.C. Diyanet İşleri Başkanlığı. Mezhepler arasında farklılık bulunan ayrıntılar ayrıca belirtilmiştir.",
+
+"wuduGuideIntro": "Abdest; namaz ve bazı ibadetlerden önce yapılan hükmî temizliktir. Aşağıdaki uygulama Diyanet'in yaygın olarak öğrettiği sıra temel alınarak hazırlanmıştır.",
+"wuduGuideSchoolNote": "Başın ne kadarının mesh edileceği ve bazı sünnet/âdap ayrıntıları mezheplere göre farklılık gösterebilir.",
+
+"prayerGuideTitle": "Namaz Nasıl Kılınır?",
+"prayerGuideMenuDesc": "Namaza hazırlığı ve temel namaz akışını adım adım öğrenin.",
+"prayerGuideShortcutDesc": "Namazın temel hareketlerini ve sırasını öğrenin.",
+"prayerGuideIntro": "Bu rehber, namazın temel yapısını öğrenmek için iki rekâtlı namazı başlangıç modeli olarak kullanır.",
+"prayerGuidePreparationTitle": "Namazdan Önce",
+"prayerGuidePreparationDesc": "Namazdan önce hadesten ve necasetten temizlik, gerekli yerlerin örtülmesi, namaz vaktinin girmiş olması, kıbleye yönelme ve kılınacak namaza niyet şartlarına dikkat edilir.",
+"prayerGuideFarzRakahsTitle": "Beş Vakit Farz Rekâtları",
+"prayerGuideFarzRakahsDesc": "Sabah: 2 • Öğle: 4 • İkindi: 4 • Akşam: 3 • Yatsı: 4",
+"prayerGuideTwoRakahTitle": "Temel İki Rekât Akışı",
+
+"prayerGuideStep1Title": "1. Niyet ve İftitah Tekbiri",
+"prayerGuideStep1Desc": "Kılınacak namaza kalben niyet edilir. Ardından 'Allahu ekber' denilerek namaza başlanır.",
+
+"prayerGuideStep2Title": "2. Kıyam ve Kıraat",
+"prayerGuideStep2Desc": "Ayakta kıraat yapılır. Diyanet'in yaygın iki rekât anlatımında Sübhaneke'den sonra eûzü-besmele, Fâtiha ve Kur'an'dan bir bölüm okunur.",
+
+"prayerGuideStep3Title": "3. Rükû",
+"prayerGuideStep3Desc": "'Allahu ekber' denilerek rükûya eğilinir. Diyanet'in yaygın uygulama anlatımında üç defa 'Sübhâne Rabbiye'l-Azîm' denilir.",
+
+"prayerGuideStep4Title": "4. Rükûdan Doğrulma",
+"prayerGuideStep4Desc": "Rükûdan tamamen doğrularak ayağa kalkılır ve secdeye geçmeden önce kısa bir süre sükûnetle durulur.",
+
+"prayerGuideStep5Title": "5. İki Secde",
+"prayerGuideStep5Desc": "Secdeye varılır, ardından kısa bir süre oturulur ve ikinci secde yapılır. Yaygın uygulamada her secdede üç defa 'Sübhâne Rabbiye'l-A'lâ' denilir.",
+
+"prayerGuideStep6Title": "6. İkinci Rekât",
+"prayerGuideStep6Desc": "İkinci rekâta kalkılır. Fâtiha ve Kur'an'dan bir bölüm okunduktan sonra rükû ve iki secde tekrar edilir.",
+
+"prayerGuideStep7Title": "7. Son Oturuş",
+"prayerGuideStep7Desc": "İkinci rekâtın ardından son oturuşa geçilir. Diyanet'in yaygın öğretiminde burada Ettehiyyâtü ile salavat duaları okunur.",
+
+"prayerGuideStep8Title": "8. Selam ile Tamamlama",
+"prayerGuideStep8Desc": "Önce sağa, ardından sola dönülerek 'Esselâmü aleyküm ve rahmetullah' denilir ve namaz tamamlanır.",
+
+"prayerGuideSchoolNote": "Namazın temel rükünleri ortak olmakla birlikte el bağlama yeri, bazı kıraat ve tesbih ayrıntıları ile oturuş biçimi mezheplere göre farklılık gösterebilir. Bu rehber Diyanet'in Türkiye'de yaygın öğretimini temel alır ve mezhebe özgü ayrıntıları evrensel hüküm olarak sunmaz.",
+
+"ghuslGuideTitle": "Gusül Abdesti Nasıl Alınır?",
+"ghuslGuideMenuDesc": "Guslün ne zaman gerektiğini ve nasıl yapıldığını adım adım öğrenin.",
+"ghuslGuideIntro": "Gusül; hükmî kirlilik hâlinden temizlenmek amacıyla bütün bedenin gerekli şekilde yıkanmasıyla yapılan boy abdestidir.",
+"ghuslWhenRequiredTitle": "Gusül Ne Zaman Gerekir?",
+"ghuslWhenRequiredDesc": "Gusül; cünüplük hâlinden sonra, hayızın sona ermesi ve nifasın sona ermesi gibi durumlarda gerekir.",
+
+"ghuslStep1Title": "1. Niyet ve Besmele",
+"ghuslStep1Desc": "Gusül ile temizlenmeye niyet edilir ve besmele çekilir.",
+
+"ghuslStep2Title": "2. Elleri ve Maddi Kirliliği Temizlemek",
+"ghuslStep2Desc": "Eller yıkanır; vücutta maddi bir kirlilik varsa temizlenir ve avret yerleri yıkanır.",
+
+"ghuslStep3Title": "3. Ağza ve Burna Su Vermek",
+"ghuslStep3Desc": "Ağız iyice çalkalanır ve burun su ile temizlenir. Diyanet, bunları bütün bedenin yıkanmasıyla birlikte Hanefî mezhebine göre guslün farzları arasında belirtir.",
+
+"ghuslStep4Title": "4. Namaz Abdesti Almak",
+"ghuslStep4Desc": "Namaz abdesti gibi abdest alınır. Gusledilen yerde su birikiyorsa ayaklar guslün sonunda yıkanabilir.",
+
+"ghuslStep5Title": "5. Başı ve Saç Diplerini Yıkamak",
+"ghuslStep5Desc": "Başa su dökülür; suyun saç diplerine ve başın tamamına ulaşmasına dikkat edilir.",
+
+"ghuslStep6Title": "6. Bütün Bedeni Yıkamak",
+"ghuslStep6Desc": "Bütün beden hiç kuru yer kalmayacak şekilde iyice yıkanır. Suyun ulaşmasının zor olabileceği bölgelere özellikle dikkat edilir.",
+
+"ghuslSchoolNote": "Guslün farzlarıyla ilgili bazı ayrıntılar mezheplere göre farklılık gösterir. Bu rehber Diyanet'in Hanefî ağırlıklı yaygın anlatımını temel alır ve ortak amaç olan tam hükmî temizliği esas alır."
 }

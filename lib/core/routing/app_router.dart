@@ -24,6 +24,8 @@ import '../../features/tools/presentation/tasbih_screen.dart';
 import '../../features/zakat/presentation/screens/zakat_calculator_screen.dart';
 import '../../features/guidance/presentation/screens/islam_foundations_screen.dart';
 import '../../features/guidance/presentation/screens/new_muslim_journey_screen.dart';
+import '../../features/guidance/presentation/screens/ghusl_guide_screen.dart';
+import '../../features/guidance/presentation/screens/prayer_guide_screen.dart';
 import '../di/injection_container.dart';
 import '../logging/logger_service.dart';
 import 'app_navigation_observer.dart';
@@ -118,6 +120,16 @@ class AppRouter {
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.wuduGuide,
           builder: (context, state) => const WuduGuideScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.prayerGuide,
+          builder: (context, state) => const PrayerGuideScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.ghuslGuide,
+          builder: (context, state) => const GhuslGuideScreen(),
         ),
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) {
