@@ -3,6 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/activity/presentation/screens/activity_screen.dart';
+import '../../features/dua/presentation/screens/duas_screen.dart';
+import '../../features/guidance/presentation/screens/ghusl_guide_screen.dart';
+import '../../features/guidance/presentation/screens/islam_foundations_screen.dart';
+import '../../features/guidance/presentation/screens/new_muslim_journey_screen.dart';
+import '../../features/guidance/presentation/screens/prayer_guide_screen.dart';
 import '../../features/hajj/presentation/screens/hajj_guide_screen.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/info/presentation/info_center_screen.dart';
@@ -22,10 +27,6 @@ import '../../features/splash/presentation/splash_screen.dart';
 import '../../features/tools/presentation/islamic_tools_screen.dart';
 import '../../features/tools/presentation/tasbih_screen.dart';
 import '../../features/zakat/presentation/screens/zakat_calculator_screen.dart';
-import '../../features/guidance/presentation/screens/islam_foundations_screen.dart';
-import '../../features/guidance/presentation/screens/new_muslim_journey_screen.dart';
-import '../../features/guidance/presentation/screens/ghusl_guide_screen.dart';
-import '../../features/guidance/presentation/screens/prayer_guide_screen.dart';
 import '../di/injection_container.dart';
 import '../logging/logger_service.dart';
 import 'app_navigation_observer.dart';
@@ -55,7 +56,7 @@ class AppRouter {
           builder: (context, state) => const SplashScreen(),
         ),
 
-        // FULL SCREEN ROUTES (Overlaps Bottom Navigation)
+        // Full-screen routes
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.settings,
@@ -131,8 +132,18 @@ class AppRouter {
           path: AppRoutes.ghuslGuide,
           builder: (context, state) => const GhuslGuideScreen(),
         ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.duas,
+          builder: (context, state) => const DuasScreen(),
+        ),
+
         StatefulShellRoute.indexedStack(
-          builder: (context, state, navigationShell) {
+          builder: (
+            context,
+            state,
+            navigationShell,
+          ) {
             return AppShellScreen(
               navigationShell: navigationShell,
             );

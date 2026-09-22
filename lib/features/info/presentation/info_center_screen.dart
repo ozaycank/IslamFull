@@ -13,11 +13,13 @@ class InfoCenterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final colorScheme = context.colorScheme;
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = context.textTheme;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.infoCenterTitle),
+        title: Text(
+          l10n.infoCenterTitle,
+        ),
       ),
       body: ListView(
         padding: const EdgeInsets.all(AppSpacing.lg),
@@ -167,6 +169,25 @@ class InfoCenterScreen extends StatelessWidget {
                   ),
                   onTap: () => context.push(
                     AppRoutes.ghuslGuide,
+                  ),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: Icon(
+                    Icons.volunteer_activism_outlined,
+                    color: colorScheme.primary,
+                  ),
+                  title: Text(
+                    l10n.duasTitle,
+                  ),
+                  subtitle: Text(
+                    l10n.duasMenuDesc,
+                  ),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                  ),
+                  onTap: () => context.push(
+                    AppRoutes.duas,
                   ),
                 ),
               ],

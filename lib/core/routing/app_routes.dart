@@ -24,9 +24,10 @@ class AppRoutes {
   static const String infoCenter = '/info-center';
   static const String wuduGuide = '/wudu-guide';
 
-// Guidance
+  // Guidance
   static const String newMuslimJourney = '/new-muslim-journey';
   static const String islamFoundations = '/islam-foundations';
   static const String prayerGuide = '/prayer-guide';
   static const String ghuslGuide = '/ghusl-guide';
+  static const String duas = '/duas';
 }
