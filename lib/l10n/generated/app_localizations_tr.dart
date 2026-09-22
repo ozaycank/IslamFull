@@ -1258,4 +1258,214 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get ghuslSchoolNote =>
       'Guslün farzlarıyla ilgili bazı ayrıntılar mezheplere göre farklılık gösterir. Bu rehber Diyanet\'in Hanefî ağırlıklı yaygın anlatımını temel alır ve ortak amaç olan tam hükmî temizliği esas alır.';
+
+  @override
+  String get journeyLearningPathTitle => 'Öğrenme Yolun';
+
+  @override
+  String get journeyLearningPathDesc =>
+      'Bu işaretleri yalnızca hangi konuları incelediğini ve nereden devam etmek istediğini hatırlamak için kullan. Bunlar puan, ödül veya başarı göstergesi değildir.';
+
+  @override
+  String get journeyReviewed => 'İncelendi';
+
+  @override
+  String get journeyNotReviewed => 'İşaretlenmedi';
+
+  @override
+  String get journeyMarkReviewed => 'İncelendi olarak işaretle';
+
+  @override
+  String get journeyRemoveReviewed => 'İşareti kaldır';
+
+  @override
+  String get journeyContinueButton => 'Kaldığın Yerden Devam Et';
+
+  @override
+  String get newMuslimJourneyDuasTitle => 'Günlük Duaları Öğrenin';
+
+  @override
+  String get newMuslimJourneyDuasDesc =>
+      'Günlük hayatta karşılaşılan durumlar için kaynaklandırılmış temel duaları okuyun.';
+
+  @override
+  String get duasTitle => 'Günlük Dualar';
+
+  @override
+  String get duasMenuDesc =>
+      'Günlük hayatta okunabilecek kısa ve kaynaklandırılmış duaları inceleyin.';
+
+  @override
+  String get duasIntro =>
+      'İslam geleneğinde yer alan dua ve zikirleri öğrenmek için sade bir başvuru alanı. Kendi hızınızda okuyabilir ve ihtiyaç duyduğunuzda yeniden dönebilirsiniz.';
+
+  @override
+  String get duasEverydaySection => 'Günlük Dualar';
+
+  @override
+  String get duasAfterPrayerSection => 'Namaz Sonrası';
+
+  @override
+  String get duasRecommendationNote =>
+      'Bu dua ve zikirler öğrenme ve gönüllü uygulama amacıyla sunulur. Puan, ödül veya başarı sistemi değildir.';
+
+  @override
+  String get duaWhenLabel => 'Ne Zaman';
+
+  @override
+  String get duaArabicLabel => 'Arapça';
+
+  @override
+  String get duaTransliterationLabel => 'Okunuş';
+
+  @override
+  String get duaMeaningLabel => 'Anlamı';
+
+  @override
+  String get duaSourceLabel => 'Kaynak';
+
+  @override
+  String get duaWakeTitle => 'Uyanınca';
+
+  @override
+  String get duaWakeWhen => 'Uykudan uyandıktan sonra.';
+
+  @override
+  String get duaWakeArabic =>
+      'الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ';
+
+  @override
+  String get duaWakeTransliteration =>
+      'Elhamdü lillâhillezî ahyânâ ba\'de mâ emâtenâ ve ileyhi\'n-nüşûr.';
+
+  @override
+  String get duaWakeMeaning =>
+      'Bizi öldürdükten sonra dirilten Allah\'a hamdolsun. Dönüş yine O\'nadır.';
+
+  @override
+  String get duaWakeSource => 'Buhârî, Deavât, 7';
+
+  @override
+  String get duaSleepTitle => 'Uyumadan Önce';
+
+  @override
+  String get duaSleepWhen => 'Yatağa girerken.';
+
+  @override
+  String get duaSleepArabic => 'بِاسْمِكَ أَمُوتُ وَأَحْيَا';
+
+  @override
+  String get duaSleepTransliteration => 'Bismike emûtü ve ahyâ.';
+
+  @override
+  String get duaSleepMeaning => 'Senin adınla ölür ve dirilirim.';
+
+  @override
+  String get duaSleepSource => 'Buhârî, Deavât, 7';
+
+  @override
+  String get duaLeavingHomeTitle => 'Evden Çıkarken';
+
+  @override
+  String get duaLeavingHomeWhen => 'Evden çıkarken.';
+
+  @override
+  String get duaLeavingHomeArabic =>
+      'بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ';
+
+  @override
+  String get duaLeavingHomeTransliteration =>
+      'Bismillâhi tevekkeltü alellâh, lâ havle ve lâ kuvvete illâ billâh.';
+
+  @override
+  String get duaLeavingHomeMeaning =>
+      'Allah\'ın adıyla. Allah\'a tevekkül ettim. Güç ve kuvvet ancak Allah\'ın yardımıyladır.';
+
+  @override
+  String get duaLeavingHomeSource => 'Ebû Dâvûd, Edeb, 102-103';
+
+  @override
+  String get duaRestroomTitle => 'Tuvalete Girmeden Önce';
+
+  @override
+  String get duaRestroomWhen => 'Tuvalete girmeden önce.';
+
+  @override
+  String get duaRestroomArabic =>
+      'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ';
+
+  @override
+  String get duaRestroomTransliteration =>
+      'Allâhümme innî eûzü bike mine\'l-hubsi ve\'l-habâis.';
+
+  @override
+  String get duaRestroomMeaning =>
+      'Allah\'ım! Pislikten ve pis şeylerden sana sığınırım.';
+
+  @override
+  String get duaRestroomSource => 'Buhârî, Vudû, 9';
+
+  @override
+  String get duaAfterMealTitle => 'Yemekten Sonra';
+
+  @override
+  String get duaAfterMealWhen => 'Yemek yedikten veya bir şey içtikten sonra.';
+
+  @override
+  String get duaAfterMealArabic =>
+      'الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مِنَ الْمُسْلِمِينَ';
+
+  @override
+  String get duaAfterMealTransliteration =>
+      'Elhamdü lillâhillezî et\'amenâ ve sekânâ ve cealenâ mine\'l-müslimîn.';
+
+  @override
+  String get duaAfterMealMeaning =>
+      'Bizi yediren, içiren ve Müslümanlardan kılan Allah\'a hamdolsun.';
+
+  @override
+  String get duaAfterMealSource => 'Tirmizî, Daavât, 56';
+
+  @override
+  String get duaTravelTitle => 'Yolculuk';
+
+  @override
+  String get duaTravelWhen => 'Yolculuğa çıkarken.';
+
+  @override
+  String get duaTravelArabic =>
+      'سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى وَمِنَ الْعَمَلِ مَا تَرْضَى اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ وَالْخَلِيفَةُ فِي الْأَهْلِ اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ وَكَآبَةِ الْمَنْظَرِ وَسُوءِ الْمُنْقَلَبِ فِي الْمَالِ وَالْأَهْلِ';
+
+  @override
+  String get duaTravelTransliteration =>
+      'Sübhânellezî sehhara lenâ hâzâ ve mâ kunnâ lehû mukrinîn ve innâ ilâ Rabbinâ le-münkalibûn. Allâhümme innâ nes\'elüke fî seferinâ hâze\'l-birre ve\'t-takvâ ve mine\'l-ameli mâ terdâ. Allâhümme hevvin aleynâ seferenâ hâzâ vatvi annâ bu\'dehû. Allâhümme ente\'s-sâhibü fi\'s-seferi ve\'l-halîfetü fi\'l-ehli. Allâhümme innî eûzü bike min va\'sâi\'s-seferi ve keâbeti\'l-manzari ve sûi\'l-münkalebi fi\'l-mâli ve\'l-ehli.';
+
+  @override
+  String get duaTravelMeaning =>
+      'Bunu bizim hizmetimize veren Allah eksikliklerden münezzehtir. Yoksa biz ona güç yetiremezdik. Şüphesiz Rabbimize döneceğiz. Allah\'ım! Bu yolculuğumuzda senden iyilik, takva ve razı olacağın ameli isteriz. Yolculuğumuzu kolaylaştır, uzaklığı bize yakınlaştır. Yolculukta sahibimiz, ailemiz konusunda vekilimiz sensin. Yolculuğun sıkıntısından, üzücü manzaralardan ve aile ile mala kötü bir şekilde dönmekten sana sığınırım.';
+
+  @override
+  String get duaTravelSource => 'Müslim, Hac, 425';
+
+  @override
+  String get duaAfterPrayerDhikrTitle => 'Namaz Sonrası Tesbihat';
+
+  @override
+  String get duaAfterPrayerDhikrWhen =>
+      'Farz namazlardan sonra yapılabilir. Bu tesbihat tavsiye edilen bir zikirdir ve namazın bir parçası değildir.';
+
+  @override
+  String get duaAfterPrayerDhikrArabic =>
+      'سُبْحَانَ اللَّهِ ×٣٣\nالْحَمْدُ لِلَّهِ ×٣٣\nاللَّهُ أَكْبَرُ ×٣٣\nلَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ';
+
+  @override
+  String get duaAfterPrayerDhikrTransliteration =>
+      'Sübhânallah ×33\nElhamdülillah ×33\nAllahu ekber ×33\nLâ ilâhe illallâhu vahdehû lâ şerîke leh, lehü\'l-mülkü ve lehü\'l-hamdü ve hüve alâ külli şey\'in kadîr.';
+
+  @override
+  String get duaAfterPrayerDhikrMeaning =>
+      '33 defa Allah\'ı tesbih etmek, 33 defa Allah\'a hamdetmek ve 33 defa tekbir getirmek tavsiye edilmiştir. Ardından yüze tamamlamak için Allah\'ın birliğini, hükümranlığını ve kudretini ifade eden zikir okunur.';
+
+  @override
+  String get duaAfterPrayerDhikrSource => 'Müslim, Mesâcid, 146';
 }

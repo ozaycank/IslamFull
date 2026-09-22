@@ -2395,6 +2395,378 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Details concerning the obligatory elements of ghusl differ between Islamic legal schools. The sequence above follows Diyanet\'s commonly taught Hanafi-oriented explanation while identifying the shared goal of complete ritual purification.'**
   String get ghuslSchoolNote;
+
+  /// Title for the New Muslim journey learning path
+  ///
+  /// In en, this message translates to:
+  /// **'Your Learning Path'**
+  String get journeyLearningPathTitle;
+
+  /// Explains the neutral purpose of journey progress markers
+  ///
+  /// In en, this message translates to:
+  /// **'Use these simple markers only to remember what you have reviewed and where you would like to continue. They are not scores, rewards, or achievements.'**
+  String get journeyLearningPathDesc;
+
+  /// Journey step status indicating the topic was reviewed
+  ///
+  /// In en, this message translates to:
+  /// **'Reviewed'**
+  String get journeyReviewed;
+
+  /// Journey step status indicating no review marker has been set
+  ///
+  /// In en, this message translates to:
+  /// **'Not marked'**
+  String get journeyNotReviewed;
+
+  /// Action for marking a journey topic as reviewed
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as reviewed'**
+  String get journeyMarkReviewed;
+
+  /// Action for removing the reviewed marker from a journey topic
+  ///
+  /// In en, this message translates to:
+  /// **'Remove review mark'**
+  String get journeyRemoveReviewed;
+
+  /// Button for continuing from the relevant journey topic
+  ///
+  /// In en, this message translates to:
+  /// **'Continue Learning'**
+  String get journeyContinueButton;
+
+  /// Daily duas step title in the New Muslim journey
+  ///
+  /// In en, this message translates to:
+  /// **'Learn Daily Duas'**
+  String get newMuslimJourneyDuasTitle;
+
+  /// Daily duas step description in the New Muslim journey
+  ///
+  /// In en, this message translates to:
+  /// **'Read a small collection of sourced supplications for common moments in daily life.'**
+  String get newMuslimJourneyDuasDesc;
+
+  /// Daily duas screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Duas'**
+  String get duasTitle;
+
+  /// Daily duas description shown in the information center
+  ///
+  /// In en, this message translates to:
+  /// **'Read short, sourced supplications for everyday moments.'**
+  String get duasMenuDesc;
+
+  /// Introduction shown on the daily duas screen
+  ///
+  /// In en, this message translates to:
+  /// **'A calm reference for learning supplications and remembrance from the Islamic tradition. Read them at your own pace and return whenever you need them.'**
+  String get duasIntro;
+
+  /// Section title for everyday supplications
+  ///
+  /// In en, this message translates to:
+  /// **'Everyday Duas'**
+  String get duasEverydaySection;
+
+  /// Section title for remembrance after prayer
+  ///
+  /// In en, this message translates to:
+  /// **'After Prayer'**
+  String get duasAfterPrayerSection;
+
+  /// Neutral educational note shown on the daily duas screen
+  ///
+  /// In en, this message translates to:
+  /// **'These supplications and remembrances are presented for learning and voluntary practice. They are not a score, reward, or achievement system.'**
+  String get duasRecommendationNote;
+
+  /// Label describing when a dua may be read
+  ///
+  /// In en, this message translates to:
+  /// **'When'**
+  String get duaWhenLabel;
+
+  /// Arabic text label on a dua card
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get duaArabicLabel;
+
+  /// Transliteration label on a dua card
+  ///
+  /// In en, this message translates to:
+  /// **'Transliteration'**
+  String get duaTransliterationLabel;
+
+  /// Meaning label on a dua card
+  ///
+  /// In en, this message translates to:
+  /// **'Meaning'**
+  String get duaMeaningLabel;
+
+  /// Hadith or religious source label on a dua card
+  ///
+  /// In en, this message translates to:
+  /// **'Source'**
+  String get duaSourceLabel;
+
+  /// Title for the supplication upon waking
+  ///
+  /// In en, this message translates to:
+  /// **'Upon Waking'**
+  String get duaWakeTitle;
+
+  /// Usage context for the waking supplication
+  ///
+  /// In en, this message translates to:
+  /// **'After waking from sleep.'**
+  String get duaWakeWhen;
+
+  /// Arabic text of the supplication upon waking
+  ///
+  /// In en, this message translates to:
+  /// **'الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ'**
+  String get duaWakeArabic;
+
+  /// Transliteration of the supplication upon waking
+  ///
+  /// In en, this message translates to:
+  /// **'Al-hamdu lillahil-ladhi ahyana ba\'da ma amatana wa ilayhin-nushur.'**
+  String get duaWakeTransliteration;
+
+  /// Meaning of the supplication upon waking
+  ///
+  /// In en, this message translates to:
+  /// **'All praise is for Allah who gave us life after causing us to die, and to Him is the resurrection.'**
+  String get duaWakeMeaning;
+
+  /// Hadith source for the supplication upon waking
+  ///
+  /// In en, this message translates to:
+  /// **'Bukhari, Da\'awat, 7'**
+  String get duaWakeSource;
+
+  /// Title for the supplication before sleep
+  ///
+  /// In en, this message translates to:
+  /// **'Before Sleep'**
+  String get duaSleepTitle;
+
+  /// Usage context for the sleep supplication
+  ///
+  /// In en, this message translates to:
+  /// **'When going to bed.'**
+  String get duaSleepWhen;
+
+  /// Arabic text of the supplication before sleep
+  ///
+  /// In en, this message translates to:
+  /// **'بِاسْمِكَ أَمُوتُ وَأَحْيَا'**
+  String get duaSleepArabic;
+
+  /// Transliteration of the supplication before sleep
+  ///
+  /// In en, this message translates to:
+  /// **'Bismika amutu wa ahya.'**
+  String get duaSleepTransliteration;
+
+  /// Meaning of the supplication before sleep
+  ///
+  /// In en, this message translates to:
+  /// **'In Your name I die and I live.'**
+  String get duaSleepMeaning;
+
+  /// Hadith source for the supplication before sleep
+  ///
+  /// In en, this message translates to:
+  /// **'Bukhari, Da\'awat, 7'**
+  String get duaSleepSource;
+
+  /// Title for the supplication when leaving home
+  ///
+  /// In en, this message translates to:
+  /// **'Leaving Home'**
+  String get duaLeavingHomeTitle;
+
+  /// Usage context for the leaving home supplication
+  ///
+  /// In en, this message translates to:
+  /// **'When leaving your home.'**
+  String get duaLeavingHomeWhen;
+
+  /// Arabic text of the supplication when leaving home
+  ///
+  /// In en, this message translates to:
+  /// **'بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ'**
+  String get duaLeavingHomeArabic;
+
+  /// Transliteration of the supplication when leaving home
+  ///
+  /// In en, this message translates to:
+  /// **'Bismillah, tawakkaltu \'alallah, la hawla wa la quwwata illa billah.'**
+  String get duaLeavingHomeTransliteration;
+
+  /// Meaning of the supplication when leaving home
+  ///
+  /// In en, this message translates to:
+  /// **'In the name of Allah; I place my trust in Allah. There is no power and no strength except through Allah.'**
+  String get duaLeavingHomeMeaning;
+
+  /// Hadith source for the supplication when leaving home
+  ///
+  /// In en, this message translates to:
+  /// **'Abu Dawud, Adab, 102-103'**
+  String get duaLeavingHomeSource;
+
+  /// Title for the supplication before entering the restroom
+  ///
+  /// In en, this message translates to:
+  /// **'Before Entering the Restroom'**
+  String get duaRestroomTitle;
+
+  /// Usage context for the restroom supplication
+  ///
+  /// In en, this message translates to:
+  /// **'Before entering the restroom.'**
+  String get duaRestroomWhen;
+
+  /// Arabic text of the supplication before entering the restroom
+  ///
+  /// In en, this message translates to:
+  /// **'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ'**
+  String get duaRestroomArabic;
+
+  /// Transliteration of the supplication before entering the restroom
+  ///
+  /// In en, this message translates to:
+  /// **'Allahumma inni a\'udhu bika minal-khubthi wal-khaba\'ith.'**
+  String get duaRestroomTransliteration;
+
+  /// Meaning of the supplication before entering the restroom
+  ///
+  /// In en, this message translates to:
+  /// **'O Allah, I seek refuge in You from evil and impure things.'**
+  String get duaRestroomMeaning;
+
+  /// Hadith source for the supplication before entering the restroom
+  ///
+  /// In en, this message translates to:
+  /// **'Bukhari, Wudu, 9'**
+  String get duaRestroomSource;
+
+  /// Title for the supplication after eating
+  ///
+  /// In en, this message translates to:
+  /// **'After Eating'**
+  String get duaAfterMealTitle;
+
+  /// Usage context for the supplication after eating
+  ///
+  /// In en, this message translates to:
+  /// **'After eating or drinking.'**
+  String get duaAfterMealWhen;
+
+  /// Arabic text of the supplication after eating
+  ///
+  /// In en, this message translates to:
+  /// **'الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مِنَ الْمُسْلِمِينَ'**
+  String get duaAfterMealArabic;
+
+  /// Transliteration of the supplication after eating
+  ///
+  /// In en, this message translates to:
+  /// **'Al-hamdu lillahil-ladhi at\'amana wa saqana wa ja\'alana minal-muslimin.'**
+  String get duaAfterMealTransliteration;
+
+  /// Meaning of the supplication after eating
+  ///
+  /// In en, this message translates to:
+  /// **'All praise is for Allah who fed us, gave us drink, and made us among the Muslims.'**
+  String get duaAfterMealMeaning;
+
+  /// Hadith source for the supplication after eating
+  ///
+  /// In en, this message translates to:
+  /// **'Tirmidhi, Da\'awat, 56'**
+  String get duaAfterMealSource;
+
+  /// Title for the travel supplication
+  ///
+  /// In en, this message translates to:
+  /// **'Travel'**
+  String get duaTravelTitle;
+
+  /// Usage context for the travel supplication
+  ///
+  /// In en, this message translates to:
+  /// **'When setting out on a journey.'**
+  String get duaTravelWhen;
+
+  /// Arabic text of the travel supplication
+  ///
+  /// In en, this message translates to:
+  /// **'سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى وَمِنَ الْعَمَلِ مَا تَرْضَى اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ وَالْخَلِيفَةُ فِي الْأَهْلِ اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ وَكَآبَةِ الْمَنْظَرِ وَسُوءِ الْمُنْقَلَبِ فِي الْمَالِ وَالْأَهْلِ'**
+  String get duaTravelArabic;
+
+  /// Transliteration of the travel supplication
+  ///
+  /// In en, this message translates to:
+  /// **'Subhanalladhi sakhkhara lana hadha wa ma kunna lahu muqrinin, wa inna ila rabbina lamunqalibun. Allahumma inna nas\'aluka fi safarina hadhal-birra wat-taqwa wa minal-\'amali ma tarda. Allahumma hawwin \'alayna safarana hadha watwi \'anna bu\'dahu. Allahumma antas-sahibu fis-safari wal-khalifatu fil-ahli. Allahumma inni a\'udhu bika min wa\'tha\'is-safari wa ka\'abatil-manzari wa su\'il-munqalabi fil-mali wal-ahli.'**
+  String get duaTravelTransliteration;
+
+  /// Meaning of the travel supplication
+  ///
+  /// In en, this message translates to:
+  /// **'Glory is to the One who placed this at our service, though we could not have controlled it ourselves, and surely to our Lord we will return. O Allah, we ask You on this journey for righteousness, mindfulness of You, and deeds that please You. Make this journey easy for us and shorten its distance. You are our Companion on the journey and the Guardian of our family. I seek refuge in You from the hardship of travel, distressing sights, and an unhappy return to family and property.'**
+  String get duaTravelMeaning;
+
+  /// Hadith source for the travel supplication
+  ///
+  /// In en, this message translates to:
+  /// **'Muslim, Hajj, 425'**
+  String get duaTravelSource;
+
+  /// Title for recommended remembrance after prayer
+  ///
+  /// In en, this message translates to:
+  /// **'Remembrance After Prayer'**
+  String get duaAfterPrayerDhikrTitle;
+
+  /// Usage and religious status note for remembrance after prayer
+  ///
+  /// In en, this message translates to:
+  /// **'After the obligatory prayer. This remembrance is recommended and is not part of the prayer itself.'**
+  String get duaAfterPrayerDhikrWhen;
+
+  /// Arabic text for recommended remembrance after prayer
+  ///
+  /// In en, this message translates to:
+  /// **'سُبْحَانَ اللَّهِ ×٣٣\nالْحَمْدُ لِلَّهِ ×٣٣\nاللَّهُ أَكْبَرُ ×٣٣\nلَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ'**
+  String get duaAfterPrayerDhikrArabic;
+
+  /// Transliteration for recommended remembrance after prayer
+  ///
+  /// In en, this message translates to:
+  /// **'Subhanallah ×33\nAlhamdulillah ×33\nAllahu Akbar ×33\nLa ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamdu wa huwa \'ala kulli shay\'in qadir.'**
+  String get duaAfterPrayerDhikrTransliteration;
+
+  /// Meaning and sequence of recommended remembrance after prayer
+  ///
+  /// In en, this message translates to:
+  /// **'Glory is to Allah ×33. All praise is for Allah ×33. Allah is the Greatest ×33. Then complete one hundred with: There is no deity except Allah alone, without partner. His is the dominion and His is all praise, and He has power over all things.'**
+  String get duaAfterPrayerDhikrMeaning;
+
+  /// Hadith source for recommended remembrance after prayer
+  ///
+  /// In en, this message translates to:
+  /// **'Muslim, Masajid, 146'**
+  String get duaAfterPrayerDhikrSource;
 }
 
 class _AppLocalizationsDelegate

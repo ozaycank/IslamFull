@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
-import '../../menu/presentation/screens/preferences_screen.dart';
+import '../../menu/application/preferences_provider.dart';
 
 class TasbihScreen extends ConsumerStatefulWidget {
   const TasbihScreen({super.key});

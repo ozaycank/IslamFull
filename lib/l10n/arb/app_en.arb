@@ -1354,5 +1354,261 @@
 "ghuslSchoolNote": "Details concerning the obligatory elements of ghusl differ between Islamic legal schools. The sequence above follows Diyanet's commonly taught Hanafi-oriented explanation while identifying the shared goal of complete ritual purification.",
 "@ghuslSchoolNote": {
   "description": "Note explaining school-specific differences in ghusl"
+},
+"journeyLearningPathTitle": "Your Learning Path",
+"@journeyLearningPathTitle": {
+  "description": "Title for the New Muslim journey learning path"
+},
+"journeyLearningPathDesc": "Use these simple markers only to remember what you have reviewed and where you would like to continue. They are not scores, rewards, or achievements.",
+"@journeyLearningPathDesc": {
+  "description": "Explains the neutral purpose of journey progress markers"
+},
+"journeyReviewed": "Reviewed",
+"@journeyReviewed": {
+  "description": "Journey step status indicating the topic was reviewed"
+},
+"journeyNotReviewed": "Not marked",
+"@journeyNotReviewed": {
+  "description": "Journey step status indicating no review marker has been set"
+},
+"journeyMarkReviewed": "Mark as reviewed",
+"@journeyMarkReviewed": {
+  "description": "Action for marking a journey topic as reviewed"
+},
+"journeyRemoveReviewed": "Remove review mark",
+"@journeyRemoveReviewed": {
+  "description": "Action for removing the reviewed marker from a journey topic"
+},
+"journeyContinueButton": "Continue Learning",
+"@journeyContinueButton": {
+  "description": "Button for continuing from the relevant journey topic"
+},
+"newMuslimJourneyDuasTitle": "Learn Daily Duas",
+"@newMuslimJourneyDuasTitle": {
+  "description": "Daily duas step title in the New Muslim journey"
+},
+"newMuslimJourneyDuasDesc": "Read a small collection of sourced supplications for common moments in daily life.",
+"@newMuslimJourneyDuasDesc": {
+  "description": "Daily duas step description in the New Muslim journey"
+},
+
+"duasTitle": "Daily Duas",
+"@duasTitle": {
+  "description": "Daily duas screen title"
+},
+"duasMenuDesc": "Read short, sourced supplications for everyday moments.",
+"@duasMenuDesc": {
+  "description": "Daily duas description shown in the information center"
+},
+"duasIntro": "A calm reference for learning supplications and remembrance from the Islamic tradition. Read them at your own pace and return whenever you need them.",
+"@duasIntro": {
+  "description": "Introduction shown on the daily duas screen"
+},
+"duasEverydaySection": "Everyday Duas",
+"@duasEverydaySection": {
+  "description": "Section title for everyday supplications"
+},
+"duasAfterPrayerSection": "After Prayer",
+"@duasAfterPrayerSection": {
+  "description": "Section title for remembrance after prayer"
+},
+"duasRecommendationNote": "These supplications and remembrances are presented for learning and voluntary practice. They are not a score, reward, or achievement system.",
+"@duasRecommendationNote": {
+  "description": "Neutral educational note shown on the daily duas screen"
+},
+"duaWhenLabel": "When",
+"@duaWhenLabel": {
+  "description": "Label describing when a dua may be read"
+},
+"duaArabicLabel": "Arabic",
+"@duaArabicLabel": {
+  "description": "Arabic text label on a dua card"
+},
+"duaTransliterationLabel": "Transliteration",
+"@duaTransliterationLabel": {
+  "description": "Transliteration label on a dua card"
+},
+"duaMeaningLabel": "Meaning",
+"@duaMeaningLabel": {
+  "description": "Meaning label on a dua card"
+},
+"duaSourceLabel": "Source",
+"@duaSourceLabel": {
+  "description": "Hadith or religious source label on a dua card"
+},
+
+"duaWakeTitle": "Upon Waking",
+"@duaWakeTitle": {
+  "description": "Title for the supplication upon waking"
+},
+"duaWakeWhen": "After waking from sleep.",
+"@duaWakeWhen": {
+  "description": "Usage context for the waking supplication"
+},
+"duaWakeArabic": "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+"@duaWakeArabic": {
+  "description": "Arabic text of the supplication upon waking"
+},
+"duaWakeTransliteration": "Al-hamdu lillahil-ladhi ahyana ba'da ma amatana wa ilayhin-nushur.",
+"@duaWakeTransliteration": {
+  "description": "Transliteration of the supplication upon waking"
+},
+"duaWakeMeaning": "All praise is for Allah who gave us life after causing us to die, and to Him is the resurrection.",
+"@duaWakeMeaning": {
+  "description": "Meaning of the supplication upon waking"
+},
+"duaWakeSource": "Bukhari, Da'awat, 7",
+"@duaWakeSource": {
+  "description": "Hadith source for the supplication upon waking"
+},
+
+"duaSleepTitle": "Before Sleep",
+"@duaSleepTitle": {
+  "description": "Title for the supplication before sleep"
+},
+"duaSleepWhen": "When going to bed.",
+"@duaSleepWhen": {
+  "description": "Usage context for the sleep supplication"
+},
+"duaSleepArabic": "بِاسْمِكَ أَمُوتُ وَأَحْيَا",
+"@duaSleepArabic": {
+  "description": "Arabic text of the supplication before sleep"
+},
+"duaSleepTransliteration": "Bismika amutu wa ahya.",
+"@duaSleepTransliteration": {
+  "description": "Transliteration of the supplication before sleep"
+},
+"duaSleepMeaning": "In Your name I die and I live.",
+"@duaSleepMeaning": {
+  "description": "Meaning of the supplication before sleep"
+},
+"duaSleepSource": "Bukhari, Da'awat, 7",
+"@duaSleepSource": {
+  "description": "Hadith source for the supplication before sleep"
+},
+
+"duaLeavingHomeTitle": "Leaving Home",
+"@duaLeavingHomeTitle": {
+  "description": "Title for the supplication when leaving home"
+},
+"duaLeavingHomeWhen": "When leaving your home.",
+"@duaLeavingHomeWhen": {
+  "description": "Usage context for the leaving home supplication"
+},
+"duaLeavingHomeArabic": "بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+"@duaLeavingHomeArabic": {
+  "description": "Arabic text of the supplication when leaving home"
+},
+"duaLeavingHomeTransliteration": "Bismillah, tawakkaltu 'alallah, la hawla wa la quwwata illa billah.",
+"@duaLeavingHomeTransliteration": {
+  "description": "Transliteration of the supplication when leaving home"
+},
+"duaLeavingHomeMeaning": "In the name of Allah; I place my trust in Allah. There is no power and no strength except through Allah.",
+"@duaLeavingHomeMeaning": {
+  "description": "Meaning of the supplication when leaving home"
+},
+"duaLeavingHomeSource": "Abu Dawud, Adab, 102-103",
+"@duaLeavingHomeSource": {
+  "description": "Hadith source for the supplication when leaving home"
+},
+
+"duaRestroomTitle": "Before Entering the Restroom",
+"@duaRestroomTitle": {
+  "description": "Title for the supplication before entering the restroom"
+},
+"duaRestroomWhen": "Before entering the restroom.",
+"@duaRestroomWhen": {
+  "description": "Usage context for the restroom supplication"
+},
+"duaRestroomArabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ",
+"@duaRestroomArabic": {
+  "description": "Arabic text of the supplication before entering the restroom"
+},
+"duaRestroomTransliteration": "Allahumma inni a'udhu bika minal-khubthi wal-khaba'ith.",
+"@duaRestroomTransliteration": {
+  "description": "Transliteration of the supplication before entering the restroom"
+},
+"duaRestroomMeaning": "O Allah, I seek refuge in You from evil and impure things.",
+"@duaRestroomMeaning": {
+  "description": "Meaning of the supplication before entering the restroom"
+},
+"duaRestroomSource": "Bukhari, Wudu, 9",
+"@duaRestroomSource": {
+  "description": "Hadith source for the supplication before entering the restroom"
+},
+
+"duaAfterMealTitle": "After Eating",
+"@duaAfterMealTitle": {
+  "description": "Title for the supplication after eating"
+},
+"duaAfterMealWhen": "After eating or drinking.",
+"@duaAfterMealWhen": {
+  "description": "Usage context for the supplication after eating"
+},
+"duaAfterMealArabic": "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مِنَ الْمُسْلِمِينَ",
+"@duaAfterMealArabic": {
+  "description": "Arabic text of the supplication after eating"
+},
+"duaAfterMealTransliteration": "Al-hamdu lillahil-ladhi at'amana wa saqana wa ja'alana minal-muslimin.",
+"@duaAfterMealTransliteration": {
+  "description": "Transliteration of the supplication after eating"
+},
+"duaAfterMealMeaning": "All praise is for Allah who fed us, gave us drink, and made us among the Muslims.",
+"@duaAfterMealMeaning": {
+  "description": "Meaning of the supplication after eating"
+},
+"duaAfterMealSource": "Tirmidhi, Da'awat, 56",
+"@duaAfterMealSource": {
+  "description": "Hadith source for the supplication after eating"
+},
+
+"duaTravelTitle": "Travel",
+"@duaTravelTitle": {
+  "description": "Title for the travel supplication"
+},
+"duaTravelWhen": "When setting out on a journey.",
+"@duaTravelWhen": {
+  "description": "Usage context for the travel supplication"
+},
+"duaTravelArabic": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى وَمِنَ الْعَمَلِ مَا تَرْضَى اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ وَالْخَلِيفَةُ فِي الْأَهْلِ اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ وَكَآبَةِ الْمَنْظَرِ وَسُوءِ الْمُنْقَلَبِ فِي الْمَالِ وَالْأَهْلِ",
+"@duaTravelArabic": {
+  "description": "Arabic text of the travel supplication"
+},
+"duaTravelTransliteration": "Subhanalladhi sakhkhara lana hadha wa ma kunna lahu muqrinin, wa inna ila rabbina lamunqalibun. Allahumma inna nas'aluka fi safarina hadhal-birra wat-taqwa wa minal-'amali ma tarda. Allahumma hawwin 'alayna safarana hadha watwi 'anna bu'dahu. Allahumma antas-sahibu fis-safari wal-khalifatu fil-ahli. Allahumma inni a'udhu bika min wa'tha'is-safari wa ka'abatil-manzari wa su'il-munqalabi fil-mali wal-ahli.",
+"@duaTravelTransliteration": {
+  "description": "Transliteration of the travel supplication"
+},
+"duaTravelMeaning": "Glory is to the One who placed this at our service, though we could not have controlled it ourselves, and surely to our Lord we will return. O Allah, we ask You on this journey for righteousness, mindfulness of You, and deeds that please You. Make this journey easy for us and shorten its distance. You are our Companion on the journey and the Guardian of our family. I seek refuge in You from the hardship of travel, distressing sights, and an unhappy return to family and property.",
+"@duaTravelMeaning": {
+  "description": "Meaning of the travel supplication"
+},
+"duaTravelSource": "Muslim, Hajj, 425",
+"@duaTravelSource": {
+  "description": "Hadith source for the travel supplication"
+},
+
+"duaAfterPrayerDhikrTitle": "Remembrance After Prayer",
+"@duaAfterPrayerDhikrTitle": {
+  "description": "Title for recommended remembrance after prayer"
+},
+"duaAfterPrayerDhikrWhen": "After the obligatory prayer. This remembrance is recommended and is not part of the prayer itself.",
+"@duaAfterPrayerDhikrWhen": {
+  "description": "Usage and religious status note for remembrance after prayer"
+},
+"duaAfterPrayerDhikrArabic": "سُبْحَانَ اللَّهِ ×٣٣\nالْحَمْدُ لِلَّهِ ×٣٣\nاللَّهُ أَكْبَرُ ×٣٣\nلَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+"@duaAfterPrayerDhikrArabic": {
+  "description": "Arabic text for recommended remembrance after prayer"
+},
+"duaAfterPrayerDhikrTransliteration": "Subhanallah ×33\nAlhamdulillah ×33\nAllahu Akbar ×33\nLa ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamdu wa huwa 'ala kulli shay'in qadir.",
+"@duaAfterPrayerDhikrTransliteration": {
+  "description": "Transliteration for recommended remembrance after prayer"
+},
+"duaAfterPrayerDhikrMeaning": "Glory is to Allah ×33. All praise is for Allah ×33. Allah is the Greatest ×33. Then complete one hundred with: There is no deity except Allah alone, without partner. His is the dominion and His is all praise, and He has power over all things.",
+"@duaAfterPrayerDhikrMeaning": {
+  "description": "Meaning and sequence of recommended remembrance after prayer"
+},
+"duaAfterPrayerDhikrSource": "Muslim, Masajid, 146",
+"@duaAfterPrayerDhikrSource": {
+  "description": "Hadith source for recommended remembrance after prayer"
 }
 }

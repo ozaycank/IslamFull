@@ -19,7 +19,7 @@ import '../../../prayer/prayer_times/application/providers/prayer_times_notifier
 import '../../../prayer/prayer_times/presentation/providers/prayer_live_state_provider.dart';
 import '../../../prayer/shared/presentation/utils/presentation_localizer.dart';
 import '../../../quran/application/providers/daily_verse_provider.dart';
-import '../../../menu/presentation/screens/preferences_screen.dart';
+import '../../../menu/application/preferences_provider.dart';
 // Prayer Domain Entities
 import '../../../prayer/prayer_times/domain/value_objects/prayer_name.dart';
 import '../../../prayer/prayer_times/domain/entities/prayer_time.dart';

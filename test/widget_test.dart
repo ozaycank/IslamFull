@@ -9,6 +9,7 @@ import 'package:noor_life/core/logging/logger_service.dart';
 import 'package:noor_life/core/providers/notification_coordinator_provider.dart';
 import 'package:noor_life/core/theme/theme_provider.dart';
 import 'package:noor_life/features/settings/application/providers/language_settings_notifier.dart';
+import 'package:noor_life/features/menu/application/preferences_provider.dart';
 
 class MockLoggerService extends Mock implements LoggerService {}
 
@@ -79,7 +80,9 @@ void main() {
               // participate in a lightweight application bootstrap test.
               notificationCoordinatorProvider.overrideWith(
                 (ref) {},
+                
               ),
+              showDailyVerseSettingProvider.overrideWithValue(true),
             ],
             child: const NoorLifeApp(),
           ),

@@ -1254,4 +1254,214 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get ghuslSchoolNote =>
       'Details concerning the obligatory elements of ghusl differ between Islamic legal schools. The sequence above follows Diyanet\'s commonly taught Hanafi-oriented explanation while identifying the shared goal of complete ritual purification.';
+
+  @override
+  String get journeyLearningPathTitle => 'Your Learning Path';
+
+  @override
+  String get journeyLearningPathDesc =>
+      'Use these simple markers only to remember what you have reviewed and where you would like to continue. They are not scores, rewards, or achievements.';
+
+  @override
+  String get journeyReviewed => 'Reviewed';
+
+  @override
+  String get journeyNotReviewed => 'Not marked';
+
+  @override
+  String get journeyMarkReviewed => 'Mark as reviewed';
+
+  @override
+  String get journeyRemoveReviewed => 'Remove review mark';
+
+  @override
+  String get journeyContinueButton => 'Continue Learning';
+
+  @override
+  String get newMuslimJourneyDuasTitle => 'Learn Daily Duas';
+
+  @override
+  String get newMuslimJourneyDuasDesc =>
+      'Read a small collection of sourced supplications for common moments in daily life.';
+
+  @override
+  String get duasTitle => 'Daily Duas';
+
+  @override
+  String get duasMenuDesc =>
+      'Read short, sourced supplications for everyday moments.';
+
+  @override
+  String get duasIntro =>
+      'A calm reference for learning supplications and remembrance from the Islamic tradition. Read them at your own pace and return whenever you need them.';
+
+  @override
+  String get duasEverydaySection => 'Everyday Duas';
+
+  @override
+  String get duasAfterPrayerSection => 'After Prayer';
+
+  @override
+  String get duasRecommendationNote =>
+      'These supplications and remembrances are presented for learning and voluntary practice. They are not a score, reward, or achievement system.';
+
+  @override
+  String get duaWhenLabel => 'When';
+
+  @override
+  String get duaArabicLabel => 'Arabic';
+
+  @override
+  String get duaTransliterationLabel => 'Transliteration';
+
+  @override
+  String get duaMeaningLabel => 'Meaning';
+
+  @override
+  String get duaSourceLabel => 'Source';
+
+  @override
+  String get duaWakeTitle => 'Upon Waking';
+
+  @override
+  String get duaWakeWhen => 'After waking from sleep.';
+
+  @override
+  String get duaWakeArabic =>
+      'الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ';
+
+  @override
+  String get duaWakeTransliteration =>
+      'Al-hamdu lillahil-ladhi ahyana ba\'da ma amatana wa ilayhin-nushur.';
+
+  @override
+  String get duaWakeMeaning =>
+      'All praise is for Allah who gave us life after causing us to die, and to Him is the resurrection.';
+
+  @override
+  String get duaWakeSource => 'Bukhari, Da\'awat, 7';
+
+  @override
+  String get duaSleepTitle => 'Before Sleep';
+
+  @override
+  String get duaSleepWhen => 'When going to bed.';
+
+  @override
+  String get duaSleepArabic => 'بِاسْمِكَ أَمُوتُ وَأَحْيَا';
+
+  @override
+  String get duaSleepTransliteration => 'Bismika amutu wa ahya.';
+
+  @override
+  String get duaSleepMeaning => 'In Your name I die and I live.';
+
+  @override
+  String get duaSleepSource => 'Bukhari, Da\'awat, 7';
+
+  @override
+  String get duaLeavingHomeTitle => 'Leaving Home';
+
+  @override
+  String get duaLeavingHomeWhen => 'When leaving your home.';
+
+  @override
+  String get duaLeavingHomeArabic =>
+      'بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ';
+
+  @override
+  String get duaLeavingHomeTransliteration =>
+      'Bismillah, tawakkaltu \'alallah, la hawla wa la quwwata illa billah.';
+
+  @override
+  String get duaLeavingHomeMeaning =>
+      'In the name of Allah; I place my trust in Allah. There is no power and no strength except through Allah.';
+
+  @override
+  String get duaLeavingHomeSource => 'Abu Dawud, Adab, 102-103';
+
+  @override
+  String get duaRestroomTitle => 'Before Entering the Restroom';
+
+  @override
+  String get duaRestroomWhen => 'Before entering the restroom.';
+
+  @override
+  String get duaRestroomArabic =>
+      'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ';
+
+  @override
+  String get duaRestroomTransliteration =>
+      'Allahumma inni a\'udhu bika minal-khubthi wal-khaba\'ith.';
+
+  @override
+  String get duaRestroomMeaning =>
+      'O Allah, I seek refuge in You from evil and impure things.';
+
+  @override
+  String get duaRestroomSource => 'Bukhari, Wudu, 9';
+
+  @override
+  String get duaAfterMealTitle => 'After Eating';
+
+  @override
+  String get duaAfterMealWhen => 'After eating or drinking.';
+
+  @override
+  String get duaAfterMealArabic =>
+      'الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مِنَ الْمُسْلِمِينَ';
+
+  @override
+  String get duaAfterMealTransliteration =>
+      'Al-hamdu lillahil-ladhi at\'amana wa saqana wa ja\'alana minal-muslimin.';
+
+  @override
+  String get duaAfterMealMeaning =>
+      'All praise is for Allah who fed us, gave us drink, and made us among the Muslims.';
+
+  @override
+  String get duaAfterMealSource => 'Tirmidhi, Da\'awat, 56';
+
+  @override
+  String get duaTravelTitle => 'Travel';
+
+  @override
+  String get duaTravelWhen => 'When setting out on a journey.';
+
+  @override
+  String get duaTravelArabic =>
+      'سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى وَمِنَ الْعَمَلِ مَا تَرْضَى اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ وَالْخَلِيفَةُ فِي الْأَهْلِ اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ وَكَآبَةِ الْمَنْظَرِ وَسُوءِ الْمُنْقَلَبِ فِي الْمَالِ وَالْأَهْلِ';
+
+  @override
+  String get duaTravelTransliteration =>
+      'Subhanalladhi sakhkhara lana hadha wa ma kunna lahu muqrinin, wa inna ila rabbina lamunqalibun. Allahumma inna nas\'aluka fi safarina hadhal-birra wat-taqwa wa minal-\'amali ma tarda. Allahumma hawwin \'alayna safarana hadha watwi \'anna bu\'dahu. Allahumma antas-sahibu fis-safari wal-khalifatu fil-ahli. Allahumma inni a\'udhu bika min wa\'tha\'is-safari wa ka\'abatil-manzari wa su\'il-munqalabi fil-mali wal-ahli.';
+
+  @override
+  String get duaTravelMeaning =>
+      'Glory is to the One who placed this at our service, though we could not have controlled it ourselves, and surely to our Lord we will return. O Allah, we ask You on this journey for righteousness, mindfulness of You, and deeds that please You. Make this journey easy for us and shorten its distance. You are our Companion on the journey and the Guardian of our family. I seek refuge in You from the hardship of travel, distressing sights, and an unhappy return to family and property.';
+
+  @override
+  String get duaTravelSource => 'Muslim, Hajj, 425';
+
+  @override
+  String get duaAfterPrayerDhikrTitle => 'Remembrance After Prayer';
+
+  @override
+  String get duaAfterPrayerDhikrWhen =>
+      'After the obligatory prayer. This remembrance is recommended and is not part of the prayer itself.';
+
+  @override
+  String get duaAfterPrayerDhikrArabic =>
+      'سُبْحَانَ اللَّهِ ×٣٣\nالْحَمْدُ لِلَّهِ ×٣٣\nاللَّهُ أَكْبَرُ ×٣٣\nلَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ';
+
+  @override
+  String get duaAfterPrayerDhikrTransliteration =>
+      'Subhanallah ×33\nAlhamdulillah ×33\nAllahu Akbar ×33\nLa ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamdu wa huwa \'ala kulli shay\'in qadir.';
+
+  @override
+  String get duaAfterPrayerDhikrMeaning =>
+      'Glory is to Allah ×33. All praise is for Allah ×33. Allah is the Greatest ×33. Then complete one hundred with: There is no deity except Allah alone, without partner. His is the dominion and His is all praise, and He has power over all things.';
+
+  @override
+  String get duaAfterPrayerDhikrSource => 'Muslim, Masajid, 146';
 }
