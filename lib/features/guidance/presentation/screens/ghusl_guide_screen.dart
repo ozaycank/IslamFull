@@ -19,37 +19,37 @@ class GhuslGuideScreen extends StatelessWidget {
         icon: Icons.favorite_outline,
         title: l10n.ghuslStep1Title,
         description: l10n.ghuslStep1Desc,
-        imagePath: 'assets/images/ghusl/step1.png',
+        imagePath: 'images/ghusl/step1.png',
       ),
       (
         icon: Icons.cleaning_services_outlined,
         title: l10n.ghuslStep2Title,
         description: l10n.ghuslStep2Desc,
-        imagePath: 'assets/images/ghusl/step2.png',
+        imagePath: 'images/ghusl/step2.png',
       ),
       (
         icon: Icons.water_drop_outlined,
         title: l10n.ghuslStep3Title,
         description: l10n.ghuslStep3Desc,
-        imagePath: 'assets/images/ghusl/step3.png',
+        imagePath: 'images/ghusl/step3.png',
       ),
       (
         icon: Icons.wash_outlined,
         title: l10n.ghuslStep4Title,
         description: l10n.ghuslStep4Desc,
-        imagePath: 'assets/images/ghusl/step4.png',
+        imagePath: 'images/ghusl/step4.png',
       ),
       (
         icon: Icons.shower_outlined,
         title: l10n.ghuslStep5Title,
         description: l10n.ghuslStep5Desc,
-        imagePath: 'assets/images/ghusl/step5.png',
+        imagePath: 'images/ghusl/step5.png',
       ),
       (
         icon: Icons.accessibility_new_outlined,
         title: l10n.ghuslStep6Title,
         description: l10n.ghuslStep6Desc,
-        imagePath: 'assets/images/ghusl/step6.png',
+        imagePath: 'images/ghusl/step6.png',
       ),
     ];
 

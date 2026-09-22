@@ -2231,7 +2231,7 @@ abstract class AppLocalizations {
   /// Prayer guide step 4 description
   ///
   /// In en, this message translates to:
-  /// **'Rise to a fully upright position after bowing. Take a brief moment of stillness before proceeding to prostration.'**
+  /// **'Rise from bowing while saying \'Sami\'Allahu liman hamidah\'. Once fully upright, say \'Rabbana laka\'l-hamd\'. Remain briefly in the upright position before proceeding to prostration.'**
   String get prayerGuideStep4Desc;
 
   /// Prayer guide step 5 title
@@ -2243,7 +2243,7 @@ abstract class AppLocalizations {
   /// Prayer guide step 5 description
   ///
   /// In en, this message translates to:
-  /// **'Go into prostration, rise briefly to a sitting position, and then perform the second prostration. In the commonly taught practice, \'Subhana Rabbiyal A\'la\' is recited three times in each prostration.'**
+  /// **'Say \'Allahu Akbar\' to enter prostration, rise briefly to a sitting position, and then perform the second prostration. In the commonly taught practice, \'Subhana Rabbiyal A\'la\' is recited three times in each prostration.'**
   String get prayerGuideStep5Desc;
 
   /// Prayer guide step 6 title

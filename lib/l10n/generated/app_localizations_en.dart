@@ -1157,14 +1157,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get prayerGuideStep4Desc =>
-      'Rise to a fully upright position after bowing. Take a brief moment of stillness before proceeding to prostration.';
+      'Rise from bowing while saying \'Sami\'Allahu liman hamidah\'. Once fully upright, say \'Rabbana laka\'l-hamd\'. Remain briefly in the upright position before proceeding to prostration.';
 
   @override
   String get prayerGuideStep5Title => '5. Two Prostrations';
 
   @override
   String get prayerGuideStep5Desc =>
-      'Go into prostration, rise briefly to a sitting position, and then perform the second prostration. In the commonly taught practice, \'Subhana Rabbiyal A\'la\' is recited three times in each prostration.';
+      'Say \'Allahu Akbar\' to enter prostration, rise briefly to a sitting position, and then perform the second prostration. In the commonly taught practice, \'Subhana Rabbiyal A\'la\' is recited three times in each prostration.';
 
   @override
   String get prayerGuideStep6Title => '6. Second Rak\'ah';

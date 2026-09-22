@@ -1161,28 +1161,28 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get prayerGuideStep4Desc =>
-      'Rükûdan tamamen doğrularak ayağa kalkılır ve secdeye geçmeden önce kısa bir süre sükûnetle durulur.';
+      'Rükûdan doğrulurken \'Semi’allâhü limen hamideh\' denilerek ayağa kalkılır. Tam olarak doğrulup ayakta durulduğunda \'Rabbenâ leke’l-hamd\' denilerek secdeye geçmeden önce kısa bir süre sükûnetle durulur.';
 
   @override
   String get prayerGuideStep5Title => '5. İki Secde';
 
   @override
   String get prayerGuideStep5Desc =>
-      'Secdeye varılır, ardından kısa bir süre oturulur ve ikinci secde yapılır. Yaygın uygulamada her secdede üç defa \'Sübhâne Rabbiye\'l-A\'lâ\' denilir.';
+      '\'Allahu ekber\' denilerek secdeye varılır, ardından \'Allahu ekber\' denilerek kısa bir süre oturulur ve \'Allahu ekber\' denilerek ikinci secde yapılır. Yaygın uygulamada her secdede üç defa \'Sübhâne Rabbiye\'l-A\'lâ\' denilir.';
 
   @override
   String get prayerGuideStep6Title => '6. İkinci Rekât';
 
   @override
   String get prayerGuideStep6Desc =>
-      'İkinci rekâta kalkılır. Fâtiha ve Kur\'an\'dan bir bölüm okunduktan sonra rükû ve iki secde tekrar edilir.';
+      '\'Allahu ekber\' denilerek ikinci rekâta kalkılır. Fâtiha ve Kur\'an\'dan bir bölüm okunduktan sonra rükû ve iki secde tekrar edilir.';
 
   @override
   String get prayerGuideStep7Title => '7. Son Oturuş';
 
   @override
   String get prayerGuideStep7Desc =>
-      'İkinci rekâtın ardından son oturuşa geçilir. Diyanet\'in yaygın öğretiminde burada Ettehiyyâtü ile salavat duaları okunur.';
+      '\'Allahu ekber\' denilerek ikinci rekâta kalkılır. Fâtiha ve Kur\'an\'dan bir bölüm okunduktan sonra rükû ve iki secde tekrar edilir.';
 
   @override
   String get prayerGuideStep8Title => '8. Selam ile Tamamlama';
