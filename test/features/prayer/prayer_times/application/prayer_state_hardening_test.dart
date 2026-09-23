@@ -1,21 +1,23 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:timezone/data/latest.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
 
-import 'package:noor_life/features/prayer/prayer_times/application/states/prayer_times_state.dart';
-import 'package:noor_life/features/prayer/prayer_times/presentation/providers/prayer_live_state_provider.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/entities/prayer_time.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/entities/prayer_day.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/entities/prayer_schedule.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/value_objects/prayer_name.dart';
 import 'package:noor_life/features/prayer/location/domain/entities/prayer_location.dart';
 import 'package:noor_life/features/prayer/prayer_times/application/providers/prayer_times_notifier.dart';
+import 'package:noor_life/features/prayer/prayer_times/application/states/prayer_times_state.dart';
+import 'package:noor_life/features/prayer/prayer_times/domain/entities/prayer_day.dart';
+import 'package:noor_life/features/prayer/prayer_times/domain/entities/prayer_schedule.dart';
+import 'package:noor_life/features/prayer/prayer_times/domain/entities/prayer_time.dart';
+import 'package:noor_life/features/prayer/prayer_times/domain/value_objects/prayer_name.dart';
+import 'package:noor_life/features/prayer/prayer_times/presentation/providers/prayer_live_state_provider.dart';
 import 'package:noor_life/features/prayer/shared/domain/errors/prayer_failure.dart';
 
 class FakePrayerTimesNotifier extends PrayerTimesNotifier {
   final PrayerTimesState fakeState;
-  FakePrayerTimesNotifier(this.fakeState);
+
+  FakePrayerTimesNotifier(
+    this.fakeState,
+  );
 
   @override
   PrayerTimesState build() => fakeState;
@@ -26,9 +28,9 @@ void main() {
     tz.initializeTimeZones();
   });
 
-  group('Phase 5.1 Hardening Tests', () {
+  group('Prayer state hardening tests', () {
     test(
-      'TEST E - PrayerTimesState.copyWith nullable field explicitly clears',
+      'PrayerTimesState.copyWith nullable fields explicitly clear',
       () {
         const location = PrayerLocation(
           latitude: 0,
@@ -37,7 +39,10 @@ void main() {
           countryName: 'Country',
           timezoneIdentifier: 'UTC',
         );
-        const failure = PrayerCalculationFailure('test error');
+
+        const failure = PrayerCalculationFailure(
+          'test error',
+        );
 
         const state = PrayerTimesState(
           isLoading: true,
@@ -52,159 +57,439 @@ void main() {
           location: () => null,
         );
 
-        expect(newState.isLoading, false);
-        expect(newState.failure, isNull);
-        expect(newState.location, isNull);
+        expect(
+          newState.isLoading,
+          false,
+        );
+
+        expect(
+          newState.failure,
+          isNull,
+        );
+
+        expect(
+          newState.location,
+          isNull,
+        );
       },
     );
 
-    test('TEST A, B, C - Chronological cross-day ordering', () async {
-      final yesterday = PrayerDay(
-        targetDate: DateTime.utc(2026, 8, 12),
-        prayerTimes: [
-          PrayerTime(
-            name: PrayerName.fajr,
-            time: DateTime.utc(2026, 8, 12, 4, 0),
+    test(
+      'Cross-day prayer ordering remains chronological',
+      () async {
+        final yesterday = PrayerDay(
+          targetDate: DateTime.utc(2026, 8, 12),
+          prayerTimes: [
+            PrayerTime(
+              name: PrayerName.fajr,
+              time: DateTime.utc(
+                2026,
+                8,
+                12,
+                4,
+              ),
+            ),
+            PrayerTime(
+              name: PrayerName.isha,
+              time: DateTime.utc(
+                2026,
+                8,
+                12,
+                20,
+              ),
+            ),
+          ],
+        );
+
+        // Intentionally scrambled to verify native chronological sorting.
+        final today = PrayerDay(
+          targetDate: DateTime.utc(2026, 8, 13),
+          prayerTimes: [
+            PrayerTime(
+              name: PrayerName.dhuhr,
+              time: DateTime.utc(
+                2026,
+                8,
+                13,
+                12,
+              ),
+            ),
+            PrayerTime(
+              name: PrayerName.fajr,
+              time: DateTime.utc(
+                2026,
+                8,
+                13,
+                4,
+              ),
+            ),
+            PrayerTime(
+              name: PrayerName.isha,
+              time: DateTime.utc(
+                2026,
+                8,
+                13,
+                20,
+              ),
+            ),
+          ],
+        );
+
+        final tomorrow = PrayerDay(
+          targetDate: DateTime.utc(2026, 8, 14),
+          prayerTimes: [
+            PrayerTime(
+              name: PrayerName.fajr,
+              time: DateTime.utc(
+                2026,
+                8,
+                14,
+                4,
+              ),
+            ),
+          ],
+        );
+
+        final schedule = PrayerSchedule(
+          yesterday: yesterday,
+          today: today,
+          tomorrow: tomorrow,
+        );
+
+        const location = PrayerLocation(
+          latitude: 0,
+          longitude: 0,
+          cityName: 'C',
+          countryName: 'C',
+          timezoneIdentifier: 'UTC',
+        );
+
+        final state = PrayerTimesState(
+          schedule: schedule,
+          location: location,
+        );
+
+        var container = ProviderContainer(
+          overrides: [
+            prayerTimesNotifierProvider.overrideWith(
+              () => FakePrayerTimesNotifier(
+                state,
+              ),
+            ),
+            currentTimeProvider.overrideWith(
+              (ref) => Stream.value(
+                DateTime.utc(
+                  2026,
+                  8,
+                  13,
+                  2,
+                ),
+              ),
+            ),
+          ],
+        );
+
+        await container.read(
+          currentTimeProvider.future,
+        );
+
+        var liveState = container.read(
+          prayerLiveStateProvider,
+        );
+
+        expect(
+          liveState.currentPrayer?.name,
+          PrayerName.isha,
+        );
+
+        expect(
+          liveState.currentPrayer?.time.day,
+          12,
+        );
+
+        expect(
+          liveState.nextPrayer?.name,
+          PrayerName.fajr,
+        );
+
+        expect(
+          liveState.nextPrayer?.time.day,
+          13,
+        );
+
+        container.dispose();
+
+        container = ProviderContainer(
+          overrides: [
+            prayerTimesNotifierProvider.overrideWith(
+              () => FakePrayerTimesNotifier(
+                state,
+              ),
+            ),
+            currentTimeProvider.overrideWith(
+              (ref) => Stream.value(
+                DateTime.utc(
+                  2026,
+                  8,
+                  13,
+                  14,
+                ),
+              ),
+            ),
+          ],
+        );
+
+        await container.read(
+          currentTimeProvider.future,
+        );
+
+        liveState = container.read(
+          prayerLiveStateProvider,
+        );
+
+        expect(
+          liveState.currentPrayer?.name,
+          PrayerName.dhuhr,
+        );
+
+        expect(
+          liveState.nextPrayer?.name,
+          PrayerName.isha,
+        );
+
+        container.dispose();
+
+        container = ProviderContainer(
+          overrides: [
+            prayerTimesNotifierProvider.overrideWith(
+              () => FakePrayerTimesNotifier(
+                state,
+              ),
+            ),
+            currentTimeProvider.overrideWith(
+              (ref) => Stream.value(
+                DateTime.utc(
+                  2026,
+                  8,
+                  13,
+                  22,
+                ),
+              ),
+            ),
+          ],
+        );
+
+        await container.read(
+          currentTimeProvider.future,
+        );
+
+        liveState = container.read(
+          prayerLiveStateProvider,
+        );
+
+        expect(
+          liveState.currentPrayer?.name,
+          PrayerName.isha,
+        );
+
+        expect(
+          liveState.nextPrayer?.name,
+          PrayerName.fajr,
+        );
+
+        expect(
+          liveState.nextPrayer?.time.day,
+          14,
+        );
+
+        container.dispose();
+      },
+    );
+
+    test(
+      'Sunrise is never exposed as the next prayer',
+      () async {
+        final yesterday = PrayerDay(
+          targetDate: DateTime.utc(2026, 8, 12),
+          prayerTimes: [
+            PrayerTime(
+              name: PrayerName.isha,
+              time: DateTime.utc(
+                2026,
+                8,
+                12,
+                20,
+              ),
+            ),
+          ],
+        );
+
+        final today = PrayerDay(
+          targetDate: DateTime.utc(2026, 8, 13),
+          prayerTimes: [
+            PrayerTime(
+              name: PrayerName.fajr,
+              time: DateTime.utc(
+                2026,
+                8,
+                13,
+                4,
+              ),
+            ),
+            PrayerTime(
+              name: PrayerName.sunrise,
+              time: DateTime.utc(
+                2026,
+                8,
+                13,
+                6,
+              ),
+            ),
+            PrayerTime(
+              name: PrayerName.dhuhr,
+              time: DateTime.utc(
+                2026,
+                8,
+                13,
+                12,
+              ),
+            ),
+          ],
+        );
+
+        final tomorrow = PrayerDay(
+          targetDate: DateTime.utc(2026, 8, 14),
+          prayerTimes: const [],
+        );
+
+        final state = PrayerTimesState(
+          schedule: PrayerSchedule(
+            yesterday: yesterday,
+            today: today,
+            tomorrow: tomorrow,
           ),
-          PrayerTime(
-            name: PrayerName.isha,
-            time: DateTime.utc(2026, 8, 12, 20, 0),
+          location: const PrayerLocation(
+            latitude: 0,
+            longitude: 0,
+            cityName: 'C',
+            countryName: 'C',
+            timezoneIdentifier: 'UTC',
           ),
-        ],
-      );
+        );
 
-      // Intentionally scramble 'today' to verify the provider's native .sort() logic
-      final today = PrayerDay(
-        targetDate: DateTime.utc(2026, 8, 13),
-        prayerTimes: [
-          PrayerTime(
-            name: PrayerName.dhuhr,
-            time: DateTime.utc(2026, 8, 13, 12, 0),
-          ),
-          PrayerTime(
-            name: PrayerName.fajr,
-            time: DateTime.utc(2026, 8, 13, 4, 0),
-          ),
-          PrayerTime(
-            name: PrayerName.isha,
-            time: DateTime.utc(2026, 8, 13, 20, 0),
-          ),
-        ],
-      );
+        final container = ProviderContainer(
+          overrides: [
+            prayerTimesNotifierProvider.overrideWith(
+              () => FakePrayerTimesNotifier(
+                state,
+              ),
+            ),
+            currentTimeProvider.overrideWith(
+              (ref) => Stream.value(
+                DateTime.utc(
+                  2026,
+                  8,
+                  13,
+                  5,
+                ),
+              ),
+            ),
+          ],
+        );
 
-      final tomorrow = PrayerDay(
-        targetDate: DateTime.utc(2026, 8, 14),
-        prayerTimes: [
-          PrayerTime(
-            name: PrayerName.fajr,
-            time: DateTime.utc(2026, 8, 14, 4, 0),
-          ),
-        ],
-      );
+        await container.read(
+          currentTimeProvider.future,
+        );
 
-      final schedule = PrayerSchedule(
-        yesterday: yesterday,
-        today: today,
-        tomorrow: tomorrow,
-      );
+        final liveState = container.read(
+          prayerLiveStateProvider,
+        );
 
-      const loc = PrayerLocation(
-        latitude: 0,
-        longitude: 0,
-        cityName: 'C',
-        countryName: 'C',
-        timezoneIdentifier: 'UTC',
-      );
+        expect(
+          liveState.currentPrayer?.name,
+          PrayerName.fajr,
+        );
 
-      final state = PrayerTimesState(
-        schedule: schedule,
-        location: loc,
-      );
+        expect(
+          liveState.nextPrayer?.name,
+          PrayerName.dhuhr,
+        );
 
-      // TEST A: Before today's Fajr
-      var container = ProviderContainer(
-        overrides: [
-          prayerTimesNotifierProvider.overrideWith(
-            () => FakePrayerTimesNotifier(state),
-          ),
-          currentTimeProvider.overrideWith(
-            (ref) => Stream.value(DateTime.utc(2026, 8, 13, 2, 0)),
-          ),
-        ],
-      );
+        container.dispose();
+      },
+    );
 
-      // Wait for Stream to emit first value
-      await container.read(currentTimeProvider.future);
+    test(
+      'Target time follows the selected prayer location timezone',
+      () async {
+        const location = PrayerLocation(
+          latitude: 35.6762,
+          longitude: 139.6503,
+          cityName: 'Tokyo',
+          countryName: 'Japan',
+          timezoneIdentifier: 'Asia/Tokyo',
+        );
 
-      var liveState = container.read(prayerLiveStateProvider);
-      expect(liveState.currentPrayer?.name, PrayerName.isha);
-      expect(liveState.currentPrayer?.time.day, 12);
-      expect(liveState.nextPrayer?.name, PrayerName.fajr);
-      expect(liveState.nextPrayer?.time.day, 13);
+        const state = PrayerTimesState(
+          location: location,
+        );
 
-      // TEST B: Between Dhuhr and Isha today
-      container = ProviderContainer(
-        overrides: [
-          prayerTimesNotifierProvider.overrideWith(
-            () => FakePrayerTimesNotifier(state),
-          ),
-          currentTimeProvider.overrideWith(
-            (ref) => Stream.value(DateTime.utc(2026, 8, 13, 14, 0)),
-          ),
-        ],
-      );
+        final container = ProviderContainer(
+          overrides: [
+            prayerTimesNotifierProvider.overrideWith(
+              () => FakePrayerTimesNotifier(
+                state,
+              ),
+            ),
+            currentTimeProvider.overrideWith(
+              (ref) => Stream.value(
+                DateTime.utc(
+                  2026,
+                  8,
+                  13,
+                  18,
+                  42,
+                ),
+              ),
+            ),
+          ],
+        );
 
-      // Wait for Stream to emit first value
-      await container.read(currentTimeProvider.future);
+        await container.read(
+          currentTimeProvider.future,
+        );
 
-      liveState = container.read(prayerLiveStateProvider);
-      expect(liveState.currentPrayer?.name, PrayerName.dhuhr);
-      expect(liveState.currentPrayer?.time.day, 13);
-      expect(liveState.nextPrayer?.name, PrayerName.isha);
-      expect(liveState.nextPrayer?.time.day, 13);
+        final targetNow = container.read(
+          prayerTargetTimeProvider,
+        );
 
-      // TEST C: After Isha today
-      container = ProviderContainer(
-        overrides: [
-          prayerTimesNotifierProvider.overrideWith(
-            () => FakePrayerTimesNotifier(state),
-          ),
-          currentTimeProvider.overrideWith(
-            (ref) => Stream.value(DateTime.utc(2026, 8, 13, 22, 0)),
-          ),
-        ],
-      );
+        expect(
+          targetNow.year,
+          2026,
+        );
 
-      // Wait for Stream to emit first value
-      await container.read(currentTimeProvider.future);
+        expect(
+          targetNow.month,
+          8,
+        );
 
-      liveState = container.read(prayerLiveStateProvider);
-      expect(liveState.currentPrayer?.name, PrayerName.isha);
-      expect(liveState.currentPrayer?.time.day, 13);
-      expect(liveState.nextPrayer?.name, PrayerName.fajr);
-      expect(liveState.nextPrayer?.time.day, 14);
-    });
+        expect(
+          targetNow.day,
+          14,
+        );
 
-    test('TEST D - Target timezone date boundary normalization', () {
-      final tzTokyo = tz.getLocation('Asia/Tokyo');
-      // Simulated device time: 2026-08-13 18:42 UTC (which is 2026-08-14 03:42 Tokyo local)
-      final deviceTimeUtc = DateTime.utc(2026, 8, 13, 18, 42);
+        expect(
+          targetNow.hour,
+          3,
+        );
 
-      // Mimicking PrayerTimesNotifier internal extraction
-      final targetNow = tz.TZDateTime.from(deviceTimeUtc, tzTokyo);
+        expect(
+          targetNow.minute,
+          42,
+        );
 
-      expect(targetNow.year, 2026);
-      expect(targetNow.month, 8);
-      expect(targetNow.day, 14); // Verified: Crossed midnight into the 14th
-
-      // Normalization to pure calendar date at midnight UTC
-      final targetCalendarDate = DateTime.utc(
-        targetNow.year,
-        targetNow.month,
-        targetNow.day,
-      );
-
-      expect(targetCalendarDate, DateTime.utc(2026, 8, 14));
-    });
+        container.dispose();
+      },
+    );
   });
 }

@@ -153,7 +153,7 @@ void main() {
                 () => FakeQuranNotifier(),
               ),
               prayerLiveStateProvider.overrideWith(
-                (ref) => PrayerLiveState(
+                (ref) => const PrayerLiveState(
                   nextPrayer: null,
                   timeRemaining: Duration.zero,
                 ),
