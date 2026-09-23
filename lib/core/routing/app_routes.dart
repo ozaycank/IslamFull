@@ -30,4 +30,5 @@ class AppRoutes {
   static const String prayerGuide = '/prayer-guide';
   static const String ghuslGuide = '/ghusl-guide';
   static const String duas = '/duas';
+  static const String ramadan = '/ramadan';
 }

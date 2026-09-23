@@ -27,6 +27,7 @@ import '../../features/splash/presentation/splash_screen.dart';
 import '../../features/tools/presentation/islamic_tools_screen.dart';
 import '../../features/tools/presentation/tasbih_screen.dart';
 import '../../features/zakat/presentation/screens/zakat_calculator_screen.dart';
+import '../../features/ramadan/presentation/screens/ramadan_hub_screen.dart';
 import '../di/injection_container.dart';
 import '../logging/logger_service.dart';
 import 'app_navigation_observer.dart';
@@ -136,6 +137,11 @@ class AppRouter {
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.duas,
           builder: (context, state) => const DuasScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.ramadan,
+          builder: (context, state) => const RamadanHubScreen(),
         ),
 
         StatefulShellRoute.indexedStack(

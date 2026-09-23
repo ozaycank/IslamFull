@@ -1464,4 +1464,62 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get duaAfterPrayerDhikrSource => 'Muslim, Masajid, 146';
+
+  @override
+  String get menuWorshipRecords => 'Worship Records';
+
+  @override
+  String get ramadanTitle => 'Ramadan';
+
+  @override
+  String get ramadanIntro =>
+      'A simple view of fasting times based on your current prayer location and calculation settings.';
+
+  @override
+  String get ramadanTodayTimes => 'Today\'s Fasting Times';
+
+  @override
+  String get ramadanImsak => 'Imsak';
+
+  @override
+  String get ramadanIftar => 'Iftar';
+
+  @override
+  String get ramadanUntilImsak => 'Until Imsak';
+
+  @override
+  String get ramadanUntilIftar => 'Until Iftar';
+
+  @override
+  String get ramadanUntilTomorrowImsak => 'Until Tomorrow\'s Imsak';
+
+  @override
+  String get ramadanIftarEntered => 'Iftar time has begun';
+
+  @override
+  String get ramadanTodayIftar => 'Today\'s Iftar';
+
+  @override
+  String get ramadanTomorrowImsak => 'Tomorrow\'s Imsak';
+
+  @override
+  String get ramadanTimesNote =>
+      'Imsak and iftar times follow the prayer location and calculation method currently selected in IslamFull.';
+
+  @override
+  String get ramadanViewPrayerTimes => 'View Prayer Times';
+
+  @override
+  String get ramadanOutsideTitle => 'Ramadan is not currently in progress';
+
+  @override
+  String get ramadanOutsideDesc =>
+      'The current Hijri date in your prayer schedule is outside Ramadan. You can still return to this page whenever you need it.';
+
+  @override
+  String get ramadanUnavailableTitle => 'Fasting times are not available yet';
+
+  @override
+  String get ramadanUnavailableDesc =>
+      'Prayer or Hijri date information is not available yet. Refresh the prayer times and try again.';
 }

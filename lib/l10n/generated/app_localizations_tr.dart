@@ -1468,4 +1468,62 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get duaAfterPrayerDhikrSource => 'Müslim, Mesâcid, 146';
+
+  @override
+  String get menuWorshipRecords => 'İbadet Kayıtları';
+
+  @override
+  String get ramadanTitle => 'Ramazan';
+
+  @override
+  String get ramadanIntro =>
+      'Mevcut namaz konumu ve hesaplama ayarlarınıza göre imsak ve iftar vakitlerini sade bir şekilde görüntüleyin.';
+
+  @override
+  String get ramadanTodayTimes => 'Bugünün Oruç Vakitleri';
+
+  @override
+  String get ramadanImsak => 'İmsak';
+
+  @override
+  String get ramadanIftar => 'İftar';
+
+  @override
+  String get ramadanUntilImsak => 'İmsaka Kalan';
+
+  @override
+  String get ramadanUntilIftar => 'İftara Kalan';
+
+  @override
+  String get ramadanUntilTomorrowImsak => 'Yarınki İmsaka Kalan';
+
+  @override
+  String get ramadanIftarEntered => 'İftar vakti girdi';
+
+  @override
+  String get ramadanTodayIftar => 'Bugünkü İftar';
+
+  @override
+  String get ramadanTomorrowImsak => 'Yarınki İmsak';
+
+  @override
+  String get ramadanTimesNote =>
+      'İmsak ve iftar vakitleri IslamFull\'da seçili olan namaz konumu ve hesaplama yöntemine göre gösterilir.';
+
+  @override
+  String get ramadanViewPrayerTimes => 'Namaz Vakitlerini Gör';
+
+  @override
+  String get ramadanOutsideTitle => 'Şu anda Ramazan ayında değiliz';
+
+  @override
+  String get ramadanOutsideDesc =>
+      'Namaz takviminizdeki mevcut Hicrî tarih Ramazan ayı dışında. İhtiyaç duyduğunuzda bu sayfaya yeniden dönebilirsiniz.';
+
+  @override
+  String get ramadanUnavailableTitle => 'Oruç vakitleri henüz kullanılamıyor';
+
+  @override
+  String get ramadanUnavailableDesc =>
+      'Namaz vakti veya Hicrî tarih bilgisi henüz hazır değil. Namaz vakitlerini yenileyip tekrar deneyin.';
 }

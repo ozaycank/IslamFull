@@ -480,5 +480,24 @@
 "duaAfterPrayerDhikrArabic": "سُبْحَانَ اللَّهِ ×٣٣\nالْحَمْدُ لِلَّهِ ×٣٣\nاللَّهُ أَكْبَرُ ×٣٣\nلَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
 "duaAfterPrayerDhikrTransliteration": "Sübhânallah ×33\nElhamdülillah ×33\nAllahu ekber ×33\nLâ ilâhe illallâhu vahdehû lâ şerîke leh, lehü'l-mülkü ve lehü'l-hamdü ve hüve alâ külli şey'in kadîr.",
 "duaAfterPrayerDhikrMeaning": "33 defa Allah'ı tesbih etmek, 33 defa Allah'a hamdetmek ve 33 defa tekbir getirmek tavsiye edilmiştir. Ardından yüze tamamlamak için Allah'ın birliğini, hükümranlığını ve kudretini ifade eden zikir okunur.",
-"duaAfterPrayerDhikrSource": "Müslim, Mesâcid, 146"
+"duaAfterPrayerDhikrSource": "Müslim, Mesâcid, 146",
+"menuWorshipRecords": "İbadet Kayıtları",
+
+"ramadanTitle": "Ramazan",
+"ramadanIntro": "Mevcut namaz konumu ve hesaplama ayarlarınıza göre imsak ve iftar vakitlerini sade bir şekilde görüntüleyin.",
+"ramadanTodayTimes": "Bugünün Oruç Vakitleri",
+"ramadanImsak": "İmsak",
+"ramadanIftar": "İftar",
+"ramadanUntilImsak": "İmsaka Kalan",
+"ramadanUntilIftar": "İftara Kalan",
+"ramadanUntilTomorrowImsak": "Yarınki İmsaka Kalan",
+"ramadanIftarEntered": "İftar vakti girdi",
+"ramadanTodayIftar": "Bugünkü İftar",
+"ramadanTomorrowImsak": "Yarınki İmsak",
+"ramadanTimesNote": "İmsak ve iftar vakitleri IslamFull'da seçili olan namaz konumu ve hesaplama yöntemine göre gösterilir.",
+"ramadanViewPrayerTimes": "Namaz Vakitlerini Gör",
+"ramadanOutsideTitle": "Şu anda Ramazan ayında değiliz",
+"ramadanOutsideDesc": "Namaz takviminizdeki mevcut Hicrî tarih Ramazan ayı dışında. İhtiyaç duyduğunuzda bu sayfaya yeniden dönebilirsiniz.",
+"ramadanUnavailableTitle": "Oruç vakitleri henüz kullanılamıyor",
+"ramadanUnavailableDesc": "Namaz vakti veya Hicrî tarih bilgisi henüz hazır değil. Namaz vakitlerini yenileyip tekrar deneyin."
 }

@@ -1610,5 +1610,77 @@
 "duaAfterPrayerDhikrSource": "Muslim, Masajid, 146",
 "@duaAfterPrayerDhikrSource": {
   "description": "Hadith source for recommended remembrance after prayer"
+},"menuWorshipRecords": "Worship Records",
+"@menuWorshipRecords": {
+  "description": "Menu item opening the user's personal worship records"
+},
+
+"ramadanTitle": "Ramadan",
+"@ramadanTitle": {
+  "description": "Title of the Ramadan hub"
+},
+"ramadanIntro": "A simple view of fasting times based on your current prayer location and calculation settings.",
+"@ramadanIntro": {
+  "description": "Short introduction shown in the Ramadan hub"
+},
+"ramadanTodayTimes": "Today's Fasting Times",
+"@ramadanTodayTimes": {
+  "description": "Section title for today's imsak and iftar times"
+},
+"ramadanImsak": "Imsak",
+"@ramadanImsak": {
+  "description": "Label for the beginning of the daily fasting period"
+},
+"ramadanIftar": "Iftar",
+"@ramadanIftar": {
+  "description": "Label for the daily iftar time"
+},
+"ramadanUntilImsak": "Until Imsak",
+"@ramadanUntilImsak": {
+  "description": "Countdown label shown before imsak"
+},
+"ramadanUntilIftar": "Until Iftar",
+"@ramadanUntilIftar": {
+  "description": "Countdown label shown during the fasting period"
+},
+"ramadanUntilTomorrowImsak": "Until Tomorrow's Imsak",
+"@ramadanUntilTomorrowImsak": {
+  "description": "Countdown label shown after today's iftar"
+},
+"ramadanIftarEntered": "Iftar time has begun",
+"@ramadanIftarEntered": {
+  "description": "Status shown after the daily iftar time has begun"
+},
+"ramadanTodayIftar": "Today's Iftar",
+"@ramadanTodayIftar": {
+  "description": "Label for today's iftar time after iftar"
+},
+"ramadanTomorrowImsak": "Tomorrow's Imsak",
+"@ramadanTomorrowImsak": {
+  "description": "Label for the next day's imsak time"
+},
+"ramadanTimesNote": "Imsak and iftar times follow the prayer location and calculation method currently selected in IslamFull.",
+"@ramadanTimesNote": {
+  "description": "Explains that Ramadan times reuse the user's prayer calculation settings"
+},
+"ramadanViewPrayerTimes": "View Prayer Times",
+"@ramadanViewPrayerTimes": {
+  "description": "Button opening the main prayer times screen from Ramadan hub"
+},
+"ramadanOutsideTitle": "Ramadan is not currently in progress",
+"@ramadanOutsideTitle": {
+  "description": "Title displayed in the Ramadan hub outside Ramadan"
+},
+"ramadanOutsideDesc": "The current Hijri date in your prayer schedule is outside Ramadan. You can still return to this page whenever you need it.",
+"@ramadanOutsideDesc": {
+  "description": "Message displayed in the Ramadan hub outside Ramadan"
+},
+"ramadanUnavailableTitle": "Fasting times are not available yet",
+"@ramadanUnavailableTitle": {
+  "description": "Title displayed when Ramadan timing data cannot be resolved"
+},
+"ramadanUnavailableDesc": "Prayer or Hijri date information is not available yet. Refresh the prayer times and try again.",
+"@ramadanUnavailableDesc": {
+  "description": "Message displayed when Ramadan timing data cannot be resolved"
 }
 }

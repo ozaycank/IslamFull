@@ -2767,6 +2767,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Muslim, Masajid, 146'**
   String get duaAfterPrayerDhikrSource;
+
+  /// Menu item opening the user's personal worship records
+  ///
+  /// In en, this message translates to:
+  /// **'Worship Records'**
+  String get menuWorshipRecords;
+
+  /// Title of the Ramadan hub
+  ///
+  /// In en, this message translates to:
+  /// **'Ramadan'**
+  String get ramadanTitle;
+
+  /// Short introduction shown in the Ramadan hub
+  ///
+  /// In en, this message translates to:
+  /// **'A simple view of fasting times based on your current prayer location and calculation settings.'**
+  String get ramadanIntro;
+
+  /// Section title for today's imsak and iftar times
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s Fasting Times'**
+  String get ramadanTodayTimes;
+
+  /// Label for the beginning of the daily fasting period
+  ///
+  /// In en, this message translates to:
+  /// **'Imsak'**
+  String get ramadanImsak;
+
+  /// Label for the daily iftar time
+  ///
+  /// In en, this message translates to:
+  /// **'Iftar'**
+  String get ramadanIftar;
+
+  /// Countdown label shown before imsak
+  ///
+  /// In en, this message translates to:
+  /// **'Until Imsak'**
+  String get ramadanUntilImsak;
+
+  /// Countdown label shown during the fasting period
+  ///
+  /// In en, this message translates to:
+  /// **'Until Iftar'**
+  String get ramadanUntilIftar;
+
+  /// Countdown label shown after today's iftar
+  ///
+  /// In en, this message translates to:
+  /// **'Until Tomorrow\'s Imsak'**
+  String get ramadanUntilTomorrowImsak;
+
+  /// Status shown after the daily iftar time has begun
+  ///
+  /// In en, this message translates to:
+  /// **'Iftar time has begun'**
+  String get ramadanIftarEntered;
+
+  /// Label for today's iftar time after iftar
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s Iftar'**
+  String get ramadanTodayIftar;
+
+  /// Label for the next day's imsak time
+  ///
+  /// In en, this message translates to:
+  /// **'Tomorrow\'s Imsak'**
+  String get ramadanTomorrowImsak;
+
+  /// Explains that Ramadan times reuse the user's prayer calculation settings
+  ///
+  /// In en, this message translates to:
+  /// **'Imsak and iftar times follow the prayer location and calculation method currently selected in IslamFull.'**
+  String get ramadanTimesNote;
+
+  /// Button opening the main prayer times screen from Ramadan hub
+  ///
+  /// In en, this message translates to:
+  /// **'View Prayer Times'**
+  String get ramadanViewPrayerTimes;
+
+  /// Title displayed in the Ramadan hub outside Ramadan
+  ///
+  /// In en, this message translates to:
+  /// **'Ramadan is not currently in progress'**
+  String get ramadanOutsideTitle;
+
+  /// Message displayed in the Ramadan hub outside Ramadan
+  ///
+  /// In en, this message translates to:
+  /// **'The current Hijri date in your prayer schedule is outside Ramadan. You can still return to this page whenever you need it.'**
+  String get ramadanOutsideDesc;
+
+  /// Title displayed when Ramadan timing data cannot be resolved
+  ///
+  /// In en, this message translates to:
+  /// **'Fasting times are not available yet'**
+  String get ramadanUnavailableTitle;
+
+  /// Message displayed when Ramadan timing data cannot be resolved
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer or Hijri date information is not available yet. Refresh the prayer times and try again.'**
+  String get ramadanUnavailableDesc;
 }
 
 class _AppLocalizationsDelegate
