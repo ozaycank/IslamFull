@@ -499,5 +499,6 @@
 "ramadanOutsideTitle": "Şu anda Ramazan ayında değiliz",
 "ramadanOutsideDesc": "Namaz takviminizdeki mevcut Hicrî tarih Ramazan ayı dışında. İhtiyaç duyduğunuzda bu sayfaya yeniden dönebilirsiniz.",
 "ramadanUnavailableTitle": "Oruç vakitleri henüz kullanılamıyor",
-"ramadanUnavailableDesc": "Namaz vakti veya Hicrî tarih bilgisi henüz hazır değil. Namaz vakitlerini yenileyip tekrar deneyin."
+"ramadanUnavailableDesc": "Namaz vakti veya Hicrî tarih bilgisi henüz hazır değil. Namaz vakitlerini yenileyip tekrar deneyin.",
+"homeDailyVerseLoadFailed": "Günün ayeti yüklenemedi."
 }

@@ -1522,4 +1522,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get ramadanUnavailableDesc =>
       'Prayer or Hijri date information is not available yet. Refresh the prayer times and try again.';
+
+  @override
+  String get homeDailyVerseLoadFailed => 'The daily verse could not be loaded.';
 }

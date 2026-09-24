@@ -2875,6 +2875,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Prayer or Hijri date information is not available yet. Refresh the prayer times and try again.'**
   String get ramadanUnavailableDesc;
+
+  /// Error message shown when the daily Quran verse content cannot be loaded on Home
+  ///
+  /// In en, this message translates to:
+  /// **'The daily verse could not be loaded.'**
+  String get homeDailyVerseLoadFailed;
 }
 
 class _AppLocalizationsDelegate

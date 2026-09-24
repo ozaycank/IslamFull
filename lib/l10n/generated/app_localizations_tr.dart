@@ -1526,4 +1526,7 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get ramadanUnavailableDesc =>
       'Namaz vakti veya Hicrî tarih bilgisi henüz hazır değil. Namaz vakitlerini yenileyip tekrar deneyin.';
+
+  @override
+  String get homeDailyVerseLoadFailed => 'Günün ayeti yüklenemedi.';
 }
