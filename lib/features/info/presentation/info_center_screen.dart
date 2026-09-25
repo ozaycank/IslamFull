@@ -110,6 +110,25 @@ class InfoCenterScreen extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
+          const Divider(height: 1),
+          ListTile(
+            leading: Icon(
+              Icons.calendar_month_outlined,
+              color: colorScheme.primary,
+            ),
+            title: Text(
+              l10n.ramadanGuideTitle,
+            ),
+            subtitle: Text(
+              l10n.ramadanGuideMenuDesc,
+            ),
+            trailing: const Icon(
+              Icons.chevron_right,
+            ),
+            onTap: () => context.push(
+              AppRoutes.ramadanGuide,
+            ),
+          ),
           const SizedBox(height: AppSpacing.sm),
           AppCard(
             padding: EdgeInsets.zero,

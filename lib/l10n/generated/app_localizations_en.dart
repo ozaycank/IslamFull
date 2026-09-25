@@ -1525,4 +1525,107 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeDailyVerseLoadFailed => 'The daily verse could not be loaded.';
+
+  @override
+  String get ramadanGuideSectionTitle => 'Ramadan Guide';
+
+  @override
+  String get ramadanGuideTitle => 'Ramadan Guide';
+
+  @override
+  String get ramadanGuideMenuDesc =>
+      'Learn the essentials of fasting, sahur, iftar, Tarawih, fitra, Laylat al-Qadr and Eid.';
+
+  @override
+  String get ramadanGuideIntro =>
+      'A concise reference for common Ramadan practices. Open a topic when you need it; the guide is for learning and reference, not for measuring worship.';
+
+  @override
+  String get ramadanGuideFastingTitle => 'Fasting in Ramadan';
+
+  @override
+  String get ramadanGuideFastingDesc =>
+      'Fasting in Ramadan is obligatory for Muslims who meet the conditions of religious responsibility. The daily fast begins at imsak (true dawn) and continues until sunset. During this period, the fasting person abstains from eating, drinking and sexual relations with the intention of worship. Intention is a condition of the fast. Details concerning the timing of intention and valid exemptions can differ according to circumstances and schools of law.';
+
+  @override
+  String get ramadanGuideFastingSource =>
+      'Source: Din İşleri Yüksek Kurulu — Orucun Mahiyeti, Farzları, Sünnetleri ve Adabı.';
+
+  @override
+  String get ramadanGuideSahurIftarTitle => 'Sahur and Iftar';
+
+  @override
+  String get ramadanGuideSahurIftarDesc =>
+      'Sahur is the meal eaten before imsak. The Prophet encouraged Muslims to eat sahur, and delaying it without entering a doubtful time is regarded as recommended practice. Once sunset and the iftar time have certainly begun, unnecessarily delaying the breaking of the fast is not recommended. Iftar does not require a particular food; commonly mentioned foods such as dates or water are recommendations rather than conditions.';
+
+  @override
+  String get ramadanGuideSahurIftarSource =>
+      'Source: Din İşleri Yüksek Kurulu — Sahur Yemeğinin Dindeki Önemi; Diyanet Oruç İlmihali.';
+
+  @override
+  String get ramadanGuideBreaksFastTitle => 'What Breaks the Fast?';
+
+  @override
+  String get ramadanGuideBreaksFastDesc =>
+      'Intentionally eating, drinking or having sexual relations during the fasting period breaks the fast. Eating or drinking because one genuinely forgot that one was fasting does not break it; once remembered, the person stops and continues the fast. Medical treatments, medicines, injections, dental procedures and accidental swallowing can involve more detailed rulings. Do not rely on a short general list for an individual medical or legal case.';
+
+  @override
+  String get ramadanGuideBreaksFastSource =>
+      'Source: Din İşleri Yüksek Kurulu — Orucu Bozan ve Bozmayan Haller.';
+
+  @override
+  String get ramadanGuideTarawihTitle => 'Tarawih Prayer';
+
+  @override
+  String get ramadanGuideTarawihDesc =>
+      'Tarawih is a voluntary prayer associated with the nights of Ramadan. It is performed after the obligatory Isha prayer and may be prayed until the beginning of Fajr time. In the commonly taught Diyanet framework it is regarded as a strongly emphasised Sunnah for both women and men. It may be prayed individually or in congregation.';
+
+  @override
+  String get ramadanGuideTarawihSource =>
+      'Source: Din İşleri Yüksek Kurulu — Teravih Namazının Hükmü ve Mahiyeti.';
+
+  @override
+  String get ramadanGuideFitraFidyaTitle => 'Fitra and Fidya';
+
+  @override
+  String get ramadanGuideFitraFidyaDesc =>
+      'Fitra (sadaqat al-fitr) is a financial act of worship connected with reaching Eid al-Fitr and helping those in need. Fidya is different: in the fasting context it applies principally when a person cannot fast and also has no realistic ability to make up the missed fasts, such as permanent illness or advanced age. The monetary amount is determined according to current conditions and can change over time, so the current official amount should be checked rather than relying on an old figure.';
+
+  @override
+  String get ramadanGuideFitraFidyaSource =>
+      'Source: Din İşleri Yüksek Kurulu — Fıtır Sadakası and Oruç Fidyesi guidance.';
+
+  @override
+  String get ramadanGuideLaylatQadrTitle => 'Laylat al-Qadr';
+
+  @override
+  String get ramadanGuideLaylatQadrDesc =>
+      'Laylat al-Qadr is a night within Ramadan described in the Quran as better than a thousand months. The Prophet encouraged Muslims to seek it during the last ten nights of Ramadan, especially the odd-numbered nights. The 27th night is widely observed, but the guide does not present it as a date known with absolute certainty. Quran recitation, prayer, remembrance, repentance and supplication are appropriate ways to spend these nights.';
+
+  @override
+  String get ramadanGuideLaylatQadrSource =>
+      'Source: Quran 97:1–5; Diyanet guidance on Laylat al-Qadr and the last ten nights of Ramadan.';
+
+  @override
+  String get ramadanGuideEidTitle => 'Eid al-Fitr';
+
+  @override
+  String get ramadanGuideEidDesc =>
+      'Eid al-Fitr follows the completion of Ramadan. Eid prayer is performed in congregation; detailed legal classifications and some practices differ between schools of law. Fitra may be given before Eid and giving it before the Eid prayer is recommended so that those in need can share in the occasion.';
+
+  @override
+  String get ramadanGuideEidSource =>
+      'Source: Din İşleri Yüksek Kurulu — Fıtır Sadakası and guidance on congregational Eid prayer.';
+
+  @override
+  String get ramadanGuideImportantNoteTitle =>
+      'When personal guidance is needed';
+
+  @override
+  String get ramadanGuideImportantNote =>
+      'Health conditions, pregnancy, breastfeeding, travel, medicines and medical procedures can require individual assessment. For a personal health decision, consult a qualified healthcare professional; for a detailed religious ruling, consult a reliable religious authority. Differences between schools of law may also affect some details.';
+
+  @override
+  String get ramadanGuideSourceNote =>
+      'Primary religious reference: Presidency of Religious Affairs (Diyanet) and the High Board of Religious Affairs. This screen is a concise learning guide and does not replace an individual fatwa.';
 }

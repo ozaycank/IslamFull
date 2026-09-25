@@ -2881,6 +2881,174 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The daily verse could not be loaded.'**
   String get homeDailyVerseLoadFailed;
+
+  /// Section title linking to educational Ramadan guidance
+  ///
+  /// In en, this message translates to:
+  /// **'Ramadan Guide'**
+  String get ramadanGuideSectionTitle;
+
+  /// Title of the educational Ramadan guide screen
+  ///
+  /// In en, this message translates to:
+  /// **'Ramadan Guide'**
+  String get ramadanGuideTitle;
+
+  /// Short description for links to the Ramadan guide
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the essentials of fasting, sahur, iftar, Tarawih, fitra, Laylat al-Qadr and Eid.'**
+  String get ramadanGuideMenuDesc;
+
+  /// Introduction to the Ramadan educational guide
+  ///
+  /// In en, this message translates to:
+  /// **'A concise reference for common Ramadan practices. Open a topic when you need it; the guide is for learning and reference, not for measuring worship.'**
+  String get ramadanGuideIntro;
+
+  /// Ramadan guide topic about the basic meaning of fasting
+  ///
+  /// In en, this message translates to:
+  /// **'Fasting in Ramadan'**
+  String get ramadanGuideFastingTitle;
+
+  /// Basic educational explanation of Ramadan fasting
+  ///
+  /// In en, this message translates to:
+  /// **'Fasting in Ramadan is obligatory for Muslims who meet the conditions of religious responsibility. The daily fast begins at imsak (true dawn) and continues until sunset. During this period, the fasting person abstains from eating, drinking and sexual relations with the intention of worship. Intention is a condition of the fast. Details concerning the timing of intention and valid exemptions can differ according to circumstances and schools of law.'**
+  String get ramadanGuideFastingDesc;
+
+  /// Source label for basic Ramadan fasting information
+  ///
+  /// In en, this message translates to:
+  /// **'Source: Din İşleri Yüksek Kurulu — Orucun Mahiyeti, Farzları, Sünnetleri ve Adabı.'**
+  String get ramadanGuideFastingSource;
+
+  /// Ramadan guide topic about sahur and iftar
+  ///
+  /// In en, this message translates to:
+  /// **'Sahur and Iftar'**
+  String get ramadanGuideSahurIftarTitle;
+
+  /// Educational information about sahur and iftar
+  ///
+  /// In en, this message translates to:
+  /// **'Sahur is the meal eaten before imsak. The Prophet encouraged Muslims to eat sahur, and delaying it without entering a doubtful time is regarded as recommended practice. Once sunset and the iftar time have certainly begun, unnecessarily delaying the breaking of the fast is not recommended. Iftar does not require a particular food; commonly mentioned foods such as dates or water are recommendations rather than conditions.'**
+  String get ramadanGuideSahurIftarDesc;
+
+  /// Source label for sahur and iftar information
+  ///
+  /// In en, this message translates to:
+  /// **'Source: Din İşleri Yüksek Kurulu — Sahur Yemeğinin Dindeki Önemi; Diyanet Oruç İlmihali.'**
+  String get ramadanGuideSahurIftarSource;
+
+  /// Ramadan guide topic about actions that may break the fast
+  ///
+  /// In en, this message translates to:
+  /// **'What Breaks the Fast?'**
+  String get ramadanGuideBreaksFastTitle;
+
+  /// Carefully scoped overview of actions that break or do not break fasting
+  ///
+  /// In en, this message translates to:
+  /// **'Intentionally eating, drinking or having sexual relations during the fasting period breaks the fast. Eating or drinking because one genuinely forgot that one was fasting does not break it; once remembered, the person stops and continues the fast. Medical treatments, medicines, injections, dental procedures and accidental swallowing can involve more detailed rulings. Do not rely on a short general list for an individual medical or legal case.'**
+  String get ramadanGuideBreaksFastDesc;
+
+  /// Source label for fasting validity information
+  ///
+  /// In en, this message translates to:
+  /// **'Source: Din İşleri Yüksek Kurulu — Orucu Bozan ve Bozmayan Haller.'**
+  String get ramadanGuideBreaksFastSource;
+
+  /// Ramadan guide topic about Tarawih prayer
+  ///
+  /// In en, this message translates to:
+  /// **'Tarawih Prayer'**
+  String get ramadanGuideTarawihTitle;
+
+  /// Educational explanation of Tarawih prayer
+  ///
+  /// In en, this message translates to:
+  /// **'Tarawih is a voluntary prayer associated with the nights of Ramadan. It is performed after the obligatory Isha prayer and may be prayed until the beginning of Fajr time. In the commonly taught Diyanet framework it is regarded as a strongly emphasised Sunnah for both women and men. It may be prayed individually or in congregation.'**
+  String get ramadanGuideTarawihDesc;
+
+  /// Source label for Tarawih information
+  ///
+  /// In en, this message translates to:
+  /// **'Source: Din İşleri Yüksek Kurulu — Teravih Namazının Hükmü ve Mahiyeti.'**
+  String get ramadanGuideTarawihSource;
+
+  /// Ramadan guide topic explaining fitra and fidya
+  ///
+  /// In en, this message translates to:
+  /// **'Fitra and Fidya'**
+  String get ramadanGuideFitraFidyaTitle;
+
+  /// Educational distinction between fitra and fasting fidya
+  ///
+  /// In en, this message translates to:
+  /// **'Fitra (sadaqat al-fitr) is a financial act of worship connected with reaching Eid al-Fitr and helping those in need. Fidya is different: in the fasting context it applies principally when a person cannot fast and also has no realistic ability to make up the missed fasts, such as permanent illness or advanced age. The monetary amount is determined according to current conditions and can change over time, so the current official amount should be checked rather than relying on an old figure.'**
+  String get ramadanGuideFitraFidyaDesc;
+
+  /// Source label for fitra and fidya information
+  ///
+  /// In en, this message translates to:
+  /// **'Source: Din İşleri Yüksek Kurulu — Fıtır Sadakası and Oruç Fidyesi guidance.'**
+  String get ramadanGuideFitraFidyaSource;
+
+  /// Ramadan guide topic about Laylat al-Qadr
+  ///
+  /// In en, this message translates to:
+  /// **'Laylat al-Qadr'**
+  String get ramadanGuideLaylatQadrTitle;
+
+  /// Educational explanation of Laylat al-Qadr without claiming a certain date
+  ///
+  /// In en, this message translates to:
+  /// **'Laylat al-Qadr is a night within Ramadan described in the Quran as better than a thousand months. The Prophet encouraged Muslims to seek it during the last ten nights of Ramadan, especially the odd-numbered nights. The 27th night is widely observed, but the guide does not present it as a date known with absolute certainty. Quran recitation, prayer, remembrance, repentance and supplication are appropriate ways to spend these nights.'**
+  String get ramadanGuideLaylatQadrDesc;
+
+  /// Source label for Laylat al-Qadr information
+  ///
+  /// In en, this message translates to:
+  /// **'Source: Quran 97:1–5; Diyanet guidance on Laylat al-Qadr and the last ten nights of Ramadan.'**
+  String get ramadanGuideLaylatQadrSource;
+
+  /// Ramadan guide topic about Eid al-Fitr
+  ///
+  /// In en, this message translates to:
+  /// **'Eid al-Fitr'**
+  String get ramadanGuideEidTitle;
+
+  /// Educational explanation of Eid al-Fitr
+  ///
+  /// In en, this message translates to:
+  /// **'Eid al-Fitr follows the completion of Ramadan. Eid prayer is performed in congregation; detailed legal classifications and some practices differ between schools of law. Fitra may be given before Eid and giving it before the Eid prayer is recommended so that those in need can share in the occasion.'**
+  String get ramadanGuideEidDesc;
+
+  /// Source label for Eid al-Fitr information
+  ///
+  /// In en, this message translates to:
+  /// **'Source: Din İşleri Yüksek Kurulu — Fıtır Sadakası and guidance on congregational Eid prayer.'**
+  String get ramadanGuideEidSource;
+
+  /// Heading for the Ramadan guide caution note
+  ///
+  /// In en, this message translates to:
+  /// **'When personal guidance is needed'**
+  String get ramadanGuideImportantNoteTitle;
+
+  /// Caution note for health, personal circumstances and school-specific rulings
+  ///
+  /// In en, this message translates to:
+  /// **'Health conditions, pregnancy, breastfeeding, travel, medicines and medical procedures can require individual assessment. For a personal health decision, consult a qualified healthcare professional; for a detailed religious ruling, consult a reliable religious authority. Differences between schools of law may also affect some details.'**
+  String get ramadanGuideImportantNote;
+
+  /// General source and scope note for Ramadan guidance
+  ///
+  /// In en, this message translates to:
+  /// **'Primary religious reference: Presidency of Religious Affairs (Diyanet) and the High Board of Religious Affairs. This screen is a concise learning guide and does not replace an individual fatwa.'**
+  String get ramadanGuideSourceNote;
 }
 
 class _AppLocalizationsDelegate

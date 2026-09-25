@@ -1529,4 +1529,107 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get homeDailyVerseLoadFailed => 'Günün ayeti yüklenemedi.';
+
+  @override
+  String get ramadanGuideSectionTitle => 'Ramazan Rehberi';
+
+  @override
+  String get ramadanGuideTitle => 'Ramazan Rehberi';
+
+  @override
+  String get ramadanGuideMenuDesc =>
+      'Oruç, sahur, iftar, teravih, fitre, Kadir Gecesi ve bayram hakkında temel bilgileri öğrenin.';
+
+  @override
+  String get ramadanGuideIntro =>
+      'Ramazan ibadetleriyle ilgili sık ihtiyaç duyulan temel bilgiler için kısa bir başvuru rehberi. İhtiyaç duyduğunuz konuyu açıp okuyabilirsiniz; bu rehber ibadeti ölçmek veya değerlendirmek için değildir.';
+
+  @override
+  String get ramadanGuideFastingTitle => 'Ramazan Orucu';
+
+  @override
+  String get ramadanGuideFastingDesc =>
+      'Ramazan ayında oruç tutmak, dinen yükümlülük şartlarını taşıyan Müslümanlara farzdır. Günlük oruç imsak yani fecr-i sâdık ile başlar ve güneşin batmasıyla sona erer. Bu süre içinde ibadet niyetiyle yeme, içme ve cinsel ilişkiden uzak durulur. Niyet orucun şartlarındandır. Niyetin zamanı ve geçerli mazeretler gibi bazı ayrıntılar durumlara ve mezheplere göre farklılık gösterebilir.';
+
+  @override
+  String get ramadanGuideFastingSource =>
+      'Kaynak: Din İşleri Yüksek Kurulu — Orucun Mahiyeti, Farzları, Sünnetleri ve Adabı.';
+
+  @override
+  String get ramadanGuideSahurIftarTitle => 'Sahur ve İftar';
+
+  @override
+  String get ramadanGuideSahurIftarDesc =>
+      'Sahur, imsak vaktinden önce yenilen öğündür. Hz. Peygamber sahura kalkmayı tavsiye etmiş; şüpheli vakte taşırmadan sahuru geciktirmek sünnet kabul edilmiştir. Güneşin battığı ve iftar vaktinin girdiği kesinleştikten sonra iftarın gereksiz yere geciktirilmemesi tavsiye edilir. İftar belirli bir yiyecekle açılmak zorunda değildir; hurma veya su gibi örnekler tavsiye niteliğindedir.';
+
+  @override
+  String get ramadanGuideSahurIftarSource =>
+      'Kaynak: Din İşleri Yüksek Kurulu — Sahur Yemeğinin Dindeki Önemi; Diyanet Oruç İlmihali.';
+
+  @override
+  String get ramadanGuideBreaksFastTitle => 'Orucu Bozan ve Bozmayan Durumlar';
+
+  @override
+  String get ramadanGuideBreaksFastDesc =>
+      'Oruç vaktinde bilerek yemek, içmek veya cinsel ilişkide bulunmak orucu bozar. Kişi gerçekten oruçlu olduğunu unutarak yer veya içerse orucu bozulmaz; hatırladığı anda bırakıp orucuna devam eder. İlaçlar, enjeksiyonlar, diş tedavileri, tıbbi işlemler ve yanlışlıkla bir şey yutma gibi konularda ise ayrıntılı hükümler bulunur. Kişisel bir sağlık veya fıkıh meselesinde yalnızca kısa bir genel listeye dayanılmamalıdır.';
+
+  @override
+  String get ramadanGuideBreaksFastSource =>
+      'Kaynak: Din İşleri Yüksek Kurulu — Orucu Bozan ve Bozmayan Haller.';
+
+  @override
+  String get ramadanGuideTarawihTitle => 'Teravih Namazı';
+
+  @override
+  String get ramadanGuideTarawihDesc =>
+      'Teravih, Ramazan gecelerine mahsus nafile bir namazdır. Yatsı namazının farzından sonra kılınır ve sabah namazı vakti girinceye kadar devam eden sürede eda edilebilir. Diyanet\'in yaygın öğretim çerçevesinde kadın ve erkekler için sünnet-i müekkede kabul edilir. Tek başına veya cemaatle kılınabilir.';
+
+  @override
+  String get ramadanGuideTarawihSource =>
+      'Kaynak: Din İşleri Yüksek Kurulu — Teravih Namazının Hükmü ve Mahiyeti.';
+
+  @override
+  String get ramadanGuideFitraFidyaTitle => 'Fitre ve Fidye';
+
+  @override
+  String get ramadanGuideFitraFidyaDesc =>
+      'Fitre yani fıtır sadakası, Ramazan Bayramı\'na ulaşmayla bağlantılı ve ihtiyaç sahiplerinin bayram sevincine katılmasına katkı sağlayan mali bir ibadettir. Fidye ise farklıdır; oruç konusunda esas olarak yaşlılık veya iyileşme ümidi olmayan hastalık gibi sebeplerle oruç tutma ve daha sonra kaza etme imkânı kalmayan durumlarla ilgilidir. Parasal miktarlar şartlara göre zamanla değişebileceği için eski bir rakama değil güncel resmî miktara bakılmalıdır.';
+
+  @override
+  String get ramadanGuideFitraFidyaSource =>
+      'Kaynak: Din İşleri Yüksek Kurulu — Fıtır Sadakası ve Oruç Fidyesi açıklamaları.';
+
+  @override
+  String get ramadanGuideLaylatQadrTitle => 'Kadir Gecesi';
+
+  @override
+  String get ramadanGuideLaylatQadrDesc =>
+      'Kadir Gecesi Kur\'an\'da bin aydan daha hayırlı olduğu bildirilen ve Ramazan ayı içinde bulunan mübarek bir gecedir. Hz. Peygamber bu gecenin Ramazan\'ın son on gecesinde, özellikle tek gecelerde aranmasını tavsiye etmiştir. 27. gece yaygın biçimde Kadir Gecesi olarak ihya edilse de rehber bunu kesin olarak bilinen tek tarih şeklinde sunmaz. Kur\'an okumak, namaz, zikir, tövbe ve dua bu geceleri değerlendirme yollarındandır.';
+
+  @override
+  String get ramadanGuideLaylatQadrSource =>
+      'Kaynak: Kadir Suresi 97/1-5; Diyanet\'in Kadir Gecesi ve Ramazan\'ın son on gecesine ilişkin açıklamaları.';
+
+  @override
+  String get ramadanGuideEidTitle => 'Ramazan Bayramı';
+
+  @override
+  String get ramadanGuideEidDesc =>
+      'Ramazan Bayramı, Ramazan ayının tamamlanmasının ardından gelir. Bayram namazı cemaatle kılınır; namazın fıkhi hükmü ve bazı uygulama ayrıntıları mezheplere göre değişebilir. Fitre bayramdan önce verilebilir ve ihtiyaç sahiplerinin bayram sevincine katılabilmesi için bayram namazından önce verilmesi tavsiye edilmiştir.';
+
+  @override
+  String get ramadanGuideEidSource =>
+      'Kaynak: Din İşleri Yüksek Kurulu — Fıtır Sadakası ve bayram namazına ilişkin açıklamalar.';
+
+  @override
+  String get ramadanGuideImportantNoteTitle =>
+      'Kişisel değerlendirme gereken durumlar';
+
+  @override
+  String get ramadanGuideImportantNote =>
+      'Hastalık, gebelik, emzirme, yolculuk, ilaç kullanımı ve tıbbi işlemler kişiye özel değerlendirme gerektirebilir. Sağlıkla ilgili kişisel kararlar için yetkin bir sağlık uzmanına; ayrıntılı dinî hüküm için güvenilir bir dinî mercie başvurun. Bazı ayrıntılarda mezhepler arasında da farklılık bulunabilir.';
+
+  @override
+  String get ramadanGuideSourceNote =>
+      'Temel dinî kaynak: Diyanet İşleri Başkanlığı ve Din İşleri Yüksek Kurulu. Bu ekran kısa bir öğrenme ve başvuru rehberidir; kişiye özel fetvanın yerine geçmez.';
 }

@@ -142,6 +142,39 @@ class RamadanHubScreen extends ConsumerWidget {
                   ),
                 ),
                 const SizedBox(
+                  height: AppSpacing.xl,
+                ),
+                SectionHeader(
+                  title: l10n.ramadanGuideSectionTitle,
+                ),
+                const SizedBox(
+                  height: AppSpacing.sm,
+                ),
+                AppCard(
+                  padding: EdgeInsets.zero,
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.menu_book_outlined,
+                      color: colorScheme.primary,
+                    ),
+                    title: Text(
+                      l10n.ramadanGuideTitle,
+                    ),
+                    subtitle: Text(
+                      l10n.ramadanGuideMenuDesc,
+                    ),
+                    trailing: const Icon(
+                      Icons.chevron_right,
+                    ),
+                    onTap: () => context.push(
+                      AppRoutes.ramadanGuide,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: AppSpacing.lg,
+                ),
+                const SizedBox(
                   height: AppSpacing.lg,
                 ),
                 OutlinedButton.icon(
@@ -287,7 +320,7 @@ class _RamadanHero extends StatelessWidget {
             Row(
               children: [
                 Icon(
-                  Icons.check_circle_outline,
+                  Icons.nights_stay_outlined,
                   color: colorScheme.onPrimaryContainer,
                   size: 20,
                 ),
