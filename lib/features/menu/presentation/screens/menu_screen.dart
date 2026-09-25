@@ -128,6 +128,14 @@ class MenuScreen extends ConsumerWidget {
                 ),
                 const Divider(height: 1),
                 _MenuTile(
+                  icon: Icons.volunteer_activism_outlined,
+                  title: l10n.qurbanTitle,
+                  onTap: () => context.push(
+                    AppRoutes.qurban,
+                  ),
+                ),
+                const Divider(height: 1),
+                _MenuTile(
                   icon: Icons.auto_awesome_mosaic_outlined,
                   title: l10n.menuIslamicTools,
                   onTap: () => context.push(

@@ -1628,4 +1628,93 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get ramadanGuideSourceNote =>
       'Primary religious reference: Presidency of Religious Affairs (Diyanet) and the High Board of Religious Affairs. This screen is a concise learning guide and does not replace an individual fatwa.';
+
+  @override
+  String get qurbanTitle => 'Qurban';
+
+  @override
+  String get qurbanIntro =>
+      'Learn the essential guidance for the udhiyah offered during Eid al-Adha, including eligibility, animals, shares, timing, proxy arrangements and distribution.';
+
+  @override
+  String get qurbanScopeNote =>
+      'This section focuses on udhiyah offered during Eid al-Adha. Hajj-related hady, vows and other types of sacrifice have separate rulings.';
+
+  @override
+  String get qurbanGuideTitle => 'Qurban Guide';
+
+  @override
+  String get qurbanGuideMenuDesc =>
+      'Learn the essentials of udhiyah, eligible animals, shares, timing and proxy sacrifice.';
+
+  @override
+  String get qurbanGuideIntro =>
+      'A concise guide to the shared fundamentals of udhiyah during Eid al-Adha. Detailed rulings can differ between schools of law and personal circumstances.';
+
+  @override
+  String get qurbanGuideTopicsTitle => 'Qurban Topics';
+
+  @override
+  String get qurbanGuideMeaningTitle => 'Meaning and Purpose';
+
+  @override
+  String get qurbanGuideMeaningDesc =>
+      'Udhiyah is the sacrifice of an eligible animal during the specified days of Eid al-Adha as an act of worship seeking closeness to Allah. Its purpose is worship, gratitude and sharing rather than merely obtaining meat.';
+
+  @override
+  String get qurbanGuideResponsibilityTitle => 'Who Is Responsible?';
+
+  @override
+  String get qurbanGuideResponsibilityDesc =>
+      'The legal ruling differs among schools of law. In the Hanafi school, an adult, sane and resident Muslim who owns nisab beyond basic needs and debts is responsible for udhiyah. Most other jurists regard it as an emphasized Sunnah for those who are able to offer it.';
+
+  @override
+  String get qurbanGuideAnimalsTitle => 'Eligible Animals and Ages';
+
+  @override
+  String get qurbanGuideAnimalsDesc =>
+      'Udhiyah may be offered from sheep, goats, cattle, buffalo and camels. Based on lunar years, camels must normally be at least five years old, cattle and buffalo two, and sheep and goats one. A sheep that has completed six months may be eligible if it is as developed as a one-year-old sheep. The animal must also be healthy and free from defects that prevent its use for udhiyah.';
+
+  @override
+  String get qurbanGuideSharesTitle => 'Shares and Joint Qurban';
+
+  @override
+  String get qurbanGuideSharesDesc =>
+      'A sheep or goat is offered for one person. Cattle, buffalo and camels may be shared by up to seven people, provided that each person\'s share is at least one seventh. The participants must join with an intention of worship.';
+
+  @override
+  String get qurbanGuideTimeTitle => 'Time of Sacrifice';
+
+  @override
+  String get qurbanGuideTimeDesc =>
+      'In the common Hanafi guidance used by the Presidency of Religious Affairs, the time for udhiyah begins after the Eid prayer on the first day and continues until sunset on the third day. In the Shafii school it may continue until sunset on the fourth day.';
+
+  @override
+  String get qurbanGuideProxyTitle => 'Proxy and Donations';
+
+  @override
+  String get qurbanGuideProxyDesc =>
+      'A person may appoint another person or an organisation to purchase, sacrifice and distribute the animal on their behalf when the required proxy is given. Donating money without an eligible animal actually being sacrificed does not itself fulfil the udhiyah.';
+
+  @override
+  String get qurbanGuideMeatTitle => 'Meat and Distribution';
+
+  @override
+  String get qurbanGuideMeatDesc =>
+      'Sharing the meat between one\'s household, relatives or neighbours and people in need is recommended. Detailed distribution rules differ between schools of law. Meat, skin or other parts of the animal should not be used as payment for the slaughtering service.';
+
+  @override
+  String get qurbanGuideMisconceptionsTitle => 'Common Misconceptions';
+
+  @override
+  String get qurbanGuideMisconceptionsDesc =>
+      'Being unmarried does not prevent an eligible person from offering udhiyah. Shares in a large animal do not have to total an odd number such as three, five or seven. When an animal\'s age is reliably known, changing its front teeth is not an additional requirement.';
+
+  @override
+  String get qurbanGuideSchoolNote =>
+      'This guide provides shared fundamentals and brief orientation. Detailed rulings can vary by school of law, type of sacrifice and individual circumstances.';
+
+  @override
+  String get qurbanGuideSourceNote =>
+      'Religious guidance is based primarily on information published by the Presidency of Religious Affairs and the High Board of Religious Affairs.';
 }

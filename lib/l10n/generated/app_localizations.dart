@@ -3049,6 +3049,156 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Primary religious reference: Presidency of Religious Affairs (Diyanet) and the High Board of Religious Affairs. This screen is a concise learning guide and does not replace an individual fatwa.'**
   String get ramadanGuideSourceNote;
+
+  /// Title of the Qurban hub
+  ///
+  /// In en, this message translates to:
+  /// **'Qurban'**
+  String get qurbanTitle;
+
+  /// Introduction shown in the Qurban hub
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the essential guidance for the udhiyah offered during Eid al-Adha, including eligibility, animals, shares, timing, proxy arrangements and distribution.'**
+  String get qurbanIntro;
+
+  /// Clarifies the scope of the Qurban hub
+  ///
+  /// In en, this message translates to:
+  /// **'This section focuses on udhiyah offered during Eid al-Adha. Hajj-related hady, vows and other types of sacrifice have separate rulings.'**
+  String get qurbanScopeNote;
+
+  /// Title of the Qurban religious guide
+  ///
+  /// In en, this message translates to:
+  /// **'Qurban Guide'**
+  String get qurbanGuideTitle;
+
+  /// Short description for Qurban guide navigation
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the essentials of udhiyah, eligible animals, shares, timing and proxy sacrifice.'**
+  String get qurbanGuideMenuDesc;
+
+  /// Introduction to the Qurban guide
+  ///
+  /// In en, this message translates to:
+  /// **'A concise guide to the shared fundamentals of udhiyah during Eid al-Adha. Detailed rulings can differ between schools of law and personal circumstances.'**
+  String get qurbanGuideIntro;
+
+  /// Heading above the Qurban guide topics
+  ///
+  /// In en, this message translates to:
+  /// **'Qurban Topics'**
+  String get qurbanGuideTopicsTitle;
+
+  /// Title of the meaning and purpose topic
+  ///
+  /// In en, this message translates to:
+  /// **'Meaning and Purpose'**
+  String get qurbanGuideMeaningTitle;
+
+  /// Explanation of the meaning of udhiyah
+  ///
+  /// In en, this message translates to:
+  /// **'Udhiyah is the sacrifice of an eligible animal during the specified days of Eid al-Adha as an act of worship seeking closeness to Allah. Its purpose is worship, gratitude and sharing rather than merely obtaining meat.'**
+  String get qurbanGuideMeaningDesc;
+
+  /// Title of the Qurban responsibility topic
+  ///
+  /// In en, this message translates to:
+  /// **'Who Is Responsible?'**
+  String get qurbanGuideResponsibilityTitle;
+
+  /// High-level explanation of who may be responsible for udhiyah
+  ///
+  /// In en, this message translates to:
+  /// **'The legal ruling differs among schools of law. In the Hanafi school, an adult, sane and resident Muslim who owns nisab beyond basic needs and debts is responsible for udhiyah. Most other jurists regard it as an emphasized Sunnah for those who are able to offer it.'**
+  String get qurbanGuideResponsibilityDesc;
+
+  /// Title of the eligible Qurban animals topic
+  ///
+  /// In en, this message translates to:
+  /// **'Eligible Animals and Ages'**
+  String get qurbanGuideAnimalsTitle;
+
+  /// Explanation of eligible animals, age limits and health requirements
+  ///
+  /// In en, this message translates to:
+  /// **'Udhiyah may be offered from sheep, goats, cattle, buffalo and camels. Based on lunar years, camels must normally be at least five years old, cattle and buffalo two, and sheep and goats one. A sheep that has completed six months may be eligible if it is as developed as a one-year-old sheep. The animal must also be healthy and free from defects that prevent its use for udhiyah.'**
+  String get qurbanGuideAnimalsDesc;
+
+  /// Title of the Qurban shares topic
+  ///
+  /// In en, this message translates to:
+  /// **'Shares and Joint Qurban'**
+  String get qurbanGuideSharesTitle;
+
+  /// Explanation of individual and shared Qurban
+  ///
+  /// In en, this message translates to:
+  /// **'A sheep or goat is offered for one person. Cattle, buffalo and camels may be shared by up to seven people, provided that each person\'s share is at least one seventh. The participants must join with an intention of worship.'**
+  String get qurbanGuideSharesDesc;
+
+  /// Title of the Qurban timing topic
+  ///
+  /// In en, this message translates to:
+  /// **'Time of Sacrifice'**
+  String get qurbanGuideTimeTitle;
+
+  /// Explanation of the period in which udhiyah is offered
+  ///
+  /// In en, this message translates to:
+  /// **'In the common Hanafi guidance used by the Presidency of Religious Affairs, the time for udhiyah begins after the Eid prayer on the first day and continues until sunset on the third day. In the Shafii school it may continue until sunset on the fourth day.'**
+  String get qurbanGuideTimeDesc;
+
+  /// Title of the proxy Qurban topic
+  ///
+  /// In en, this message translates to:
+  /// **'Proxy and Donations'**
+  String get qurbanGuideProxyTitle;
+
+  /// Explanation of proxy sacrifice and the distinction from ordinary donations
+  ///
+  /// In en, this message translates to:
+  /// **'A person may appoint another person or an organisation to purchase, sacrifice and distribute the animal on their behalf when the required proxy is given. Donating money without an eligible animal actually being sacrificed does not itself fulfil the udhiyah.'**
+  String get qurbanGuideProxyDesc;
+
+  /// Title of the Qurban meat distribution topic
+  ///
+  /// In en, this message translates to:
+  /// **'Meat and Distribution'**
+  String get qurbanGuideMeatTitle;
+
+  /// General guidance for distributing Qurban meat
+  ///
+  /// In en, this message translates to:
+  /// **'Sharing the meat between one\'s household, relatives or neighbours and people in need is recommended. Detailed distribution rules differ between schools of law. Meat, skin or other parts of the animal should not be used as payment for the slaughtering service.'**
+  String get qurbanGuideMeatDesc;
+
+  /// Title of the common Qurban misconceptions topic
+  ///
+  /// In en, this message translates to:
+  /// **'Common Misconceptions'**
+  String get qurbanGuideMisconceptionsTitle;
+
+  /// Clarifies several common misconceptions about Qurban
+  ///
+  /// In en, this message translates to:
+  /// **'Being unmarried does not prevent an eligible person from offering udhiyah. Shares in a large animal do not have to total an odd number such as three, five or seven. When an animal\'s age is reliably known, changing its front teeth is not an additional requirement.'**
+  String get qurbanGuideMisconceptionsDesc;
+
+  /// Madhhab and circumstance disclaimer for the Qurban guide
+  ///
+  /// In en, this message translates to:
+  /// **'This guide provides shared fundamentals and brief orientation. Detailed rulings can vary by school of law, type of sacrifice and individual circumstances.'**
+  String get qurbanGuideSchoolNote;
+
+  /// Source note for Qurban religious guidance
+  ///
+  /// In en, this message translates to:
+  /// **'Religious guidance is based primarily on information published by the Presidency of Religious Affairs and the High Board of Religious Affairs.'**
+  String get qurbanGuideSourceNote;
 }
 
 class _AppLocalizationsDelegate

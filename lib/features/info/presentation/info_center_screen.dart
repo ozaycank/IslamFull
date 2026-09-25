@@ -136,6 +136,44 @@ class InfoCenterScreen extends StatelessWidget {
               children: [
                 ListTile(
                   leading: Icon(
+                    Icons.calendar_month_outlined,
+                    color: colorScheme.primary,
+                  ),
+                  title: Text(
+                    l10n.ramadanGuideTitle,
+                  ),
+                  subtitle: Text(
+                    l10n.ramadanGuideMenuDesc,
+                  ),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                  ),
+                  onTap: () => context.push(
+                    AppRoutes.ramadanGuide,
+                  ),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: Icon(
+                    Icons.volunteer_activism_outlined,
+                    color: colorScheme.primary,
+                  ),
+                  title: Text(
+                    l10n.qurbanGuideTitle,
+                  ),
+                  subtitle: Text(
+                    l10n.qurbanGuideMenuDesc,
+                  ),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                  ),
+                  onTap: () => context.push(
+                    AppRoutes.qurbanGuide,
+                  ),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: Icon(
                     Icons.mosque_outlined,
                     color: colorScheme.primary,
                   ),

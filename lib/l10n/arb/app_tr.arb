@@ -536,5 +536,40 @@
 
 "ramadanGuideImportantNoteTitle": "Kişisel değerlendirme gereken durumlar",
 "ramadanGuideImportantNote": "Hastalık, gebelik, emzirme, yolculuk, ilaç kullanımı ve tıbbi işlemler kişiye özel değerlendirme gerektirebilir. Sağlıkla ilgili kişisel kararlar için yetkin bir sağlık uzmanına; ayrıntılı dinî hüküm için güvenilir bir dinî mercie başvurun. Bazı ayrıntılarda mezhepler arasında da farklılık bulunabilir.",
-"ramadanGuideSourceNote": "Temel dinî kaynak: Diyanet İşleri Başkanlığı ve Din İşleri Yüksek Kurulu. Bu ekran kısa bir öğrenme ve başvuru rehberidir; kişiye özel fetvanın yerine geçmez."
+"ramadanGuideSourceNote": "Temel dinî kaynak: Diyanet İşleri Başkanlığı ve Din İşleri Yüksek Kurulu. Bu ekran kısa bir öğrenme ve başvuru rehberidir; kişiye özel fetvanın yerine geçmez.",
+"qurbanTitle": "Kurban",
+"qurbanIntro": "Kurban Bayramı günlerinde yerine getirilen udhiyye kurbanıyla ilgili yükümlülük, kurbanlık hayvanlar, hisseler, kesim zamanı, vekâlet ve paylaşım gibi temel bilgileri öğrenin.",
+"qurbanScopeNote": "Bu bölüm Kurban Bayramı günlerinde kesilen udhiyye kurbanına odaklanır. Hacla ilgili hedy, adak ve diğer kurban türlerinin ayrı hükümleri bulunmaktadır.",
+
+"qurbanGuideTitle": "Kurban Rehberi",
+"qurbanGuideMenuDesc": "Udhiyye kurbanı, kurbanlık şartları, hisseler, kesim zamanı ve vekâlet hakkında temel bilgileri öğrenin.",
+"qurbanGuideIntro": "Kurban Bayramı'nda yerine getirilen udhiyye ibadetinin ortak temel esaslarını sade biçimde açıklayan kısa bir rehberdir. Ayrıntılı hükümler mezhebe ve kişisel duruma göre farklılık gösterebilir.",
+"qurbanGuideTopicsTitle": "Kurban Konuları",
+
+"qurbanGuideMeaningTitle": "Kurbanın Anlamı ve Amacı",
+"qurbanGuideMeaningDesc": "Udhiyye, Allah'a yakınlaşmak ve O'nun rızasını kazanmak amacıyla belirli şartları taşıyan bir hayvanın Kurban Bayramı'nın belirlenmiş günlerinde ibadet niyetiyle kesilmesidir. Temel amaç yalnızca et elde etmek değil; ibadet, şükür ve paylaşmadır.",
+
+"qurbanGuideResponsibilityTitle": "Kimler İçin Yükümlülük Söz Konusudur?",
+"qurbanGuideResponsibilityDesc": "Kurbanın fıkhî hükmü mezheplere göre farklılık gösterir. Hanefî mezhebinde akıl sağlığı yerinde, ergen, mukim ve temel ihtiyaçlarıyla borçları dışında nisap miktarı mala sahip Müslüman için udhiyye kurbanı vâciptir. Fakihlerin çoğunluğu ise imkânı bulunan kimseler için sünnet-i müekkede kabul eder.",
+
+"qurbanGuideAnimalsTitle": "Kurbanlık Hayvanlar ve Yaşları",
+"qurbanGuideAnimalsDesc": "Udhiyye olarak koyun, keçi, sığır, manda ve deve kurban edilebilir. Kamerî yıl esasına göre deve normal olarak beş; sığır ve manda iki; koyun ve keçi bir yaşını doldurmuş olmalıdır. Altı ayını tamamlayan koyun, bir yaşını doldurmuş gibi gelişmiş olması hâlinde kurban olabilir. Hayvanın ayrıca sağlıklı ve kurbana engel kusurlardan uzak olması gerekir.",
+
+"qurbanGuideSharesTitle": "Hisse ve Ortak Kurban",
+"qurbanGuideSharesDesc": "Koyun veya keçi bir kişi adına kurban edilir. Sığır, manda ve deve ise bir kişiden yedi kişiye kadar ortak kesilebilir; her kişinin hissesi en az yedide bir olmalıdır. Ortakların kurbana ibadet niyetiyle katılması gerekir.",
+
+"qurbanGuideTimeTitle": "Kurban Kesim Zamanı",
+"qurbanGuideTimeDesc": "Diyanet'in yaygın Hanefî anlatımında udhiyye kurbanının kesim zamanı bayramın birinci günü bayram namazından sonra başlar ve üçüncü gün güneş batıncaya kadar devam eder. Şâfiî mezhebinde ise dördüncü gün güneş batıncaya kadar kurban kesilebilir.",
+
+"qurbanGuideProxyTitle": "Vekâlet ve Bağış",
+"qurbanGuideProxyDesc": "Kişi gerekli vekâleti vererek kurbanının satın alınması, kesilmesi ve dağıtılması işlemlerini başka bir kişiye veya kuruma yaptırabilir. Uygun bir hayvan fiilen kurban edilmeden yalnızca para bağışlamak ise udhiyye ibadetini yerine getirmiş olmaz.",
+
+"qurbanGuideMeatTitle": "Kurban Etinin Değerlendirilmesi",
+"qurbanGuideMeatDesc": "Kurban etinin ev halkı, akraba ve komşular ile ihtiyaç sahipleri arasında paylaşılması tavsiye edilmiştir. Dağıtıma ilişkin ayrıntılar mezheplere göre farklılık gösterebilir. Kurbanın eti, derisi veya başka bir kısmı kesim hizmetinin ücreti olarak verilmemelidir.",
+
+"qurbanGuideMisconceptionsTitle": "Yaygın Yanlış Bilgiler",
+"qurbanGuideMisconceptionsDesc": "Evli olmamak, şartları taşıyan bir kişinin kurban kesmesine engel değildir. Büyükbaş kurbanda ortak sayısının mutlaka üç, beş veya yedi gibi tek sayı olması gerekmez. Hayvanın yaşı güvenilir biçimde biliniyorsa ayrıca 'kapak atmış' olması şart değildir.",
+
+"qurbanGuideSchoolNote": "Bu rehber ortak temel bilgileri ve kısa bir yönlendirmeyi sunar. Ayrıntılı hükümler mezhebe, kurban türüne ve kişinin durumuna göre farklılık gösterebilir.",
+"qurbanGuideSourceNote": "Dinî bilgiler öncelikle Diyanet İşleri Başkanlığı ve Din İşleri Yüksek Kurulunun yayımladığı bilgiler esas alınarak hazırlanmıştır."
 }
