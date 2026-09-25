@@ -837,12 +837,16 @@
   "@zakatGoldGramsLabel": { "description": "Input label" },
   "zakatTradeGoodsLabel": "Trade Goods Value",
   "@zakatTradeGoodsLabel": { "description": "Input label" },
-  "zakatReceivablesLabel": "Receivables (Guaranteed)",
-  "@zakatReceivablesLabel": { "description": "Input label" },
+  "zakatReceivablesLabel": "Eligible Receivables",
+"@zakatReceivablesLabel": {
+  "description": "Input label for receivables relevant to the zakat estimate"
+},
   "zakatDebtsGroup": "Deductions",
   "@zakatDebtsGroup": { "description": "Input group" },
-  "zakatDebtsLabel": "Debts & Basic Needs",
-  "@zakatDebtsLabel": { "description": "Input label" },
+  "zakatDebtsLabel": "Current-Year Debts & Essential Needs",
+"@zakatDebtsLabel": {
+  "description": "Input label for deductible current-year obligations and essential needs"
+},  
   "zakatCalculateButton": "Calculate Zakat",
   "@zakatCalculateButton": { "description": "Button" },
   "zakatResultTitle": "Calculation Result",
@@ -851,12 +855,59 @@
   "@zakatTotalWealth": { "description": "Result row" },
   "zakatNisabAmount": "Nisab Threshold (80.18 gr):",
   "@zakatNisabAmount": { "description": "Result row" },
-  "zakatRequiredAmount": "Required Zakat Amount:",
-  "@zakatRequiredAmount": { "description": "Result row" },
-  "zakatNotRequired": "Your net wealth is below the Nisab threshold. Zakat is not obligatory.",
-  "@zakatNotRequired": { "description": "Result row" },
-  "zakatDiyanetNote": "Note: This calculation uses the 80.18 grams of gold Nisab threshold according to the Presidency of Religious Affairs of Turkey. Your primary residence and personal vehicle are exempt. Please consult official sources for detailed jurisprudence.",
-  "@zakatDiyanetNote": { "description": "Disclaimer" },
+  "zakatRequiredAmount": "Estimated Zakat Amount:",
+"@zakatRequiredAmount": {
+  "description": "Estimated zakat calculation result"
+},
+  "zakatNotRequired": "Based on the values entered, your current net zakatable wealth is below the nisab threshold.",
+"@zakatNotRequired": {
+  "description": "Result shown when current net zakatable wealth is below nisab"
+},
+
+"zakatDiyanetNote": "This calculator uses the 80.18 grams of gold nisab reference and general guidance published by the Presidency of Religious Affairs. Basic-use assets such as your primary residence and personal-use vehicle are not entered as zakatable assets. Individual rulings can vary by circumstances and school of law.",
+"@zakatDiyanetNote": {
+  "description": "General methodology and religious guidance disclaimer"
+},
+"zakatLunarYearTitle": "Lunar-Year Condition",
+"@zakatLunarYearTitle": {
+  "description": "Section title for confirming the zakat lunar-year condition"
+},
+"zakatLunarYearConfirmed": "A lunar zakat year has been completed",
+"@zakatLunarYearConfirmed": {
+  "description": "Checkbox label confirming completion of the zakat year"
+},
+"zakatLunarYearDesc": "Confirm this only if one lunar year has passed since your zakatable wealth reached nisab and it is still at or above nisab now. Income acquired during that zakat year may be included with the existing zakatable wealth under current Presidency of Religious Affairs guidance.",
+"@zakatLunarYearDesc": {
+  "description": "Explanation of the lunar-year condition used by the calculator"
+},
+"zakatLunarYearNotConfirmed": "Your current net zakatable wealth reaches the nisab estimate, but the lunar-year condition has not been confirmed. This calculator therefore cannot determine an estimated payable zakat amount.",
+"@zakatLunarYearNotConfirmed": {
+  "description": "Result shown when nisab is reached but the lunar-year condition is not confirmed"
+},
+
+"zakatReceivablesHelp": "Include receivables that are acknowledged by the debtor or supported by clear evidence and are relevant to your zakat calculation. Doubtful or unrecoverable receivables are treated differently.",
+"@zakatReceivablesHelp": {
+  "description": "Guidance for the receivables input"
+},
+
+"zakatDebtsHelp": "Enter genuine essential needs and debts that are due within the current zakat year. Do not deduct the entire balance of long-term debts solely because they exist.",
+"@zakatDebtsHelp": {
+  "description": "Guidance for current-year debt and essential-needs deductions"
+},
+
+"zakatEstimateNote": "This result is a calculation aid, not an individual fatwa. Receivables, debts, newly acquired wealth and other personal circumstances can require a more detailed assessment.",
+"@zakatEstimateNote": {
+  "description": "Disclaimer shown below the zakat estimate"
+},
+
+"zakatGoldPriceRequired": "Enter the current gold price per gram.",
+"@zakatGoldPriceRequired": {
+  "description": "Validation error when the gold price field is empty"
+},
+"zakatGoldPricePositive": "Enter a gold price greater than zero.",
+"@zakatGoldPricePositive": {
+  "description": "Validation error when the gold price is zero or invalid"
+},
   "hajjTitle": "Hajj Guide",
   "@hajjTitle": { "description": "Hajj screen title" },
   "hajjDiyanetInfo": "Hajj is one of the five pillars of Islam. In Turkey, Hajj registration and lottery processes are managed directly by the Presidency of Religious Affairs (Diyanet).",

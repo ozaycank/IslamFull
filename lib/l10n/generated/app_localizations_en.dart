@@ -742,13 +742,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get zakatTradeGoodsLabel => 'Trade Goods Value';
 
   @override
-  String get zakatReceivablesLabel => 'Receivables (Guaranteed)';
+  String get zakatReceivablesLabel => 'Eligible Receivables';
 
   @override
   String get zakatDebtsGroup => 'Deductions';
 
   @override
-  String get zakatDebtsLabel => 'Debts & Basic Needs';
+  String get zakatDebtsLabel => 'Current-Year Debts & Essential Needs';
 
   @override
   String get zakatCalculateButton => 'Calculate Zakat';
@@ -763,15 +763,47 @@ class AppLocalizationsEn extends AppLocalizations {
   String get zakatNisabAmount => 'Nisab Threshold (80.18 gr):';
 
   @override
-  String get zakatRequiredAmount => 'Required Zakat Amount:';
+  String get zakatRequiredAmount => 'Estimated Zakat Amount:';
 
   @override
   String get zakatNotRequired =>
-      'Your net wealth is below the Nisab threshold. Zakat is not obligatory.';
+      'Based on the values entered, your current net zakatable wealth is below the nisab threshold.';
 
   @override
   String get zakatDiyanetNote =>
-      'Note: This calculation uses the 80.18 grams of gold Nisab threshold according to the Presidency of Religious Affairs of Turkey. Your primary residence and personal vehicle are exempt. Please consult official sources for detailed jurisprudence.';
+      'This calculator uses the 80.18 grams of gold nisab reference and general guidance published by the Presidency of Religious Affairs. Basic-use assets such as your primary residence and personal-use vehicle are not entered as zakatable assets. Individual rulings can vary by circumstances and school of law.';
+
+  @override
+  String get zakatLunarYearTitle => 'Lunar-Year Condition';
+
+  @override
+  String get zakatLunarYearConfirmed => 'A lunar zakat year has been completed';
+
+  @override
+  String get zakatLunarYearDesc =>
+      'Confirm this only if one lunar year has passed since your zakatable wealth reached nisab and it is still at or above nisab now. Income acquired during that zakat year may be included with the existing zakatable wealth under current Presidency of Religious Affairs guidance.';
+
+  @override
+  String get zakatLunarYearNotConfirmed =>
+      'Your current net zakatable wealth reaches the nisab estimate, but the lunar-year condition has not been confirmed. This calculator therefore cannot determine an estimated payable zakat amount.';
+
+  @override
+  String get zakatReceivablesHelp =>
+      'Include receivables that are acknowledged by the debtor or supported by clear evidence and are relevant to your zakat calculation. Doubtful or unrecoverable receivables are treated differently.';
+
+  @override
+  String get zakatDebtsHelp =>
+      'Enter genuine essential needs and debts that are due within the current zakat year. Do not deduct the entire balance of long-term debts solely because they exist.';
+
+  @override
+  String get zakatEstimateNote =>
+      'This result is a calculation aid, not an individual fatwa. Receivables, debts, newly acquired wealth and other personal circumstances can require a more detailed assessment.';
+
+  @override
+  String get zakatGoldPriceRequired => 'Enter the current gold price per gram.';
+
+  @override
+  String get zakatGoldPricePositive => 'Enter a gold price greater than zero.';
 
   @override
   String get hajjTitle => 'Hajj Guide';

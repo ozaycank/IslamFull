@@ -1508,10 +1508,10 @@ abstract class AppLocalizations {
   /// **'Trade Goods Value'**
   String get zakatTradeGoodsLabel;
 
-  /// Input label
+  /// Input label for receivables relevant to the zakat estimate
   ///
   /// In en, this message translates to:
-  /// **'Receivables (Guaranteed)'**
+  /// **'Eligible Receivables'**
   String get zakatReceivablesLabel;
 
   /// Input group
@@ -1520,10 +1520,10 @@ abstract class AppLocalizations {
   /// **'Deductions'**
   String get zakatDebtsGroup;
 
-  /// Input label
+  /// Input label for deductible current-year obligations and essential needs
   ///
   /// In en, this message translates to:
-  /// **'Debts & Basic Needs'**
+  /// **'Current-Year Debts & Essential Needs'**
   String get zakatDebtsLabel;
 
   /// Button
@@ -1550,23 +1550,77 @@ abstract class AppLocalizations {
   /// **'Nisab Threshold (80.18 gr):'**
   String get zakatNisabAmount;
 
-  /// Result row
+  /// Estimated zakat calculation result
   ///
   /// In en, this message translates to:
-  /// **'Required Zakat Amount:'**
+  /// **'Estimated Zakat Amount:'**
   String get zakatRequiredAmount;
 
-  /// Result row
+  /// Result shown when current net zakatable wealth is below nisab
   ///
   /// In en, this message translates to:
-  /// **'Your net wealth is below the Nisab threshold. Zakat is not obligatory.'**
+  /// **'Based on the values entered, your current net zakatable wealth is below the nisab threshold.'**
   String get zakatNotRequired;
 
-  /// Disclaimer
+  /// General methodology and religious guidance disclaimer
   ///
   /// In en, this message translates to:
-  /// **'Note: This calculation uses the 80.18 grams of gold Nisab threshold according to the Presidency of Religious Affairs of Turkey. Your primary residence and personal vehicle are exempt. Please consult official sources for detailed jurisprudence.'**
+  /// **'This calculator uses the 80.18 grams of gold nisab reference and general guidance published by the Presidency of Religious Affairs. Basic-use assets such as your primary residence and personal-use vehicle are not entered as zakatable assets. Individual rulings can vary by circumstances and school of law.'**
   String get zakatDiyanetNote;
+
+  /// Section title for confirming the zakat lunar-year condition
+  ///
+  /// In en, this message translates to:
+  /// **'Lunar-Year Condition'**
+  String get zakatLunarYearTitle;
+
+  /// Checkbox label confirming completion of the zakat year
+  ///
+  /// In en, this message translates to:
+  /// **'A lunar zakat year has been completed'**
+  String get zakatLunarYearConfirmed;
+
+  /// Explanation of the lunar-year condition used by the calculator
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm this only if one lunar year has passed since your zakatable wealth reached nisab and it is still at or above nisab now. Income acquired during that zakat year may be included with the existing zakatable wealth under current Presidency of Religious Affairs guidance.'**
+  String get zakatLunarYearDesc;
+
+  /// Result shown when nisab is reached but the lunar-year condition is not confirmed
+  ///
+  /// In en, this message translates to:
+  /// **'Your current net zakatable wealth reaches the nisab estimate, but the lunar-year condition has not been confirmed. This calculator therefore cannot determine an estimated payable zakat amount.'**
+  String get zakatLunarYearNotConfirmed;
+
+  /// Guidance for the receivables input
+  ///
+  /// In en, this message translates to:
+  /// **'Include receivables that are acknowledged by the debtor or supported by clear evidence and are relevant to your zakat calculation. Doubtful or unrecoverable receivables are treated differently.'**
+  String get zakatReceivablesHelp;
+
+  /// Guidance for current-year debt and essential-needs deductions
+  ///
+  /// In en, this message translates to:
+  /// **'Enter genuine essential needs and debts that are due within the current zakat year. Do not deduct the entire balance of long-term debts solely because they exist.'**
+  String get zakatDebtsHelp;
+
+  /// Disclaimer shown below the zakat estimate
+  ///
+  /// In en, this message translates to:
+  /// **'This result is a calculation aid, not an individual fatwa. Receivables, debts, newly acquired wealth and other personal circumstances can require a more detailed assessment.'**
+  String get zakatEstimateNote;
+
+  /// Validation error when the gold price field is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the current gold price per gram.'**
+  String get zakatGoldPriceRequired;
+
+  /// Validation error when the gold price is zero or invalid
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a gold price greater than zero.'**
+  String get zakatGoldPricePositive;
 
   /// Hajj screen title
   ///

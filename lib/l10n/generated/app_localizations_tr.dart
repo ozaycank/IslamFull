@@ -746,13 +746,14 @@ class AppLocalizationsTr extends AppLocalizations {
   String get zakatTradeGoodsLabel => 'Ticari Mallar (TL)';
 
   @override
-  String get zakatReceivablesLabel => 'Alacaklar (Kesin Dönecek) (TL)';
+  String get zakatReceivablesLabel => 'Zekâta Tâbi Alacaklar (TL)';
 
   @override
   String get zakatDebtsGroup => 'Düşülecekler';
 
   @override
-  String get zakatDebtsLabel => 'Borçlar & Temel İhtiyaçlar (TL)';
+  String get zakatDebtsLabel =>
+      'Bu Zekât Yılındaki Borçlar ve Temel İhtiyaçlar (TL)';
 
   @override
   String get zakatCalculateButton => 'Zekâtı Hesapla';
@@ -767,15 +768,48 @@ class AppLocalizationsTr extends AppLocalizations {
   String get zakatNisabAmount => 'Nisab Sınırı (80.18 gr):';
 
   @override
-  String get zakatRequiredAmount => 'Verilmesi Gereken Zekât:';
+  String get zakatRequiredAmount => 'Tahmini Zekât Tutarı:';
 
   @override
   String get zakatNotRequired =>
-      'Net varlığınız Nisab miktarının altında olduğu için zekât farz değildir.';
+      'Girdiğiniz değerlere göre mevcut net zekâta tâbi varlığınız nisap sınırının altındadır.';
 
   @override
   String get zakatDiyanetNote =>
-      'Not: Bu hesaplama Türkiye Diyanet İşleri Başkanlığı\'nın 80.18 gram altın (Nisab) fetvasına göre yapılmaktadır. Oturulan ev ve kullanılan araç zekâttan muaftır. Detaylı fıkhi durumlarınız için resmi Diyanet kaynaklarına başvurunuz.';
+      'Bu hesaplayıcı Diyanet İşleri Başkanlığının 80,18 gram altın nisap ölçüsünü ve genel zekât açıklamalarını esas alır. Oturulan ev ve kişisel kullanım aracı gibi temel kullanım varlıkları zekâta tâbi varlık olarak girilmez. Kişisel durumlara ve mezheplere göre ayrıntılı hükümler farklılık gösterebilir.';
+
+  @override
+  String get zakatLunarYearTitle => 'Kamerî Yıl Şartı';
+
+  @override
+  String get zakatLunarYearConfirmed => 'Bir kamerî zekât yılı tamamlandı';
+
+  @override
+  String get zakatLunarYearDesc =>
+      'Bu seçeneği yalnızca zekâta tâbi varlığınız nisaba ulaştıktan sonra bir kamerî yıl geçmiş ve mevcut varlığınız hâlen nisap miktarında veya üzerinde ise işaretleyin. Güncel Diyanet yaklaşımına göre zekât yılı içinde elde edilen gelirler mevcut zekâta tâbi birikimle birlikte değerlendirilebilir.';
+
+  @override
+  String get zakatLunarYearNotConfirmed =>
+      'Mevcut net zekâta tâbi varlığınız nisap tahminine ulaşıyor; ancak kamerî yıl şartı doğrulanmadı. Bu nedenle hesaplayıcı tahmini ödenecek zekât tutarı belirlemiyor.';
+
+  @override
+  String get zakatReceivablesHelp =>
+      'Borçlu tarafından kabul edilen veya kesin delille ispatlanabilen ve zekât hesabınız açısından dikkate alınması gereken alacakları girin. Tahsili şüpheli veya ümidi kesilmiş alacaklar aynı şekilde değerlendirilmez.';
+
+  @override
+  String get zakatDebtsHelp =>
+      'Gerçek temel ihtiyaçlarınızı ve bu zekât yılı içinde ödenmesi gereken borçları girin. Uzun vadeli bir borcun yalnızca var olması sebebiyle kalan bakiyesinin tamamını düşmeyin.';
+
+  @override
+  String get zakatEstimateNote =>
+      'Bu sonuç bir hesaplama yardımcısıdır; kişiye özel fetva değildir. Alacaklar, borçlar, yıl içinde edinilen mallar ve diğer özel durumlar daha ayrıntılı değerlendirme gerektirebilir.';
+
+  @override
+  String get zakatGoldPriceRequired => 'Güncel gram altın fiyatını girin.';
+
+  @override
+  String get zakatGoldPricePositive =>
+      'Sıfırdan büyük bir gram altın fiyatı girin.';
 
   @override
   String get hajjTitle => 'Hac Rehberi';
