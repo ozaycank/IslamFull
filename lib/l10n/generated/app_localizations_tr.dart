@@ -1981,4 +1981,96 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get umrahGuideSchoolNote =>
       'Bu ekran temel öğrenme akışıdır; kişiye özel fetva değildir. Eksik menâsik, hastalık, hayız hâli, mikat hatası, ceza gerektiren durumlar veya diğer özel hâller daha ayrıntılı dinî değerlendirme gerektirir.';
+
+  @override
+  String get hajjTypesTitle => 'Hac Türleri';
+
+  @override
+  String get hajjTypesMenuDesc =>
+      'İfrad, temettu ve kırân haccını karşılaştırarak temel farklarını öğrenin.';
+
+  @override
+  String get hajjTypesIntro =>
+      'Hac; ifrad, temettu veya kırân şeklinde eda edilebilir. Temel farklar umrenin hacla birlikte yapılıp yapılmaması, iki ibadet arasında ihramdan çıkılıp çıkılmaması ve şükür kurbanı yükümlülüğü etrafında oluşur.';
+
+  @override
+  String get hajjTypesThreeTitle => 'Üç Hac Türü';
+
+  @override
+  String get hajjTypeIfradTitle => 'İfrad Haccı';
+
+  @override
+  String get hajjTypeIfradDesc =>
+      'İfrad, aynı hac mevsiminin bir parçası olarak umre yapılmadan yalnız hac ibadetinin eda edilmesidir. Kişi hac niyetiyle ihrama girer ve ilgili hac menâsiki boyunca ihramını sürdürür. Yalnız ifrad haccı yapmış olması sebebiyle şükür kurbanı gerekmez.';
+
+  @override
+  String get hajjTypeTamattuTitle => 'Temettu Haccı';
+
+  @override
+  String get hajjTypeTamattuDesc =>
+      'Temettu haccında kişi hac mevsiminde önce umre için ihrama girer, umresini tamamlayıp ihramdan çıkar. Arafat\'tan önce yeniden hac için ihrama girer. İlgili şartlar çerçevesinde temettu haccı yapanın şükür kurbanı kesmesi gerekir.';
+
+  @override
+  String get hajjTypeQiranTitle => 'Kırân Haccı';
+
+  @override
+  String get hajjTypeQiranDesc =>
+      'Kırân haccında umre ve hacca birlikte niyet edilerek tek ihrama girilir. Umre menâsiki tamamlandıktan sonra ihramdan çıkılmadan aynı ihramla hacca devam edilir. İlgili şartlar çerçevesinde kırân haccı yapanın şükür kurbanı kesmesi gerekir.';
+
+  @override
+  String get hajjTypesNote =>
+      'Üç hac türü haccın temel menâsikinde birleşmekle birlikte niyet, ihram ve umre-hac ilişkisi bakımından farklıdır. Bir hac türünden diğerine geçiş ve özel durumların hükümleri mezheplere göre ayrıntı içerir; fiilî hac uygulamanızda yetkin rehberliğe başvurun.';
+
+  @override
+  String get hajjDaysTitle => 'Hac Günleri';
+
+  @override
+  String get hajjDaysMenuDesc =>
+      '8–13 Zilhicce arasındaki temel hac menâsikini kısa bir akışla öğrenin.';
+
+  @override
+  String get hajjDaysIntro =>
+      'Bu ekran temel hac günlerini öğrenmek için hazırlanmış bir genel bakıştır. Canlı seyahat programı değildir; kesin hareket saatleri, ruhsatlar ve bazı menâsikin sırası mezhebe, hac türüne, sağlık durumuna, yoğunluğa ve resmî organizasyon talimatlarına göre değişebilir.';
+
+  @override
+  String get hajjDaysFlowTitle => 'Temel Hac Akışı';
+
+  @override
+  String get hajjDay8Title => '8 Zilhicce · Terviye Günü';
+
+  @override
+  String get hajjDay8Desc =>
+      'Temettu haccı yapanlar henüz girmedilerse bu gün veya daha önce yeniden hac ihramına girerler. Yerleşik hac akışında hac günlerine hazırlanılır ve Arafat öncesinde Mina yönüne intikal edilir.';
+
+  @override
+  String get hajjDay9Title => '9 Zilhicce · Arefe';
+
+  @override
+  String get hajjDay9Desc =>
+      'Geçerli vakti içinde Arafat\'ta vakfe yapmak haccın rüknüdür. Arafat\'tan sonra Müzdelife\'ye geçilir ve Müzdelife vakfesi hac menâsikinin bir parçası olarak yerine getirilir. Ayrıntılı zaman hükümleri mezheplere göre farklılık gösterir.';
+
+  @override
+  String get hajjDay10Title => '10 Zilhicce · Bayramın Birinci Günü';
+
+  @override
+  String get hajjDay10Desc =>
+      'Yaygın akışta Akabe cemresine taş atma, temettu veya kırân yapanlar için şükür kurbanı, saçın tıraş edilmesi veya kısaltılması ve ziyaret tavafı yer alır. Bu işlemlerin sırasının fıkhî hükmü mezheplere göre farklıdır; güncel Diyanet fetva ve uygulaması her sıra değişikliğini ceza gerektiren bir ihlal olarak değerlendirmeyen görüş yönündedir.';
+
+  @override
+  String get hajjDays11And12Title => '11–12 Zilhicce · Teşrik Günleri';
+
+  @override
+  String get hajjDays11And12Desc =>
+      'Bu günler Mina ve cemre görevlerinin devam ettiği günlerdir. Hac menâsikinin bir parçası olarak üç cemre taşlanır. Geçerli zamanların ayrıntıları ve özellikle izdiham, hastalık veya güç yetirememe hâllerindeki ruhsatlar farklılık gösterebilir.';
+
+  @override
+  String get hajjDay13Title => '13 Zilhicce · Son Teşrik Günü';
+
+  @override
+  String get hajjDay13Desc =>
+      'Bazı hacılar Mina görevlerini daha önce tamamlamış olabilir. Mina\'da kalmaya devam edenler için bayramın dördüncü gününde de cemre görevleri söz konusu olabilir. Bu yükümlülüğün hangi andan itibaren doğduğu mezheplere göre değiştiği için uygulama kişiye özel otomatik hüküm üretmez.';
+
+  @override
+  String get hajjDaysNote =>
+      'Bu ekranı eğitsel bir yol haritası olarak kullanın. Kafile görevlisinin yönlendirmesi, güncel resmî hac talimatları ve yetkin dinî rehberlik yerine geçmez. Özellikle vakitler, izdiham sebebiyle verilen ruhsatlar ve ceza gerektiren durumlar kişisel değerlendirme gerektirir.';
 }

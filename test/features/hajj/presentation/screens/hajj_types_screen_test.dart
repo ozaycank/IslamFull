@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/info/presentation/info_center_screen.dart';
+import 'package:noor_life/features/hajj/presentation/screens/hajj_types_screen.dart';
 import 'package:noor_life/l10n/generated/app_localizations.dart';
 
 void main() {
@@ -18,11 +18,11 @@ void main() {
         Locale('en'),
       ],
       locale: Locale('en'),
-      home: InfoCenterScreen(),
+      home: HajjTypesScreen(),
     );
   }
 
-  Future<void> reveal(
+  Future<void> revealAndTap(
     WidgetTester tester,
     String text,
   ) async {
@@ -36,10 +36,13 @@ void main() {
 
     await tester.ensureVisible(finder);
     await tester.pumpAndSettle();
+
+    await tester.tap(finder);
+    await tester.pumpAndSettle();
   }
 
   testWidgets(
-    'Info Center exposes the worship guides without duplicate Ramadan entry',
+    'Hajj types distinguishes Ifrad Tamattu and Qiran',
     (tester) async {
       await tester.pumpWidget(
         buildTestableWidget(),
@@ -47,53 +50,44 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      await reveal(
-        tester,
-        'Ramadan Guide',
-      );
-
-      expect(
-        find.text('Ramadan Guide'),
-        findsOneWidget,
-      );
-
-      await reveal(
-        tester,
-        'Hajj Fundamentals',
-      );
-
-      expect(
-        find.text('Hajj Fundamentals'),
-        findsOneWidget,
-      );
-
-      await reveal(
-        tester,
-        'Types of Hajj',
-      );
-
       expect(
         find.text('Types of Hajj'),
         findsOneWidget,
       );
 
-      await reveal(
+      await revealAndTap(
         tester,
-        'Hajj Days',
+        'Ifrad',
       );
 
       expect(
-        find.text('Hajj Days'),
+        find.textContaining(
+          'without performing Umrah',
+        ),
         findsOneWidget,
       );
 
-      await reveal(
+      await revealAndTap(
         tester,
-        'Umrah Guide',
+        'Tamattu',
       );
 
       expect(
-        find.text('Umrah Guide'),
+        find.textContaining(
+          'leaves ihram',
+        ),
+        findsOneWidget,
+      );
+
+      await revealAndTap(
+        tester,
+        'Qiran',
+      );
+
+      expect(
+        find.textContaining(
+          'one continuous state of ihram',
+        ),
         findsOneWidget,
       );
     },

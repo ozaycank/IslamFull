@@ -34,6 +34,8 @@ import '../../features/splash/presentation/splash_screen.dart';
 import '../../features/tools/presentation/islamic_tools_screen.dart';
 import '../../features/tools/presentation/tasbih_screen.dart';
 import '../../features/zakat/presentation/screens/zakat_calculator_screen.dart';
+import '../../features/hajj/presentation/screens/hajj_days_screen.dart';
+import '../../features/hajj/presentation/screens/hajj_types_screen.dart';
 import '../di/injection_container.dart';
 import '../logging/logger_service.dart';
 import 'app_navigation_observer.dart';
@@ -88,6 +90,16 @@ class AppRouter {
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.hajjFundamentals,
           builder: (context, state) => const HajjFundamentalsScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.hajjTypes,
+          builder: (context, state) => const HajjTypesScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.hajjDays,
+          builder: (context, state) => const HajjDaysScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,

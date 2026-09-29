@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/hajj/presentation/screens/hajj_guide_screen.dart';
+import 'package:noor_life/features/hajj/presentation/screens/hajj_days_screen.dart';
 import 'package:noor_life/l10n/generated/app_localizations.dart';
 
 void main() {
@@ -18,12 +18,12 @@ void main() {
         Locale('en'),
       ],
       locale: Locale('en'),
-      home: HajjGuideScreen(),
+      home: HajjDaysScreen(),
     );
   }
 
   testWidgets(
-    'Hajj and Umrah hub exposes all learning guides',
+    'Hajj days presents the sequence from Tarwiyah through the final Tashriq day',
     (tester) async {
       await tester.pumpWidget(
         buildTestableWidget(),
@@ -32,42 +32,38 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(
-        find.text('Hajj & Umrah'),
-        findsOneWidget,
-      );
-
-      expect(
-        find.text('Hajj Fundamentals'),
-        findsOneWidget,
-      );
-
-      expect(
-        find.text('Types of Hajj'),
-        findsOneWidget,
-      );
-
-      expect(
-        find.text('Hajj Days'),
-        findsOneWidget,
-      );
-
-      expect(
-        find.text('Umrah Guide'),
+        find.text('8 Dhul Hijjah · Tarwiyah'),
         findsOneWidget,
       );
 
       await tester.scrollUntilVisible(
-        find.text('Official Information'),
+        find.text('10 Dhul Hijjah · First Day of Eid'),
+        250,
+        scrollable: find.byType(Scrollable).first,
+      );
+
+      expect(
+        find.text('10 Dhul Hijjah · First Day of Eid'),
+        findsOneWidget,
+      );
+
+      await tester.scrollUntilVisible(
+        find.text('13 Dhul Hijjah · Final Tashriq Day'),
         250,
         scrollable: find.byType(Scrollable).first,
       );
 
       await tester.ensureVisible(
-        find.text('Official Information'),
+        find.text('13 Dhul Hijjah · Final Tashriq Day'),
       );
 
       expect(
-        find.text('Official Information'),
+        find.text('11–12 Dhul Hijjah · Days of Tashriq'),
+        findsOneWidget,
+      );
+
+      expect(
+        find.text('13 Dhul Hijjah · Final Tashriq Day'),
         findsOneWidget,
       );
     },

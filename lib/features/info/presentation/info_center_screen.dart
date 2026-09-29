@@ -207,6 +207,44 @@ class InfoCenterScreen extends StatelessWidget {
                 const Divider(height: 1),
                 ListTile(
                   leading: Icon(
+                    Icons.compare_arrows_outlined,
+                    color: colorScheme.primary,
+                  ),
+                  title: Text(
+                    l10n.hajjTypesTitle,
+                  ),
+                  subtitle: Text(
+                    l10n.hajjTypesMenuDesc,
+                  ),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                  ),
+                  onTap: () => context.push(
+                    AppRoutes.hajjTypes,
+                  ),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: Icon(
+                    Icons.calendar_month_outlined,
+                    color: colorScheme.primary,
+                  ),
+                  title: Text(
+                    l10n.hajjDaysTitle,
+                  ),
+                  subtitle: Text(
+                    l10n.hajjDaysMenuDesc,
+                  ),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                  ),
+                  onTap: () => context.push(
+                    AppRoutes.hajjDays,
+                  ),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: Icon(
                     Icons.directions_walk_outlined,
                     color: colorScheme.primary,
                   ),

@@ -1975,4 +1975,96 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get umrahGuideSchoolNote =>
       'This is a basic learning sequence, not an individual fatwa. Questions involving missed rites, illness, menstruation, miqat mistakes, penalties or other exceptional circumstances require more specific guidance.';
+
+  @override
+  String get hajjTypesTitle => 'Types of Hajj';
+
+  @override
+  String get hajjTypesMenuDesc =>
+      'Compare Ifrad, Tamattu and Qiran and understand their basic differences.';
+
+  @override
+  String get hajjTypesIntro =>
+      'Hajj can be performed as Ifrad, Tamattu or Qiran. The main differences concern whether Umrah is combined with Hajj, whether ihram is exited between them, and whether a thanksgiving sacrifice is required.';
+
+  @override
+  String get hajjTypesThreeTitle => 'The Three Types';
+
+  @override
+  String get hajjTypeIfradTitle => 'Ifrad';
+
+  @override
+  String get hajjTypeIfradDesc =>
+      'Ifrad is Hajj performed without performing Umrah as part of the same Hajj season. The pilgrim enters ihram with the intention of Hajj and remains in ihram through the relevant Hajj rites. A thanksgiving sacrifice is not required merely because the Hajj is Ifrad.';
+
+  @override
+  String get hajjTypeTamattuTitle => 'Tamattu';
+
+  @override
+  String get hajjTypeTamattuDesc =>
+      'In Tamattu, the pilgrim first enters ihram for Umrah during the Hajj season, completes Umrah and leaves ihram. Before Arafat, the pilgrim enters ihram again for Hajj. A thanksgiving sacrifice is required for Tamattu according to the applicable rules.';
+
+  @override
+  String get hajjTypeQiranTitle => 'Qiran';
+
+  @override
+  String get hajjTypeQiranDesc =>
+      'In Qiran, Hajj and Umrah are intended together and performed within one continuous state of ihram. After completing the Umrah rites, the pilgrim does not leave ihram before continuing with Hajj. A thanksgiving sacrifice is required for Qiran according to the applicable rules.';
+
+  @override
+  String get hajjTypesNote =>
+      'The three types share the central rites of Hajj but differ in intention, ihram and the relationship between Hajj and Umrah. Changing from one type to another and exceptional situations have detailed school-specific rulings; follow qualified guidance for your actual Hajj.';
+
+  @override
+  String get hajjDaysTitle => 'Hajj Days';
+
+  @override
+  String get hajjDaysMenuDesc =>
+      'Follow a concise overview of the main rites from 8 through 13 Dhul Hijjah.';
+
+  @override
+  String get hajjDaysIntro =>
+      'This screen gives a learning overview of the main Hajj days. It is not a live itinerary: exact movement times, concessions and the order of some rites can differ by school of law, Hajj type, health, crowd conditions and official organisation instructions.';
+
+  @override
+  String get hajjDaysFlowTitle => 'Main Hajj Flow';
+
+  @override
+  String get hajjDay8Title => '8 Dhul Hijjah · Tarwiyah';
+
+  @override
+  String get hajjDay8Desc =>
+      'Those performing Tamattu enter ihram again for Hajj on this day or earlier if they have not already done so. In the established Hajj sequence, pilgrims prepare for the days of Hajj and proceed toward Mina before Arafat.';
+
+  @override
+  String get hajjDay9Title => '9 Dhul Hijjah · Arafah';
+
+  @override
+  String get hajjDay9Desc =>
+      'The standing at Arafat is a pillar of Hajj and must occur within its valid period. After Arafat, pilgrims proceed to Muzdalifah, where the Muzdalifah standing forms part of the Hajj rites. Detailed timing rules differ between schools of law.';
+
+  @override
+  String get hajjDay10Title => '10 Dhul Hijjah · First Day of Eid';
+
+  @override
+  String get hajjDay10Desc =>
+      'The common sequence includes stoning the Aqabah Jamarah, the thanksgiving sacrifice for those performing Tamattu or Qiran, shaving or shortening the hair and the visitation tawaf. The legal status of this order differs between schools of law; the current Presidency of Religious Affairs fatwa and practice allow flexibility in the sequence without treating every change of order as requiring a penalty.';
+
+  @override
+  String get hajjDays11And12Title => '11–12 Dhul Hijjah · Days of Tashriq';
+
+  @override
+  String get hajjDays11And12Desc =>
+      'These are Mina and Jamarat days. The three Jamarat are stoned as part of the Hajj rites. Detailed valid times and concessions can differ, especially in cases involving crowding, illness or inability.';
+
+  @override
+  String get hajjDay13Title => '13 Dhul Hijjah · Final Tashriq Day';
+
+  @override
+  String get hajjDay13Desc =>
+      'Some pilgrims will have completed their Mina duties earlier, while those remaining in Mina can have further Jamarat duties on the fourth day of Eid. The point at which this duty applies differs between schools of law, so this screen does not make an automatic personal ruling.';
+
+  @override
+  String get hajjDaysNote =>
+      'Treat this as an educational map, not as a substitute for your group leader, current official Hajj instructions or qualified religious guidance. In particular, timing, crowd-management concessions and penalties require situation-specific assessment.';
 }
