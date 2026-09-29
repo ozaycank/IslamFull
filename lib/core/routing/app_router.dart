@@ -8,7 +8,9 @@ import '../../features/guidance/presentation/screens/ghusl_guide_screen.dart';
 import '../../features/guidance/presentation/screens/islam_foundations_screen.dart';
 import '../../features/guidance/presentation/screens/new_muslim_journey_screen.dart';
 import '../../features/guidance/presentation/screens/prayer_guide_screen.dart';
+import '../../features/hajj/presentation/screens/hajj_fundamentals_screen.dart';
 import '../../features/hajj/presentation/screens/hajj_guide_screen.dart';
+import '../../features/hajj/presentation/screens/umrah_guide_screen.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/info/presentation/info_center_screen.dart';
 import '../../features/info/presentation/wudu_guide_screen.dart';
@@ -21,17 +23,17 @@ import '../../features/prayer/shared/presentation/screens/prayer_home_screen.dar
 import '../../features/quran/presentation/screens/quran_bookmarks_screen.dart';
 import '../../features/quran/presentation/screens/quran_home_screen.dart';
 import '../../features/quran/presentation/screens/surah_detail_screen.dart';
+import '../../features/qurban/presentation/screens/qurban_eid_guide_screen.dart';
+import '../../features/qurban/presentation/screens/qurban_guide_screen.dart';
+import '../../features/qurban/presentation/screens/qurban_hub_screen.dart';
+import '../../features/ramadan/presentation/screens/ramadan_guide_screen.dart';
+import '../../features/ramadan/presentation/screens/ramadan_hub_screen.dart';
 import '../../features/settings/presentation/screens/settings_screen.dart';
 import '../../features/shell/presentation/screens/app_shell_screen.dart';
 import '../../features/splash/presentation/splash_screen.dart';
 import '../../features/tools/presentation/islamic_tools_screen.dart';
 import '../../features/tools/presentation/tasbih_screen.dart';
 import '../../features/zakat/presentation/screens/zakat_calculator_screen.dart';
-import '../../features/ramadan/presentation/screens/ramadan_hub_screen.dart';
-import '../../features/ramadan/presentation/screens/ramadan_guide_screen.dart';
-import '../../features/qurban/presentation/screens/qurban_guide_screen.dart';
-import '../../features/qurban/presentation/screens/qurban_hub_screen.dart';
-import '../../features/qurban/presentation/screens/qurban_eid_guide_screen.dart';
 import '../di/injection_container.dart';
 import '../logging/logger_service.dart';
 import 'app_navigation_observer.dart';
@@ -81,6 +83,16 @@ class AppRouter {
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.hajj,
           builder: (context, state) => const HajjGuideScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.hajjFundamentals,
+          builder: (context, state) => const HajjFundamentalsScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.umrahGuide,
+          builder: (context, state) => const UmrahGuideScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,

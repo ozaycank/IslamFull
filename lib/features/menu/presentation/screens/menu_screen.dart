@@ -35,7 +35,6 @@ class MenuScreen extends ConsumerWidget {
           AppSpacing.lg,
         ),
         children: [
-          // Settings
           SectionHeader(
             title: l10n.menuSettingsGroup,
           ),
@@ -80,8 +79,6 @@ class MenuScreen extends ConsumerWidget {
           const SizedBox(
             height: AppSpacing.xxl,
           ),
-
-          // Personalization and personal records
           SectionHeader(
             title: l10n.menuPersonalizationGroup,
           ),
@@ -110,8 +107,6 @@ class MenuScreen extends ConsumerWidget {
           const SizedBox(
             height: AppSpacing.xxl,
           ),
-
-          // Tools and information
           SectionHeader(
             title: l10n.menuToolsGroup,
           ),
@@ -136,6 +131,14 @@ class MenuScreen extends ConsumerWidget {
                 ),
                 const Divider(height: 1),
                 _MenuTile(
+                  icon: Icons.mosque_outlined,
+                  title: l10n.menuHajjGuide,
+                  onTap: () => context.push(
+                    AppRoutes.hajj,
+                  ),
+                ),
+                const Divider(height: 1),
+                _MenuTile(
                   icon: Icons.auto_awesome_mosaic_outlined,
                   title: l10n.menuIslamicTools,
                   onTap: () => context.push(
@@ -156,8 +159,6 @@ class MenuScreen extends ConsumerWidget {
           const SizedBox(
             height: AppSpacing.xxl,
           ),
-
-          // App information
           SectionHeader(
             title: l10n.menuAppGroup,
           ),

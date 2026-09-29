@@ -706,7 +706,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get menuInfoCenter => 'Information Center';
 
   @override
-  String get menuHajjGuide => 'Hajj Guide';
+  String get menuHajjGuide => 'Hajj & Umrah';
 
   @override
   String get menuZakatCalc => 'Zakat Calculator';
@@ -806,14 +806,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get zakatGoldPricePositive => 'Enter a gold price greater than zero.';
 
   @override
-  String get hajjTitle => 'Hajj Guide';
+  String get hajjTitle => 'Hajj & Umrah';
 
   @override
   String get hajjDiyanetInfo =>
-      'Hajj is one of the five pillars of Islam. In Turkey, Hajj registration and lottery processes are managed directly by the Presidency of Religious Affairs (Diyanet).';
+      'For official Hajj and Umrah registration, organisation announcements and current administrative information in Türkiye, use the Presidency of Religious Affairs Hajj and Umrah website.';
 
   @override
-  String get hajjOfficialLinkButton => 'Official Diyanet Hajj Page';
+  String get hajjOfficialLinkButton => 'Open Official Diyanet Hajj & Umrah';
 
   @override
   String get comingSoonAlert => 'This feature will be added in the next phase.';
@@ -1837,4 +1837,142 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get qurbanEidSchoolNote =>
       'This guide gives a concise orientation. Eid prayer, additional takbirs and related rulings have differences between schools of law. Follow the practice of your congregation or seek qualified religious guidance when detailed application matters.';
+
+  @override
+  String get hajjHubIntro =>
+      'Learn the shared foundations of Hajj and the basic sequence of Umrah. Detailed rulings can differ by school of law, type of Hajj and individual circumstances.';
+
+  @override
+  String get hajjLearnTitle => 'Hajj & Umrah Guidance';
+
+  @override
+  String get hajjOfficialInfoTitle => 'Official Information';
+
+  @override
+  String get hajjOfficialLinkError =>
+      'The official Hajj and Umrah page could not be opened.';
+
+  @override
+  String get hajjFundamentalsTitle => 'Hajj Fundamentals';
+
+  @override
+  String get hajjFundamentalsMenuDesc =>
+      'Learn the essential concepts of ihram, tawaf, sa\'y, Arafat, Muzdalifah and Mina.';
+
+  @override
+  String get hajjFundamentalsIntro =>
+      'This guide introduces the main places and acts encountered during Hajj. It is an orientation guide rather than a personalised ruling or a complete day-by-day Hajj programme.';
+
+  @override
+  String get hajjFundamentalsTopicsTitle => 'Essential Concepts';
+
+  @override
+  String get hajjFundamentalsMeaningTitle => 'Meaning and Obligation of Hajj';
+
+  @override
+  String get hajjFundamentalsMeaningDesc =>
+      'Hajj is one of the five pillars of Islam and is required once in a lifetime from a Muslim who meets the religious conditions of ability. Its rites are performed in and around Makkah during the prescribed Hajj period.';
+
+  @override
+  String get hajjFundamentalsIhramTitle => 'Ihram and Miqat';
+
+  @override
+  String get hajjFundamentalsIhramDesc =>
+      'Ihram is the state in which a person enters Hajj or Umrah by intention. Those travelling for Hajj or Umrah from outside the miqat boundaries enter ihram before crossing the relevant miqat. In Hanafi teaching, intention and talbiyah together form ihram; other schools differ in the legal status of the talbiyah.';
+
+  @override
+  String get hajjFundamentalsTawafTitle => 'Tawaf';
+
+  @override
+  String get hajjFundamentalsTawafDesc =>
+      'Tawaf consists of seven circuits around the Ka\'bah, beginning from the line of the Black Stone with the Ka\'bah kept to the left. Hajj contains different types of tawaf; the visitation or ifadah tawaf is a pillar of Hajj.';
+
+  @override
+  String get hajjFundamentalsSayTitle => 'Sa\'y';
+
+  @override
+  String get hajjFundamentalsSayDesc =>
+      'Sa\'y is performed between Safa and Marwah in seven traversals, beginning at Safa and ending at Marwah. Its detailed legal classification and some conditions differ between schools of law.';
+
+  @override
+  String get hajjFundamentalsArafatTitle => 'Arafat';
+
+  @override
+  String get hajjFundamentalsArafatDesc =>
+      'Standing at Arafat within its valid time is a pillar of Hajj. Missing the valid Arafat standing means that the Hajj cannot be completed for that year.';
+
+  @override
+  String get hajjFundamentalsMuzdalifahTitle => 'Muzdalifah';
+
+  @override
+  String get hajjFundamentalsMuzdalifahDesc =>
+      'After Arafat, pilgrims proceed to Muzdalifah as part of the Hajj rites. The legal ruling and precise valid period for the Muzdalifah standing contain differences between schools of law, especially regarding the minimum time required.';
+
+  @override
+  String get hajjFundamentalsMinaTitle => 'Mina and the Jamarat';
+
+  @override
+  String get hajjFundamentalsMinaDesc =>
+      'Mina is central to several rites of the Hajj days, including the stoning of the Jamarat. The timing, order and detailed rulings of these rites depend on the day, type of Hajj and school of law.';
+
+  @override
+  String get hajjFundamentalsReleaseTitle => 'Haircut and Leaving Ihram';
+
+  @override
+  String get hajjFundamentalsReleaseDesc =>
+      'At the appropriate stage of Hajj, shaving or shortening the hair forms part of leaving the restrictions of ihram. The exact sequence with sacrifice, stoning and tawaf, and the legal consequences of changing that sequence, differ in detail between schools of law.';
+
+  @override
+  String get hajjFundamentalsSchoolNote =>
+      'This screen introduces shared Hajj concepts. The exact sequence and legal details vary according to the type of Hajj, school of law and personal circumstances. A day-by-day guide and the types of Hajj are handled separately.';
+
+  @override
+  String get hajjUmrahSourceNote =>
+      'Religious guidance is based primarily on information published by the Presidency of Religious Affairs and the High Board of Religious Affairs.';
+
+  @override
+  String get umrahGuideTitle => 'Umrah Guide';
+
+  @override
+  String get umrahGuideMenuDesc =>
+      'Learn the basic sequence of ihram, tawaf, sa\'y and leaving ihram.';
+
+  @override
+  String get umrahGuideIntro =>
+      'Umrah is performed through a concise sequence centred on ihram, tawaf, sa\'y and leaving ihram. This guide explains that shared basic flow without treating school-specific details as universal.';
+
+  @override
+  String get umrahGuideStepsTitle => 'Basic Umrah Sequence';
+
+  @override
+  String get umrahGuideStep1Title => '1. Enter Ihram';
+
+  @override
+  String get umrahGuideStep1Desc =>
+      'Enter ihram for Umrah before crossing the relevant miqat. Ihram is a state of worship entered by intention, not merely the wearing of ihram clothing. Details concerning talbiyah and some ihram rules differ between schools of law.';
+
+  @override
+  String get umrahGuideStep2Title => '2. Perform Tawaf';
+
+  @override
+  String get umrahGuideStep2Desc =>
+      'Perform the Umrah tawaf around the Ka\'bah in seven circuits. Tawaf is an essential part of Umrah according to all schools of law.';
+
+  @override
+  String get umrahGuideStep3Title => '3. Perform Sa\'y';
+
+  @override
+  String get umrahGuideStep3Desc =>
+      'Perform seven traversals between Safa and Marwah: four journeys from Safa to Marwah and three from Marwah to Safa, finishing at Marwah. The detailed legal classification of sa\'y differs between schools of law.';
+
+  @override
+  String get umrahGuideStep4Title => '4. Cut the Hair and Leave Ihram';
+
+  @override
+  String get umrahGuideStep4Desc =>
+      'After completing the Umrah rites, the hair is shaved or shortened as applicable and the person leaves the state of ihram. The amount and detailed rules differ according to circumstances and school of law.';
+
+  @override
+  String get umrahGuideSchoolNote =>
+      'This is a basic learning sequence, not an individual fatwa. Questions involving missed rites, illness, menstruation, miqat mistakes, penalties or other exceptional circumstances require more specific guidance.';
 }

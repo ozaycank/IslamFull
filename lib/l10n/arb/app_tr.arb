@@ -220,7 +220,7 @@
   "menuToolsGroup": "Araçlar & Bilgi",
   "menuIslamicTools": "İslami Araçlar",
   "menuInfoCenter": "Bilgi Merkezi",
-  "menuHajjGuide": "Hac Rehberi",
+  "menuHajjGuide": "Hac ve Umre",
   "menuZakatCalc": "Zekât Hesaplama",
   "menuAppGroup": "Uygulama",
   "menuAbout": "Hakkında",
@@ -255,9 +255,9 @@
 
 "zakatGoldPriceRequired": "Güncel gram altın fiyatını girin.",
 "zakatGoldPricePositive": "Sıfırdan büyük bir gram altın fiyatı girin.",
-  "hajjTitle": "Hac Rehberi",
-  "hajjDiyanetInfo": "Hac ibadeti, İslam'ın beş şartından biridir. Türkiye'de Hac kura ve kayıt işlemleri doğrudan Türkiye Diyanet İşleri Başkanlığı tarafından yürütülmektedir.",
-  "hajjOfficialLinkButton": "Resmi Diyanet Hac Sayfası",
+  "hajjTitle": "Hac ve Umre",
+"hajjDiyanetInfo": "Türkiye'deki resmî hac ve umre kayıtları, organizasyon duyuruları ve güncel idari bilgiler için Diyanet İşleri Başkanlığı Hac ve Umre Genel Müdürlüğünün resmî sayfasını kullanabilirsiniz.",
+"hajjOfficialLinkButton": "Diyanet Hac ve Umre Sayfasını Aç",
   "comingSoonAlert": "Bu özellik bir sonraki fazda eklenecektir.","aboutAppDescription": "IslamFull, günlük ibadetlerinizi takip etmeniz, Kur'an okumanız ve manevi hedeflerinize ulaşmanız için geliştirilmiş yerel ve gizlilik odaklı bir İslami yaşam asistanıdır.",
   "aboutVersion": "Sürüm 1.0.0",
   "aboutCopyright": "© 2026 IslamFull. Tüm hakları saklıdır.",
@@ -618,5 +618,81 @@
 "qurbanEidTashriqTextTitle": "Teşrik Tekbiri",
 "qurbanEidTashriqText": "Allâhü ekber, Allâhü ekber. Lâ ilâhe illallâhü vallâhü ekber. Allâhü ekber ve lillâhi'l-hamd.",
 
-"qurbanEidSchoolNote": "Bu rehber kısa bir yönlendirme sunar. Bayram namazı, ilave tekbirler ve ilgili hükümler mezheplere göre farklılık gösterebilir. Ayrıntılı uygulamada bağlı bulunduğunuz cemaatin uygulamasını takip edebilir veya yetkin dinî kaynaklara başvurabilirsiniz."
+"qurbanEidSchoolNote": "Bu rehber kısa bir yönlendirme sunar. Bayram namazı, ilave tekbirler ve ilgili hükümler mezheplere göre farklılık gösterebilir. Ayrıntılı uygulamada bağlı bulunduğunuz cemaatin uygulamasını takip edebilir veya yetkin dinî kaynaklara başvurabilirsiniz.","hajjHubIntro": "Haccın ortak temel kavramlarını ve umrenin temel akışını öğrenin. Ayrıntılı hükümler mezhebe, hac türüne ve kişinin durumuna göre farklılık gösterebilir.",
+
+"hajjLearnTitle": "Hac ve Umre Rehberleri",
+
+"hajjOfficialInfoTitle": "Resmî Bilgiler",
+
+"hajjOfficialLinkError": "Diyanet Hac ve Umre sayfası açılamadı.",
+
+"hajjFundamentalsTitle": "Haccın Temelleri",
+
+"hajjFundamentalsMenuDesc": "İhram, mikat, tavaf, sa'y, Arafat, Müzdelife ve Mina gibi temel kavramları öğrenin.",
+
+"hajjFundamentalsIntro": "Bu rehber hac sırasında karşılaşılan temel mekân ve ibadetleri tanıtır. Kişiye özel fetva veya gün gün eksiksiz hac programı değildir.",
+
+"hajjFundamentalsTopicsTitle": "Temel Kavramlar",
+
+"hajjFundamentalsMeaningTitle": "Haccın Anlamı ve Yükümlülüğü",
+
+"hajjFundamentalsMeaningDesc": "Hac İslam'ın beş temel esasından biridir ve dinen gerekli imkân ve şartları taşıyan Müslümana ömründe bir defa farzdır. Hac menâsiki belirlenen hac döneminde Mekke ve çevresindeki ilgili mekânlarda yerine getirilir.",
+
+"hajjFundamentalsIhramTitle": "İhram ve Mikat",
+
+"hajjFundamentalsIhramDesc": "İhram, kişinin hac veya umre ibadetine niyet ederek girdiği ibadet hâlidir. Mikat sınırları dışından hac veya umre amacıyla gelenler ilgili mikatı geçmeden ihrama girerler. Hanefî öğretiminde niyet ve telbiye birlikte ihramın rüknü kabul edilirken diğer mezheplerde telbiyenin fıkhî hükmü farklıdır.",
+
+"hajjFundamentalsTawafTitle": "Tavaf",
+
+"hajjFundamentalsTawafDesc": "Tavaf, Hacer-i Esved hizasından başlanarak Kâbe sola alınmak suretiyle Kâbe'nin etrafında yedi defa dönmektir. Hacda farklı tavaf türleri bulunur; ziyaret veya ifâza tavafı haccın rükünlerindendir.",
+
+"hajjFundamentalsSayTitle": "Sa'y",
+
+"hajjFundamentalsSayDesc": "Sa'y, Safa ile Merve arasında Safa'dan başlayıp Merve'de bitecek şekilde toplam yedi şavt olarak yapılır. Sa'yın fıkhî sınıflandırması ve bazı ayrıntılı şartları mezheplere göre farklılık gösterir.",
+
+"hajjFundamentalsArafatTitle": "Arafat",
+
+"hajjFundamentalsArafatDesc": "Geçerli vakti içinde Arafat'ta vakfe yapmak haccın rüknüdür. Geçerli Arafat vakfesinin kaçırılması hâlinde o yıl hac tamamlanmış olmaz.",
+
+"hajjFundamentalsMuzdalifahTitle": "Müzdelife",
+
+"hajjFundamentalsMuzdalifahDesc": "Arafat'tan sonra hac menâsikinin bir parçası olarak Müzdelife'ye geçilir. Müzdelife vakfesinin fıkhî hükmü ve geçerli zamanının ayrıntıları, özellikle asgari süre bakımından mezheplere göre farklılık gösterir.",
+
+"hajjFundamentalsMinaTitle": "Mina ve Cemreler",
+
+"hajjFundamentalsMinaDesc": "Mina, hac günlerindeki birçok menâsikin merkezidir ve cemrelere taş atma burada yerine getirilir. Bu uygulamaların zamanı, sırası ve ayrıntılı hükümleri güne, hac türüne ve mezhebe göre değişebilir.",
+
+"hajjFundamentalsReleaseTitle": "Tıraş ve İhramdan Çıkış",
+
+"hajjFundamentalsReleaseDesc": "Haccın uygun aşamasında saçın tıraş edilmesi veya kısaltılması ihram yasaklarından çıkış sürecinin bir parçasıdır. Kurban, cemre, tıraş ve tavaf arasındaki sıra ile bu sıranın değiştirilmesinin fıkhî sonuçları mezheplere göre ayrıntıda farklılık gösterir.",
+
+"hajjFundamentalsSchoolNote": "Bu ekran haccın ortak temel kavramlarını tanıtır. Kesin sıra ve ayrıntılı hükümler hac türüne, mezhebe ve kişisel duruma göre değişebilir. Hac türleri ve gün gün uygulama ayrı rehberlerde ele alınacaktır.",
+
+"hajjUmrahSourceNote": "Dinî bilgiler öncelikle Diyanet İşleri Başkanlığı ve Din İşleri Yüksek Kurulunun yayımladığı bilgiler esas alınarak hazırlanmıştır.",
+
+"umrahGuideTitle": "Umre Rehberi",
+
+"umrahGuideMenuDesc": "İhram, tavaf, sa'y ve ihramdan çıkıştan oluşan temel umre akışını öğrenin.",
+
+"umrahGuideIntro": "Umre; ihram, tavaf, sa'y ve ihramdan çıkış etrafında şekillenen kısa bir ibadet akışına sahiptir. Bu rehber, mezhebe özgü ayrıntıları evrensel hüküm gibi sunmadan ortak temel akışı açıklar.",
+
+"umrahGuideStepsTitle": "Temel Umre Sırası",
+
+"umrahGuideStep1Title": "1. İhrama Girin",
+
+"umrahGuideStep1Desc": "İlgili mikat sınırını geçmeden önce umre için ihrama girilir. İhram yalnızca ihram kıyafetini giymek değil, niyetle girilen bir ibadet hâlidir. Telbiye ve bazı ihram hükümlerinin ayrıntıları mezheplere göre farklılık gösterir.",
+
+"umrahGuideStep2Title": "2. Tavaf Yapın",
+
+"umrahGuideStep2Desc": "Kâbe'nin etrafında yedi şavt umre tavafı yapılır. Tavaf, bütün mezheplere göre umrenin temel unsurlarındandır.",
+
+"umrahGuideStep3Title": "3. Sa'y Yapın",
+
+"umrahGuideStep3Desc": "Safa ile Merve arasında toplam yedi şavt yapılır: Safa'dan Merve'ye dört, Merve'den Safa'ya üç geçiş yapılarak Merve'de tamamlanır. Sa'yın ayrıntılı fıkhî hükmü mezheplere göre farklılık gösterir.",
+
+"umrahGuideStep4Title": "4. Saçı Kesip İhramdan Çıkın",
+
+"umrahGuideStep4Desc": "Umre menâsiki tamamlandıktan sonra duruma uygun şekilde saç tıraş edilir veya kısaltılır ve ihramdan çıkılır. Kesilecek miktar ve ayrıntılı hükümler kişisel duruma ve mezhebe göre farklılık gösterebilir.",
+
+"umrahGuideSchoolNote": "Bu ekran temel öğrenme akışıdır; kişiye özel fetva değildir. Eksik menâsik, hastalık, hayız hâli, mikat hatası, ceza gerektiren durumlar veya diğer özel hâller daha ayrıntılı dinî değerlendirme gerektirir."
 }

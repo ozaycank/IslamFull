@@ -22,7 +22,9 @@ class InfoCenterScreen extends StatelessWidget {
         ),
       ),
       body: ListView(
-        padding: const EdgeInsets.all(AppSpacing.lg),
+        padding: const EdgeInsets.all(
+          AppSpacing.lg,
+        ),
         children: [
           AppCard(
             child: Column(
@@ -33,14 +35,18 @@ class InfoCenterScreen extends StatelessWidget {
                   color: colorScheme.primary,
                   size: 30,
                 ),
-                const SizedBox(height: AppSpacing.sm),
+                const SizedBox(
+                  height: AppSpacing.sm,
+                ),
                 Text(
                   l10n.infoCenterWelcomeTitle,
                   style: textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                const SizedBox(height: AppSpacing.xs),
+                const SizedBox(
+                  height: AppSpacing.xs,
+                ),
                 Text(
                   l10n.infoCenterWelcomeDesc,
                   style: textTheme.bodyMedium?.copyWith(
@@ -51,14 +57,18 @@ class InfoCenterScreen extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: AppSpacing.xl),
+          const SizedBox(
+            height: AppSpacing.xl,
+          ),
           Text(
             l10n.infoCenterLearningGuides,
             style: textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.w700,
             ),
           ),
-          const SizedBox(height: AppSpacing.sm),
+          const SizedBox(
+            height: AppSpacing.sm,
+          ),
           AppCard(
             padding: EdgeInsets.zero,
             child: Column(
@@ -103,33 +113,18 @@ class InfoCenterScreen extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: AppSpacing.xl),
+          const SizedBox(
+            height: AppSpacing.xl,
+          ),
           Text(
             l10n.infoCenterWorshipGuides,
             style: textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.w700,
             ),
           ),
-          const Divider(height: 1),
-          ListTile(
-            leading: Icon(
-              Icons.calendar_month_outlined,
-              color: colorScheme.primary,
-            ),
-            title: Text(
-              l10n.ramadanGuideTitle,
-            ),
-            subtitle: Text(
-              l10n.ramadanGuideMenuDesc,
-            ),
-            trailing: const Icon(
-              Icons.chevron_right,
-            ),
-            onTap: () => context.push(
-              AppRoutes.ramadanGuide,
-            ),
+          const SizedBox(
+            height: AppSpacing.sm,
           ),
-          const SizedBox(height: AppSpacing.sm),
           AppCard(
             padding: EdgeInsets.zero,
             child: Column(
@@ -188,6 +183,44 @@ class InfoCenterScreen extends StatelessWidget {
                   ),
                   onTap: () => context.push(
                     AppRoutes.qurbanEidGuide,
+                  ),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: Icon(
+                    Icons.mosque_outlined,
+                    color: colorScheme.primary,
+                  ),
+                  title: Text(
+                    l10n.hajjFundamentalsTitle,
+                  ),
+                  subtitle: Text(
+                    l10n.hajjFundamentalsMenuDesc,
+                  ),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                  ),
+                  onTap: () => context.push(
+                    AppRoutes.hajjFundamentals,
+                  ),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: Icon(
+                    Icons.directions_walk_outlined,
+                    color: colorScheme.primary,
+                  ),
+                  title: Text(
+                    l10n.umrahGuideTitle,
+                  ),
+                  subtitle: Text(
+                    l10n.umrahGuideMenuDesc,
+                  ),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                  ),
+                  onTap: () => context.push(
+                    AppRoutes.umrahGuide,
                   ),
                 ),
                 const Divider(height: 1),

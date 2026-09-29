@@ -1436,10 +1436,10 @@ abstract class AppLocalizations {
   /// **'Information Center'**
   String get menuInfoCenter;
 
-  /// Menu item
+  /// Menu item opening the Hajj and Umrah hub
   ///
   /// In en, this message translates to:
-  /// **'Hajj Guide'**
+  /// **'Hajj & Umrah'**
   String get menuHajjGuide;
 
   /// Menu item
@@ -1622,22 +1622,22 @@ abstract class AppLocalizations {
   /// **'Enter a gold price greater than zero.'**
   String get zakatGoldPricePositive;
 
-  /// Hajj screen title
+  /// Hajj and Umrah hub title
   ///
   /// In en, this message translates to:
-  /// **'Hajj Guide'**
+  /// **'Hajj & Umrah'**
   String get hajjTitle;
 
-  /// Hajj info
+  /// Official Diyanet Hajj and Umrah information
   ///
   /// In en, this message translates to:
-  /// **'Hajj is one of the five pillars of Islam. In Turkey, Hajj registration and lottery processes are managed directly by the Presidency of Religious Affairs (Diyanet).'**
+  /// **'For official Hajj and Umrah registration, organisation announcements and current administrative information in Türkiye, use the Presidency of Religious Affairs Hajj and Umrah website.'**
   String get hajjDiyanetInfo;
 
-  /// Button
+  /// Button opening the official Diyanet Hajj and Umrah website
   ///
   /// In en, this message translates to:
-  /// **'Official Diyanet Hajj Page'**
+  /// **'Open Official Diyanet Hajj & Umrah'**
   String get hajjOfficialLinkButton;
 
   /// Alert
@@ -3397,6 +3397,240 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This guide gives a concise orientation. Eid prayer, additional takbirs and related rulings have differences between schools of law. Follow the practice of your congregation or seek qualified religious guidance when detailed application matters.'**
   String get qurbanEidSchoolNote;
+
+  /// Introduction to the Hajj and Umrah hub
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the shared foundations of Hajj and the basic sequence of Umrah. Detailed rulings can differ by school of law, type of Hajj and individual circumstances.'**
+  String get hajjHubIntro;
+
+  /// Heading above Hajj and Umrah guides
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj & Umrah Guidance'**
+  String get hajjLearnTitle;
+
+  /// Heading for official Diyanet Hajj and Umrah information
+  ///
+  /// In en, this message translates to:
+  /// **'Official Information'**
+  String get hajjOfficialInfoTitle;
+
+  /// Error shown when the external Diyanet Hajj and Umrah page cannot be opened
+  ///
+  /// In en, this message translates to:
+  /// **'The official Hajj and Umrah page could not be opened.'**
+  String get hajjOfficialLinkError;
+
+  /// Title of the Hajj fundamentals guide
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj Fundamentals'**
+  String get hajjFundamentalsTitle;
+
+  /// Navigation description for the Hajj fundamentals guide
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the essential concepts of ihram, tawaf, sa\'y, Arafat, Muzdalifah and Mina.'**
+  String get hajjFundamentalsMenuDesc;
+
+  /// Introduction to the Hajj fundamentals guide
+  ///
+  /// In en, this message translates to:
+  /// **'This guide introduces the main places and acts encountered during Hajj. It is an orientation guide rather than a personalised ruling or a complete day-by-day Hajj programme.'**
+  String get hajjFundamentalsIntro;
+
+  /// Heading above Hajj fundamentals topics
+  ///
+  /// In en, this message translates to:
+  /// **'Essential Concepts'**
+  String get hajjFundamentalsTopicsTitle;
+
+  /// Title of the Hajj meaning and obligation topic
+  ///
+  /// In en, this message translates to:
+  /// **'Meaning and Obligation of Hajj'**
+  String get hajjFundamentalsMeaningTitle;
+
+  /// High-level explanation of Hajj and its obligation
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj is one of the five pillars of Islam and is required once in a lifetime from a Muslim who meets the religious conditions of ability. Its rites are performed in and around Makkah during the prescribed Hajj period.'**
+  String get hajjFundamentalsMeaningDesc;
+
+  /// Title of the ihram and miqat topic
+  ///
+  /// In en, this message translates to:
+  /// **'Ihram and Miqat'**
+  String get hajjFundamentalsIhramTitle;
+
+  /// High-level explanation of ihram and miqat with school differences
+  ///
+  /// In en, this message translates to:
+  /// **'Ihram is the state in which a person enters Hajj or Umrah by intention. Those travelling for Hajj or Umrah from outside the miqat boundaries enter ihram before crossing the relevant miqat. In Hanafi teaching, intention and talbiyah together form ihram; other schools differ in the legal status of the talbiyah.'**
+  String get hajjFundamentalsIhramDesc;
+
+  /// Title of the tawaf topic
+  ///
+  /// In en, this message translates to:
+  /// **'Tawaf'**
+  String get hajjFundamentalsTawafTitle;
+
+  /// High-level explanation of tawaf in Hajj
+  ///
+  /// In en, this message translates to:
+  /// **'Tawaf consists of seven circuits around the Ka\'bah, beginning from the line of the Black Stone with the Ka\'bah kept to the left. Hajj contains different types of tawaf; the visitation or ifadah tawaf is a pillar of Hajj.'**
+  String get hajjFundamentalsTawafDesc;
+
+  /// Title of the sa'y topic
+  ///
+  /// In en, this message translates to:
+  /// **'Sa\'y'**
+  String get hajjFundamentalsSayTitle;
+
+  /// High-level explanation of sa'y
+  ///
+  /// In en, this message translates to:
+  /// **'Sa\'y is performed between Safa and Marwah in seven traversals, beginning at Safa and ending at Marwah. Its detailed legal classification and some conditions differ between schools of law.'**
+  String get hajjFundamentalsSayDesc;
+
+  /// Title of the Arafat topic
+  ///
+  /// In en, this message translates to:
+  /// **'Arafat'**
+  String get hajjFundamentalsArafatTitle;
+
+  /// Explanation of the importance of the standing at Arafat
+  ///
+  /// In en, this message translates to:
+  /// **'Standing at Arafat within its valid time is a pillar of Hajj. Missing the valid Arafat standing means that the Hajj cannot be completed for that year.'**
+  String get hajjFundamentalsArafatDesc;
+
+  /// Title of the Muzdalifah topic
+  ///
+  /// In en, this message translates to:
+  /// **'Muzdalifah'**
+  String get hajjFundamentalsMuzdalifahTitle;
+
+  /// High-level explanation of Muzdalifah while acknowledging school differences
+  ///
+  /// In en, this message translates to:
+  /// **'After Arafat, pilgrims proceed to Muzdalifah as part of the Hajj rites. The legal ruling and precise valid period for the Muzdalifah standing contain differences between schools of law, especially regarding the minimum time required.'**
+  String get hajjFundamentalsMuzdalifahDesc;
+
+  /// Title of the Mina and Jamarat topic
+  ///
+  /// In en, this message translates to:
+  /// **'Mina and the Jamarat'**
+  String get hajjFundamentalsMinaTitle;
+
+  /// High-level explanation of Mina and the Jamarat
+  ///
+  /// In en, this message translates to:
+  /// **'Mina is central to several rites of the Hajj days, including the stoning of the Jamarat. The timing, order and detailed rulings of these rites depend on the day, type of Hajj and school of law.'**
+  String get hajjFundamentalsMinaDesc;
+
+  /// Title of the Hajj haircut and release from ihram topic
+  ///
+  /// In en, this message translates to:
+  /// **'Haircut and Leaving Ihram'**
+  String get hajjFundamentalsReleaseTitle;
+
+  /// High-level explanation of haircut and release from ihram
+  ///
+  /// In en, this message translates to:
+  /// **'At the appropriate stage of Hajj, shaving or shortening the hair forms part of leaving the restrictions of ihram. The exact sequence with sacrifice, stoning and tawaf, and the legal consequences of changing that sequence, differ in detail between schools of law.'**
+  String get hajjFundamentalsReleaseDesc;
+
+  /// Scope and school-of-law disclaimer for Hajj fundamentals
+  ///
+  /// In en, this message translates to:
+  /// **'This screen introduces shared Hajj concepts. The exact sequence and legal details vary according to the type of Hajj, school of law and personal circumstances. A day-by-day guide and the types of Hajj are handled separately.'**
+  String get hajjFundamentalsSchoolNote;
+
+  /// Source note shared by Hajj and Umrah guides
+  ///
+  /// In en, this message translates to:
+  /// **'Religious guidance is based primarily on information published by the Presidency of Religious Affairs and the High Board of Religious Affairs.'**
+  String get hajjUmrahSourceNote;
+
+  /// Title of the Umrah guide
+  ///
+  /// In en, this message translates to:
+  /// **'Umrah Guide'**
+  String get umrahGuideTitle;
+
+  /// Navigation description for the Umrah guide
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the basic sequence of ihram, tawaf, sa\'y and leaving ihram.'**
+  String get umrahGuideMenuDesc;
+
+  /// Introduction to the Umrah guide
+  ///
+  /// In en, this message translates to:
+  /// **'Umrah is performed through a concise sequence centred on ihram, tawaf, sa\'y and leaving ihram. This guide explains that shared basic flow without treating school-specific details as universal.'**
+  String get umrahGuideIntro;
+
+  /// Heading above the Umrah steps
+  ///
+  /// In en, this message translates to:
+  /// **'Basic Umrah Sequence'**
+  String get umrahGuideStepsTitle;
+
+  /// Title of the first Umrah step
+  ///
+  /// In en, this message translates to:
+  /// **'1. Enter Ihram'**
+  String get umrahGuideStep1Title;
+
+  /// Description of entering ihram for Umrah
+  ///
+  /// In en, this message translates to:
+  /// **'Enter ihram for Umrah before crossing the relevant miqat. Ihram is a state of worship entered by intention, not merely the wearing of ihram clothing. Details concerning talbiyah and some ihram rules differ between schools of law.'**
+  String get umrahGuideStep1Desc;
+
+  /// Title of the second Umrah step
+  ///
+  /// In en, this message translates to:
+  /// **'2. Perform Tawaf'**
+  String get umrahGuideStep2Title;
+
+  /// Description of Umrah tawaf
+  ///
+  /// In en, this message translates to:
+  /// **'Perform the Umrah tawaf around the Ka\'bah in seven circuits. Tawaf is an essential part of Umrah according to all schools of law.'**
+  String get umrahGuideStep2Desc;
+
+  /// Title of the third Umrah step
+  ///
+  /// In en, this message translates to:
+  /// **'3. Perform Sa\'y'**
+  String get umrahGuideStep3Title;
+
+  /// Description of Umrah sa'y
+  ///
+  /// In en, this message translates to:
+  /// **'Perform seven traversals between Safa and Marwah: four journeys from Safa to Marwah and three from Marwah to Safa, finishing at Marwah. The detailed legal classification of sa\'y differs between schools of law.'**
+  String get umrahGuideStep3Desc;
+
+  /// Title of the fourth Umrah step
+  ///
+  /// In en, this message translates to:
+  /// **'4. Cut the Hair and Leave Ihram'**
+  String get umrahGuideStep4Title;
+
+  /// Description of leaving ihram after Umrah
+  ///
+  /// In en, this message translates to:
+  /// **'After completing the Umrah rites, the hair is shaved or shortened as applicable and the person leaves the state of ihram. The amount and detailed rules differ according to circumstances and school of law.'**
+  String get umrahGuideStep4Desc;
+
+  /// Scope and religious-guidance disclaimer for the Umrah guide
+  ///
+  /// In en, this message translates to:
+  /// **'This is a basic learning sequence, not an individual fatwa. Questions involving missed rites, illness, menstruation, miqat mistakes, penalties or other exceptional circumstances require more specific guidance.'**
+  String get umrahGuideSchoolNote;
 }
 
 class _AppLocalizationsDelegate

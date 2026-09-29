@@ -710,7 +710,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get menuInfoCenter => 'Bilgi Merkezi';
 
   @override
-  String get menuHajjGuide => 'Hac Rehberi';
+  String get menuHajjGuide => 'Hac ve Umre';
 
   @override
   String get menuZakatCalc => 'Zekât Hesaplama';
@@ -812,14 +812,14 @@ class AppLocalizationsTr extends AppLocalizations {
       'Sıfırdan büyük bir gram altın fiyatı girin.';
 
   @override
-  String get hajjTitle => 'Hac Rehberi';
+  String get hajjTitle => 'Hac ve Umre';
 
   @override
   String get hajjDiyanetInfo =>
-      'Hac ibadeti, İslam\'ın beş şartından biridir. Türkiye\'de Hac kura ve kayıt işlemleri doğrudan Türkiye Diyanet İşleri Başkanlığı tarafından yürütülmektedir.';
+      'Türkiye\'deki resmî hac ve umre kayıtları, organizasyon duyuruları ve güncel idari bilgiler için Diyanet İşleri Başkanlığı Hac ve Umre Genel Müdürlüğünün resmî sayfasını kullanabilirsiniz.';
 
   @override
-  String get hajjOfficialLinkButton => 'Resmi Diyanet Hac Sayfası';
+  String get hajjOfficialLinkButton => 'Diyanet Hac ve Umre Sayfasını Aç';
 
   @override
   String get comingSoonAlert => 'Bu özellik bir sonraki fazda eklenecektir.';
@@ -1844,4 +1844,141 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get qurbanEidSchoolNote =>
       'Bu rehber kısa bir yönlendirme sunar. Bayram namazı, ilave tekbirler ve ilgili hükümler mezheplere göre farklılık gösterebilir. Ayrıntılı uygulamada bağlı bulunduğunuz cemaatin uygulamasını takip edebilir veya yetkin dinî kaynaklara başvurabilirsiniz.';
+
+  @override
+  String get hajjHubIntro =>
+      'Haccın ortak temel kavramlarını ve umrenin temel akışını öğrenin. Ayrıntılı hükümler mezhebe, hac türüne ve kişinin durumuna göre farklılık gösterebilir.';
+
+  @override
+  String get hajjLearnTitle => 'Hac ve Umre Rehberleri';
+
+  @override
+  String get hajjOfficialInfoTitle => 'Resmî Bilgiler';
+
+  @override
+  String get hajjOfficialLinkError => 'Diyanet Hac ve Umre sayfası açılamadı.';
+
+  @override
+  String get hajjFundamentalsTitle => 'Haccın Temelleri';
+
+  @override
+  String get hajjFundamentalsMenuDesc =>
+      'İhram, mikat, tavaf, sa\'y, Arafat, Müzdelife ve Mina gibi temel kavramları öğrenin.';
+
+  @override
+  String get hajjFundamentalsIntro =>
+      'Bu rehber hac sırasında karşılaşılan temel mekân ve ibadetleri tanıtır. Kişiye özel fetva veya gün gün eksiksiz hac programı değildir.';
+
+  @override
+  String get hajjFundamentalsTopicsTitle => 'Temel Kavramlar';
+
+  @override
+  String get hajjFundamentalsMeaningTitle => 'Haccın Anlamı ve Yükümlülüğü';
+
+  @override
+  String get hajjFundamentalsMeaningDesc =>
+      'Hac İslam\'ın beş temel esasından biridir ve dinen gerekli imkân ve şartları taşıyan Müslümana ömründe bir defa farzdır. Hac menâsiki belirlenen hac döneminde Mekke ve çevresindeki ilgili mekânlarda yerine getirilir.';
+
+  @override
+  String get hajjFundamentalsIhramTitle => 'İhram ve Mikat';
+
+  @override
+  String get hajjFundamentalsIhramDesc =>
+      'İhram, kişinin hac veya umre ibadetine niyet ederek girdiği ibadet hâlidir. Mikat sınırları dışından hac veya umre amacıyla gelenler ilgili mikatı geçmeden ihrama girerler. Hanefî öğretiminde niyet ve telbiye birlikte ihramın rüknü kabul edilirken diğer mezheplerde telbiyenin fıkhî hükmü farklıdır.';
+
+  @override
+  String get hajjFundamentalsTawafTitle => 'Tavaf';
+
+  @override
+  String get hajjFundamentalsTawafDesc =>
+      'Tavaf, Hacer-i Esved hizasından başlanarak Kâbe sola alınmak suretiyle Kâbe\'nin etrafında yedi defa dönmektir. Hacda farklı tavaf türleri bulunur; ziyaret veya ifâza tavafı haccın rükünlerindendir.';
+
+  @override
+  String get hajjFundamentalsSayTitle => 'Sa\'y';
+
+  @override
+  String get hajjFundamentalsSayDesc =>
+      'Sa\'y, Safa ile Merve arasında Safa\'dan başlayıp Merve\'de bitecek şekilde toplam yedi şavt olarak yapılır. Sa\'yın fıkhî sınıflandırması ve bazı ayrıntılı şartları mezheplere göre farklılık gösterir.';
+
+  @override
+  String get hajjFundamentalsArafatTitle => 'Arafat';
+
+  @override
+  String get hajjFundamentalsArafatDesc =>
+      'Geçerli vakti içinde Arafat\'ta vakfe yapmak haccın rüknüdür. Geçerli Arafat vakfesinin kaçırılması hâlinde o yıl hac tamamlanmış olmaz.';
+
+  @override
+  String get hajjFundamentalsMuzdalifahTitle => 'Müzdelife';
+
+  @override
+  String get hajjFundamentalsMuzdalifahDesc =>
+      'Arafat\'tan sonra hac menâsikinin bir parçası olarak Müzdelife\'ye geçilir. Müzdelife vakfesinin fıkhî hükmü ve geçerli zamanının ayrıntıları, özellikle asgari süre bakımından mezheplere göre farklılık gösterir.';
+
+  @override
+  String get hajjFundamentalsMinaTitle => 'Mina ve Cemreler';
+
+  @override
+  String get hajjFundamentalsMinaDesc =>
+      'Mina, hac günlerindeki birçok menâsikin merkezidir ve cemrelere taş atma burada yerine getirilir. Bu uygulamaların zamanı, sırası ve ayrıntılı hükümleri güne, hac türüne ve mezhebe göre değişebilir.';
+
+  @override
+  String get hajjFundamentalsReleaseTitle => 'Tıraş ve İhramdan Çıkış';
+
+  @override
+  String get hajjFundamentalsReleaseDesc =>
+      'Haccın uygun aşamasında saçın tıraş edilmesi veya kısaltılması ihram yasaklarından çıkış sürecinin bir parçasıdır. Kurban, cemre, tıraş ve tavaf arasındaki sıra ile bu sıranın değiştirilmesinin fıkhî sonuçları mezheplere göre ayrıntıda farklılık gösterir.';
+
+  @override
+  String get hajjFundamentalsSchoolNote =>
+      'Bu ekran haccın ortak temel kavramlarını tanıtır. Kesin sıra ve ayrıntılı hükümler hac türüne, mezhebe ve kişisel duruma göre değişebilir. Hac türleri ve gün gün uygulama ayrı rehberlerde ele alınacaktır.';
+
+  @override
+  String get hajjUmrahSourceNote =>
+      'Dinî bilgiler öncelikle Diyanet İşleri Başkanlığı ve Din İşleri Yüksek Kurulunun yayımladığı bilgiler esas alınarak hazırlanmıştır.';
+
+  @override
+  String get umrahGuideTitle => 'Umre Rehberi';
+
+  @override
+  String get umrahGuideMenuDesc =>
+      'İhram, tavaf, sa\'y ve ihramdan çıkıştan oluşan temel umre akışını öğrenin.';
+
+  @override
+  String get umrahGuideIntro =>
+      'Umre; ihram, tavaf, sa\'y ve ihramdan çıkış etrafında şekillenen kısa bir ibadet akışına sahiptir. Bu rehber, mezhebe özgü ayrıntıları evrensel hüküm gibi sunmadan ortak temel akışı açıklar.';
+
+  @override
+  String get umrahGuideStepsTitle => 'Temel Umre Sırası';
+
+  @override
+  String get umrahGuideStep1Title => '1. İhrama Girin';
+
+  @override
+  String get umrahGuideStep1Desc =>
+      'İlgili mikat sınırını geçmeden önce umre için ihrama girilir. İhram yalnızca ihram kıyafetini giymek değil, niyetle girilen bir ibadet hâlidir. Telbiye ve bazı ihram hükümlerinin ayrıntıları mezheplere göre farklılık gösterir.';
+
+  @override
+  String get umrahGuideStep2Title => '2. Tavaf Yapın';
+
+  @override
+  String get umrahGuideStep2Desc =>
+      'Kâbe\'nin etrafında yedi şavt umre tavafı yapılır. Tavaf, bütün mezheplere göre umrenin temel unsurlarındandır.';
+
+  @override
+  String get umrahGuideStep3Title => '3. Sa\'y Yapın';
+
+  @override
+  String get umrahGuideStep3Desc =>
+      'Safa ile Merve arasında toplam yedi şavt yapılır: Safa\'dan Merve\'ye dört, Merve\'den Safa\'ya üç geçiş yapılarak Merve\'de tamamlanır. Sa\'yın ayrıntılı fıkhî hükmü mezheplere göre farklılık gösterir.';
+
+  @override
+  String get umrahGuideStep4Title => '4. Saçı Kesip İhramdan Çıkın';
+
+  @override
+  String get umrahGuideStep4Desc =>
+      'Umre menâsiki tamamlandıktan sonra duruma uygun şekilde saç tıraş edilir veya kısaltılır ve ihramdan çıkılır. Kesilecek miktar ve ayrıntılı hükümler kişisel duruma ve mezhebe göre farklılık gösterebilir.';
+
+  @override
+  String get umrahGuideSchoolNote =>
+      'Bu ekran temel öğrenme akışıdır; kişiye özel fetva değildir. Eksik menâsik, hastalık, hayız hâli, mikat hatası, ceza gerektiren durumlar veya diğer özel hâller daha ayrıntılı dinî değerlendirme gerektirir.';
 }

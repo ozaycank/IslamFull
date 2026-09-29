@@ -813,8 +813,10 @@
   "@menuIslamicTools": { "description": "Menu item" },
   "menuInfoCenter": "Information Center",
   "@menuInfoCenter": { "description": "Menu item" },
-  "menuHajjGuide": "Hajj Guide",
-  "@menuHajjGuide": { "description": "Menu item" },
+  "menuHajjGuide": "Hajj & Umrah",
+"@menuHajjGuide": {
+  "description": "Menu item opening the Hajj and Umrah hub"
+},
   "menuZakatCalc": "Zakat Calculator",
   "@menuZakatCalc": { "description": "Menu item" },
   "menuAppGroup": "Application",
@@ -908,12 +910,18 @@
 "@zakatGoldPricePositive": {
   "description": "Validation error when the gold price is zero or invalid"
 },
-  "hajjTitle": "Hajj Guide",
-  "@hajjTitle": { "description": "Hajj screen title" },
-  "hajjDiyanetInfo": "Hajj is one of the five pillars of Islam. In Turkey, Hajj registration and lottery processes are managed directly by the Presidency of Religious Affairs (Diyanet).",
-  "@hajjDiyanetInfo": { "description": "Hajj info" },
-  "hajjOfficialLinkButton": "Official Diyanet Hajj Page",
-  "@hajjOfficialLinkButton": { "description": "Button" },
+  "hajjTitle": "Hajj & Umrah",
+"@hajjTitle": {
+  "description": "Hajj and Umrah hub title"
+},
+  "hajjDiyanetInfo": "For official Hajj and Umrah registration, organisation announcements and current administrative information in Türkiye, use the Presidency of Religious Affairs Hajj and Umrah website.",
+"@hajjDiyanetInfo": {
+  "description": "Official Diyanet Hajj and Umrah information"
+},
+  "hajjOfficialLinkButton": "Open Official Diyanet Hajj & Umrah",
+"@hajjOfficialLinkButton": {
+  "description": "Button opening the official Diyanet Hajj and Umrah website"
+},
   "comingSoonAlert": "This feature will be added in the next phase.",
   "@comingSoonAlert": { "description": "Alert" },
   "aboutAppDescription": "IslamFull is a local, privacy-focused Islamic lifestyle assistant designed to help you track daily prayers, read the Quran, and reach your spiritual goals.",
@@ -2082,5 +2090,199 @@
 "qurbanEidSchoolNote": "This guide gives a concise orientation. Eid prayer, additional takbirs and related rulings have differences between schools of law. Follow the practice of your congregation or seek qualified religious guidance when detailed application matters.",
 "@qurbanEidSchoolNote": {
   "description": "School-of-law disclaimer for the Dhul Hijjah and Eid guide"
+},
+"hajjHubIntro": "Learn the shared foundations of Hajj and the basic sequence of Umrah. Detailed rulings can differ by school of law, type of Hajj and individual circumstances.",
+"@hajjHubIntro": {
+  "description": "Introduction to the Hajj and Umrah hub"
+},
+
+"hajjLearnTitle": "Hajj & Umrah Guidance",
+"@hajjLearnTitle": {
+  "description": "Heading above Hajj and Umrah guides"
+},
+
+"hajjOfficialInfoTitle": "Official Information",
+"@hajjOfficialInfoTitle": {
+  "description": "Heading for official Diyanet Hajj and Umrah information"
+},
+
+"hajjOfficialLinkError": "The official Hajj and Umrah page could not be opened.",
+"@hajjOfficialLinkError": {
+  "description": "Error shown when the external Diyanet Hajj and Umrah page cannot be opened"
+},
+
+"hajjFundamentalsTitle": "Hajj Fundamentals",
+"@hajjFundamentalsTitle": {
+  "description": "Title of the Hajj fundamentals guide"
+},
+
+"hajjFundamentalsMenuDesc": "Learn the essential concepts of ihram, tawaf, sa'y, Arafat, Muzdalifah and Mina.",
+"@hajjFundamentalsMenuDesc": {
+  "description": "Navigation description for the Hajj fundamentals guide"
+},
+
+"hajjFundamentalsIntro": "This guide introduces the main places and acts encountered during Hajj. It is an orientation guide rather than a personalised ruling or a complete day-by-day Hajj programme.",
+"@hajjFundamentalsIntro": {
+  "description": "Introduction to the Hajj fundamentals guide"
+},
+
+"hajjFundamentalsTopicsTitle": "Essential Concepts",
+"@hajjFundamentalsTopicsTitle": {
+  "description": "Heading above Hajj fundamentals topics"
+},
+
+"hajjFundamentalsMeaningTitle": "Meaning and Obligation of Hajj",
+"@hajjFundamentalsMeaningTitle": {
+  "description": "Title of the Hajj meaning and obligation topic"
+},
+
+"hajjFundamentalsMeaningDesc": "Hajj is one of the five pillars of Islam and is required once in a lifetime from a Muslim who meets the religious conditions of ability. Its rites are performed in and around Makkah during the prescribed Hajj period.",
+"@hajjFundamentalsMeaningDesc": {
+  "description": "High-level explanation of Hajj and its obligation"
+},
+
+"hajjFundamentalsIhramTitle": "Ihram and Miqat",
+"@hajjFundamentalsIhramTitle": {
+  "description": "Title of the ihram and miqat topic"
+},
+
+"hajjFundamentalsIhramDesc": "Ihram is the state in which a person enters Hajj or Umrah by intention. Those travelling for Hajj or Umrah from outside the miqat boundaries enter ihram before crossing the relevant miqat. In Hanafi teaching, intention and talbiyah together form ihram; other schools differ in the legal status of the talbiyah.",
+"@hajjFundamentalsIhramDesc": {
+  "description": "High-level explanation of ihram and miqat with school differences"
+},
+
+"hajjFundamentalsTawafTitle": "Tawaf",
+"@hajjFundamentalsTawafTitle": {
+  "description": "Title of the tawaf topic"
+},
+
+"hajjFundamentalsTawafDesc": "Tawaf consists of seven circuits around the Ka'bah, beginning from the line of the Black Stone with the Ka'bah kept to the left. Hajj contains different types of tawaf; the visitation or ifadah tawaf is a pillar of Hajj.",
+"@hajjFundamentalsTawafDesc": {
+  "description": "High-level explanation of tawaf in Hajj"
+},
+
+"hajjFundamentalsSayTitle": "Sa'y",
+"@hajjFundamentalsSayTitle": {
+  "description": "Title of the sa'y topic"
+},
+
+"hajjFundamentalsSayDesc": "Sa'y is performed between Safa and Marwah in seven traversals, beginning at Safa and ending at Marwah. Its detailed legal classification and some conditions differ between schools of law.",
+"@hajjFundamentalsSayDesc": {
+  "description": "High-level explanation of sa'y"
+},
+
+"hajjFundamentalsArafatTitle": "Arafat",
+"@hajjFundamentalsArafatTitle": {
+  "description": "Title of the Arafat topic"
+},
+
+"hajjFundamentalsArafatDesc": "Standing at Arafat within its valid time is a pillar of Hajj. Missing the valid Arafat standing means that the Hajj cannot be completed for that year.",
+"@hajjFundamentalsArafatDesc": {
+  "description": "Explanation of the importance of the standing at Arafat"
+},
+
+"hajjFundamentalsMuzdalifahTitle": "Muzdalifah",
+"@hajjFundamentalsMuzdalifahTitle": {
+  "description": "Title of the Muzdalifah topic"
+},
+
+"hajjFundamentalsMuzdalifahDesc": "After Arafat, pilgrims proceed to Muzdalifah as part of the Hajj rites. The legal ruling and precise valid period for the Muzdalifah standing contain differences between schools of law, especially regarding the minimum time required.",
+"@hajjFundamentalsMuzdalifahDesc": {
+  "description": "High-level explanation of Muzdalifah while acknowledging school differences"
+},
+
+"hajjFundamentalsMinaTitle": "Mina and the Jamarat",
+"@hajjFundamentalsMinaTitle": {
+  "description": "Title of the Mina and Jamarat topic"
+},
+
+"hajjFundamentalsMinaDesc": "Mina is central to several rites of the Hajj days, including the stoning of the Jamarat. The timing, order and detailed rulings of these rites depend on the day, type of Hajj and school of law.",
+"@hajjFundamentalsMinaDesc": {
+  "description": "High-level explanation of Mina and the Jamarat"
+},
+
+"hajjFundamentalsReleaseTitle": "Haircut and Leaving Ihram",
+"@hajjFundamentalsReleaseTitle": {
+  "description": "Title of the Hajj haircut and release from ihram topic"
+},
+
+"hajjFundamentalsReleaseDesc": "At the appropriate stage of Hajj, shaving or shortening the hair forms part of leaving the restrictions of ihram. The exact sequence with sacrifice, stoning and tawaf, and the legal consequences of changing that sequence, differ in detail between schools of law.",
+"@hajjFundamentalsReleaseDesc": {
+  "description": "High-level explanation of haircut and release from ihram"
+},
+
+"hajjFundamentalsSchoolNote": "This screen introduces shared Hajj concepts. The exact sequence and legal details vary according to the type of Hajj, school of law and personal circumstances. A day-by-day guide and the types of Hajj are handled separately.",
+"@hajjFundamentalsSchoolNote": {
+  "description": "Scope and school-of-law disclaimer for Hajj fundamentals"
+},
+
+"hajjUmrahSourceNote": "Religious guidance is based primarily on information published by the Presidency of Religious Affairs and the High Board of Religious Affairs.",
+"@hajjUmrahSourceNote": {
+  "description": "Source note shared by Hajj and Umrah guides"
+},
+
+"umrahGuideTitle": "Umrah Guide",
+"@umrahGuideTitle": {
+  "description": "Title of the Umrah guide"
+},
+
+"umrahGuideMenuDesc": "Learn the basic sequence of ihram, tawaf, sa'y and leaving ihram.",
+"@umrahGuideMenuDesc": {
+  "description": "Navigation description for the Umrah guide"
+},
+
+"umrahGuideIntro": "Umrah is performed through a concise sequence centred on ihram, tawaf, sa'y and leaving ihram. This guide explains that shared basic flow without treating school-specific details as universal.",
+"@umrahGuideIntro": {
+  "description": "Introduction to the Umrah guide"
+},
+
+"umrahGuideStepsTitle": "Basic Umrah Sequence",
+"@umrahGuideStepsTitle": {
+  "description": "Heading above the Umrah steps"
+},
+
+"umrahGuideStep1Title": "1. Enter Ihram",
+"@umrahGuideStep1Title": {
+  "description": "Title of the first Umrah step"
+},
+
+"umrahGuideStep1Desc": "Enter ihram for Umrah before crossing the relevant miqat. Ihram is a state of worship entered by intention, not merely the wearing of ihram clothing. Details concerning talbiyah and some ihram rules differ between schools of law.",
+"@umrahGuideStep1Desc": {
+  "description": "Description of entering ihram for Umrah"
+},
+
+"umrahGuideStep2Title": "2. Perform Tawaf",
+"@umrahGuideStep2Title": {
+  "description": "Title of the second Umrah step"
+},
+
+"umrahGuideStep2Desc": "Perform the Umrah tawaf around the Ka'bah in seven circuits. Tawaf is an essential part of Umrah according to all schools of law.",
+"@umrahGuideStep2Desc": {
+  "description": "Description of Umrah tawaf"
+},
+
+"umrahGuideStep3Title": "3. Perform Sa'y",
+"@umrahGuideStep3Title": {
+  "description": "Title of the third Umrah step"
+},
+
+"umrahGuideStep3Desc": "Perform seven traversals between Safa and Marwah: four journeys from Safa to Marwah and three from Marwah to Safa, finishing at Marwah. The detailed legal classification of sa'y differs between schools of law.",
+"@umrahGuideStep3Desc": {
+  "description": "Description of Umrah sa'y"
+},
+
+"umrahGuideStep4Title": "4. Cut the Hair and Leave Ihram",
+"@umrahGuideStep4Title": {
+  "description": "Title of the fourth Umrah step"
+},
+
+"umrahGuideStep4Desc": "After completing the Umrah rites, the hair is shaved or shortened as applicable and the person leaves the state of ihram. The amount and detailed rules differ according to circumstances and school of law.",
+"@umrahGuideStep4Desc": {
+  "description": "Description of leaving ihram after Umrah"
+},
+
+"umrahGuideSchoolNote": "This is a basic learning sequence, not an individual fatwa. Questions involving missed rites, illness, menstruation, miqat mistakes, penalties or other exceptional circumstances require more specific guidance.",
+"@umrahGuideSchoolNote": {
+  "description": "Scope and religious-guidance disclaimer for the Umrah guide"
 }
 }
