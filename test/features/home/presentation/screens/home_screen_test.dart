@@ -22,6 +22,8 @@ import 'package:noor_life/features/quran/application/states/quran_state.dart';
 import 'package:noor_life/features/quran/domain/entities/surah.dart';
 import 'package:noor_life/features/quran/domain/repositories/quran_bookmark_repository.dart';
 import 'package:noor_life/features/quran/domain/repositories/quran_repository.dart';
+import 'package:noor_life/features/qurban/application/qurban_season_provider.dart';
+import 'package:noor_life/features/qurban/domain/qurban_season_state.dart';
 import 'package:noor_life/features/ramadan/application/ramadan_day_provider.dart';
 import 'package:noor_life/features/ramadan/domain/ramadan_day_state.dart';
 import 'package:noor_life/l10n/generated/app_localizations.dart';
@@ -147,6 +149,7 @@ void main() {
 
   List<Override> baseOverrides({
     RamadanDayState ramadanState = const RamadanDayState.outsideRamadan(),
+    QurbanSeasonState qurbanState = const QurbanSeasonState.outsideSeason(),
   }) {
     return [
       locationNotifierProvider.overrideWith(
@@ -178,6 +181,9 @@ void main() {
       ramadanDayProvider.overrideWithValue(
         ramadanState,
       ),
+      qurbanSeasonProvider.overrideWithValue(
+        qurbanState,
+      ),
 
       // This test verifies Home rendering rather than persisted preferences.
       showDailyVerseSettingProvider.overrideWithValue(true),
@@ -206,6 +212,11 @@ void main() {
 
         expect(
           find.text('Ramadan'),
+          findsNothing,
+        );
+
+        expect(
+          find.text('Qurban'),
           findsNothing,
         );
       });
@@ -269,6 +280,119 @@ void main() {
 
         expect(
           find.text('06:00:00'),
+          findsOneWidget,
+        );
+
+        expect(
+          find.text('Qurban'),
+          findsNothing,
+        );
+      });
+    },
+  );
+
+  testWidgets(
+    'Home displays Qurban shortcut only during Dhul Hijjah season',
+    (tester) async {
+      const qurbanState = QurbanSeasonState(
+        phase: QurbanSeasonPhase.firstEightDays,
+        targetNow: null,
+        hijriDateString: '1448-12-3',
+        dhulHijjahDay: 3,
+      );
+
+      await tester.runAsync(() async {
+        await tester.pumpWidget(
+          buildTestableWidget(
+            const HomeScreen(),
+            overrides: baseOverrides(
+              qurbanState: qurbanState,
+            ),
+          ),
+        );
+
+        await tester.pumpAndSettle();
+
+        expect(
+          find.text('Qurban'),
+          findsOneWidget,
+        );
+
+        expect(
+          find.text('Dhul Hijjah · Day 3'),
+          findsOneWidget,
+        );
+
+        expect(
+          find.text('Ramadan'),
+          findsNothing,
+        );
+      });
+    },
+  );
+
+  testWidgets(
+    'Home displays Arafah context in the Qurban shortcut',
+    (tester) async {
+      const qurbanState = QurbanSeasonState(
+        phase: QurbanSeasonPhase.arafah,
+        hijriDateString: '1448-12-9',
+        dhulHijjahDay: 9,
+      );
+
+      await tester.runAsync(() async {
+        await tester.pumpWidget(
+          buildTestableWidget(
+            const HomeScreen(),
+            overrides: baseOverrides(
+              qurbanState: qurbanState,
+            ),
+          ),
+        );
+
+        await tester.pumpAndSettle();
+
+        expect(
+          find.text('Qurban'),
+          findsOneWidget,
+        );
+
+        expect(
+          find.text('Day of Arafah'),
+          findsOneWidget,
+        );
+      });
+    },
+  );
+
+  testWidgets(
+    'Home displays Eid day context in the Qurban shortcut',
+    (tester) async {
+      const qurbanState = QurbanSeasonState(
+        phase: QurbanSeasonPhase.eid,
+        hijriDateString: '1448-12-11',
+        dhulHijjahDay: 11,
+      );
+
+      await tester.runAsync(() async {
+        await tester.pumpWidget(
+          buildTestableWidget(
+            const HomeScreen(),
+            overrides: baseOverrides(
+              qurbanState: qurbanState,
+            ),
+          ),
+        );
+
+        await tester.pumpAndSettle();
+
+        expect(
+          find.text('Qurban'),
+          findsOneWidget,
+        );
+
+        expect(
+          find.text('Eid al-Adha · Day 2'),
           findsOneWidget,
         );
       });

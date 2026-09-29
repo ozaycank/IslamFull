@@ -19,6 +19,8 @@ import '../../../quran/application/providers/quran_progress_provider.dart';
 import '../../../quran/application/providers/quran_provider.dart';
 import '../../../ramadan/application/ramadan_day_provider.dart';
 import '../../../ramadan/domain/ramadan_day_state.dart';
+import '../../../qurban/application/qurban_season_provider.dart';
+import '../../../qurban/domain/qurban_season_state.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -56,6 +58,7 @@ class HomeScreen extends ConsumerWidget {
                 _NextPrayerHero(),
                 SizedBox(height: AppSpacing.xl),
                 _RamadanShortcut(),
+                _QurbanSeasonShortcut(),
                 _PrayerSummary(),
                 SizedBox(height: AppSpacing.xl),
                 _QuranContinueReading(),
@@ -1023,6 +1026,139 @@ class _QuranBookmarkShortcut extends ConsumerWidget {
       trailing: const Icon(
         Icons.chevron_right,
       ),
+    );
+  }
+}
+
+/// Seasonal Dhul Hijjah and Eid al-Adha entry.
+///
+/// It is intentionally hidden outside 1–13 Dhul Hijjah so Home remains
+/// focused during the rest of the year.
+class _QurbanSeasonShortcut extends ConsumerWidget {
+  const _QurbanSeasonShortcut();
+
+  @override
+  Widget build(
+    BuildContext context,
+    WidgetRef ref,
+  ) {
+    final state = ref.watch(
+      qurbanSeasonProvider,
+    );
+
+    if (!state.isSeasonContext) {
+      return const SizedBox.shrink();
+    }
+
+    final l10n = context.l10n;
+    final colorScheme = context.colorScheme;
+    final textTheme = context.textTheme;
+
+    late final String seasonLabel;
+    late final IconData icon;
+
+    switch (state.phase) {
+      case QurbanSeasonPhase.firstEightDays:
+        seasonLabel = l10n.qurbanSeasonDhulHijjahDayTitle(
+          state.dhulHijjahDay ?? 1,
+        );
+        icon = Icons.calendar_month_outlined;
+
+      case QurbanSeasonPhase.arafah:
+        seasonLabel = l10n.qurbanSeasonArafahTitle;
+        icon = Icons.event_outlined;
+
+      case QurbanSeasonPhase.eid:
+        seasonLabel = l10n.qurbanSeasonEidDayTitle(
+          state.eidDay ?? 1,
+        );
+        icon = Icons.mosque_outlined;
+
+      case QurbanSeasonPhase.unavailable:
+      case QurbanSeasonPhase.outsideSeason:
+        return const SizedBox.shrink();
+    }
+
+    return Column(
+      children: [
+        Card(
+          elevation: 0,
+          clipBehavior: Clip.antiAlias,
+          color: colorScheme.primaryContainer.withValues(
+            alpha: 0.45,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18),
+          ),
+          child: InkWell(
+            onTap: () => context.push(
+              AppRoutes.qurban,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(
+                AppSpacing.lg,
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 48,
+                    height: 48,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: colorScheme.onPrimaryContainer.withValues(
+                        alpha: 0.08,
+                      ),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: Icon(
+                      icon,
+                      color: colorScheme.onPrimaryContainer,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: AppSpacing.md,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          l10n.qurbanTitle,
+                          style: textTheme.titleMedium?.copyWith(
+                            color: colorScheme.onPrimaryContainer,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: AppSpacing.xs,
+                        ),
+                        Text(
+                          seasonLabel,
+                          style: textTheme.bodyMedium?.copyWith(
+                            color: colorScheme.onPrimaryContainer.withValues(
+                              alpha: 0.8,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: AppSpacing.sm,
+                  ),
+                  Icon(
+                    Icons.chevron_right,
+                    color: colorScheme.onPrimaryContainer,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: AppSpacing.xl,
+        ),
+      ],
     );
   }
 }
