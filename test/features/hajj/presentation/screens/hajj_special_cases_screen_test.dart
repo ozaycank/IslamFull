@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/info/presentation/info_center_screen.dart';
+import 'package:noor_life/features/hajj/presentation/screens/hajj_special_cases_screen.dart';
 import 'package:noor_life/l10n/generated/app_localizations.dart';
 
 void main() {
@@ -18,11 +18,11 @@ void main() {
         Locale('en'),
       ],
       locale: Locale('en'),
-      home: InfoCenterScreen(),
+      home: HajjSpecialCasesScreen(),
     );
   }
 
-  Future<void> reveal(
+  Future<void> revealAndTap(
     WidgetTester tester,
     String text,
   ) async {
@@ -36,10 +36,13 @@ void main() {
 
     await tester.ensureVisible(finder);
     await tester.pumpAndSettle();
+
+    await tester.tap(finder);
+    await tester.pumpAndSettle();
   }
 
   testWidgets(
-    'Info Center exposes the worship guides without duplicate Ramadan entry',
+    'Common situations guide directs complex cases to specific guidance',
     (tester) async {
       await tester.pumpWidget(
         buildTestableWidget(),
@@ -47,73 +50,32 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      await reveal(
-        tester,
-        'Ramadan Guide',
-      );
-
-      expect(
-        find.text('Ramadan Guide'),
-        findsOneWidget,
-      );
-
-      await reveal(
-        tester,
-        'Hajj Fundamentals',
-      );
-
-      expect(
-        find.text('Hajj Fundamentals'),
-        findsOneWidget,
-      );
-
-      await reveal(
-        tester,
-        'Types of Hajj',
-      );
-
-      expect(
-        find.text('Types of Hajj'),
-        findsOneWidget,
-      );
-
-      await reveal(
-        tester,
-        'Hajj Days',
-      );
-
-      expect(
-        find.text('Hajj Days'),
-        findsOneWidget,
-      );
-
-      await reveal(
-        tester,
-        'Umrah Guide',
-      );
-
-      expect(
-        find.text('Umrah Guide'),
-        findsOneWidget,
-      );
-
-      await reveal(
-        tester,
-        'Ihram Rules',
-      );
-
-      expect(
-        find.text('Ihram Rules'),
-        findsOneWidget,
-      );
-
-      await reveal(
-        tester,
-        'Common Hajj & Umrah Situations',
-      );
-
       expect(
         find.text('Common Hajj & Umrah Situations'),
+        findsOneWidget,
+      );
+
+      await revealAndTap(
+        tester,
+        'Crossing the Miqat Without Ihram',
+      );
+
+      expect(
+        find.textContaining(
+          'Do not guess a penalty',
+        ),
+        findsOneWidget,
+      );
+
+      await revealAndTap(
+        tester,
+        'Menstruation or Postpartum Bleeding',
+      );
+
+      expect(
+        find.textContaining(
+          'does not prevent a woman from entering Ihram',
+        ),
         findsOneWidget,
       );
     },

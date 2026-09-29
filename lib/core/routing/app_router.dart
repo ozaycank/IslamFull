@@ -36,6 +36,8 @@ import '../../features/tools/presentation/tasbih_screen.dart';
 import '../../features/zakat/presentation/screens/zakat_calculator_screen.dart';
 import '../../features/hajj/presentation/screens/hajj_days_screen.dart';
 import '../../features/hajj/presentation/screens/hajj_types_screen.dart';
+import '../../features/hajj/presentation/screens/hajj_special_cases_screen.dart';
+import '../../features/hajj/presentation/screens/ihram_rules_screen.dart';
 import '../di/injection_container.dart';
 import '../logging/logger_service.dart';
 import 'app_navigation_observer.dart';
@@ -93,6 +95,11 @@ class AppRouter {
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.ihramRules,
+          builder: (context, state) => const IhramRulesScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.hajjTypes,
           builder: (context, state) => const HajjTypesScreen(),
         ),
@@ -105,6 +112,11 @@ class AppRouter {
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.umrahGuide,
           builder: (context, state) => const UmrahGuideScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.hajjSpecialCases,
+          builder: (context, state) => const HajjSpecialCasesScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,

@@ -137,6 +137,25 @@ class HajjGuideScreen extends StatelessWidget {
                       const Divider(height: 1),
                       ListTile(
                         leading: Icon(
+                          Icons.flag_outlined,
+                          color: colorScheme.primary,
+                        ),
+                        title: Text(
+                          l10n.ihramRulesTitle,
+                        ),
+                        subtitle: Text(
+                          l10n.ihramRulesMenuDesc,
+                        ),
+                        trailing: const Icon(
+                          Icons.chevron_right,
+                        ),
+                        onTap: () => context.push(
+                          AppRoutes.ihramRules,
+                        ),
+                      ),
+                      const Divider(height: 1),
+                      ListTile(
+                        leading: Icon(
                           Icons.compare_arrows_outlined,
                           color: colorScheme.primary,
                         ),
@@ -189,6 +208,25 @@ class HajjGuideScreen extends StatelessWidget {
                         ),
                         onTap: () => context.push(
                           AppRoutes.umrahGuide,
+                        ),
+                      ),
+                      const Divider(height: 1),
+                      ListTile(
+                        leading: Icon(
+                          Icons.help_outline,
+                          color: colorScheme.primary,
+                        ),
+                        title: Text(
+                          l10n.hajjSpecialCasesTitle,
+                        ),
+                        subtitle: Text(
+                          l10n.hajjSpecialCasesMenuDesc,
+                        ),
+                        trailing: const Icon(
+                          Icons.chevron_right,
+                        ),
+                        onTap: () => context.push(
+                          AppRoutes.hajjSpecialCases,
                         ),
                       ),
                     ],

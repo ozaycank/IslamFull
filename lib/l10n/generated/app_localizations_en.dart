@@ -2067,4 +2067,126 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get hajjDaysNote =>
       'Treat this as an educational map, not as a substitute for your group leader, current official Hajj instructions or qualified religious guidance. In particular, timing, crowd-management concessions and penalties require situation-specific assessment.';
+
+  @override
+  String get ihramRulesTitle => 'Ihram Rules';
+
+  @override
+  String get ihramRulesMenuDesc =>
+      'Learn what Ihram means and the main restrictions observed during Ihram.';
+
+  @override
+  String get ihramRulesIntro =>
+      'Ihram is a state of worship entered for Hajj or Umrah, not simply a set of clothes. While in Ihram, some actions that are normally permitted become restricted. The consequences of a violation can differ according to the action, circumstances and school of law.';
+
+  @override
+  String get ihramRulesTopicsTitle => 'While in Ihram';
+
+  @override
+  String get ihramRulesMeaningTitle => 'Ihram Is a State of Worship';
+
+  @override
+  String get ihramRulesMeaningDesc =>
+      'Ihram begins through the religious intention for Hajj or Umrah. In Hanafi teaching, intention and talbiyah together are integral to entering Ihram; other schools differ regarding the legal status of the talbiyah. Wearing Ihram clothing alone does not by itself explain the whole religious state.';
+
+  @override
+  String get ihramRulesClothingTitle => 'Clothing';
+
+  @override
+  String get ihramRulesClothingDesc =>
+      'Clothing restrictions differ between men and women. Men in Ihram leave ordinary fitted clothing and use the customary izar and rida coverings. Women do not have a special two-piece Ihram garment and continue to observe their normal modest clothing requirements. Detailed cases involving coverings, medical supports or exceptional needs should be assessed separately.';
+
+  @override
+  String get ihramRulesHairNailsTitle => 'Hair and Nails';
+
+  @override
+  String get ihramRulesHairNailsDesc =>
+      'Deliberately cutting or removing hair and cutting the nails are among the actions restricted during Ihram. Accidental breakage, medical necessity and the amount involved can affect the ruling, so this app does not calculate a penalty automatically.';
+
+  @override
+  String get ihramRulesFragranceTitle => 'Fragrance and Grooming';
+
+  @override
+  String get ihramRulesFragranceDesc =>
+      'Using fragrance for the purpose of perfuming oneself is restricted during Ihram. Grooming products applied for adornment can also involve Ihram rulings. Medicines, ointments and treatments used for genuine medical purposes are assessed differently.';
+
+  @override
+  String get ihramRulesCleanlinessTitle => 'Bathing and Cleanliness';
+
+  @override
+  String get ihramRulesCleanlinessDesc =>
+      'Being in Ihram does not prevent bathing or performing ghusl. Unscented cleaning products are a simple precaution. The Presidency of Religious Affairs also distinguishes ordinary cleaning from deliberately applying fragrance.';
+
+  @override
+  String get ihramRulesIntimacyTitle => 'Marital Intimacy';
+
+  @override
+  String get ihramRulesIntimacyDesc =>
+      'Sexual intercourse is among the serious restrictions associated with Ihram. During Hajj, some related restrictions can continue beyond the first release from Ihram until the required visitation tawaf is performed. Questions involving an actual incident require individual religious guidance.';
+
+  @override
+  String get ihramRulesPenaltyNote =>
+      'Do not use this screen to determine your own penalty. The result of an Ihram violation can depend on the act, amount, duration, intention or forgetfulness, necessity, type of Hajj and school of law.';
+
+  @override
+  String get hajjSpecialCasesTitle => 'Common Hajj & Umrah Situations';
+
+  @override
+  String get hajjSpecialCasesMenuDesc =>
+      'Review common mistakes and situations that require more specific guidance.';
+
+  @override
+  String get hajjSpecialCasesIntro =>
+      'Some Hajj and Umrah questions cannot be answered safely with a single rule. This guide highlights common situations and explains when a person should stop relying on a general checklist and seek situation-specific guidance.';
+
+  @override
+  String get hajjSpecialCasesTopicsTitle => 'Common Situations';
+
+  @override
+  String get hajjSpecialMiqatTitle => 'Crossing the Miqat Without Ihram';
+
+  @override
+  String get hajjSpecialMiqatDesc =>
+      'If a person intending Hajj or Umrah crosses the relevant miqat without entering Ihram, the next step depends on what has happened since then. Returning to a valid miqat before beginning the rites can affect the ruling. Do not guess a penalty from the app; seek guidance before continuing where possible.';
+
+  @override
+  String get hajjSpecialMenstruationTitle =>
+      'Menstruation or Postpartum Bleeding';
+
+  @override
+  String get hajjSpecialMenstruationDesc =>
+      'Menstruation or postpartum bleeding does not prevent a woman from entering Ihram. Tawaf, however, has separate purity rulings, and the legal consequences differ between schools of law and according to the circumstances. Follow qualified guidance rather than treating the entire Hajj or Umrah as cancelled.';
+
+  @override
+  String get hajjSpecialForgottenViolationTitle =>
+      'A Restriction Was Broken by Mistake';
+
+  @override
+  String get hajjSpecialForgottenViolationDesc =>
+      'Forgetfulness or not knowing the rule does not have one universal consequence. Hanafi, Maliki, Shafii and Hanbali rulings differ, and some schools distinguish between types of restrictions. Record what happened and seek qualified guidance rather than assuming either that nothing is required or that a penalty is definitely due.';
+
+  @override
+  String get hajjSpecialMedicalNeedTitle => 'Illness or Medical Need';
+
+  @override
+  String get hajjSpecialMedicalNeedDesc =>
+      'Medical treatment should not be abandoned merely because a person is in Ihram. Medicines and treatment creams are treated differently from products used for adornment. If treatment requires an action that is normally restricted, the person should receive the needed care and then ask about any religious consequence separately.';
+
+  @override
+  String get hajjSpecialCrowdingTitle => 'Crowding, Age or Physical Difficulty';
+
+  @override
+  String get hajjSpecialCrowdingDesc =>
+      'Hajj rulings include concessions for genuine difficulty. For example, current Presidency of Religious Affairs guidance allows the visitation tawaf to be delayed because of severe crowding, old age or illness without automatically requiring a penalty. Follow official organisation instructions and qualified religious guidance for the actual situation.';
+
+  @override
+  String get hajjSpecialEarlyHaircutTitle => 'Hair Was Cut Too Early';
+
+  @override
+  String get hajjSpecialEarlyHaircutDesc =>
+      'Cutting the hair does not always mean that a person has validly completed Hajj or Umrah or left Ihram. The result depends on which rites had already been completed and on the school of law. Do not simply continue as though the rites are finished; ask for situation-specific guidance.';
+
+  @override
+  String get hajjSpecialCasesNote =>
+      'This guide intentionally avoids assigning penalties. When a rite was missed, performed in the wrong order or affected by illness, menstruation, crowding or an Ihram violation, use current official guidance and a qualified religious adviser who can evaluate the complete situation.';
 }

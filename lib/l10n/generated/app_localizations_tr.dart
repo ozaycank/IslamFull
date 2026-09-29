@@ -2073,4 +2073,126 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get hajjDaysNote =>
       'Bu ekranı eğitsel bir yol haritası olarak kullanın. Kafile görevlisinin yönlendirmesi, güncel resmî hac talimatları ve yetkin dinî rehberlik yerine geçmez. Özellikle vakitler, izdiham sebebiyle verilen ruhsatlar ve ceza gerektiren durumlar kişisel değerlendirme gerektirir.';
+
+  @override
+  String get ihramRulesTitle => 'İhram Kuralları';
+
+  @override
+  String get ihramRulesMenuDesc =>
+      'İhramın ne olduğunu ve ihram süresince dikkat edilen temel yasakları öğrenin.';
+
+  @override
+  String get ihramRulesIntro =>
+      'İhram yalnızca bir kıyafet değil, hac veya umre için girilen bir ibadet hâlidir. İhram süresince normalde helal olan bazı davranışlar geçici olarak yasak hâle gelir. Bir ihlalin sonucu yapılan davranışa, şartlara ve mezhebe göre değişebilir.';
+
+  @override
+  String get ihramRulesTopicsTitle => 'İhramlıyken';
+
+  @override
+  String get ihramRulesMeaningTitle => 'İhram Bir İbadet Hâlidir';
+
+  @override
+  String get ihramRulesMeaningDesc =>
+      'İhram, hac veya umre için yapılan dinî niyetle başlar. Hanefî öğretiminde niyet ve telbiye birlikte ihramın rüknü kabul edilirken diğer mezheplerde telbiyenin fıkhî hükmü farklıdır. Yalnız ihram kıyafetini giymek, ihram hâlinin tamamını ifade etmez.';
+
+  @override
+  String get ihramRulesClothingTitle => 'Giyim';
+
+  @override
+  String get ihramRulesClothingDesc =>
+      'İhramlıyken giyimle ilgili hükümler kadın ve erkek için farklıdır. Erkekler normal vücuda göre biçimlendirilmiş giysileri bırakıp izâr ve ridâ olarak bilinen ihram örtülerini kullanırlar. Kadınlar için özel iki parçalı ihram kıyafeti bulunmaz ve normal tesettür ölçülerine uygun kıyafetlerini sürdürürler. Özel örtünme, tıbbi destek veya zorunluluk durumları ayrıca değerlendirilmelidir.';
+
+  @override
+  String get ihramRulesHairNailsTitle => 'Saç, Tüy ve Tırnaklar';
+
+  @override
+  String get ihramRulesHairNailsDesc =>
+      'Saç veya vücut tüylerini bilerek gidermek ve tırnakları kesmek ihram süresindeki yasaklar arasındadır. Kendiliğinden kopma, tıbbi zorunluluk ve yapılan işlemin miktarı hükmü etkileyebileceğinden uygulama otomatik ceza hesabı yapmaz.';
+
+  @override
+  String get ihramRulesFragranceTitle => 'Koku ve Bakım Ürünleri';
+
+  @override
+  String get ihramRulesFragranceDesc =>
+      'Güzel kokulanmak amacıyla parfüm veya koku kullanmak ihramlıyken yasaktır. Süslenmek amacıyla kullanılan bazı bakım ürünleri de ihram hükümlerine konu olabilir. Gerçek bir tedavi için kullanılan ilaç, merhem ve kremler ise ayrıca değerlendirilir.';
+
+  @override
+  String get ihramRulesCleanlinessTitle => 'Banyo ve Temizlik';
+
+  @override
+  String get ihramRulesCleanlinessDesc =>
+      'İhramlı olmak banyo veya gusül almaya engel değildir. Kokusuz temizlik ürünlerini tercih etmek basit bir ihtiyattır. Diyanet açıklamalarında normal temizlik amacı ile özellikle kokulanma amacı birbirinden ayrılmaktadır.';
+
+  @override
+  String get ihramRulesIntimacyTitle => 'Eşler Arasındaki Yakınlık';
+
+  @override
+  String get ihramRulesIntimacyDesc =>
+      'Cinsel ilişki ihramla bağlantılı ciddi yasaklardan biridir. Hacda bazı ilgili yasaklar ilk tahallülden sonra bile farz olan ziyaret tavafı yapılıncaya kadar devam edebilir. Gerçekleşmiş bir olayın hükmü kişiye özel dinî değerlendirme gerektirir.';
+
+  @override
+  String get ihramRulesPenaltyNote =>
+      'Bu ekranı kendi cezanızı belirlemek için kullanmayın. İhram yasağı ihlalinin sonucu davranışın türüne, miktarına, süresine, kasıt veya unutmaya, zorunluluğa, hac türüne ve mezhebe göre değişebilir.';
+
+  @override
+  String get hajjSpecialCasesTitle => 'Hac ve Umrede Sık Karşılaşılan Durumlar';
+
+  @override
+  String get hajjSpecialCasesMenuDesc =>
+      'Sık yapılan hataları ve özel dinî değerlendirme gerektiren durumları inceleyin.';
+
+  @override
+  String get hajjSpecialCasesIntro =>
+      'Bazı hac ve umre sorularına tek bir genel kuralla güvenli cevap verilemez. Bu rehber sık karşılaşılan durumları açıklar ve genel bir kontrol listesinin yeterli olmadığı noktaları gösterir.';
+
+  @override
+  String get hajjSpecialCasesTopicsTitle => 'Sık Karşılaşılan Durumlar';
+
+  @override
+  String get hajjSpecialMiqatTitle => 'Mikat İhramsız Geçildi';
+
+  @override
+  String get hajjSpecialMiqatDesc =>
+      'Hac veya umre niyetiyle ilgili mikatı ihrama girmeden geçen kişinin bundan sonra ne yapacağı, sonrasında hangi işlemleri yaptığına bağlıdır. Menâsike başlamadan geçerli bir mikata dönmek hükmü etkileyebilir. Uygulamadan ceza tahmini yapmak yerine mümkünse devam etmeden önce yetkin dinî rehberliğe başvurun.';
+
+  @override
+  String get hajjSpecialMenstruationTitle => 'Âdet veya Lohusalık Hâli';
+
+  @override
+  String get hajjSpecialMenstruationDesc =>
+      'Âdet veya lohusalık hâli kadının ihrama girmesine engel değildir. Ancak tavaf için ayrı taharet hükümleri bulunur ve sonuçlar mezhebe ve olayın şartlarına göre farklılaşabilir. Hac veya umrenin tamamen iptal olduğunu varsaymak yerine yetkin rehberlik alın.';
+
+  @override
+  String get hajjSpecialForgottenViolationTitle =>
+      'Bir Yasak Unutarak veya Bilmeden İhlal Edildi';
+
+  @override
+  String get hajjSpecialForgottenViolationDesc =>
+      'Unutmanın veya hükmü bilmemenin sonucu bütün mezheplerde aynı değildir. Hanefî, Mâlikî, Şâfiî ve Hanbelî değerlendirmeleri farklılaşabilir ve bazı mezhepler yasak türleri arasında da ayrım yapar. Ne olduğunu kaydedin; ne kesinlikle ceza yok ne de kesinlikle ceza vardır şeklinde kendi başınıza hüküm vermeyin.';
+
+  @override
+  String get hajjSpecialMedicalNeedTitle => 'Hastalık veya Tıbbi İhtiyaç';
+
+  @override
+  String get hajjSpecialMedicalNeedDesc =>
+      'İhram sebebiyle gerekli tıbbi tedavi terk edilmemelidir. İlaçlar ve tedavi amacıyla kullanılan kremler, süslenme amacıyla kullanılan ürünlerden farklı değerlendirilir. Tedavi normalde yasak olan bir işlemi gerektiriyorsa önce gerekli sağlık hizmeti alınmalı, dinî sonucu ayrıca değerlendirilmelidir.';
+
+  @override
+  String get hajjSpecialCrowdingTitle =>
+      'İzdiham, Yaşlılık veya Fiziksel Güçlük';
+
+  @override
+  String get hajjSpecialCrowdingDesc =>
+      'Hac hükümlerinde gerçek güçlükler için ruhsatlar bulunabilir. Güncel Diyanet rehberliğinde aşırı izdiham, yaşlılık veya hastalık nedeniyle ziyaret tavafının ertelenmesi otomatik olarak ceza gerektiren bir durum sayılmamaktadır. Fiilî uygulamada resmî organizasyon talimatlarını ve yetkin dinî rehberliği takip edin.';
+
+  @override
+  String get hajjSpecialEarlyHaircutTitle => 'Saç Erken Kesildi';
+
+  @override
+  String get hajjSpecialEarlyHaircutDesc =>
+      'Saçın kesilmiş olması her durumda hac veya umrenin tamamlandığı ya da geçerli biçimde ihramdan çıkıldığı anlamına gelmez. Hüküm, o ana kadar hangi menâsikin tamamlandığına ve mezhebe göre değişebilir. İbadetin bittiğini varsayarak devam etmek yerine duruma özel rehberlik alın.';
+
+  @override
+  String get hajjSpecialCasesNote =>
+      'Bu rehber özellikle ceza belirlemekten kaçınır. Bir menâsik atlandıysa, sırası değiştiyse veya hastalık, âdet hâli, izdiham ya da ihram yasağı ihlali söz konusuysa güncel resmî bilgileri ve olayın tamamını değerlendirebilecek yetkin dinî rehberliği kullanın.';
 }
