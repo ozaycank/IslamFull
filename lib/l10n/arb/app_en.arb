@@ -1966,5 +1966,41 @@
 "qurbanGuideSourceNote": "Religious guidance is based primarily on information published by the Presidency of Religious Affairs and the High Board of Religious Affairs.",
 "@qurbanGuideSourceNote": {
   "description": "Source note for Qurban religious guidance"
+},
+"qurbanSeasonDhulHijjahDayTitle": "Dhul Hijjah · Day {day}",
+"@qurbanSeasonDhulHijjahDayTitle": {
+  "description": "Title shown during the first eight days of Dhul Hijjah",
+  "placeholders": {
+    "day": {
+      "type": "int"
+    }
+  }
+},
+"qurbanSeasonDhulHijjahDesc": "The current religious date is within the first eight days of Dhul Hijjah. Arafah is the 9th of Dhul Hijjah and Eid al-Adha begins on the 10th.",
+"@qurbanSeasonDhulHijjahDesc": {
+  "description": "Neutral calendar context shown during the first eight days of Dhul Hijjah"
+},
+
+"qurbanSeasonArafahTitle": "Day of Arafah",
+"@qurbanSeasonArafahTitle": {
+  "description": "Seasonal title shown on 9 Dhul Hijjah"
+},
+"qurbanSeasonArafahDesc": "Today is 9 Dhul Hijjah. Eid al-Adha begins on 10 Dhul Hijjah.",
+"@qurbanSeasonArafahDesc": {
+  "description": "Neutral calendar context shown on the Day of Arafah"
+},
+
+"qurbanSeasonEidDayTitle": "Eid al-Adha · Day {day}",
+"@qurbanSeasonEidDayTitle": {
+  "description": "Seasonal title shown during the four days of Eid al-Adha",
+  "placeholders": {
+    "day": {
+      "type": "int"
+    }
+  }
+},
+"qurbanSeasonEidDesc": "The current religious date is within 10–13 Dhul Hijjah, the days of Eid al-Adha.",
+"@qurbanSeasonEidDesc": {
+  "description": "Neutral calendar context shown during Eid al-Adha"
 }
 }

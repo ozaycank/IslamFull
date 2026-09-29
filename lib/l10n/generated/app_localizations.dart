@@ -3253,6 +3253,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Religious guidance is based primarily on information published by the Presidency of Religious Affairs and the High Board of Religious Affairs.'**
   String get qurbanGuideSourceNote;
+
+  /// Title shown during the first eight days of Dhul Hijjah
+  ///
+  /// In en, this message translates to:
+  /// **'Dhul Hijjah · Day {day}'**
+  String qurbanSeasonDhulHijjahDayTitle(int day);
+
+  /// Neutral calendar context shown during the first eight days of Dhul Hijjah
+  ///
+  /// In en, this message translates to:
+  /// **'The current religious date is within the first eight days of Dhul Hijjah. Arafah is the 9th of Dhul Hijjah and Eid al-Adha begins on the 10th.'**
+  String get qurbanSeasonDhulHijjahDesc;
+
+  /// Seasonal title shown on 9 Dhul Hijjah
+  ///
+  /// In en, this message translates to:
+  /// **'Day of Arafah'**
+  String get qurbanSeasonArafahTitle;
+
+  /// Neutral calendar context shown on the Day of Arafah
+  ///
+  /// In en, this message translates to:
+  /// **'Today is 9 Dhul Hijjah. Eid al-Adha begins on 10 Dhul Hijjah.'**
+  String get qurbanSeasonArafahDesc;
+
+  /// Seasonal title shown during the four days of Eid al-Adha
+  ///
+  /// In en, this message translates to:
+  /// **'Eid al-Adha · Day {day}'**
+  String qurbanSeasonEidDayTitle(int day);
+
+  /// Neutral calendar context shown during Eid al-Adha
+  ///
+  /// In en, this message translates to:
+  /// **'The current religious date is within 10–13 Dhul Hijjah, the days of Eid al-Adha.'**
+  String get qurbanSeasonEidDesc;
 }
 
 class _AppLocalizationsDelegate

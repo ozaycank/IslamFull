@@ -584,5 +584,13 @@
 "qurbanGuideMisconceptionsDesc": "Evli olmamak, şartları taşıyan bir kişinin kurban kesmesine engel değildir. Büyükbaş kurbanda ortak sayısının mutlaka üç, beş veya yedi gibi tek sayı olması gerekmez. Hayvanın yaşı güvenilir biçimde biliniyorsa ayrıca 'kapak atmış' olması şart değildir.",
 
 "qurbanGuideSchoolNote": "Bu rehber ortak temel bilgileri ve kısa bir yönlendirmeyi sunar. Ayrıntılı hükümler mezhebe, kurban türüne ve kişinin durumuna göre farklılık gösterebilir.",
-"qurbanGuideSourceNote": "Dinî bilgiler öncelikle Diyanet İşleri Başkanlığı ve Din İşleri Yüksek Kurulunun yayımladığı bilgiler esas alınarak hazırlanmıştır."
+"qurbanGuideSourceNote": "Dinî bilgiler öncelikle Diyanet İşleri Başkanlığı ve Din İşleri Yüksek Kurulunun yayımladığı bilgiler esas alınarak hazırlanmıştır.",
+"qurbanSeasonDhulHijjahDayTitle": "Zilhicce · {day}. Gün",
+"qurbanSeasonDhulHijjahDesc": "Mevcut dinî tarih Zilhicce'nin ilk sekiz günü içindedir. Arefe 9 Zilhicce, Kurban Bayramı ise 10 Zilhicce'de başlar.",
+
+"qurbanSeasonArafahTitle": "Arefe Günü",
+"qurbanSeasonArafahDesc": "Bugün 9 Zilhicce'dir. Kurban Bayramı 10 Zilhicce'de başlar.",
+
+"qurbanSeasonEidDayTitle": "Kurban Bayramı · {day}. Gün",
+"qurbanSeasonEidDesc": "Mevcut dinî tarih, Kurban Bayramı günleri olan 10–13 Zilhicce arasındadır."
 }

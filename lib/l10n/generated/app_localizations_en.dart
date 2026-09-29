@@ -1749,4 +1749,29 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get qurbanGuideSourceNote =>
       'Religious guidance is based primarily on information published by the Presidency of Religious Affairs and the High Board of Religious Affairs.';
+
+  @override
+  String qurbanSeasonDhulHijjahDayTitle(int day) {
+    return 'Dhul Hijjah · Day $day';
+  }
+
+  @override
+  String get qurbanSeasonDhulHijjahDesc =>
+      'The current religious date is within the first eight days of Dhul Hijjah. Arafah is the 9th of Dhul Hijjah and Eid al-Adha begins on the 10th.';
+
+  @override
+  String get qurbanSeasonArafahTitle => 'Day of Arafah';
+
+  @override
+  String get qurbanSeasonArafahDesc =>
+      'Today is 9 Dhul Hijjah. Eid al-Adha begins on 10 Dhul Hijjah.';
+
+  @override
+  String qurbanSeasonEidDayTitle(int day) {
+    return 'Eid al-Adha · Day $day';
+  }
+
+  @override
+  String get qurbanSeasonEidDesc =>
+      'The current religious date is within 10–13 Dhul Hijjah, the days of Eid al-Adha.';
 }

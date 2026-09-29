@@ -1756,4 +1756,29 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get qurbanGuideSourceNote =>
       'Dinî bilgiler öncelikle Diyanet İşleri Başkanlığı ve Din İşleri Yüksek Kurulunun yayımladığı bilgiler esas alınarak hazırlanmıştır.';
+
+  @override
+  String qurbanSeasonDhulHijjahDayTitle(int day) {
+    return 'Zilhicce · $day. Gün';
+  }
+
+  @override
+  String get qurbanSeasonDhulHijjahDesc =>
+      'Mevcut dinî tarih Zilhicce\'nin ilk sekiz günü içindedir. Arefe 9 Zilhicce, Kurban Bayramı ise 10 Zilhicce\'de başlar.';
+
+  @override
+  String get qurbanSeasonArafahTitle => 'Arefe Günü';
+
+  @override
+  String get qurbanSeasonArafahDesc =>
+      'Bugün 9 Zilhicce\'dir. Kurban Bayramı 10 Zilhicce\'de başlar.';
+
+  @override
+  String qurbanSeasonEidDayTitle(int day) {
+    return 'Kurban Bayramı · $day. Gün';
+  }
+
+  @override
+  String get qurbanSeasonEidDesc =>
+      'Mevcut dinî tarih, Kurban Bayramı günleri olan 10–13 Zilhicce arasındadır.';
 }
