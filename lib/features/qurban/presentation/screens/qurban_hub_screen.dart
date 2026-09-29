@@ -95,30 +95,55 @@ class QurbanHubScreen extends ConsumerWidget {
                   height: AppSpacing.xl,
                 ),
                 SectionHeader(
-                  title: l10n.qurbanGuideTitle,
+                  title: l10n.qurbanGuidesTitle,
                 ),
                 const SizedBox(
                   height: AppSpacing.sm,
                 ),
                 AppCard(
                   padding: EdgeInsets.zero,
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.menu_book_outlined,
-                      color: colorScheme.primary,
-                    ),
-                    title: Text(
-                      l10n.qurbanGuideTitle,
-                    ),
-                    subtitle: Text(
-                      l10n.qurbanGuideMenuDesc,
-                    ),
-                    trailing: const Icon(
-                      Icons.chevron_right,
-                    ),
-                    onTap: () => context.push(
-                      AppRoutes.qurbanGuide,
-                    ),
+                  child: Column(
+                    children: [
+                      ListTile(
+                        leading: Icon(
+                          Icons.menu_book_outlined,
+                          color: colorScheme.primary,
+                        ),
+                        title: Text(
+                          l10n.qurbanGuideTitle,
+                        ),
+                        subtitle: Text(
+                          l10n.qurbanGuideMenuDesc,
+                        ),
+                        trailing: const Icon(
+                          Icons.chevron_right,
+                        ),
+                        onTap: () => context.push(
+                          AppRoutes.qurbanGuide,
+                        ),
+                      ),
+                      const Divider(
+                        height: 1,
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.celebration_outlined,
+                          color: colorScheme.primary,
+                        ),
+                        title: Text(
+                          l10n.qurbanEidGuideTitle,
+                        ),
+                        subtitle: Text(
+                          l10n.qurbanEidGuideMenuDesc,
+                        ),
+                        trailing: const Icon(
+                          Icons.chevron_right,
+                        ),
+                        onTap: () => context.push(
+                          AppRoutes.qurbanEidGuide,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(

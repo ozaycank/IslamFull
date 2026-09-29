@@ -1781,4 +1781,67 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get qurbanSeasonEidDesc =>
       'Mevcut dinî tarih, Kurban Bayramı günleri olan 10–13 Zilhicce arasındadır.';
+
+  @override
+  String get qurbanGuidesTitle => 'Kurban ve Bayram Rehberleri';
+
+  @override
+  String get qurbanEidGuideTitle => 'Zilhicce ve Kurban Bayramı Rehberi';
+
+  @override
+  String get qurbanEidGuideMenuDesc =>
+      'Zilhicce\'nin ilk günleri, Arefe, bayram namazı ve teşrik tekbirleri hakkında temel bilgileri öğrenin.';
+
+  @override
+  String get qurbanEidGuideIntro =>
+      'Kurban Bayramı çevresindeki gün ve ibadetler hakkında kısa bir rehberdir. Mezhepler arasında farklılık gösteren uygulamalar tek ve evrensel bir yöntemmiş gibi sunulmaz.';
+
+  @override
+  String get qurbanEidGuideTopicsTitle => 'Zilhicce ve Bayram';
+
+  @override
+  String get qurbanEidFirstDaysTitle => 'Zilhicce\'nin İlk Günleri';
+
+  @override
+  String get qurbanEidFirstDaysDesc =>
+      'Zilhicce\'nin ilk on günü salih ameller açısından faziletli kabul edilir. İlk dokuz günde oruç tutmak müstehaptır; isteyen bu günlerin tamamını veya bir kısmını oruçlu geçirebilir. 10 Zilhicce Kurban Bayramı\'nın birinci günüdür ve oruç günü değildir.';
+
+  @override
+  String get qurbanEidArafahTitle => 'Arefe Günü';
+
+  @override
+  String get qurbanEidArafahDesc =>
+      'Arefe, Zilhicce\'nin dokuzuncu günüdür. Hac ibadetini yerine getirmeyenler için bu gün oruç tutmak özellikle teşvik edilmiştir. Arafat\'ta vakfe yapan hacıların ise hac ibadetlerini daha güçlü biçimde yerine getirebilmeleri için oruç tutmamaları daha uygun görülmüştür.';
+
+  @override
+  String get qurbanEidDaysTitle => 'Kurban Bayramı Günleri';
+
+  @override
+  String get qurbanEidDaysDesc =>
+      'Kurban Bayramı 10–13 Zilhicce günlerini kapsar. Bu günler ibadet, Allah\'ı anma, yakınlarla ilgilenme ve paylaşma günleridir. Kurban Bayramı günlerinde oruç tutulmaz.';
+
+  @override
+  String get qurbanEidPrayerTitle => 'Bayram Namazı';
+
+  @override
+  String get qurbanEidPrayerDesc =>
+      'Bayram namazı iki rekâttır; ezan ve kamet okunmaz, bayram hutbesi namazdan sonra okunur. Hanefî mezhebinde şartlarını taşıyanlar için vâciptir ve cemaatle kılınır. Yaygın Hanefî uygulamasında her rekâtta üç ilave tekbir bulunur. Diğer mezheplerde namazın hükmü ile ilave tekbirlerin sayısı ve yeri farklılık gösterebilir; Şâfiî mezhebinde bayram namazı sünnet-i müekkede kabul edilir.';
+
+  @override
+  String get qurbanEidTashriqTitle => 'Teşrik Tekbirleri';
+
+  @override
+  String get qurbanEidTashriqDesc =>
+      'Hanefîlerde tercih edilen görüşe göre Arefe günü sabah namazından Kurban Bayramı\'nın dördüncü günü ikindi namazına kadar, ikindi de dâhil olmak üzere 23 farz namazın ardından birer defa teşrik tekbiri getirmek kadın ve erkek Müslümanlara vâciptir. Şâfiî mezhebinde ise teşrik tekbirleri sünnet kabul edilir.';
+
+  @override
+  String get qurbanEidTashriqTextTitle => 'Teşrik Tekbiri';
+
+  @override
+  String get qurbanEidTashriqText =>
+      'Allâhü ekber, Allâhü ekber. Lâ ilâhe illallâhü vallâhü ekber. Allâhü ekber ve lillâhi\'l-hamd.';
+
+  @override
+  String get qurbanEidSchoolNote =>
+      'Bu rehber kısa bir yönlendirme sunar. Bayram namazı, ilave tekbirler ve ilgili hükümler mezheplere göre farklılık gösterebilir. Ayrıntılı uygulamada bağlı bulunduğunuz cemaatin uygulamasını takip edebilir veya yetkin dinî kaynaklara başvurabilirsiniz.';
 }

@@ -34,4 +34,5 @@ class AppRoutes {
   static const String ramadanGuide = '/ramadan-guide';
   static const String qurban = '/qurban';
   static const String qurbanGuide = '/qurban-guide';
+  static const String qurbanEidGuide = '/qurban-eid-guide';
 }

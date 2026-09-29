@@ -1774,4 +1774,67 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get qurbanSeasonEidDesc =>
       'The current religious date is within 10–13 Dhul Hijjah, the days of Eid al-Adha.';
+
+  @override
+  String get qurbanGuidesTitle => 'Qurban & Eid Guidance';
+
+  @override
+  String get qurbanEidGuideTitle => 'Dhul Hijjah & Eid al-Adha Guide';
+
+  @override
+  String get qurbanEidGuideMenuDesc =>
+      'Learn about the first days of Dhul Hijjah, Arafah, Eid prayer and the Takbirs of Tashriq.';
+
+  @override
+  String get qurbanEidGuideIntro =>
+      'A concise guide to the days surrounding Eid al-Adha. Worship details that differ between schools of law are identified rather than presented as a single universal practice.';
+
+  @override
+  String get qurbanEidGuideTopicsTitle => 'Dhul Hijjah & Eid';
+
+  @override
+  String get qurbanEidFirstDaysTitle => 'The First Days of Dhul Hijjah';
+
+  @override
+  String get qurbanEidFirstDaysDesc =>
+      'The first ten days of Dhul Hijjah are regarded as especially virtuous for righteous deeds. Fasting during the first nine days is considered recommended; a person may fast all of them or some of them. The 10th of Dhul Hijjah is the first day of Eid al-Adha and is not a fasting day.';
+
+  @override
+  String get qurbanEidArafahTitle => 'Day of Arafah';
+
+  @override
+  String get qurbanEidArafahDesc =>
+      'Arafah is the 9th of Dhul Hijjah. Fasting on this day is especially encouraged for those who are not performing Hajj. For pilgrims standing at Arafat, not fasting is regarded as more appropriate so that the rites of Hajj can be performed with strength.';
+
+  @override
+  String get qurbanEidDaysTitle => 'Days of Eid al-Adha';
+
+  @override
+  String get qurbanEidDaysDesc =>
+      'Eid al-Adha covers 10–13 Dhul Hijjah. These are days of worship, remembrance, family ties and sharing. Fasting is not observed during the days of Eid al-Adha.';
+
+  @override
+  String get qurbanEidPrayerTitle => 'Eid Prayer';
+
+  @override
+  String get qurbanEidPrayerDesc =>
+      'Eid prayer consists of two rakahs and is performed without adhan or iqamah; the Eid sermon follows the prayer. In the Hanafi school it is wajib for those who meet its conditions and is performed in congregation. The common Hanafi method includes three additional takbirs in each rakah. Other schools differ in the ruling, number and placement of the additional takbirs; for example, the Shafii school regards the prayer as an emphasized Sunnah.';
+
+  @override
+  String get qurbanEidTashriqTitle => 'Takbirs of Tashriq';
+
+  @override
+  String get qurbanEidTashriqDesc =>
+      'According to the preferred Hanafi view, the Takbir of Tashriq is recited once after each obligatory prayer from Fajr on the Day of Arafah through Asr on the fourth day of Eid, inclusive: 23 obligatory prayer times. This applies to men and women. In the Shafii school the practice is regarded as Sunnah.';
+
+  @override
+  String get qurbanEidTashriqTextTitle => 'Takbir of Tashriq';
+
+  @override
+  String get qurbanEidTashriqText =>
+      'Allahu akbar, Allahu akbar. La ilaha illallahu wallahu akbar. Allahu akbar wa lillahil hamd.';
+
+  @override
+  String get qurbanEidSchoolNote =>
+      'This guide gives a concise orientation. Eid prayer, additional takbirs and related rulings have differences between schools of law. Follow the practice of your congregation or seek qualified religious guidance when detailed application matters.';
 }

@@ -31,6 +31,7 @@ import '../../features/ramadan/presentation/screens/ramadan_hub_screen.dart';
 import '../../features/ramadan/presentation/screens/ramadan_guide_screen.dart';
 import '../../features/qurban/presentation/screens/qurban_guide_screen.dart';
 import '../../features/qurban/presentation/screens/qurban_hub_screen.dart';
+import '../../features/qurban/presentation/screens/qurban_eid_guide_screen.dart';
 import '../di/injection_container.dart';
 import '../logging/logger_service.dart';
 import 'app_navigation_observer.dart';
@@ -160,6 +161,11 @@ class AppRouter {
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.qurbanGuide,
           builder: (context, state) => const QurbanGuideScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoutes.qurbanEidGuide,
+          builder: (context, state) => const QurbanEidGuideScreen(),
         ),
 
         StatefulShellRoute.indexedStack(

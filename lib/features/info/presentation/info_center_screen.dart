@@ -174,6 +174,25 @@ class InfoCenterScreen extends StatelessWidget {
                 const Divider(height: 1),
                 ListTile(
                   leading: Icon(
+                    Icons.celebration_outlined,
+                    color: colorScheme.primary,
+                  ),
+                  title: Text(
+                    l10n.qurbanEidGuideTitle,
+                  ),
+                  subtitle: Text(
+                    l10n.qurbanEidGuideMenuDesc,
+                  ),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                  ),
+                  onTap: () => context.push(
+                    AppRoutes.qurbanEidGuide,
+                  ),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: Icon(
                     Icons.mosque_outlined,
                     color: colorScheme.primary,
                   ),

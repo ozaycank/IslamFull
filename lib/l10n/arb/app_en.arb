@@ -2002,5 +2002,85 @@
 "qurbanSeasonEidDesc": "The current religious date is within 10–13 Dhul Hijjah, the days of Eid al-Adha.",
 "@qurbanSeasonEidDesc": {
   "description": "Neutral calendar context shown during Eid al-Adha"
+},
+"qurbanGuidesTitle": "Qurban & Eid Guidance",
+"@qurbanGuidesTitle": {
+  "description": "Heading for Qurban and Eid guidance links"
+},
+
+"qurbanEidGuideTitle": "Dhul Hijjah & Eid al-Adha Guide",
+"@qurbanEidGuideTitle": {
+  "description": "Title of the Dhul Hijjah and Eid al-Adha guide"
+},
+"qurbanEidGuideMenuDesc": "Learn about the first days of Dhul Hijjah, Arafah, Eid prayer and the Takbirs of Tashriq.",
+"@qurbanEidGuideMenuDesc": {
+  "description": "Navigation description for the Dhul Hijjah and Eid guide"
+},
+"qurbanEidGuideIntro": "A concise guide to the days surrounding Eid al-Adha. Worship details that differ between schools of law are identified rather than presented as a single universal practice.",
+"@qurbanEidGuideIntro": {
+  "description": "Introduction to the Dhul Hijjah and Eid guide"
+},
+"qurbanEidGuideTopicsTitle": "Dhul Hijjah & Eid",
+"@qurbanEidGuideTopicsTitle": {
+  "description": "Heading above Dhul Hijjah and Eid topics"
+},
+
+"qurbanEidFirstDaysTitle": "The First Days of Dhul Hijjah",
+"@qurbanEidFirstDaysTitle": {
+  "description": "Title for guidance about the opening days of Dhul Hijjah"
+},
+"qurbanEidFirstDaysDesc": "The first ten days of Dhul Hijjah are regarded as especially virtuous for righteous deeds. Fasting during the first nine days is considered recommended; a person may fast all of them or some of them. The 10th of Dhul Hijjah is the first day of Eid al-Adha and is not a fasting day.",
+"@qurbanEidFirstDaysDesc": {
+  "description": "Guidance about worship and fasting during the first days of Dhul Hijjah"
+},
+
+"qurbanEidArafahTitle": "Day of Arafah",
+"@qurbanEidArafahTitle": {
+  "description": "Title for the Day of Arafah guidance"
+},
+"qurbanEidArafahDesc": "Arafah is the 9th of Dhul Hijjah. Fasting on this day is especially encouraged for those who are not performing Hajj. For pilgrims standing at Arafat, not fasting is regarded as more appropriate so that the rites of Hajj can be performed with strength.",
+"@qurbanEidArafahDesc": {
+  "description": "Guidance about fasting on the Day of Arafah"
+},
+
+"qurbanEidDaysTitle": "Days of Eid al-Adha",
+"@qurbanEidDaysTitle": {
+  "description": "Title for the days of Eid al-Adha"
+},
+"qurbanEidDaysDesc": "Eid al-Adha covers 10–13 Dhul Hijjah. These are days of worship, remembrance, family ties and sharing. Fasting is not observed during the days of Eid al-Adha.",
+"@qurbanEidDaysDesc": {
+  "description": "General guidance for the days of Eid al-Adha"
+},
+
+"qurbanEidPrayerTitle": "Eid Prayer",
+"@qurbanEidPrayerTitle": {
+  "description": "Title for Eid prayer guidance"
+},
+"qurbanEidPrayerDesc": "Eid prayer consists of two rakahs and is performed without adhan or iqamah; the Eid sermon follows the prayer. In the Hanafi school it is wajib for those who meet its conditions and is performed in congregation. The common Hanafi method includes three additional takbirs in each rakah. Other schools differ in the ruling, number and placement of the additional takbirs; for example, the Shafii school regards the prayer as an emphasized Sunnah.",
+"@qurbanEidPrayerDesc": {
+  "description": "High-level explanation of Eid prayer and school differences"
+},
+
+"qurbanEidTashriqTitle": "Takbirs of Tashriq",
+"@qurbanEidTashriqTitle": {
+  "description": "Title for guidance about the Takbirs of Tashriq"
+},
+"qurbanEidTashriqDesc": "According to the preferred Hanafi view, the Takbir of Tashriq is recited once after each obligatory prayer from Fajr on the Day of Arafah through Asr on the fourth day of Eid, inclusive: 23 obligatory prayer times. This applies to men and women. In the Shafii school the practice is regarded as Sunnah.",
+"@qurbanEidTashriqDesc": {
+  "description": "Explanation of the timing and school differences for the Takbirs of Tashriq"
+},
+
+"qurbanEidTashriqTextTitle": "Takbir of Tashriq",
+"@qurbanEidTashriqTextTitle": {
+  "description": "Heading above the transliteration of the Takbir of Tashriq"
+},
+"qurbanEidTashriqText": "Allahu akbar, Allahu akbar. La ilaha illallahu wallahu akbar. Allahu akbar wa lillahil hamd.",
+"@qurbanEidTashriqText": {
+  "description": "Transliteration of the Takbir of Tashriq"
+},
+
+"qurbanEidSchoolNote": "This guide gives a concise orientation. Eid prayer, additional takbirs and related rulings have differences between schools of law. Follow the practice of your congregation or seek qualified religious guidance when detailed application matters.",
+"@qurbanEidSchoolNote": {
+  "description": "School-of-law disclaimer for the Dhul Hijjah and Eid guide"
 }
 }
