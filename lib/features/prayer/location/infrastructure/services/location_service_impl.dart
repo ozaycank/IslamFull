@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:lat_lng_to_timezone/lat_lng_to_timezone.dart' as tzmap;
+import 'package:geolocator/geolocator.dart' show Position;
 import '../../../../../core/base/result.dart';
 import '../../domain/entities/prayer_location.dart';
 import '../../domain/interfaces/location_geocoding_service.dart';
@@ -9,6 +10,12 @@ import '../datasources/geolocator_data_source.dart';
 
 @LazySingleton(as: LocationService)
 class LocationServiceImpl implements LocationService {
+  /// Prayer calculations should not silently accept a city/region-level
+  /// approximate location.
+  ///
+  /// This is an application data-quality threshold, not a religious rule.
+  static const double maxAcceptedAccuracyMeters = 25000;
+
   final LocationPermissionService _permissionService;
   final LocationGeocodingService _geocodingService;
   final GeolocatorDataSource _geoDataSource;
@@ -23,6 +30,7 @@ class LocationServiceImpl implements LocationService {
   Future<Result<PrayerLocation, LocationFailure>> getCurrentLocation() async {
     try {
       final serviceEnabled = await _geoDataSource.isLocationServiceEnabled();
+
       if (!serviceEnabled) {
         return const ResultFailure(
           LocationFailure(
@@ -33,6 +41,7 @@ class LocationServiceImpl implements LocationService {
       }
 
       var permStatus = await _permissionService.checkPermission();
+
       if (permStatus == AppLocationPermission.denied) {
         permStatus = await _permissionService.requestPermission();
       }
@@ -44,7 +53,9 @@ class LocationServiceImpl implements LocationService {
             code: 'permissionDeniedForever',
           ),
         );
-      } else if (permStatus == AppLocationPermission.denied) {
+      }
+
+      if (permStatus == AppLocationPermission.denied) {
         return const ResultFailure(
           LocationFailure(
             'Location permission denied.',
@@ -55,10 +66,7 @@ class LocationServiceImpl implements LocationService {
 
       final position = await _geoDataSource.getCurrentPosition();
 
-      if (position.latitude < -90 ||
-          position.latitude > 90 ||
-          position.longitude < -180 ||
-          position.longitude > 180) {
+      if (!_coordinatesAreValid(position)) {
         return const ResultFailure(
           LocationFailure(
             'Received invalid coordinates from device.',
@@ -67,13 +75,25 @@ class LocationServiceImpl implements LocationService {
         );
       }
 
-      String timezoneId;
+      if (!_accuracyIsAcceptable(position.accuracy)) {
+        return ResultFailure(
+          LocationFailure(
+            'Location accuracy is too low for reliable prayer times. '
+            'Current accuracy is approximately '
+            '${position.accuracy.round()} meters.',
+            code: 'locationAccuracyInsufficient',
+          ),
+        );
+      }
+
+      final String timezoneId;
+
       try {
         timezoneId = tzmap.latLngToTimezoneString(
           position.latitude,
           position.longitude,
         );
-      } catch (e) {
+      } catch (_) {
         return const ResultFailure(
           LocationFailure(
             'Failed to resolve timezone from coordinates.',
@@ -82,21 +102,22 @@ class LocationServiceImpl implements LocationService {
         );
       }
 
-      String resolvedCity = 'Current Location';
-      String resolvedCountry = 'Unknown';
+      var resolvedCity = 'Current Location';
+      var resolvedCountry = 'Unknown';
 
       final geoResult = await _geocodingService.reverseGeocode(
         position.latitude,
         position.longitude,
       );
 
-      // FIX: Use Dart 3 pattern matching to safely extract value from Success state
       switch (geoResult) {
         case Success(value: final tuple):
           resolvedCity = tuple.$1;
           resolvedCountry = tuple.$2;
+
         case ResultFailure():
-          // Silently keep the default 'Unknown' values if geocoding fails
+          // Coordinates and timezone are still usable when reverse
+          // geocoding fails. Keep neutral fallback labels.
           break;
       }
 
@@ -117,5 +138,24 @@ class LocationServiceImpl implements LocationService {
         ),
       );
     }
+  }
+
+  bool _coordinatesAreValid(
+    Position position,
+  ) {
+    return position.latitude.isFinite &&
+        position.longitude.isFinite &&
+        position.latitude >= -90 &&
+        position.latitude <= 90 &&
+        position.longitude >= -180 &&
+        position.longitude <= 180;
+  }
+
+  bool _accuracyIsAcceptable(
+    double accuracyMeters,
+  ) {
+    return accuracyMeters.isFinite &&
+        accuracyMeters > 0 &&
+        accuracyMeters <= maxAcceptedAccuracyMeters;
   }
 }

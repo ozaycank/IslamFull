@@ -35,6 +35,8 @@ class QuranHomeScreen extends ConsumerWidget {
       quranProgressNotifierProvider,
     );
 
+    final hasActiveSearch = state.searchQuery.trim().isNotEmpty;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -61,30 +63,14 @@ class QuranHomeScreen extends ConsumerWidget {
             ),
             child: Column(
               children: [
-                if (progressState.lastRead != null && state.surahs.isNotEmpty)
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      AppSpacing.lg,
-                      AppSpacing.lg,
-                      0,
-                    ),
-                    child: ContinueReadingCard(
-                      progress: progressState.lastRead!,
-                      surahs: state.surahs,
-                      onTap: () {
-                        context.push(
-                          '${AppRoutes.quran}/surah/'
-                          '${progressState.lastRead!.surahNumber}',
-                        );
-                      },
-                    ),
-                  ),
                 Padding(
                   padding: const EdgeInsets.all(
                     AppSpacing.lg,
                   ),
                   child: TextField(
+                    key: const ValueKey(
+                      'quranSearchField',
+                    ),
                     onChanged: notifier.searchSurahs,
                     autocorrect: false,
                     textInputAction: TextInputAction.search,
@@ -97,11 +83,15 @@ class QuranHomeScreen extends ConsumerWidget {
                       fillColor: colorScheme.surfaceContainerHighest,
                       border: InputBorder.none,
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(
+                          16,
+                        ),
                         borderSide: BorderSide.none,
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(
+                          16,
+                        ),
                         borderSide: BorderSide(
                           color: colorScheme.primary,
                         ),
@@ -109,6 +99,27 @@ class QuranHomeScreen extends ConsumerWidget {
                     ),
                   ),
                 ),
+                if (!hasActiveSearch &&
+                    progressState.lastRead != null &&
+                    state.surahs.isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.lg,
+                      0,
+                      AppSpacing.lg,
+                      AppSpacing.lg,
+                    ),
+                    child: ContinueReadingCard(
+                      progress: progressState.lastRead!,
+                      surahs: state.surahs,
+                      onTap: () {
+                        context.push(
+                          '${AppRoutes.quran}/surah/'
+                          '${progressState.lastRead!.surahNumber}',
+                        );
+                      },
+                    ),
+                  ),
                 Expanded(
                   child: _buildBody(
                     context,

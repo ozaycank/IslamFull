@@ -90,9 +90,15 @@ void main() {
         findsOneWidget,
       );
 
+      final l10n = AppLocalizations.of(
+        tester.element(
+          find.byType(QuranHomeScreen),
+        ),
+      )!;
+
       expect(
         find.text(
-          'No surah found',
+          l10n.quranNoSurahFound,
         ),
         findsOneWidget,
       );
