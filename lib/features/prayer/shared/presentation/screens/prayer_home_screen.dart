@@ -72,11 +72,19 @@ class PrayerHomeScreen extends ConsumerWidget {
           ),
         ),
         body: SafeArea(
-          child: PrayerErrorWidget(
-            message: state.failure!.message,
-            onRetry: () => _refreshData(
-              context,
-              ref,
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(
+                maxWidth: 800,
+              ),
+              child: PrayerErrorWidget(
+                message: state.failure!.message,
+                onRetry: () => _refreshData(
+                  context,
+                  ref,
+                ),
+              ),
             ),
           ),
         ),
@@ -84,10 +92,11 @@ class PrayerHomeScreen extends ConsumerWidget {
     }
 
     final today = state.schedule?.today;
-
     final location = state.location;
 
-    final remaining = liveState.timeRemaining;
+    final rawRemaining = liveState.timeRemaining;
+
+    final remaining = rawRemaining.isNegative ? Duration.zero : rawRemaining;
 
     final timeRemainingString =
         '${remaining.inHours.toString().padLeft(2, '0')}:'
@@ -122,72 +131,81 @@ class PrayerHomeScreen extends ConsumerWidget {
         ],
       ),
       body: SafeArea(
-        child: RefreshIndicator(
-          onRefresh: () => _refreshData(
-            context,
-            ref,
-          ),
-          child: ListView(
-            padding: const EdgeInsets.all(
-              AppSpacing.lg,
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: 800,
             ),
-            children: [
-              if (today != null && location != null)
-                PrayerHeader(
-                  cityName: location.cityName,
-                  countryName: location.countryName,
-                  hijriYear: null,
-                  hijriMonthIndex: null,
-                  hijriDay: null,
-                  customHijriString: PresentationLocalizer.formatSmartHijri(
-                    context,
-                    today.hijriDateString,
-                  ),
-                  nextPrayerNameRaw: liveState.nextPrayer?.name.name,
-                  timeRemaining: timeRemainingString,
+            child: RefreshIndicator(
+              onRefresh: () => _refreshData(
+                context,
+                ref,
+              ),
+              child: ListView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                padding: const EdgeInsets.all(
+                  AppSpacing.lg,
                 ),
-              const SizedBox(
-                height: AppSpacing.lg,
-              ),
-              SectionHeader(
-                title: l10n.prayerTitle,
-              ),
-              if (today != null)
-                PrayerCard(
-                  prayerTimes: today.prayerTimes,
-                  liveState: liveState,
-                ),
-              const SizedBox(
-                height: AppSpacing.lg,
-              ),
-              SectionHeader(
-                title: l10n.prayerGuideTitle,
-              ),
-              AppCard(
-                padding: EdgeInsets.zero,
-                child: ListTile(
-                  leading: Icon(
-                    Icons.menu_book_outlined,
-                    color: context.colorScheme.primary,
+                children: [
+                  if (today != null && location != null)
+                    PrayerHeader(
+                      cityName: location.cityName,
+                      countryName: location.countryName,
+                      hijriYear: null,
+                      hijriMonthIndex: null,
+                      hijriDay: null,
+                      customHijriString: PresentationLocalizer.formatSmartHijri(
+                        context,
+                        today.hijriDateString,
+                      ),
+                      nextPrayerNameRaw: liveState.nextPrayer?.name.name,
+                      timeRemaining: timeRemainingString,
+                    ),
+                  const SizedBox(
+                    height: AppSpacing.lg,
                   ),
-                  title: Text(
-                    l10n.prayerGuideTitle,
+                  SectionHeader(
+                    title: l10n.prayerTitle,
                   ),
-                  subtitle: Text(
-                    l10n.prayerGuideShortcutDesc,
+                  if (today != null)
+                    PrayerCard(
+                      prayerTimes: today.prayerTimes,
+                      liveState: liveState,
+                    ),
+                  const SizedBox(
+                    height: AppSpacing.lg,
                   ),
-                  trailing: const Icon(
-                    Icons.chevron_right,
+                  SectionHeader(
+                    title: l10n.prayerGuideTitle,
                   ),
-                  onTap: () => context.push(
-                    AppRoutes.prayerGuide,
+                  AppCard(
+                    padding: EdgeInsets.zero,
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.menu_book_outlined,
+                        color: context.colorScheme.primary,
+                      ),
+                      title: Text(
+                        l10n.prayerGuideTitle,
+                      ),
+                      subtitle: Text(
+                        l10n.prayerGuideShortcutDesc,
+                      ),
+                      trailing: const Icon(
+                        Icons.chevron_right,
+                      ),
+                      onTap: () => context.push(
+                        AppRoutes.prayerGuide,
+                      ),
+                    ),
                   ),
-                ),
+                  const SizedBox(
+                    height: AppSpacing.xxl,
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: AppSpacing.xxl,
-              ),
-            ],
+            ),
           ),
         ),
       ),

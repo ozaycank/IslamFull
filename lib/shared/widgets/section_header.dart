@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../design_system/tokens/app_spacing.dart';
 
 class SectionHeader extends StatelessWidget {
@@ -18,28 +19,46 @@ class SectionHeader extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
 
+    final hasAction = actionText != null &&
+        actionText!.trim().isNotEmpty &&
+        onActionPressed != null;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
+      padding: const EdgeInsets.symmetric(
+        vertical: AppSpacing.sm,
+      ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            title,
-            style: textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          if (actionText != null && onActionPressed != null)
-            TextButton(
-              onPressed: onActionPressed,
+          Expanded(
+            child: Semantics(
+              header: true,
               child: Text(
-                actionText!,
-                style: TextStyle(
-                  color: colorScheme.primary,
-                  fontWeight: FontWeight.w600,
+                title,
+                style: textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
+          ),
+          if (hasAction) ...[
+            const SizedBox(
+              width: AppSpacing.sm,
+            ),
+            Flexible(
+              child: TextButton(
+                onPressed: onActionPressed,
+                child: Text(
+                  actionText!,
+                  textAlign: TextAlign.end,
+                  style: TextStyle(
+                    color: colorScheme.primary,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ],
       ),
     );

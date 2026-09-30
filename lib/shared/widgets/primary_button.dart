@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../design_system/tokens/app_border_radius.dart';
 import '../design_system/tokens/app_spacing.dart';
 
@@ -34,7 +35,7 @@ class PrimaryButton extends StatelessWidget {
           ),
           shape: shape,
         ),
-        child: _buildChild(context),
+        child: _buildChild(),
       );
     }
 
@@ -47,29 +48,43 @@ class PrimaryButton extends StatelessWidget {
         ),
         shape: shape,
       ),
-      child: _buildChild(context),
+      child: _buildChild(),
     );
   }
 
-  Widget _buildChild(BuildContext context) {
+  Widget _buildChild() {
     if (isLoading) {
-      return const SizedBox(
+      return SizedBox(
         height: 20,
         width: 20,
-        child: CircularProgressIndicator(strokeWidth: 2),
+        child: CircularProgressIndicator(
+          strokeWidth: 2,
+          semanticsLabel: text,
+        ),
       );
     }
+
     if (icon != null) {
-      return Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
+      return Wrap(
+        alignment: WrapAlignment.center,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        spacing: AppSpacing.sm,
         children: [
-          Icon(icon, size: 20),
-          const SizedBox(width: AppSpacing.sm),
-          Text(text),
+          Icon(
+            icon,
+            size: 20,
+          ),
+          Text(
+            text,
+            textAlign: TextAlign.center,
+          ),
         ],
       );
     }
-    return Text(text);
+
+    return Text(
+      text,
+      textAlign: TextAlign.center,
+    );
   }
 }

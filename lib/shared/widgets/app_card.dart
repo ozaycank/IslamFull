@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../design_system/tokens/app_border_radius.dart';
 import '../design_system/tokens/app_spacing.dart';
 
@@ -22,6 +23,11 @@ class AppCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
+    final content = Padding(
+      padding: padding ?? const EdgeInsets.all(AppSpacing.lg),
+      child: child,
+    );
+
     return Card(
       elevation: elevation,
       color: backgroundColor ?? colorScheme.surfaceContainerLow,
@@ -29,13 +35,15 @@ class AppCard extends StatelessWidget {
         borderRadius: AppBorderRadius.large,
       ),
       clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: onTap,
-        child: Padding(
-          padding: padding ?? const EdgeInsets.all(AppSpacing.lg),
-          child: child,
-        ),
-      ),
+      child: onTap == null
+          ? content
+          : Semantics(
+              button: true,
+              child: InkWell(
+                onTap: onTap,
+                child: content,
+              ),
+            ),
     );
   }
 }
