@@ -30,7 +30,15 @@ class MenuScreen extends ConsumerWidget {
         ),
         elevation: 0,
       ),
-      body: ListView(
+      body: SafeArea(
+  top: false,
+  child: Align(
+    alignment: Alignment.topCenter,
+    child: ConstrainedBox(
+      constraints: const BoxConstraints(
+        maxWidth: 800,
+      ),
+      child: ListView(
         padding: const EdgeInsets.all(
           AppSpacing.lg,
         ),
@@ -187,8 +195,11 @@ class MenuScreen extends ConsumerWidget {
           const SizedBox(
             height: AppSpacing.xxl,
           ),
-        ],
+          ],
+        ),
       ),
+    ),
+  ),
     );
   }
 }

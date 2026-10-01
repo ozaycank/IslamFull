@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 
@@ -21,54 +22,113 @@ class SettingsSelectionTile extends StatelessWidget {
     final textTheme = context.textTheme;
     final colorScheme = context.colorScheme;
 
-    return InkWell(
-      onTap: isLoading ? null : onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.lg,
-          vertical: AppSpacing.md,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              flex: 2,
-              child: Text(
+    return Semantics(
+      button: true,
+      enabled: !isLoading,
+      child: InkWell(
+        onTap: isLoading ? null : onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.lg,
+            vertical: AppSpacing.md,
+          ),
+          child: LayoutBuilder(
+            builder: (
+              context,
+              constraints,
+            ) {
+              final baseFontSize = textTheme.bodyMedium?.fontSize ?? 14;
+
+              final scaledFontSize = MediaQuery.textScalerOf(
+                context,
+              ).scale(
+                baseFontSize,
+              );
+
+              final shouldStack =
+                  constraints.maxWidth < 360 || scaledFontSize >= 20;
+
+              final titleWidget = Text(
                 title,
                 style: textTheme.bodyMedium?.copyWith(
                   color: colorScheme.onSurfaceVariant,
                 ),
-              ),
-            ),
-            const SizedBox(width: AppSpacing.sm),
-            Expanded(
-              flex: 3,
-              child: isLoading
-                  ? const Align(
-                      alignment: Alignment.centerRight,
-                      child: SizedBox(
-                        width: 16,
-                        height: 16,
-                        child: CircularProgressIndicator(strokeWidth: 2),
+              );
+
+              final valueWidget = isLoading
+                  ? SizedBox(
+                      width: 18,
+                      height: 18,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        semanticsLabel: title,
                       ),
                     )
                   : Text(
                       value,
-                      textAlign: TextAlign.right,
+                      textAlign: TextAlign.end,
                       style: textTheme.bodyMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                    );
+
+              final chevron = Icon(
+                Icons.chevron_right,
+                size: 18,
+                color: colorScheme.onSurfaceVariant,
+              );
+
+              if (shouldStack) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    titleWidget,
+                    const SizedBox(
+                      height: AppSpacing.sm,
                     ),
-            ),
-            const SizedBox(width: AppSpacing.xs),
-            Icon(
-              Icons.chevron_right,
-              size: 16,
-              color: colorScheme.onSurfaceVariant,
-            ),
-          ],
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Align(
+                            alignment: AlignmentDirectional.centerStart,
+                            child: valueWidget,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: AppSpacing.sm,
+                        ),
+                        chevron,
+                      ],
+                    ),
+                  ],
+                );
+              }
+
+              return Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: titleWidget,
+                  ),
+                  const SizedBox(
+                    width: AppSpacing.md,
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Align(
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: valueWidget,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: AppSpacing.xs,
+                  ),
+                  chevron,
+                ],
+              );
+            },
+          ),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../design_system/tokens/app_spacing.dart';
 import 'primary_button.dart';
 
@@ -23,47 +24,72 @@ class ErrorStateWidget extends StatelessWidget {
 
     return Center(
       child: SingleChildScrollView(
-        padding: const EdgeInsets.all(AppSpacing.xl),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(AppSpacing.xl),
-              decoration: BoxDecoration(
-                color: colorScheme.errorContainer.withValues(alpha: 0.3),
-                shape: BoxShape.circle,
+        padding: const EdgeInsets.all(
+          AppSpacing.xl,
+        ),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxWidth: 600,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ExcludeSemantics(
+                child: Container(
+                  padding: const EdgeInsets.all(
+                    AppSpacing.xl,
+                  ),
+                  decoration: BoxDecoration(
+                    color: colorScheme.errorContainer.withValues(
+                      alpha: 0.3,
+                    ),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    Icons.error_outline,
+                    size: 64,
+                    color: colorScheme.error,
+                  ),
+                ),
               ),
-              child: Icon(
-                Icons.error_outline,
-                size: 64,
-                color: colorScheme.error,
+              const SizedBox(
+                height: AppSpacing.xl,
               ),
-            ),
-            const SizedBox(height: AppSpacing.xl),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
+              Semantics(
+                header: true,
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-            ),
-            const SizedBox(height: AppSpacing.sm),
-            Text(
-              message,
-              textAlign: TextAlign.center,
-              style: textTheme.bodyMedium?.copyWith(
-                color: colorScheme.onSurfaceVariant,
+              const SizedBox(
+                height: AppSpacing.sm,
               ),
-            ),
-            if (onRetry != null) ...[
-              const SizedBox(height: AppSpacing.xl),
-              PrimaryButton(
-                text: retryText,
-                onPressed: onRetry,
-                icon: Icons.refresh,
+              Semantics(
+                liveRegion: true,
+                child: Text(
+                  message,
+                  textAlign: TextAlign.center,
+                  style: textTheme.bodyMedium?.copyWith(
+                    color: colorScheme.onSurfaceVariant,
+                  ),
+                ),
               ),
+              if (onRetry != null) ...[
+                const SizedBox(
+                  height: AppSpacing.xl,
+                ),
+                PrimaryButton(
+                  text: retryText,
+                  onPressed: onRetry,
+                  icon: Icons.refresh,
+                ),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );

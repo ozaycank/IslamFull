@@ -8,6 +8,7 @@ import '../../../../core/routing/app_routes.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../../../menu/application/preferences_provider.dart';
 import '../../../prayer/location/application/providers/location_notifier.dart';
+import '../../../prayer/location/application/states/location_state.dart';
 import '../../../prayer/prayer_times/application/providers/prayer_times_notifier.dart';
 import '../../../prayer/prayer_times/domain/entities/prayer_time.dart';
 import '../../../prayer/prayer_times/domain/value_objects/prayer_name.dart';
@@ -132,9 +133,7 @@ class _HomeHeader extends ConsumerWidget {
       }
     }
 
-    final isLoading = locationState.status.toString().contains(
-          'requesting',
-        );
+    final isLoading = locationState.status == LocationStatus.requesting;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -156,8 +155,6 @@ class _HomeHeader extends ConsumerWidget {
                   fontWeight: FontWeight.bold,
                   color: colorScheme.onSurface,
                 ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
               ),
             ),
           ],
@@ -192,13 +189,24 @@ class _NextPrayerHero extends ConsumerWidget {
   String _formatDuration(
     Duration duration,
   ) {
-    final hours = duration.inHours.toString().padLeft(2, '0');
+    final safeDuration = duration.isNegative ? Duration.zero : duration;
 
-    final minutes = (duration.inMinutes % 60).toString().padLeft(2, '0');
+    final hours = safeDuration.inHours.toString().padLeft(
+          2,
+          '0',
+        );
 
-    final seconds = (duration.inSeconds % 60).toString().padLeft(2, '0');
+    final minutes = (safeDuration.inMinutes % 60).toString().padLeft(
+          2,
+          '0',
+        );
 
-    if (duration.inHours > 0) {
+    final seconds = (safeDuration.inSeconds % 60).toString().padLeft(
+          2,
+          '0',
+        );
+
+    if (safeDuration.inHours > 0) {
       return '$hours:$minutes:$seconds';
     }
 
@@ -224,13 +232,17 @@ class _NextPrayerHero extends ConsumerWidget {
 
     final nextPrayer = liveState.nextPrayer!;
 
-    final remaining = liveState.timeRemaining;
+    final remaining = liveState.timeRemaining.isNegative
+        ? Duration.zero
+        : liveState.timeRemaining;
 
     return Card(
       elevation: 0,
       color: colorScheme.primary,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(
+          24,
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(
@@ -242,32 +254,42 @@ class _NextPrayerHero extends ConsumerWidget {
             Text(
               l10n.homeNextPrayer,
               style: textTheme.titleMedium?.copyWith(
-                color: colorScheme.onPrimary.withValues(alpha: 0.8),
+                color: colorScheme.onPrimary.withValues(
+                  alpha: 0.8,
+                ),
               ),
             ),
             const SizedBox(
               height: AppSpacing.sm,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Flexible(
-                  child: Text(
-                    _getLocalizedPrayerName(
-                      context,
-                      nextPrayer.name,
-                    ),
-                    style: textTheme.displaySmall?.copyWith(
-                      color: colorScheme.onPrimary,
-                      fontWeight: FontWeight.bold,
-                    ),
+            LayoutBuilder(
+              builder: (
+                context,
+                constraints,
+              ) {
+                final baseFontSize = textTheme.bodyMedium?.fontSize ?? 14;
+
+                final scaledFontSize = MediaQuery.textScalerOf(
+                  context,
+                ).scale(
+                  baseFontSize,
+                );
+
+                final shouldStack =
+                    constraints.maxWidth < 360 || scaledFontSize >= 20;
+
+                final prayerNameWidget = Text(
+                  _getLocalizedPrayerName(
+                    context,
+                    nextPrayer.name,
                   ),
-                ),
-                const SizedBox(
-                  width: AppSpacing.md,
-                ),
-                Text(
+                  style: textTheme.displaySmall?.copyWith(
+                    color: colorScheme.onPrimary,
+                    fontWeight: FontWeight.bold,
+                  ),
+                );
+
+                final timeWidget = Text(
                   DateFormat.Hm().format(
                     nextPrayer.time,
                   ),
@@ -275,8 +297,34 @@ class _NextPrayerHero extends ConsumerWidget {
                     color: colorScheme.onPrimary,
                     fontWeight: FontWeight.bold,
                   ),
-                ),
-              ],
+                );
+
+                if (shouldStack) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      prayerNameWidget,
+                      const SizedBox(
+                        height: AppSpacing.sm,
+                      ),
+                      timeWidget,
+                    ],
+                  );
+                }
+
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Expanded(
+                      child: prayerNameWidget,
+                    ),
+                    const SizedBox(
+                      width: AppSpacing.md,
+                    ),
+                    timeWidget,
+                  ],
+                );
+              },
             ),
             const SizedBox(
               height: AppSpacing.lg,
@@ -287,22 +335,26 @@ class _NextPrayerHero extends ConsumerWidget {
                 vertical: AppSpacing.sm,
               ),
               decoration: BoxDecoration(
-                color: colorScheme.onPrimary.withValues(alpha: 0.2),
-                borderRadius: BorderRadius.circular(12),
+                color: colorScheme.onPrimary.withValues(
+                  alpha: 0.2,
+                ),
+                borderRadius: BorderRadius.circular(
+                  12,
+                ),
               ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
+              child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: AppSpacing.sm,
+                runSpacing: AppSpacing.xs,
                 children: [
                   Icon(
                     Icons.timer_outlined,
                     color: colorScheme.onPrimary,
                     size: 18,
                   ),
-                  const SizedBox(
-                    width: AppSpacing.sm,
-                  ),
                   Text(
-                    '${_formatDuration(remaining)} ${l10n.homeRemaining}',
+                    '${_formatDuration(remaining)} '
+                    '${l10n.homeRemaining}',
                     style: textTheme.labelLarge?.copyWith(
                       color: colorScheme.onPrimary,
                       fontWeight: FontWeight.bold,
