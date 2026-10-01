@@ -2564,5 +2564,98 @@
 "hajjSpecialCasesNote": "This guide intentionally avoids assigning penalties. When a rite was missed, performed in the wrong order or affected by illness, menstruation, crowding or an Ihram violation, use current official guidance and a qualified religious adviser who can evaluate the complete situation.",
 "@hajjSpecialCasesNote": {
   "description": "Disclaimer for special Hajj and Umrah situations"
+},"manualLocationTitle": "Set location manually",
+"@manualLocationTitle": {
+  "description": "Manual prayer location sheet title"
+},
+
+"manualLocationDescription": "Enter latitude and longitude from a trusted map when your device cannot provide a precise location.",
+"@manualLocationDescription": {
+  "description": "Explanation shown above manual coordinate fields"
+},
+
+"manualLocationButton": "Enter coordinates manually",
+"@manualLocationButton": {
+  "description": "Button for opening manual location entry"
+},
+
+"manualLatitudeLabel": "Latitude",
+"@manualLatitudeLabel": {
+  "description": "Manual latitude input label"
+},
+
+"manualLongitudeLabel": "Longitude",
+"@manualLongitudeLabel": {
+  "description": "Manual longitude input label"
+},
+
+"manualCoordinateRequired": "Enter a valid number.",
+"@manualCoordinateRequired": {
+  "description": "Validation message for invalid manual coordinate text"
+},
+
+"manualLatitudeRange": "Latitude must be between -90 and 90.",
+"@manualLatitudeRange": {
+  "description": "Manual latitude validation message"
+},
+
+"manualLongitudeRange": "Longitude must be between -180 and 180.",
+"@manualLongitudeRange": {
+  "description": "Manual longitude validation message"
+},
+
+"manualLocationSave": "Use this location",
+"@manualLocationSave": {
+  "description": "Manual location confirmation button"
+},
+
+"manualLocationSaveFailed": "This location could not be saved. Check the coordinates and try again.",
+"@manualLocationSaveFailed": {
+  "description": "Manual location save failure"
+},
+
+"locationAccuracyInsufficientMessage": "Your device location is too approximate for reliable prayer times. Try again or enter coordinates manually.",
+"@locationAccuracyInsufficientMessage": {
+  "description": "Displayed when device geolocation accuracy is insufficient"
+},
+
+"locationServiceDisabledMessage": "Location services are disabled on this device.",
+"@locationServiceDisabledMessage": {
+  "description": "Displayed when location services are disabled"
+},
+
+"locationPermissionDeniedMessage": "Location permission was denied. You can allow location access or enter coordinates manually.",
+"@locationPermissionDeniedMessage": {
+  "description": "Displayed when location permission is denied"
+},
+
+"locationPermissionDeniedForeverMessage": "Location access is blocked in system or browser settings. Change the permission there or enter coordinates manually.",
+"@locationPermissionDeniedForeverMessage": {
+  "description": "Displayed when location permission is permanently denied"
+},
+
+"locationTimeoutMessage": "A precise location could not be obtained in time. Try again or enter coordinates manually.",
+"@locationTimeoutMessage": {
+  "description": "Displayed when device location request times out"
+},
+
+"locationInvalidCoordinatesMessage": "The location coordinates are invalid.",
+"@locationInvalidCoordinatesMessage": {
+  "description": "Displayed when coordinates fail validation"
+},
+
+"locationTimezoneErrorMessage": "The timezone for this location could not be determined.",
+"@locationTimezoneErrorMessage": {
+  "description": "Displayed when timezone resolution fails"
+},
+
+"locationSaveFailedMessage": "The selected location could not be saved.",
+"@locationSaveFailedMessage": {
+  "description": "Displayed when persistence of location fails"
+},
+
+"prayerLocationUnavailableMessage": "A location is required before prayer times can be calculated. Refresh the device location or enter coordinates manually.",
+"@prayerLocationUnavailableMessage": {
+  "description": "Displayed when prayer calculations have no usable location"
 }
 }

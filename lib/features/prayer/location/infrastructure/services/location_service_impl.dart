@@ -1,6 +1,9 @@
+import 'dart:async';
+
+import 'package:geolocator/geolocator.dart' show Position;
 import 'package:injectable/injectable.dart';
 import 'package:lat_lng_to_timezone/lat_lng_to_timezone.dart' as tzmap;
-import 'package:geolocator/geolocator.dart' show Position;
+
 import '../../../../../core/base/result.dart';
 import '../../domain/entities/prayer_location.dart';
 import '../../domain/interfaces/location_geocoding_service.dart';
@@ -10,10 +13,6 @@ import '../datasources/geolocator_data_source.dart';
 
 @LazySingleton(as: LocationService)
 class LocationServiceImpl implements LocationService {
-  /// Prayer calculations should not silently accept a city/region-level
-  /// approximate location.
-  ///
-  /// This is an application data-quality threshold, not a religious rule.
   static const double maxAcceptedAccuracyMeters = 25000;
 
   final LocationPermissionService _permissionService;
@@ -40,13 +39,13 @@ class LocationServiceImpl implements LocationService {
         );
       }
 
-      var permStatus = await _permissionService.checkPermission();
+      var permission = await _permissionService.checkPermission();
 
-      if (permStatus == AppLocationPermission.denied) {
-        permStatus = await _permissionService.requestPermission();
+      if (permission == AppLocationPermission.denied) {
+        permission = await _permissionService.requestPermission();
       }
 
-      if (permStatus == AppLocationPermission.permanentlyDenied) {
+      if (permission == AppLocationPermission.permanentlyDenied) {
         return const ResultFailure(
           LocationFailure(
             'Location permission permanently denied.',
@@ -55,7 +54,7 @@ class LocationServiceImpl implements LocationService {
         );
       }
 
-      if (permStatus == AppLocationPermission.denied) {
+      if (permission == AppLocationPermission.denied) {
         return const ResultFailure(
           LocationFailure(
             'Location permission denied.',
@@ -66,7 +65,10 @@ class LocationServiceImpl implements LocationService {
 
       final position = await _geoDataSource.getCurrentPosition();
 
-      if (!_coordinatesAreValid(position)) {
+      if (!_coordinatesAreValid(
+        position.latitude,
+        position.longitude,
+      )) {
         return const ResultFailure(
           LocationFailure(
             'Received invalid coordinates from device.',
@@ -75,7 +77,7 @@ class LocationServiceImpl implements LocationService {
         );
       }
 
-      if (!_accuracyIsAcceptable(position.accuracy)) {
+      if (!_accuracyIsAcceptable(position)) {
         return ResultFailure(
           LocationFailure(
             'Location accuracy is too low for reliable prayer times. '
@@ -86,50 +88,17 @@ class LocationServiceImpl implements LocationService {
         );
       }
 
-      final String timezoneId;
-
-      try {
-        timezoneId = tzmap.latLngToTimezoneString(
-          position.latitude,
-          position.longitude,
-        );
-      } catch (_) {
-        return const ResultFailure(
-          LocationFailure(
-            'Failed to resolve timezone from coordinates.',
-            code: 'timezoneResolutionFailed',
-          ),
-        );
-      }
-
-      var resolvedCity = 'Current Location';
-      var resolvedCountry = 'Unknown';
-
-      final geoResult = await _geocodingService.reverseGeocode(
+      return _resolveCoordinates(
         position.latitude,
         position.longitude,
       );
-
-      switch (geoResult) {
-        case Success(value: final tuple):
-          resolvedCity = tuple.$1;
-          resolvedCountry = tuple.$2;
-
-        case ResultFailure():
-          // Coordinates and timezone are still usable when reverse
-          // geocoding fails. Keep neutral fallback labels.
-          break;
-      }
-
-      final location = PrayerLocation(
-        latitude: position.latitude,
-        longitude: position.longitude,
-        cityName: resolvedCity,
-        countryName: resolvedCountry,
-        timezoneIdentifier: timezoneId,
+    } on TimeoutException {
+      return const ResultFailure(
+        LocationFailure(
+          'Location request timed out.',
+          code: 'locationTimeout',
+        ),
       );
-
-      return Success(location);
     } catch (e) {
       return ResultFailure(
         LocationFailure(
@@ -140,22 +109,104 @@ class LocationServiceImpl implements LocationService {
     }
   }
 
+  @override
+  Future<Result<PrayerLocation, LocationFailure>> resolveManualLocation(
+    double latitude,
+    double longitude,
+  ) async {
+    if (!_coordinatesAreValid(
+      latitude,
+      longitude,
+    )) {
+      return const ResultFailure(
+        LocationFailure(
+          'The entered coordinates are invalid.',
+          code: 'invalidCoordinates',
+        ),
+      );
+    }
+
+    return _resolveCoordinates(
+      latitude,
+      longitude,
+    );
+  }
+
+  Future<Result<PrayerLocation, LocationFailure>> _resolveCoordinates(
+    double latitude,
+    double longitude,
+  ) async {
+    String timezoneId;
+
+    try {
+      timezoneId = tzmap.latLngToTimezoneString(
+        latitude,
+        longitude,
+      );
+    } catch (_) {
+      return const ResultFailure(
+        LocationFailure(
+          'Failed to resolve timezone from coordinates.',
+          code: 'timezoneResolutionFailed',
+        ),
+      );
+    }
+
+    var resolvedCity = 'Current Location';
+    var resolvedCountry = 'Unknown';
+
+    final geocodingResult = await _geocodingService.reverseGeocode(
+      latitude,
+      longitude,
+    );
+
+    switch (geocodingResult) {
+      case Success(value: final result):
+        final city = result.$1.trim();
+        final country = result.$2.trim();
+
+        if (city.isNotEmpty) {
+          resolvedCity = city;
+        }
+
+        if (country.isNotEmpty) {
+          resolvedCountry = country;
+        }
+
+      case ResultFailure():
+        // Accurate coordinates and timezone remain valid even when
+        // the optional human-readable place name cannot be resolved.
+        break;
+    }
+
+    return Success(
+      PrayerLocation(
+        latitude: latitude,
+        longitude: longitude,
+        cityName: resolvedCity,
+        countryName: resolvedCountry,
+        timezoneIdentifier: timezoneId,
+      ),
+    );
+  }
+
   bool _coordinatesAreValid(
-    Position position,
+    double latitude,
+    double longitude,
   ) {
-    return position.latitude.isFinite &&
-        position.longitude.isFinite &&
-        position.latitude >= -90 &&
-        position.latitude <= 90 &&
-        position.longitude >= -180 &&
-        position.longitude <= 180;
+    return latitude.isFinite &&
+        longitude.isFinite &&
+        latitude >= -90 &&
+        latitude <= 90 &&
+        longitude >= -180 &&
+        longitude <= 180;
   }
 
   bool _accuracyIsAcceptable(
-    double accuracyMeters,
+    Position position,
   ) {
-    return accuracyMeters.isFinite &&
-        accuracyMeters > 0 &&
-        accuracyMeters <= maxAcceptedAccuracyMeters;
+    return position.accuracy.isFinite &&
+        position.accuracy > 0 &&
+        position.accuracy <= maxAcceptedAccuracyMeters;
   }
 }

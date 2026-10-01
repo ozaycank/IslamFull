@@ -2195,4 +2195,71 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get hajjSpecialCasesNote =>
       'Bu rehber özellikle ceza belirlemekten kaçınır. Bir menâsik atlandıysa, sırası değiştiyse veya hastalık, âdet hâli, izdiham ya da ihram yasağı ihlali söz konusuysa güncel resmî bilgileri ve olayın tamamını değerlendirebilecek yetkin dinî rehberliği kullanın.';
+
+  @override
+  String get manualLocationTitle => 'Konumu Manuel Belirle';
+
+  @override
+  String get manualLocationDescription =>
+      'Cihazınız kesin bir konum sağlayamıyorsa güvendiğiniz bir haritadan enlem ve boylam bilgilerini girin.';
+
+  @override
+  String get manualLocationButton => 'Koordinatları Manuel Gir';
+
+  @override
+  String get manualLatitudeLabel => 'Enlem';
+
+  @override
+  String get manualLongitudeLabel => 'Boylam';
+
+  @override
+  String get manualCoordinateRequired => 'Geçerli bir sayı girin.';
+
+  @override
+  String get manualLatitudeRange => 'Enlem -90 ile 90 arasında olmalıdır.';
+
+  @override
+  String get manualLongitudeRange => 'Boylam -180 ile 180 arasında olmalıdır.';
+
+  @override
+  String get manualLocationSave => 'Bu Konumu Kullan';
+
+  @override
+  String get manualLocationSaveFailed =>
+      'Bu konum kaydedilemedi. Koordinatları kontrol edip tekrar deneyin.';
+
+  @override
+  String get locationAccuracyInsufficientMessage =>
+      'Cihazınızın sağladığı konum, güvenilir namaz vakitleri için fazla yaklaşık. Tekrar deneyin veya koordinatları manuel girin.';
+
+  @override
+  String get locationServiceDisabledMessage =>
+      'Bu cihazda konum hizmetleri kapalı.';
+
+  @override
+  String get locationPermissionDeniedMessage =>
+      'Konum izni verilmedi. Konum erişimine izin verebilir veya koordinatları manuel girebilirsiniz.';
+
+  @override
+  String get locationPermissionDeniedForeverMessage =>
+      'Konum erişimi sistem veya tarayıcı ayarlarında engellenmiş. İzni buradan değiştirebilir veya koordinatları manuel girebilirsiniz.';
+
+  @override
+  String get locationTimeoutMessage =>
+      'Yeterince kesin bir konum zamanında alınamadı. Tekrar deneyin veya koordinatları manuel girin.';
+
+  @override
+  String get locationInvalidCoordinatesMessage =>
+      'Konum koordinatları geçerli değil.';
+
+  @override
+  String get locationTimezoneErrorMessage =>
+      'Bu konumun zaman dilimi belirlenemedi.';
+
+  @override
+  String get locationSaveFailedMessage => 'Seçilen konum kaydedilemedi.';
+
+  @override
+  String get prayerLocationUnavailableMessage =>
+      'Namaz vakitlerinin hesaplanabilmesi için bir konum gereklidir. Cihaz konumunu yenileyin veya koordinatları manuel girin.';
 }

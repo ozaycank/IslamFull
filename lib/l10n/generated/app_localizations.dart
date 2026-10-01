@@ -3991,6 +3991,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This guide intentionally avoids assigning penalties. When a rite was missed, performed in the wrong order or affected by illness, menstruation, crowding or an Ihram violation, use current official guidance and a qualified religious adviser who can evaluate the complete situation.'**
   String get hajjSpecialCasesNote;
+
+  /// Manual prayer location sheet title
+  ///
+  /// In en, this message translates to:
+  /// **'Set location manually'**
+  String get manualLocationTitle;
+
+  /// Explanation shown above manual coordinate fields
+  ///
+  /// In en, this message translates to:
+  /// **'Enter latitude and longitude from a trusted map when your device cannot provide a precise location.'**
+  String get manualLocationDescription;
+
+  /// Button for opening manual location entry
+  ///
+  /// In en, this message translates to:
+  /// **'Enter coordinates manually'**
+  String get manualLocationButton;
+
+  /// Manual latitude input label
+  ///
+  /// In en, this message translates to:
+  /// **'Latitude'**
+  String get manualLatitudeLabel;
+
+  /// Manual longitude input label
+  ///
+  /// In en, this message translates to:
+  /// **'Longitude'**
+  String get manualLongitudeLabel;
+
+  /// Validation message for invalid manual coordinate text
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid number.'**
+  String get manualCoordinateRequired;
+
+  /// Manual latitude validation message
+  ///
+  /// In en, this message translates to:
+  /// **'Latitude must be between -90 and 90.'**
+  String get manualLatitudeRange;
+
+  /// Manual longitude validation message
+  ///
+  /// In en, this message translates to:
+  /// **'Longitude must be between -180 and 180.'**
+  String get manualLongitudeRange;
+
+  /// Manual location confirmation button
+  ///
+  /// In en, this message translates to:
+  /// **'Use this location'**
+  String get manualLocationSave;
+
+  /// Manual location save failure
+  ///
+  /// In en, this message translates to:
+  /// **'This location could not be saved. Check the coordinates and try again.'**
+  String get manualLocationSaveFailed;
+
+  /// Displayed when device geolocation accuracy is insufficient
+  ///
+  /// In en, this message translates to:
+  /// **'Your device location is too approximate for reliable prayer times. Try again or enter coordinates manually.'**
+  String get locationAccuracyInsufficientMessage;
+
+  /// Displayed when location services are disabled
+  ///
+  /// In en, this message translates to:
+  /// **'Location services are disabled on this device.'**
+  String get locationServiceDisabledMessage;
+
+  /// Displayed when location permission is denied
+  ///
+  /// In en, this message translates to:
+  /// **'Location permission was denied. You can allow location access or enter coordinates manually.'**
+  String get locationPermissionDeniedMessage;
+
+  /// Displayed when location permission is permanently denied
+  ///
+  /// In en, this message translates to:
+  /// **'Location access is blocked in system or browser settings. Change the permission there or enter coordinates manually.'**
+  String get locationPermissionDeniedForeverMessage;
+
+  /// Displayed when device location request times out
+  ///
+  /// In en, this message translates to:
+  /// **'A precise location could not be obtained in time. Try again or enter coordinates manually.'**
+  String get locationTimeoutMessage;
+
+  /// Displayed when coordinates fail validation
+  ///
+  /// In en, this message translates to:
+  /// **'The location coordinates are invalid.'**
+  String get locationInvalidCoordinatesMessage;
+
+  /// Displayed when timezone resolution fails
+  ///
+  /// In en, this message translates to:
+  /// **'The timezone for this location could not be determined.'**
+  String get locationTimezoneErrorMessage;
+
+  /// Displayed when persistence of location fails
+  ///
+  /// In en, this message translates to:
+  /// **'The selected location could not be saved.'**
+  String get locationSaveFailedMessage;
+
+  /// Displayed when prayer calculations have no usable location
+  ///
+  /// In en, this message translates to:
+  /// **'A location is required before prayer times can be calculated. Refresh the device location or enter coordinates manually.'**
+  String get prayerLocationUnavailableMessage;
 }
 
 class _AppLocalizationsDelegate

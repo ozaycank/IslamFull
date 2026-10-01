@@ -2189,4 +2189,72 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get hajjSpecialCasesNote =>
       'This guide intentionally avoids assigning penalties. When a rite was missed, performed in the wrong order or affected by illness, menstruation, crowding or an Ihram violation, use current official guidance and a qualified religious adviser who can evaluate the complete situation.';
+
+  @override
+  String get manualLocationTitle => 'Set location manually';
+
+  @override
+  String get manualLocationDescription =>
+      'Enter latitude and longitude from a trusted map when your device cannot provide a precise location.';
+
+  @override
+  String get manualLocationButton => 'Enter coordinates manually';
+
+  @override
+  String get manualLatitudeLabel => 'Latitude';
+
+  @override
+  String get manualLongitudeLabel => 'Longitude';
+
+  @override
+  String get manualCoordinateRequired => 'Enter a valid number.';
+
+  @override
+  String get manualLatitudeRange => 'Latitude must be between -90 and 90.';
+
+  @override
+  String get manualLongitudeRange => 'Longitude must be between -180 and 180.';
+
+  @override
+  String get manualLocationSave => 'Use this location';
+
+  @override
+  String get manualLocationSaveFailed =>
+      'This location could not be saved. Check the coordinates and try again.';
+
+  @override
+  String get locationAccuracyInsufficientMessage =>
+      'Your device location is too approximate for reliable prayer times. Try again or enter coordinates manually.';
+
+  @override
+  String get locationServiceDisabledMessage =>
+      'Location services are disabled on this device.';
+
+  @override
+  String get locationPermissionDeniedMessage =>
+      'Location permission was denied. You can allow location access or enter coordinates manually.';
+
+  @override
+  String get locationPermissionDeniedForeverMessage =>
+      'Location access is blocked in system or browser settings. Change the permission there or enter coordinates manually.';
+
+  @override
+  String get locationTimeoutMessage =>
+      'A precise location could not be obtained in time. Try again or enter coordinates manually.';
+
+  @override
+  String get locationInvalidCoordinatesMessage =>
+      'The location coordinates are invalid.';
+
+  @override
+  String get locationTimezoneErrorMessage =>
+      'The timezone for this location could not be determined.';
+
+  @override
+  String get locationSaveFailedMessage =>
+      'The selected location could not be saved.';
+
+  @override
+  String get prayerLocationUnavailableMessage =>
+      'A location is required before prayer times can be calculated. Refresh the device location or enter coordinates manually.';
 }

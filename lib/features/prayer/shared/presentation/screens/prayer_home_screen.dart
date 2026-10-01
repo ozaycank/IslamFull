@@ -16,27 +16,19 @@ import '../utils/presentation_localizer.dart';
 import '../widgets/prayer_error_widget.dart';
 import '../widgets/prayer_header.dart';
 import 'prayer_loading_screen.dart';
+import '../../../location/presentation/utils/location_failure_localizer.dart';
 
 class PrayerHomeScreen extends ConsumerWidget {
   const PrayerHomeScreen({super.key});
 
   Future<void> _refreshData(
-    BuildContext context,
     WidgetRef ref,
   ) async {
-    final success = await ref
+    await ref
         .read(
           locationNotifierProvider.notifier,
         )
         .acquireDeviceLocation();
-
-    if (success && context.mounted) {
-      await ref
-          .read(
-            prayerTimesNotifierProvider.notifier,
-          )
-          .refreshTimes();
-    }
   }
 
   @override
@@ -79,9 +71,12 @@ class PrayerHomeScreen extends ConsumerWidget {
                 maxWidth: 800,
               ),
               child: PrayerErrorWidget(
-                message: state.failure!.message,
-                onRetry: () => _refreshData(
+                message: LocationFailureLocalizer.message(
                   context,
+                  code: state.failure!.code,
+                  fallback: state.failure!.message,
+                ),
+                onRetry: () => _refreshData(
                   ref,
                 ),
               ),
@@ -123,7 +118,6 @@ class PrayerHomeScreen extends ConsumerWidget {
               Icons.refresh,
             ),
             onPressed: () => _refreshData(
-              context,
               ref,
             ),
             tooltip: l10n.prayerRefreshButton,
@@ -139,7 +133,6 @@ class PrayerHomeScreen extends ConsumerWidget {
             ),
             child: RefreshIndicator(
               onRefresh: () => _refreshData(
-                context,
                 ref,
               ),
               child: ListView(

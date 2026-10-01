@@ -779,5 +779,25 @@
 "hajjSpecialEarlyHaircutTitle": "Saç Erken Kesildi",
 "hajjSpecialEarlyHaircutDesc": "Saçın kesilmiş olması her durumda hac veya umrenin tamamlandığı ya da geçerli biçimde ihramdan çıkıldığı anlamına gelmez. Hüküm, o ana kadar hangi menâsikin tamamlandığına ve mezhebe göre değişebilir. İbadetin bittiğini varsayarak devam etmek yerine duruma özel rehberlik alın.",
 
-"hajjSpecialCasesNote": "Bu rehber özellikle ceza belirlemekten kaçınır. Bir menâsik atlandıysa, sırası değiştiyse veya hastalık, âdet hâli, izdiham ya da ihram yasağı ihlali söz konusuysa güncel resmî bilgileri ve olayın tamamını değerlendirebilecek yetkin dinî rehberliği kullanın."
+"hajjSpecialCasesNote": "Bu rehber özellikle ceza belirlemekten kaçınır. Bir menâsik atlandıysa, sırası değiştiyse veya hastalık, âdet hâli, izdiham ya da ihram yasağı ihlali söz konusuysa güncel resmî bilgileri ve olayın tamamını değerlendirebilecek yetkin dinî rehberliği kullanın.",
+"manualLocationTitle": "Konumu Manuel Belirle",
+"manualLocationDescription": "Cihazınız kesin bir konum sağlayamıyorsa güvendiğiniz bir haritadan enlem ve boylam bilgilerini girin.",
+"manualLocationButton": "Koordinatları Manuel Gir",
+"manualLatitudeLabel": "Enlem",
+"manualLongitudeLabel": "Boylam",
+"manualCoordinateRequired": "Geçerli bir sayı girin.",
+"manualLatitudeRange": "Enlem -90 ile 90 arasında olmalıdır.",
+"manualLongitudeRange": "Boylam -180 ile 180 arasında olmalıdır.",
+"manualLocationSave": "Bu Konumu Kullan",
+"manualLocationSaveFailed": "Bu konum kaydedilemedi. Koordinatları kontrol edip tekrar deneyin.",
+
+"locationAccuracyInsufficientMessage": "Cihazınızın sağladığı konum, güvenilir namaz vakitleri için fazla yaklaşık. Tekrar deneyin veya koordinatları manuel girin.",
+"locationServiceDisabledMessage": "Bu cihazda konum hizmetleri kapalı.",
+"locationPermissionDeniedMessage": "Konum izni verilmedi. Konum erişimine izin verebilir veya koordinatları manuel girebilirsiniz.",
+"locationPermissionDeniedForeverMessage": "Konum erişimi sistem veya tarayıcı ayarlarında engellenmiş. İzni buradan değiştirebilir veya koordinatları manuel girebilirsiniz.",
+"locationTimeoutMessage": "Yeterince kesin bir konum zamanında alınamadı. Tekrar deneyin veya koordinatları manuel girin.",
+"locationInvalidCoordinatesMessage": "Konum koordinatları geçerli değil.",
+"locationTimezoneErrorMessage": "Bu konumun zaman dilimi belirlenemedi.",
+"locationSaveFailedMessage": "Seçilen konum kaydedilemedi.",
+"prayerLocationUnavailableMessage": "Namaz vakitlerinin hesaplanabilmesi için bir konum gereklidir. Cihaz konumunu yenileyin veya koordinatları manuel girin."
 }

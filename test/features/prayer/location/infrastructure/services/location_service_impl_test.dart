@@ -9,8 +9,7 @@ import 'package:noor_life/features/prayer/location/domain/interfaces/location_se
 import 'package:noor_life/features/prayer/location/infrastructure/datasources/geolocator_data_source.dart';
 import 'package:noor_life/features/prayer/location/infrastructure/services/location_service_impl.dart';
 
-class MockGeolocatorDataSource extends Mock
-    implements GeolocatorDataSource {}
+class MockGeolocatorDataSource extends Mock implements GeolocatorDataSource {}
 
 class MockLocationPermissionService extends Mock
     implements LocationPermissionService {}
@@ -46,10 +45,8 @@ void main() {
 
   setUp(() {
     mockGeoSource = MockGeolocatorDataSource();
-    mockPermissionService =
-        MockLocationPermissionService();
-    mockGeocodingService =
-        MockLocationGeocodingService();
+    mockPermissionService = MockLocationPermissionService();
+    mockGeocodingService = MockLocationGeocodingService();
 
     locationService = LocationServiceImpl(
       mockPermissionService,
@@ -91,20 +88,17 @@ void main() {
           28.9784,
         ),
       ).thenAnswer(
-        (_) async =>
-            const Success(('Istanbul', 'Türkiye')),
+        (_) async => const Success(('Istanbul', 'Türkiye')),
       );
 
-      final result =
-          await locationService.getCurrentLocation();
+      final result = await locationService.getCurrentLocation();
 
       expect(
         result,
         isA<Success>(),
       );
 
-      final location =
-          (result as Success).value;
+      final location = (result as Success).value;
 
       expect(
         location.cityName,
@@ -151,16 +145,14 @@ void main() {
         ),
       );
 
-      final result =
-          await locationService.getCurrentLocation();
+      final result = await locationService.getCurrentLocation();
 
       expect(
         result,
         isA<Success>(),
       );
 
-      final location =
-          (result as Success).value;
+      final location = (result as Success).value;
 
       expect(
         location.cityName,
@@ -194,16 +186,14 @@ void main() {
         (_) async => mockPosition,
       );
 
-      final result =
-          await locationService.getCurrentLocation();
+      final result = await locationService.getCurrentLocation();
 
       expect(
         result,
         isA<ResultFailure>(),
       );
 
-      final failure =
-          (result as ResultFailure).failure;
+      final failure = (result as ResultFailure).failure;
 
       expect(
         failure,
@@ -213,6 +203,91 @@ void main() {
       expect(
         (failure as LocationFailure).code,
         'locationAccuracyInsufficient',
+      );
+
+      verifyNever(
+        () => mockGeocodingService.reverseGeocode(
+          any(),
+          any(),
+        ),
+      );
+    },
+  );
+  test(
+    'resolves valid manual coordinates without device accuracy requirement',
+    () async {
+      when(
+        () => mockGeocodingService.reverseGeocode(
+          39.3292,
+          42.289504,
+        ),
+      ).thenAnswer(
+        (_) async => const Success(
+          ('Aktuzla', 'Türkiye'),
+        ),
+      );
+
+      final result = await locationService.resolveManualLocation(
+        39.3292,
+        42.289504,
+      );
+
+      expect(
+        result,
+        isA<Success>(),
+      );
+
+      final location = (result as Success).value;
+
+      expect(
+        location.latitude,
+        39.3292,
+      );
+
+      expect(
+        location.longitude,
+        42.289504,
+      );
+
+      expect(
+        location.cityName,
+        'Aktuzla',
+      );
+
+      expect(
+        location.countryName,
+        'Türkiye',
+      );
+
+      expect(
+        location.timezoneIdentifier,
+        'Europe/Istanbul',
+      );
+
+      verifyNever(
+        () => mockGeoSource.getCurrentPosition(),
+      );
+    },
+  );
+
+  test(
+    'rejects invalid manual coordinates before geocoding',
+    () async {
+      final result = await locationService.resolveManualLocation(
+        95,
+        42,
+      );
+
+      expect(
+        result,
+        isA<ResultFailure>(),
+      );
+
+      final failure = (result as ResultFailure).failure as LocationFailure;
+
+      expect(
+        failure.code,
+        'invalidCoordinates',
       );
 
       verifyNever(

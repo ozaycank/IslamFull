@@ -18,6 +18,8 @@ import '../../application/providers/notification_settings_provider.dart';
 import '../../application/providers/prayer_settings_notifier.dart';
 import '../widgets/selection_bottom_sheet.dart';
 import '../widgets/settings_selection_tile.dart';
+import '../../../prayer/location/presentation/utils/location_failure_localizer.dart';
+import '../widgets/manual_location_sheet.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -271,22 +273,49 @@ class _LocationSection extends ConsumerWidget {
   const _LocationSection();
 
   Future<void> _refreshLocation(
-    BuildContext context,
     WidgetRef ref,
   ) async {
-    final success = await ref
+    await ref
         .read(
           locationNotifierProvider.notifier,
         )
         .acquireDeviceLocation();
+  }
 
-    if (success && context.mounted) {
-      await ref
-          .read(
-            prayerTimesNotifierProvider.notifier,
-          )
-          .refreshTimes();
-    }
+  Future<void> _showManualLocation(
+    BuildContext context,
+    WidgetRef ref,
+  ) async {
+    final currentLocation = ref
+        .read(
+          locationNotifierProvider,
+        )
+        .location;
+
+    await showModalBottomSheet<void>(
+      context: context,
+      useSafeArea: true,
+      isScrollControlled: true,
+      builder: (sheetContext) {
+        return ManualLocationSheet(
+          initialLatitude: currentLocation?.latitude,
+          initialLongitude: currentLocation?.longitude,
+          onSave: (
+            latitude,
+            longitude,
+          ) {
+            return ref
+                .read(
+                  locationNotifierProvider.notifier,
+                )
+                .setManualCoordinates(
+                  latitude,
+                  longitude,
+                );
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -296,16 +325,17 @@ class _LocationSection extends ConsumerWidget {
   ) {
     final l10n = context.l10n;
 
-    final locState = ref.watch(
+    final locationState = ref.watch(
       locationNotifierProvider,
     );
 
     final textTheme = context.textTheme;
+
     final colorScheme = context.colorScheme;
 
-    final location = locState.location;
+    final location = locationState.location;
 
-    final isLoading = locState.status == LocationStatus.requesting;
+    final isLoading = locationState.status == LocationStatus.requesting;
 
     final locationDisplay = location != null
         ? PresentationLocalizer.formatLocation(
@@ -362,14 +392,18 @@ class _LocationSection extends ConsumerWidget {
                         '${location.longitude.toStringAsFixed(4)}'
                     : '-',
               ),
-              if (locState.failure != null) ...[
+              if (locationState.failure != null) ...[
                 const SizedBox(
                   height: AppSpacing.md,
                 ),
                 Semantics(
                   liveRegion: true,
                   child: Text(
-                    locState.failure!.message,
+                    LocationFailureLocalizer.message(
+                      context,
+                      code: locationState.failure!.code,
+                      fallback: locationState.failure!.message,
+                    ),
                     style: textTheme.bodySmall?.copyWith(
                       color: colorScheme.error,
                     ),
@@ -386,9 +420,25 @@ class _LocationSection extends ConsumerWidget {
                   icon: Icons.my_location,
                   isLoading: isLoading,
                   onPressed: () => _refreshLocation(
-                    context,
                     ref,
                   ),
+                ),
+              ),
+              const SizedBox(
+                height: AppSpacing.sm,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: PrimaryButton(
+                  text: l10n.manualLocationButton,
+                  icon: Icons.edit_location_alt_outlined,
+                  isOutlined: true,
+                  onPressed: isLoading
+                      ? null
+                      : () => _showManualLocation(
+                            context,
+                            ref,
+                          ),
                 ),
               ),
             ],
