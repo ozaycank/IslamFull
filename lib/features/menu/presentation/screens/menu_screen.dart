@@ -31,175 +31,175 @@ class MenuScreen extends ConsumerWidget {
         elevation: 0,
       ),
       body: SafeArea(
-  top: false,
-  child: Align(
-    alignment: Alignment.topCenter,
-    child: ConstrainedBox(
-      constraints: const BoxConstraints(
-        maxWidth: 800,
-      ),
-      child: ListView(
-        padding: const EdgeInsets.all(
-          AppSpacing.lg,
+        top: false,
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: 800,
+            ),
+            child: ListView(
+              padding: const EdgeInsets.all(
+                AppSpacing.lg,
+              ),
+              children: [
+                SectionHeader(
+                  title: l10n.menuSettingsGroup,
+                ),
+                AppCard(
+                  padding: EdgeInsets.zero,
+                  child: Column(
+                    children: [
+                      _MenuTile(
+                        icon: Icons.language,
+                        title: l10n.menuLanguage,
+                        onTap: () => context.push(
+                          AppRoutes.settings,
+                        ),
+                      ),
+                      const Divider(height: 1),
+                      _MenuTile(
+                        icon: Icons.notifications_none,
+                        title: l10n.menuNotifications,
+                        onTap: () => context.push(
+                          AppRoutes.settings,
+                        ),
+                      ),
+                      const Divider(height: 1),
+                      _MenuTile(
+                        icon: Icons.access_time,
+                        title: l10n.menuPrayerCalc,
+                        onTap: () => context.push(
+                          AppRoutes.settings,
+                        ),
+                      ),
+                      const Divider(height: 1),
+                      _MenuTile(
+                        icon: Icons.location_on_outlined,
+                        title: l10n.menuLocation,
+                        onTap: () => context.push(
+                          AppRoutes.settings,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: AppSpacing.xxl,
+                ),
+                SectionHeader(
+                  title: l10n.menuPersonalizationGroup,
+                ),
+                AppCard(
+                  padding: EdgeInsets.zero,
+                  child: Column(
+                    children: [
+                      _MenuTile(
+                        icon: Icons.fact_check_outlined,
+                        title: l10n.menuWorshipRecords,
+                        onTap: () => context.go(
+                          AppRoutes.activity,
+                        ),
+                      ),
+                      const Divider(height: 1),
+                      _MenuTile(
+                        icon: Icons.tune,
+                        title: l10n.menuPreferences,
+                        onTap: () => context.push(
+                          AppRoutes.preferences,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: AppSpacing.xxl,
+                ),
+                SectionHeader(
+                  title: l10n.menuToolsGroup,
+                ),
+                AppCard(
+                  padding: EdgeInsets.zero,
+                  child: Column(
+                    children: [
+                      _MenuTile(
+                        icon: Icons.calendar_month_outlined,
+                        title: l10n.ramadanTitle,
+                        onTap: () => context.push(
+                          AppRoutes.ramadan,
+                        ),
+                      ),
+                      const Divider(height: 1),
+                      _MenuTile(
+                        icon: Icons.volunteer_activism_outlined,
+                        title: l10n.qurbanTitle,
+                        onTap: () => context.push(
+                          AppRoutes.qurban,
+                        ),
+                      ),
+                      const Divider(height: 1),
+                      _MenuTile(
+                        icon: Icons.mosque_outlined,
+                        title: l10n.menuHajjGuide,
+                        onTap: () => context.push(
+                          AppRoutes.hajj,
+                        ),
+                      ),
+                      const Divider(height: 1),
+                      _MenuTile(
+                        icon: Icons.auto_awesome_mosaic_outlined,
+                        title: l10n.menuIslamicTools,
+                        onTap: () => context.push(
+                          AppRoutes.tools,
+                        ),
+                      ),
+                      const Divider(height: 1),
+                      _MenuTile(
+                        icon: Icons.menu_book_outlined,
+                        title: l10n.menuInfoCenter,
+                        onTap: () => context.push(
+                          AppRoutes.infoCenter,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: AppSpacing.xxl,
+                ),
+                SectionHeader(
+                  title: l10n.menuAppGroup,
+                ),
+                AppCard(
+                  padding: EdgeInsets.zero,
+                  child: Column(
+                    children: [
+                      _MenuTile(
+                        icon: Icons.info_outline,
+                        title: l10n.menuAbout,
+                        onTap: () => context.push(
+                          AppRoutes.about,
+                        ),
+                      ),
+                      const Divider(height: 1),
+                      _MenuTile(
+                        icon: Icons.privacy_tip_outlined,
+                        title: l10n.menuPrivacy,
+                        onTap: () => context.push(
+                          AppRoutes.privacy,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: AppSpacing.xxl,
+                ),
+              ],
+            ),
+          ),
         ),
-        children: [
-          SectionHeader(
-            title: l10n.menuSettingsGroup,
-          ),
-          AppCard(
-            padding: EdgeInsets.zero,
-            child: Column(
-              children: [
-                _MenuTile(
-                  icon: Icons.language,
-                  title: l10n.menuLanguage,
-                  onTap: () => context.push(
-                    AppRoutes.settings,
-                  ),
-                ),
-                const Divider(height: 1),
-                _MenuTile(
-                  icon: Icons.notifications_none,
-                  title: l10n.menuNotifications,
-                  onTap: () => context.push(
-                    AppRoutes.settings,
-                  ),
-                ),
-                const Divider(height: 1),
-                _MenuTile(
-                  icon: Icons.access_time,
-                  title: l10n.menuPrayerCalc,
-                  onTap: () => context.push(
-                    AppRoutes.settings,
-                  ),
-                ),
-                const Divider(height: 1),
-                _MenuTile(
-                  icon: Icons.location_on_outlined,
-                  title: l10n.menuLocation,
-                  onTap: () => context.push(
-                    AppRoutes.settings,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: AppSpacing.xxl,
-          ),
-          SectionHeader(
-            title: l10n.menuPersonalizationGroup,
-          ),
-          AppCard(
-            padding: EdgeInsets.zero,
-            child: Column(
-              children: [
-                _MenuTile(
-                  icon: Icons.fact_check_outlined,
-                  title: l10n.menuWorshipRecords,
-                  onTap: () => context.go(
-                    AppRoutes.activity,
-                  ),
-                ),
-                const Divider(height: 1),
-                _MenuTile(
-                  icon: Icons.tune,
-                  title: l10n.menuPreferences,
-                  onTap: () => context.push(
-                    AppRoutes.preferences,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: AppSpacing.xxl,
-          ),
-          SectionHeader(
-            title: l10n.menuToolsGroup,
-          ),
-          AppCard(
-            padding: EdgeInsets.zero,
-            child: Column(
-              children: [
-                _MenuTile(
-                  icon: Icons.calendar_month_outlined,
-                  title: l10n.ramadanTitle,
-                  onTap: () => context.push(
-                    AppRoutes.ramadan,
-                  ),
-                ),
-                const Divider(height: 1),
-                _MenuTile(
-                  icon: Icons.volunteer_activism_outlined,
-                  title: l10n.qurbanTitle,
-                  onTap: () => context.push(
-                    AppRoutes.qurban,
-                  ),
-                ),
-                const Divider(height: 1),
-                _MenuTile(
-                  icon: Icons.mosque_outlined,
-                  title: l10n.menuHajjGuide,
-                  onTap: () => context.push(
-                    AppRoutes.hajj,
-                  ),
-                ),
-                const Divider(height: 1),
-                _MenuTile(
-                  icon: Icons.auto_awesome_mosaic_outlined,
-                  title: l10n.menuIslamicTools,
-                  onTap: () => context.push(
-                    AppRoutes.tools,
-                  ),
-                ),
-                const Divider(height: 1),
-                _MenuTile(
-                  icon: Icons.menu_book_outlined,
-                  title: l10n.menuInfoCenter,
-                  onTap: () => context.push(
-                    AppRoutes.infoCenter,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: AppSpacing.xxl,
-          ),
-          SectionHeader(
-            title: l10n.menuAppGroup,
-          ),
-          AppCard(
-            padding: EdgeInsets.zero,
-            child: Column(
-              children: [
-                _MenuTile(
-                  icon: Icons.info_outline,
-                  title: l10n.menuAbout,
-                  onTap: () => context.push(
-                    AppRoutes.about,
-                  ),
-                ),
-                const Divider(height: 1),
-                _MenuTile(
-                  icon: Icons.privacy_tip_outlined,
-                  title: l10n.menuPrivacy,
-                  onTap: () => context.push(
-                    AppRoutes.privacy,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: AppSpacing.xxl,
-          ),
-          ],
-        ),
       ),
-    ),
-  ),
     );
   }
 }

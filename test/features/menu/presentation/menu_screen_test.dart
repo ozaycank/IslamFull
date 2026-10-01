@@ -1,83 +1,93 @@
-// ignore_for_file: avoid_relative_lib_imports
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/core/base/result.dart';
-// FIX: GetIt doğrudan projenin kendi container'ından çekiliyor
-import 'package:noor_life/core/di/injection_container.dart';
-import 'package:noor_life/features/activity/domain/activity_models.dart';
+import 'package:noor_life/features/menu/presentation/screens/menu_screen.dart';
 import 'package:noor_life/l10n/generated/app_localizations.dart';
 
-// FIX: Profil ekranı yerine yeni MenuScreen import edildi
-import 'package:noor_life/features/menu/presentation/screens/menu_screen.dart';
-
-class FakeActivityRepository implements ActivityRepository {
-  @override
-  Future<Result<DailyActivity, ActivityFailure>> getDailyActivity(
-    String date,
-  ) async {
-    return Success(DailyActivity(date: date));
-  }
-
-  @override
-  Future<Result<List<DailyActivity>, ActivityFailure>>
-      getAllActivities() async {
-    return const Success([]);
-  }
-
-  @override
-  Future<Result<void, ActivityFailure>> saveDailyActivity(
-    DailyActivity activity,
-  ) async {
-    return const Success(null);
-  }
-
-  @override
-  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
-}
-
 void main() {
-  setUp(() {
-    // FIX: Projenin kendi GetIt servisi üzerinden güvenli kayıt
-    if (!getIt.isRegistered<ActivityRepository>()) {
-      getIt.registerSingleton<ActivityRepository>(FakeActivityRepository());
-    } else {
-      getIt.unregister<ActivityRepository>();
-      getIt.registerSingleton<ActivityRepository>(FakeActivityRepository());
-    }
-  });
-
-  tearDown(() {
-    getIt.reset();
-  });
-
-  Widget buildTestableWidget() {
-    return const ProviderScope(
+  Widget buildTestableWidget({
+    double textScale = 1,
+  }) {
+    return ProviderScope(
       child: MaterialApp(
-        localizationsDelegates: [
+        localizationsDelegates: const [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: [Locale('en')],
-        locale: Locale('en'), // İngilizce test ediyoruz
-        // FIX: ProfileScreen() yerine MenuScreen() çağrıldı
-        home: Scaffold(body: MenuScreen()),
+        supportedLocales: const [
+          Locale('en'),
+        ],
+        locale: const Locale('en'),
+        home: MediaQuery(
+          data: MediaQueryData(
+            textScaler: TextScaler.linear(
+              textScale,
+            ),
+          ),
+          child: const MenuScreen(),
+        ),
       ),
     );
   }
 
-  testWidgets('Menu screen renders safely with new architecture',
-      (tester) async {
-    await tester.pumpWidget(buildTestableWidget());
-    await tester.pumpAndSettle();
+  testWidgets(
+    'Menu screen renders main groups safely',
+    (tester) async {
+      await tester.pumpWidget(
+        buildTestableWidget(),
+      );
 
-    // FIX: Test senaryosu artık yeni Menu ekranındaki metinleri (İngilizce olarak) arıyor
-    expect(find.text('Menu'), findsWidgets); // Appbar title
-    expect(find.text('App Settings'), findsOneWidget); // Section header
-    expect(find.text('Tools & Information'), findsOneWidget); // Section header
-  });
+      await tester.pumpAndSettle();
+
+      expect(
+        find.text(
+          'Menu',
+        ),
+        findsWidgets,
+      );
+
+      expect(
+        find.text(
+          'App Settings',
+        ),
+        findsOneWidget,
+      );
+
+      expect(
+        find.text(
+          'Tools & Information',
+        ),
+        findsOneWidget,
+      );
+    },
+  );
+
+  testWidgets(
+    'Menu screen remains responsive with large text',
+    (tester) async {
+      await tester.pumpWidget(
+        buildTestableWidget(
+          textScale: 2,
+        ),
+      );
+
+      await tester.pumpAndSettle();
+
+      expect(
+        tester.takeException(),
+        isNull,
+      );
+
+      expect(
+        find.text(
+          'App Settings',
+        ),
+        findsOneWidget,
+      );
+    },
+  );
 }

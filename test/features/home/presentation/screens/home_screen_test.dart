@@ -27,6 +27,8 @@ import 'package:noor_life/features/qurban/domain/qurban_season_state.dart';
 import 'package:noor_life/features/ramadan/application/ramadan_day_provider.dart';
 import 'package:noor_life/features/ramadan/domain/ramadan_day_state.dart';
 import 'package:noor_life/l10n/generated/app_localizations.dart';
+import 'package:noor_life/features/prayer/prayer_times/domain/entities/prayer_time.dart';
+import 'package:noor_life/features/prayer/prayer_times/domain/value_objects/prayer_name.dart';
 
 class FakeLocationNotifier extends LocationNotifier {
   @override
@@ -150,6 +152,10 @@ void main() {
   List<Override> baseOverrides({
     RamadanDayState ramadanState = const RamadanDayState.outsideRamadan(),
     QurbanSeasonState qurbanState = const QurbanSeasonState.outsideSeason(),
+    PrayerLiveState liveState = const PrayerLiveState(
+      nextPrayer: null,
+      timeRemaining: Duration.zero,
+    ),
   }) {
     return [
       locationNotifierProvider.overrideWith(
@@ -165,10 +171,7 @@ void main() {
         () => FakeQuranNotifier(),
       ),
       prayerLiveStateProvider.overrideWith(
-        (ref) => const PrayerLiveState(
-          nextPrayer: null,
-          timeRemaining: Duration.zero,
-        ),
+        (ref) => liveState,
       ),
       prayerTargetTimeProvider.overrideWithValue(
         DateTime.utc(
@@ -364,7 +367,62 @@ void main() {
       });
     },
   );
+  testWidgets(
+    'Home clamps negative prayer countdown and remains responsive with large text',
+    (tester) async {
+      final nextPrayer = PrayerTime(
+        name: PrayerName.dhuhr,
+        time: DateTime.utc(
+          2026,
+          9,
+          24,
+          12,
+        ),
+      );
 
+      await tester.runAsync(
+        () async {
+          await tester.pumpWidget(
+            buildTestableWidget(
+              const MediaQuery(
+                data: MediaQueryData(
+                  textScaler: TextScaler.linear(
+                    2,
+                  ),
+                ),
+                child: SizedBox(
+                  width: 320,
+                  child: HomeScreen(),
+                ),
+              ),
+              overrides: baseOverrides(
+                liveState: PrayerLiveState(
+                  nextPrayer: nextPrayer,
+                  timeRemaining: const Duration(
+                    seconds: -5,
+                  ),
+                ),
+              ),
+            ),
+          );
+
+          await tester.pumpAndSettle();
+
+          expect(
+            tester.takeException(),
+            isNull,
+          );
+
+          expect(
+            find.textContaining(
+              '00:00',
+            ),
+            findsOneWidget,
+          );
+        },
+      );
+    },
+  );
   testWidgets(
     'Home displays Eid day context in the Qurban shortcut',
     (tester) async {
