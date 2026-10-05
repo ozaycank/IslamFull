@@ -41,7 +41,11 @@ class DailyActivity extends Equatable {
     return {
       'date': date,
       'prayers': completedPrayers.map(
-        (key, value) => MapEntry(
+        (
+          key,
+          value,
+        ) =>
+            MapEntry(
           key.name,
           value,
         ),
@@ -76,8 +80,8 @@ class DailyActivity extends Equatable {
           parsedPrayers[prayerType] = entry.value as bool;
         }
       } catch (_) {
-        // Unknown prayer identifiers from a future
-        // application version are safely ignored.
+        // Unknown prayer identifiers from a future application version
+        // are intentionally ignored for forward compatibility.
       }
     }
 
@@ -106,14 +110,8 @@ class DailyActivity extends Equatable {
         );
       }
 
-      // Persistent records recover their date from the
-      // validated storage key when the embedded legacy
-      // date is missing or malformed.
       safeDate = fallbackDate;
     } else {
-      // Preserve the domain model's backward-compatible
-      // deserialization behavior for callers that do not
-      // represent a persisted storage record.
       safeDate = ActivityDateUtils.today();
     }
 

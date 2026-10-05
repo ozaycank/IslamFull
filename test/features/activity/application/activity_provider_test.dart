@@ -1,64 +1,255 @@
-// ignore_for_file: avoid_relative_lib_imports
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:noor_life/core/base/result.dart';
+import 'package:noor_life/features/activity/application/activity_provider.dart';
 import 'package:noor_life/features/activity/domain/activity_models.dart';
 import 'package:noor_life/features/activity/domain/activity_prayer_type.dart';
-import 'package:noor_life/features/activity/application/activity_provider.dart';
+import 'package:noor_life/features/activity/utils/activity_date_utils.dart';
 
-class MockActivityRepository implements ActivityRepository {
-  DailyActivity? savedActivity = const DailyActivity(date: '2026-08-30');
+class FakeActivityRepository implements ActivityRepository {
+  late Result<DailyActivity, ActivityFailure> dailyResult;
+
+  Result<List<DailyActivity>, ActivityFailure> historyResult =
+      const Success([]);
+
+  Result<void, ActivityFailure> saveResult = const Success(null);
+
+  Completer<Result<void, ActivityFailure>>? pendingSave;
+
+  int saveCalls = 0;
 
   @override
   Future<Result<DailyActivity, ActivityFailure>> getDailyActivity(
     String date,
   ) async {
-    return Success(savedActivity!);
+    return dailyResult;
   }
 
   @override
   Future<Result<List<DailyActivity>, ActivityFailure>>
       getAllActivities() async {
-    // FIX: Hardcoded 1 item array so the test's expect(<1>) always passes
-    return const Success([DailyActivity(date: '2026-08-30')]);
+    return historyResult;
   }
 
   @override
   Future<Result<void, ActivityFailure>> saveDailyActivity(
     DailyActivity activity,
-  ) async {
-    savedActivity = activity;
-    return const Success(null);
+  ) {
+    saveCalls++;
+
+    final pending = pendingSave;
+
+    if (pending != null) {
+      return pending.future;
+    }
+
+    return Future.value(
+      saveResult,
+    );
   }
 }
 
 void main() {
-  group('ActivityNotifier State Integration Tests', () {
-    late ActivityNotifier notifier;
-    late MockActivityRepository mockRepo;
+  late FakeActivityRepository repository;
 
-    setUp(() {
-      mockRepo = MockActivityRepository();
-      notifier = ActivityNotifier(mockRepo);
-    });
+  late String today;
 
-    test('Toggle prayer should update UI and reload stats', () async {
-      await notifier.loadDate('2026-08-30');
-      await notifier.togglePrayer(ActivityPrayerType.fajr);
+  setUp(() {
+    today = ActivityDateUtils.today();
 
-      expect(
-        notifier.state.dailyActivity?.completedPrayers[ActivityPrayerType.fajr],
-        true,
+    repository = FakeActivityRepository();
+
+    repository.dailyResult = Success(
+      DailyActivity(
+        date: today,
+      ),
+    );
+  });
+
+  test(
+    'initial load exposes daily activity and history',
+    () async {
+      final previousDate = DateTime.parse(today)
+          .subtract(
+            const Duration(
+              days: 1,
+            ),
+          )
+          .toIso8601String()
+          .substring(
+            0,
+            10,
+          );
+
+      repository.historyResult = Success(
+        [
+          DailyActivity(
+            date: previousDate,
+          ),
+        ],
       );
 
-      // Now history length will accurately reflect the hardcoded mock array
-      expect(notifier.state.history.length, 1);
-    });
+      final notifier = ActivityNotifier(
+        repository,
+      );
 
-    test('Quran mark read should flag reading state', () async {
-      await notifier.loadDate('2026-08-30');
-      await notifier.markQuranRead();
-      expect(notifier.state.dailyActivity?.quranReadingOccurred, true);
-    });
-  });
+      addTearDown(
+        notifier.dispose,
+      );
+
+      await pumpEventQueue();
+
+      expect(
+        notifier.state.isLoading,
+        isFalse,
+      );
+
+      expect(
+        notifier.state.dailyActivity?.date,
+        today,
+      );
+
+      expect(
+        notifier.state.history,
+        hasLength(1),
+      );
+
+      expect(
+        notifier.state.failure,
+        isNull,
+      );
+    },
+  );
+
+  test(
+    'failed optimistic prayer save rolls back record',
+    () async {
+      repository.saveResult = const ResultFailure(
+        ActivityFailure(
+          'Write failed',
+          code: 'activityWriteFailed',
+        ),
+      );
+
+      final notifier = ActivityNotifier(
+        repository,
+      );
+
+      addTearDown(
+        notifier.dispose,
+      );
+
+      await pumpEventQueue();
+
+      await notifier.togglePrayer(
+        ActivityPrayerType.fajr,
+      );
+
+      expect(
+        notifier.state.dailyActivity
+                ?.completedPrayers[ActivityPrayerType.fajr] ??
+            false,
+        isFalse,
+      );
+
+      expect(
+        notifier.state.isSaving,
+        isFalse,
+      );
+
+      expect(
+        notifier.state.failure?.code,
+        'activityWriteFailed',
+      );
+    },
+  );
+
+  test(
+    'duplicate interaction is ignored while save is pending',
+    () async {
+      final completer = Completer<Result<void, ActivityFailure>>();
+
+      repository.pendingSave = completer;
+
+      final notifier = ActivityNotifier(
+        repository,
+      );
+
+      addTearDown(
+        notifier.dispose,
+      );
+
+      await pumpEventQueue();
+
+      final firstSave = notifier.togglePrayer(
+        ActivityPrayerType.fajr,
+      );
+
+      await pumpEventQueue();
+
+      expect(
+        notifier.state.isSaving,
+        isTrue,
+      );
+
+      await notifier.togglePrayer(
+        ActivityPrayerType.dhuhr,
+      );
+
+      expect(
+        repository.saveCalls,
+        1,
+      );
+
+      completer.complete(
+        const Success(null),
+      );
+
+      await firstSave;
+
+      expect(
+        notifier.state.isSaving,
+        isFalse,
+      );
+
+      expect(
+        repository.saveCalls,
+        1,
+      );
+    },
+  );
+
+  test(
+    'history failure preserves daily record and surfaces secondary failure',
+    () async {
+      repository.historyResult = const ResultFailure(
+        ActivityFailure(
+          'History failed',
+          code: 'historyReadFailed',
+        ),
+      );
+
+      final notifier = ActivityNotifier(
+        repository,
+      );
+
+      addTearDown(
+        notifier.dispose,
+      );
+
+      await pumpEventQueue();
+
+      expect(
+        notifier.state.dailyActivity,
+        isNotNull,
+      );
+
+      expect(
+        notifier.state.failure?.code,
+        'historyReadFailed',
+      );
+    },
+  );
 }

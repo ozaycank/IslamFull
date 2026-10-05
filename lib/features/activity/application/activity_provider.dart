@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/base/result.dart';
@@ -10,6 +12,7 @@ import '../utils/activity_date_utils.dart';
 
 class ActivityState {
   final bool isLoading;
+  final bool isSaving;
   final DailyActivity? dailyActivity;
   final List<DailyActivity> history;
   final ActivityStatistics? statistics;
@@ -17,6 +20,7 @@ class ActivityState {
 
   const ActivityState({
     this.isLoading = false,
+    this.isSaving = false,
     this.dailyActivity,
     this.history = const [],
     this.statistics,
@@ -25,18 +29,20 @@ class ActivityState {
 
   ActivityState copyWith({
     bool? isLoading,
-    DailyActivity? dailyActivity,
+    bool? isSaving,
+    DailyActivity? Function()? dailyActivity,
     List<DailyActivity>? history,
-    ActivityStatistics? statistics,
-    ActivityFailure? failure,
-    bool clearFailure = false,
+    ActivityStatistics? Function()? statistics,
+    ActivityFailure? Function()? failure,
   }) {
     return ActivityState(
       isLoading: isLoading ?? this.isLoading,
-      dailyActivity: dailyActivity ?? this.dailyActivity,
+      isSaving: isSaving ?? this.isSaving,
+      dailyActivity:
+          dailyActivity != null ? dailyActivity() : this.dailyActivity,
       history: history ?? this.history,
-      statistics: statistics ?? this.statistics,
-      failure: clearFailure ? null : (failure ?? this.failure),
+      statistics: statistics != null ? statistics() : this.statistics,
+      failure: failure != null ? failure() : this.failure,
     );
   }
 }
@@ -45,18 +51,21 @@ class ActivityNotifier extends StateNotifier<ActivityState> {
   final ActivityRepository _repository;
 
   String _currentDate;
-
-  bool _isSaving = false;
+  int _loadGeneration = 0;
 
   ActivityNotifier(
     this._repository,
   )   : _currentDate = ActivityDateUtils.today(),
         super(const ActivityState()) {
-    loadDate(_currentDate);
+    unawaited(
+      loadDate(
+        _currentDate,
+      ),
+    );
   }
 
-  Future<void> loadToday() async {
-    await loadDate(
+  Future<void> loadToday() {
+    return loadDate(
       ActivityDateUtils.today(),
     );
   }
@@ -64,164 +73,224 @@ class ActivityNotifier extends StateNotifier<ActivityState> {
   Future<void> loadDate(
     String date,
   ) async {
-    state = state.copyWith(
-      isLoading: true,
-      clearFailure: true,
-    );
+    if (!ActivityDateUtils.isValidFormat(date)) {
+      state = state.copyWith(
+        isLoading: false,
+        failure: () => const ActivityFailure(
+          'Invalid activity date.',
+          code: 'invalidActivityDate',
+        ),
+      );
+
+      return;
+    }
+
+    final requestGeneration = ++_loadGeneration;
+    final dateChanged = date != _currentDate;
 
     _currentDate = date;
 
-    final result = await _repository.getDailyActivity(
-      date,
+    state = state.copyWith(
+      isLoading: true,
+      dailyActivity: dateChanged ? () => null : null,
+      failure: () => null,
     );
 
-    final historyResult = await _repository.getAllActivities();
-
-    List<DailyActivity> history = [];
-    ActivityStatistics? statistics;
-
-    if (historyResult is Success<List<DailyActivity>, ActivityFailure>) {
-      history = historyResult.value;
-
-      statistics = ActivityStatisticsCalculator.calculate(
-        history,
-        ActivityDateUtils.today(),
+    try {
+      final activityResult = await _repository.getDailyActivity(
+        date,
       );
-    }
 
-    switch (result) {
-      case Success(value: final activity):
-        state = state.copyWith(
-          isLoading: false,
-          dailyActivity: activity,
-          history: history,
-          statistics: statistics,
-        );
+      final historyResult = await _repository.getAllActivities();
 
-      case ResultFailure(
-          failure: final error,
-        ):
-        state = state.copyWith(
-          isLoading: false,
-          history: history,
-          statistics: statistics,
-          failure: error,
-        );
+      if (requestGeneration != _loadGeneration) {
+        return;
+      }
+
+      var nextHistory = state.history;
+      var nextStatistics = state.statistics;
+      ActivityFailure? secondaryFailure;
+
+      switch (historyResult) {
+        case Success(value: final history):
+          nextHistory = List.unmodifiable(
+            history,
+          );
+
+          nextStatistics = ActivityStatisticsCalculator.calculate(
+            nextHistory,
+            ActivityDateUtils.today(),
+          );
+
+        case ResultFailure(failure: final error):
+          // History is secondary to today's record. Preserve the previous
+          // history/statistics rather than replacing them with empty data.
+          secondaryFailure = error;
+      }
+
+      switch (activityResult) {
+        case Success(value: final activity):
+          state = state.copyWith(
+            isLoading: false,
+            dailyActivity: () => activity,
+            history: nextHistory,
+            statistics: () => nextStatistics,
+            failure: () => secondaryFailure,
+          );
+
+        case ResultFailure(failure: final error):
+          state = state.copyWith(
+            isLoading: false,
+            history: nextHistory,
+            statistics: () => nextStatistics,
+            failure: () => error,
+          );
+      }
+    } catch (_) {
+      if (requestGeneration != _loadGeneration) {
+        return;
+      }
+
+      state = state.copyWith(
+        isLoading: false,
+        failure: () => const ActivityFailure(
+          'Failed to load activity data.',
+          code: 'activityReadFailed',
+        ),
+      );
     }
   }
 
   Future<void> togglePrayer(
     ActivityPrayerType prayer,
   ) async {
-    if (state.dailyActivity == null || _isSaving) {
+    final currentActivity = state.dailyActivity;
+
+    if (currentActivity == null || state.isSaving || state.isLoading) {
       return;
     }
-
-    _isSaving = true;
-
-    final currentActivity = state.dailyActivity!;
 
     final currentStatus = currentActivity.completedPrayers[prayer] ?? false;
 
-    final newPrayers = Map<ActivityPrayerType, bool>.from(
+    final updatedPrayers = Map<ActivityPrayerType, bool>.from(
       currentActivity.completedPrayers,
     );
 
-    newPrayers[prayer] = !currentStatus;
+    updatedPrayers[prayer] = !currentStatus;
 
-    final newActivity = currentActivity.copyWith(
-      completedPrayers: newPrayers,
+    final updatedActivity = currentActivity.copyWith(
+      completedPrayers: updatedPrayers,
     );
 
-    state = state.copyWith(
-      dailyActivity: newActivity,
-      clearFailure: true,
+    await _saveActivityUpdate(
+      previousActivity: currentActivity,
+      updatedActivity: updatedActivity,
     );
-
-    try {
-      final result = await _repository.saveDailyActivity(
-        newActivity,
-      );
-
-      switch (result) {
-        case Success():
-          await loadDate(
-            _currentDate,
-          );
-
-        case ResultFailure(
-            failure: final error,
-          ):
-          state = state.copyWith(
-            dailyActivity: currentActivity,
-            failure: error,
-          );
-      }
-    } catch (_) {
-      state = state.copyWith(
-        dailyActivity: currentActivity,
-        failure: const ActivityFailure(
-          'Failed to save activity',
-          code: 'activityWriteFailed',
-        ),
-      );
-    } finally {
-      _isSaving = false;
-    }
   }
 
   Future<void> markQuranRead() async {
-    if (state.dailyActivity == null || _isSaving) {
+    final currentActivity = state.dailyActivity;
+
+    if (currentActivity == null ||
+        currentActivity.quranReadingOccurred ||
+        state.isSaving ||
+        state.isLoading) {
       return;
     }
 
-    final currentActivity = state.dailyActivity!;
-
-    if (currentActivity.quranReadingOccurred) {
-      return;
-    }
-
-    _isSaving = true;
-
-    final newActivity = currentActivity.copyWith(
+    final updatedActivity = currentActivity.copyWith(
       quranReadingOccurred: true,
     );
 
+    await _saveActivityUpdate(
+      previousActivity: currentActivity,
+      updatedActivity: updatedActivity,
+    );
+  }
+
+  Future<void> _saveActivityUpdate({
+    required DailyActivity previousActivity,
+    required DailyActivity updatedActivity,
+  }) async {
+    // Invalidate any older load request so that it cannot overwrite the
+    // optimistic activity state when it completes later.
+    _loadGeneration++;
+
     state = state.copyWith(
-      dailyActivity: newActivity,
-      clearFailure: true,
+      isSaving: true,
+      dailyActivity: () => updatedActivity,
+      failure: () => null,
     );
 
     try {
       final result = await _repository.saveDailyActivity(
-        newActivity,
+        updatedActivity,
       );
 
       switch (result) {
         case Success():
-          await loadDate(
-            _currentDate,
+          final updatedHistory = _upsertHistory(
+            state.history,
+            updatedActivity,
           );
 
-        case ResultFailure(
-            failure: final error,
-          ):
+          final updatedStatistics = ActivityStatisticsCalculator.calculate(
+            updatedHistory,
+            ActivityDateUtils.today(),
+          );
+
           state = state.copyWith(
-            dailyActivity: currentActivity,
-            failure: error,
+            isSaving: false,
+            dailyActivity: () => updatedActivity,
+            history: updatedHistory,
+            statistics: () => updatedStatistics,
+            failure: () => null,
+          );
+
+        case ResultFailure(failure: final error):
+          state = state.copyWith(
+            isSaving: false,
+            dailyActivity: () => previousActivity,
+            failure: () => error,
           );
       }
     } catch (_) {
       state = state.copyWith(
-        dailyActivity: currentActivity,
-        failure: const ActivityFailure(
-          'Failed to save activity',
+        isSaving: false,
+        dailyActivity: () => previousActivity,
+        failure: () => const ActivityFailure(
+          'Failed to save activity.',
           code: 'activityWriteFailed',
         ),
       );
-    } finally {
-      _isSaving = false;
     }
+  }
+
+  List<DailyActivity> _upsertHistory(
+    List<DailyActivity> currentHistory,
+    DailyActivity activity,
+  ) {
+    final updated = List<DailyActivity>.from(
+      currentHistory,
+    );
+
+    final existingIndex = updated.indexWhere(
+      (entry) => entry.date == activity.date,
+    );
+
+    if (existingIndex >= 0) {
+      updated[existingIndex] = activity;
+    } else {
+      updated.add(activity);
+    }
+
+    updated.sort(
+      (a, b) => b.date.compareTo(a.date),
+    );
+
+    return List.unmodifiable(
+      updated,
+    );
   }
 }
 
@@ -246,20 +315,24 @@ final quranActivityBridgeProvider = Provider<void>(
           return;
         }
 
-        final isInitialLoad = previous?.lastRead == null;
+        final previousLastRead = previous?.lastRead;
+
+        final isInitialLoad = previousLastRead == null;
 
         final ayahAdvanced =
-            previous?.lastRead?.ayahNumber != next.lastRead?.ayahNumber;
+            previousLastRead?.ayahNumber != next.lastRead?.ayahNumber;
 
         final surahAdvanced =
-            previous?.lastRead?.surahNumber != next.lastRead?.surahNumber;
+            previousLastRead?.surahNumber != next.lastRead?.surahNumber;
 
         if (!isInitialLoad && (ayahAdvanced || surahAdvanced)) {
-          ref
-              .read(
-                activityNotifierProvider.notifier,
-              )
-              .markQuranRead();
+          unawaited(
+            ref
+                .read(
+                  activityNotifierProvider.notifier,
+                )
+                .markQuranRead(),
+          );
         }
       },
     );
