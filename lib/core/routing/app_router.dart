@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/activity/presentation/screens/activity_screen.dart';
@@ -8,8 +7,12 @@ import '../../features/guidance/presentation/screens/ghusl_guide_screen.dart';
 import '../../features/guidance/presentation/screens/islam_foundations_screen.dart';
 import '../../features/guidance/presentation/screens/new_muslim_journey_screen.dart';
 import '../../features/guidance/presentation/screens/prayer_guide_screen.dart';
+import '../../features/hajj/presentation/screens/hajj_days_screen.dart';
 import '../../features/hajj/presentation/screens/hajj_fundamentals_screen.dart';
 import '../../features/hajj/presentation/screens/hajj_guide_screen.dart';
+import '../../features/hajj/presentation/screens/hajj_special_cases_screen.dart';
+import '../../features/hajj/presentation/screens/hajj_types_screen.dart';
+import '../../features/hajj/presentation/screens/ihram_rules_screen.dart';
 import '../../features/hajj/presentation/screens/umrah_guide_screen.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/info/presentation/info_center_screen.dart';
@@ -34,14 +37,12 @@ import '../../features/splash/presentation/splash_screen.dart';
 import '../../features/tools/presentation/islamic_tools_screen.dart';
 import '../../features/tools/presentation/tasbih_screen.dart';
 import '../../features/zakat/presentation/screens/zakat_calculator_screen.dart';
-import '../../features/hajj/presentation/screens/hajj_days_screen.dart';
-import '../../features/hajj/presentation/screens/hajj_types_screen.dart';
-import '../../features/hajj/presentation/screens/hajj_special_cases_screen.dart';
-import '../../features/hajj/presentation/screens/ihram_rules_screen.dart';
 import '../di/injection_container.dart';
 import '../logging/logger_service.dart';
 import 'app_navigation_observer.dart';
 import 'app_routes.dart';
+import 'route_fallback_screen.dart';
+import 'route_location_policy.dart';
 
 class AppRouter {
   AppRouter._();
@@ -49,159 +50,282 @@ class AppRouter {
   static final GlobalKey<NavigatorState> _rootNavigatorKey =
       GlobalKey<NavigatorState>();
 
-  static GoRouter createRouter(
-    WidgetRef ref, {
+  static GoRouter createRouter({
     String? initialLocation,
   }) {
+    final safeInitialLocation =
+        RouteLocationPolicy.sanitizeNotificationLocation(
+              initialLocation,
+            ) ??
+            AppRoutes.splash;
+
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: initialLocation ?? AppRoutes.splash,
+      initialLocation: safeInitialLocation,
       observers: [
         AppNavigationObserver(
           getIt<LoggerService>(),
         ),
       ],
+      errorBuilder: (
+        context,
+        state,
+      ) {
+        return const RouteFallbackScreen();
+      },
       routes: [
         GoRoute(
           path: AppRoutes.splash,
-          builder: (context, state) => const SplashScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const SplashScreen(),
         ),
 
-        // Full-screen routes
+        // Full-screen routes.
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.settings,
-          builder: (context, state) => const SettingsScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const SettingsScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.qibla,
-          builder: (context, state) => const QiblaScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const QiblaScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.zakat,
-          builder: (context, state) => const ZakatCalculatorScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const ZakatCalculatorScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.hajj,
-          builder: (context, state) => const HajjGuideScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const HajjGuideScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.hajjFundamentals,
-          builder: (context, state) => const HajjFundamentalsScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const HajjFundamentalsScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.ihramRules,
-          builder: (context, state) => const IhramRulesScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const IhramRulesScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.hajjTypes,
-          builder: (context, state) => const HajjTypesScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const HajjTypesScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.hajjDays,
-          builder: (context, state) => const HajjDaysScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const HajjDaysScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.umrahGuide,
-          builder: (context, state) => const UmrahGuideScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const UmrahGuideScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.hajjSpecialCases,
-          builder: (context, state) => const HajjSpecialCasesScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const HajjSpecialCasesScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.about,
-          builder: (context, state) => const AboutScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const AboutScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.privacy,
-          builder: (context, state) => const PrivacyScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const PrivacyScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.preferences,
-          builder: (context, state) => const PreferencesScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const PreferencesScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.tools,
-          builder: (context, state) => const IslamicToolsScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const IslamicToolsScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.tasbih,
-          builder: (context, state) => const TasbihScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const TasbihScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.infoCenter,
-          builder: (context, state) => const InfoCenterScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const InfoCenterScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.newMuslimJourney,
-          builder: (context, state) => const NewMuslimJourneyScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const NewMuslimJourneyScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.islamFoundations,
-          builder: (context, state) => const IslamFoundationsScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const IslamFoundationsScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.wuduGuide,
-          builder: (context, state) => const WuduGuideScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const WuduGuideScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.prayerGuide,
-          builder: (context, state) => const PrayerGuideScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const PrayerGuideScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.ghuslGuide,
-          builder: (context, state) => const GhuslGuideScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const GhuslGuideScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.duas,
-          builder: (context, state) => const DuasScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const DuasScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.ramadan,
-          builder: (context, state) => const RamadanHubScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const RamadanHubScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.ramadanGuide,
-          builder: (context, state) => const RamadanGuideScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const RamadanGuideScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.qurban,
-          builder: (context, state) => const QurbanHubScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const QurbanHubScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.qurbanGuide,
-          builder: (context, state) => const QurbanGuideScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const QurbanGuideScreen(),
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoutes.qurbanEidGuide,
-          builder: (context, state) => const QurbanEidGuideScreen(),
+          builder: (
+            context,
+            state,
+          ) =>
+              const QurbanEidGuideScreen(),
         ),
 
         StatefulShellRoute.indexedStack(
@@ -219,7 +343,11 @@ class AppRouter {
               routes: [
                 GoRoute(
                   path: AppRoutes.home,
-                  builder: (context, state) => const HomeScreen(),
+                  builder: (
+                    context,
+                    state,
+                  ) =>
+                      const HomeScreen(),
                 ),
               ],
             ),
@@ -227,7 +355,11 @@ class AppRouter {
               routes: [
                 GoRoute(
                   path: AppRoutes.prayer,
-                  builder: (context, state) => const PrayerHomeScreen(),
+                  builder: (
+                    context,
+                    state,
+                  ) =>
+                      const PrayerHomeScreen(),
                 ),
               ],
             ),
@@ -235,28 +367,52 @@ class AppRouter {
               routes: [
                 GoRoute(
                   path: AppRoutes.quran,
-                  builder: (context, state) => const QuranHomeScreen(),
+                  builder: (
+                    context,
+                    state,
+                  ) =>
+                      const QuranHomeScreen(),
                   routes: [
                     GoRoute(
-                      path: 'bookmarks',
-                      builder: (context, state) => const QuranBookmarksScreen(),
+                      path: AppRoutes.quranBookmarksSegment,
+                      builder: (
+                        context,
+                        state,
+                      ) =>
+                          const QuranBookmarksScreen(),
                     ),
                     GoRoute(
-                      path: 'surah/:id',
-                      builder: (context, state) {
-                        final idStr = state.pathParameters['id'];
+                      path: AppRoutes.surahDetailSegment,
+                      redirect: (
+                        context,
+                        state,
+                      ) {
+                        final surahNumber =
+                            RouteLocationPolicy.tryParseSurahNumber(
+                          state.pathParameters['id'],
+                        );
 
-                        final id = int.tryParse(
-                              idStr ?? '1',
-                            ) ??
-                            1;
+                        if (surahNumber == null) {
+                          return AppRoutes.quran;
+                        }
 
-                        final ayah = int.tryParse(
-                          state.uri.queryParameters['ayah'] ?? '',
+                        return null;
+                      },
+                      builder: (
+                        context,
+                        state,
+                      ) {
+                        final surahNumber =
+                            RouteLocationPolicy.tryParseSurahNumber(
+                          state.pathParameters['id'],
+                        )!;
+
+                        final ayah = RouteLocationPolicy.tryParseAyahNumber(
+                          state.uri.queryParameters['ayah'],
                         );
 
                         return SurahDetailScreen(
-                          surahNumber: id,
+                          surahNumber: surahNumber,
                           jumpToAyah: ayah,
                         );
                       },
@@ -269,7 +425,11 @@ class AppRouter {
               routes: [
                 GoRoute(
                   path: AppRoutes.activity,
-                  builder: (context, state) => const ActivityScreen(),
+                  builder: (
+                    context,
+                    state,
+                  ) =>
+                      const ActivityScreen(),
                 ),
               ],
             ),
@@ -277,7 +437,11 @@ class AppRouter {
               routes: [
                 GoRoute(
                   path: AppRoutes.menu,
-                  builder: (context, state) => const MenuScreen(),
+                  builder: (
+                    context,
+                    state,
+                  ) =>
+                      const MenuScreen(),
                 ),
               ],
             ),

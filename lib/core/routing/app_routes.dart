@@ -3,15 +3,21 @@ class AppRoutes {
 
   static const String splash = '/';
 
-  // Shell Tabs
+  // Shell tabs.
   static const String home = '/home';
   static const String prayer = '/prayer';
   static const String quran = '/quran';
-  static const String surahDetail = '/quran/surah/:id';
   static const String activity = '/activity';
   static const String menu = '/menu';
 
-  // Standalone Module Pages
+  // Quran child routes.
+  static const String quranBookmarks = '/quran/bookmarks';
+  static const String surahDetail = '/quran/surah/:id';
+
+  static const String quranBookmarksSegment = 'bookmarks';
+  static const String surahDetailSegment = 'surah/:id';
+
+  // Standalone module pages.
   static const String settings = '/settings';
   static const String qibla = '/qibla';
   static const String zakat = '/zakat';
@@ -24,7 +30,7 @@ class AppRoutes {
   static const String infoCenter = '/info-center';
   static const String wuduGuide = '/wudu-guide';
 
-  // Guidance
+  // Guidance.
   static const String newMuslimJourney = '/new-muslim-journey';
   static const String islamFoundations = '/islam-foundations';
   static const String prayerGuide = '/prayer-guide';

@@ -8,7 +8,9 @@ class FakeLoggerService extends LoggerService {
   final List<String> messages = [];
 
   @override
-  void debug(dynamic message) {
+  void debug(
+    dynamic message,
+  ) {
     messages.add(
       message.toString(),
     );
@@ -69,9 +71,7 @@ void main() {
 
       expect(
         logger.messages.single,
-        contains(
-          'MaterialPageRoute',
-        ),
+        '[NAVIGATION PUSH] none -> unnamed',
       );
 
       expect(
@@ -87,7 +87,7 @@ void main() {
         logger.messages.single,
         isNot(
           contains(
-            '{',
+            'MaterialPageRoute',
           ),
         ),
       );
@@ -125,6 +125,38 @@ void main() {
       expect(
         logger.messages.single,
         '[NAVIGATION POP] /settings -> /menu',
+      );
+    },
+  );
+
+  test(
+    'remove log records stable route identities',
+    () {
+      final logger = FakeLoggerService();
+
+      final observer = AppNavigationObserver(
+        logger,
+      );
+
+      final previous = MaterialPageRoute<void>(
+        settings: const RouteSettings(
+          name: '/home',
+        ),
+        builder: (_) => const SizedBox.shrink(),
+      );
+
+      final removed = MaterialPageRoute<void>(
+        builder: (_) => const SizedBox.shrink(),
+      );
+
+      observer.didRemove(
+        removed,
+        previous,
+      );
+
+      expect(
+        logger.messages.single,
+        '[NAVIGATION REMOVE] unnamed -> /home',
       );
     },
   );

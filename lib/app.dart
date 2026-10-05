@@ -6,9 +6,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'core/di/injection_container.dart';
+import 'core/logging/logger_service.dart';
 import 'core/notifications/notification_payload.dart';
 import 'core/providers/notification_coordinator_provider.dart';
 import 'core/routing/app_router.dart';
+import 'core/routing/route_location_policy.dart';
 import 'core/services/local_notification_service.dart';
 import 'core/services/notification_service.dart';
 import 'core/theme/dark_theme.dart';
@@ -38,21 +40,31 @@ class _NoorLifeAppState extends ConsumerState<NoorLifeApp> {
     LocalNotificationService? localNotificationService;
     String? initialLocation;
 
-    // Lightweight widget tests do not initialize platform notification
-    // services, so resolve the service only when it is actually registered.
     if (getIt.isRegistered<LocalNotificationService>()) {
-      localNotificationService = getIt<LocalNotificationService>();
+      try {
+        localNotificationService = getIt<LocalNotificationService>();
 
-      final initialPayload =
-          localNotificationService.takeInitialNotificationPayload();
+        final initialPayload =
+            localNotificationService.takeInitialNotificationPayload();
 
-      initialLocation = NotificationPayload.tryParse(
-        initialPayload,
-      )?.location;
+        final parsedPayload = NotificationPayload.tryParse(
+          initialPayload,
+        );
+
+        initialLocation = RouteLocationPolicy.sanitizeNotificationLocation(
+          parsedPayload?.location,
+        );
+      } catch (_) {
+        localNotificationService = null;
+
+        _logNavigationNotice(
+          '[NOTIFICATION NAVIGATION] '
+          'Initial notification payload unavailable.',
+        );
+      }
     }
 
     _router = AppRouter.createRouter(
-      ref,
       initialLocation: initialLocation,
     );
 
@@ -60,6 +72,15 @@ class _NoorLifeAppState extends ConsumerState<NoorLifeApp> {
       _notificationPayloadSubscription =
           localNotificationService.notificationPayloads.listen(
         _handleNotificationPayload,
+        onError: (
+          Object _,
+          StackTrace __,
+        ) {
+          _logNavigationNotice(
+            '[NOTIFICATION NAVIGATION] '
+            'Notification payload stream error.',
+          );
+        },
       );
     }
   }
@@ -75,8 +96,40 @@ class _NoorLifeAppState extends ConsumerState<NoorLifeApp> {
       return;
     }
 
-    _router.go(
+    final location = RouteLocationPolicy.sanitizeNotificationLocation(
       payload.location,
+    );
+
+    if (location == null) {
+      _logNavigationNotice(
+        '[NOTIFICATION NAVIGATION] '
+        'Ignored invalid notification destination.',
+      );
+
+      return;
+    }
+
+    final currentLocation =
+        _router.routeInformationProvider.value.uri.toString();
+
+    if (currentLocation == location) {
+      return;
+    }
+
+    _router.go(
+      location,
+    );
+  }
+
+  void _logNavigationNotice(
+    String message,
+  ) {
+    if (!getIt.isRegistered<LoggerService>()) {
+      return;
+    }
+
+    getIt<LoggerService>().debug(
+      message,
     );
   }
 

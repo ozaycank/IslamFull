@@ -5,14 +5,19 @@ import '../logging/logger_service.dart';
 class AppNavigationObserver extends NavigatorObserver {
   final LoggerService _logger;
 
-  AppNavigationObserver(this._logger);
+  AppNavigationObserver(
+    this._logger,
+  );
 
   @override
   void didPush(
     Route<dynamic> route,
     Route<dynamic>? previousRoute,
   ) {
-    super.didPush(route, previousRoute);
+    super.didPush(
+      route,
+      previousRoute,
+    );
 
     _logger.debug(
       '[NAVIGATION PUSH] '
@@ -25,7 +30,10 @@ class AppNavigationObserver extends NavigatorObserver {
     Route<dynamic> route,
     Route<dynamic>? previousRoute,
   ) {
-    super.didPop(route, previousRoute);
+    super.didPop(
+      route,
+      previousRoute,
+    );
 
     _logger.debug(
       '[NAVIGATION POP] '
@@ -49,6 +57,22 @@ class AppNavigationObserver extends NavigatorObserver {
     );
   }
 
+  @override
+  void didRemove(
+    Route<dynamic> route,
+    Route<dynamic>? previousRoute,
+  ) {
+    super.didRemove(
+      route,
+      previousRoute,
+    );
+
+    _logger.debug(
+      '[NAVIGATION REMOVE] '
+      '${_describeRoute(route)} -> ${_describeRoute(previousRoute)}',
+    );
+  }
+
   String _describeRoute(
     Route<dynamic>? route,
   ) {
@@ -62,8 +86,15 @@ class AppNavigationObserver extends NavigatorObserver {
       return routeName;
     }
 
-    // Route arguments may contain user or application data and should not be
-    // treated as a route identifier or written to navigation logs.
-    return route.runtimeType.toString();
+    // Never log route arguments. They may contain user/application data.
+    //
+    // Popup routes include dialogs and modal bottom sheets. Everything else
+    // without a stable route name is deliberately represented generically
+    // instead of logging Flutter's private implementation class names.
+    if (route is PopupRoute<dynamic>) {
+      return 'modal';
+    }
+
+    return 'unnamed';
   }
 }
