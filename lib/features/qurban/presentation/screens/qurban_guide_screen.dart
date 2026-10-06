@@ -19,41 +19,49 @@ class QurbanGuideScreen extends StatelessWidget {
         icon: Icons.favorite_outline,
         title: l10n.qurbanGuideMeaningTitle,
         description: l10n.qurbanGuideMeaningDesc,
+        imagePath: null,
       ),
       (
         icon: Icons.person_outline,
         title: l10n.qurbanGuideResponsibilityTitle,
         description: l10n.qurbanGuideResponsibilityDesc,
+        imagePath: null,
       ),
       (
         icon: Icons.pets_outlined,
         title: l10n.qurbanGuideAnimalsTitle,
         description: l10n.qurbanGuideAnimalsDesc,
+        imagePath: 'images/qurban/eligible_animals.png',
       ),
       (
         icon: Icons.groups_outlined,
         title: l10n.qurbanGuideSharesTitle,
         description: l10n.qurbanGuideSharesDesc,
+        imagePath: null,
       ),
       (
         icon: Icons.schedule_outlined,
         title: l10n.qurbanGuideTimeTitle,
         description: l10n.qurbanGuideTimeDesc,
+        imagePath: null,
       ),
       (
         icon: Icons.handshake_outlined,
         title: l10n.qurbanGuideProxyTitle,
         description: l10n.qurbanGuideProxyDesc,
+        imagePath: null,
       ),
       (
         icon: Icons.volunteer_activism_outlined,
         title: l10n.qurbanGuideMeatTitle,
         description: l10n.qurbanGuideMeatDesc,
+        imagePath: 'images/qurban/distribution.png',
       ),
       (
         icon: Icons.fact_check_outlined,
         title: l10n.qurbanGuideMisconceptionsTitle,
         description: l10n.qurbanGuideMisconceptionsDesc,
+        imagePath: null,
       ),
     ];
 
@@ -78,6 +86,7 @@ class QurbanGuideScreen extends StatelessWidget {
                 GuideInfoCard(
                   icon: Icons.menu_book_outlined,
                   description: l10n.qurbanGuideIntro,
+                  imagePath: 'images/qurban/ethical_preparation.png',
                 ),
                 const SizedBox(
                   height: AppSpacing.xl,
@@ -93,6 +102,7 @@ class QurbanGuideScreen extends StatelessWidget {
                     icon: topics[index].icon,
                     title: topics[index].title,
                     description: topics[index].description,
+                    imagePath: topics[index].imagePath,
                   ),
                   if (index != topics.length - 1)
                     const SizedBox(

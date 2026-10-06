@@ -22,26 +22,31 @@ class QurbanEidGuideScreen extends StatelessWidget {
         icon: Icons.calendar_month_outlined,
         title: l10n.qurbanEidFirstDaysTitle,
         description: l10n.qurbanEidFirstDaysDesc,
+        imagePath: null,
       ),
       (
         icon: Icons.event_outlined,
         title: l10n.qurbanEidArafahTitle,
         description: l10n.qurbanEidArafahDesc,
+        imagePath: null,
       ),
       (
         icon: Icons.celebration_outlined,
         title: l10n.qurbanEidDaysTitle,
         description: l10n.qurbanEidDaysDesc,
+        imagePath: null,
       ),
       (
         icon: Icons.mosque_outlined,
         title: l10n.qurbanEidPrayerTitle,
         description: l10n.qurbanEidPrayerDesc,
+        imagePath: 'images/eid_prayer/congregation.png',
       ),
       (
         icon: Icons.record_voice_over_outlined,
         title: l10n.qurbanEidTashriqTitle,
         description: l10n.qurbanEidTashriqDesc,
+        imagePath: null,
       ),
     ];
 
@@ -81,6 +86,7 @@ class QurbanEidGuideScreen extends StatelessWidget {
                     icon: topics[index].icon,
                     title: topics[index].title,
                     description: topics[index].description,
+                    imagePath: topics[index].imagePath,
                   ),
                   if (index != topics.length - 1)
                     const SizedBox(

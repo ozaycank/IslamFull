@@ -16,20 +16,29 @@ void main() {
                   2,
                 ),
               ),
-              child: SizedBox(
-                width: 320,
-                child: GuideInfoCard(
-                  icon: Icons.info_outline,
-                  title: 'Important information',
-                  description:
-                      'This is a longer informational description that must remain readable at large accessibility text sizes.',
-                  source: 'Source note',
+              child: SingleChildScrollView(
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: SizedBox(
+                    width: 320,
+                    child: GuideInfoCard(
+                      icon: Icons.info_outline,
+                      title: 'Important information',
+                      description:
+                          'This is a longer informational description that '
+                          'must remain readable at large accessibility text '
+                          'sizes.',
+                      source: 'Source note',
+                    ),
+                  ),
                 ),
               ),
             ),
           ),
         ),
       );
+
+      await tester.pump();
 
       expect(
         tester.takeException(),
@@ -58,11 +67,13 @@ void main() {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
-            body: GuideTopicCard(
-              icon: Icons.menu_book_outlined,
-              title: 'Topic',
-              description: 'Topic description',
-              source: 'Reference source',
+            body: SingleChildScrollView(
+              child: GuideTopicCard(
+                icon: Icons.menu_book_outlined,
+                title: 'Topic',
+                description: 'Topic description',
+                source: 'Reference source',
+              ),
             ),
           ),
         ),
@@ -95,6 +106,11 @@ void main() {
           'Reference source',
         ),
         findsOneWidget,
+      );
+
+      expect(
+        tester.takeException(),
+        isNull,
       );
     },
   );

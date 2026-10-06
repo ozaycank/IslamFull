@@ -36,6 +36,7 @@ class HajjDaysScreen extends StatelessWidget {
                 GuideInfoCard(
                   icon: Icons.calendar_month_outlined,
                   description: l10n.hajjDaysIntro,
+                  imagePath: 'images/hajj/days_flow.png',
                 ),
                 const SizedBox(
                   height: AppSpacing.xl,

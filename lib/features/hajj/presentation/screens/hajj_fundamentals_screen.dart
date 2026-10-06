@@ -19,41 +19,49 @@ class HajjFundamentalsScreen extends StatelessWidget {
         icon: Icons.mosque_outlined,
         title: l10n.hajjFundamentalsMeaningTitle,
         description: l10n.hajjFundamentalsMeaningDesc,
+        imagePath: null,
       ),
       (
         icon: Icons.flag_outlined,
         title: l10n.hajjFundamentalsIhramTitle,
         description: l10n.hajjFundamentalsIhramDesc,
+        imagePath: 'images/hajj/ihram.png',
       ),
       (
         icon: Icons.autorenew,
         title: l10n.hajjFundamentalsTawafTitle,
         description: l10n.hajjFundamentalsTawafDesc,
+        imagePath: 'images/hajj/tawaf.png',
       ),
       (
         icon: Icons.directions_walk_outlined,
         title: l10n.hajjFundamentalsSayTitle,
         description: l10n.hajjFundamentalsSayDesc,
+        imagePath: 'images/hajj/say.png',
       ),
       (
         icon: Icons.landscape_outlined,
         title: l10n.hajjFundamentalsArafatTitle,
         description: l10n.hajjFundamentalsArafatDesc,
+        imagePath: 'images/hajj/ritual_sites.png',
       ),
       (
         icon: Icons.nightlight_outlined,
         title: l10n.hajjFundamentalsMuzdalifahTitle,
         description: l10n.hajjFundamentalsMuzdalifahDesc,
+        imagePath: null,
       ),
       (
         icon: Icons.place_outlined,
         title: l10n.hajjFundamentalsMinaTitle,
         description: l10n.hajjFundamentalsMinaDesc,
+        imagePath: null,
       ),
       (
         icon: Icons.content_cut,
         title: l10n.hajjFundamentalsReleaseTitle,
         description: l10n.hajjFundamentalsReleaseDesc,
+        imagePath: null,
       ),
     ];
 
@@ -93,6 +101,7 @@ class HajjFundamentalsScreen extends StatelessWidget {
                     icon: topics[index].icon,
                     title: topics[index].title,
                     description: topics[index].description,
+                    imagePath: topics[index].imagePath,
                   ),
                   if (index != topics.length - 1)
                     const SizedBox(

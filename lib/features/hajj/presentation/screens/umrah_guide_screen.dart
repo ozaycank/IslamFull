@@ -50,6 +50,7 @@ class UmrahGuideScreen extends StatelessWidget {
                   icon: Icons.flag_outlined,
                   title: l10n.umrahGuideStep1Title,
                   description: l10n.umrahGuideStep1Desc,
+                  imagePath: 'images/hajj/ihram.png',
                 ),
                 const SizedBox(
                   height: AppSpacing.md,
@@ -58,6 +59,7 @@ class UmrahGuideScreen extends StatelessWidget {
                   icon: Icons.autorenew,
                   title: l10n.umrahGuideStep2Title,
                   description: l10n.umrahGuideStep2Desc,
+                  imagePath: 'images/hajj/tawaf.png',
                 ),
                 const SizedBox(
                   height: AppSpacing.md,
@@ -66,6 +68,7 @@ class UmrahGuideScreen extends StatelessWidget {
                   icon: Icons.directions_walk_outlined,
                   title: l10n.umrahGuideStep3Title,
                   description: l10n.umrahGuideStep3Desc,
+                  imagePath: 'images/hajj/say.png',
                 ),
                 const SizedBox(
                   height: AppSpacing.md,
@@ -74,6 +77,7 @@ class UmrahGuideScreen extends StatelessWidget {
                   icon: Icons.content_cut,
                   title: l10n.umrahGuideStep4Title,
                   description: l10n.umrahGuideStep4Desc,
+                  imagePath: 'images/umrah/release.png',
                 ),
                 const SizedBox(
                   height: AppSpacing.xl,

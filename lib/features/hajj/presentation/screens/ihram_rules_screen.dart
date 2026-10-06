@@ -19,31 +19,37 @@ class IhramRulesScreen extends StatelessWidget {
         icon: Icons.flag_outlined,
         title: l10n.ihramRulesMeaningTitle,
         description: l10n.ihramRulesMeaningDesc,
+        imagePath: null,
       ),
       (
         icon: Icons.checkroom_outlined,
         title: l10n.ihramRulesClothingTitle,
         description: l10n.ihramRulesClothingDesc,
+        imagePath: 'images/hajj/ihram.png',
       ),
       (
         icon: Icons.content_cut,
         title: l10n.ihramRulesHairNailsTitle,
         description: l10n.ihramRulesHairNailsDesc,
+        imagePath: null,
       ),
       (
         icon: Icons.spa_outlined,
         title: l10n.ihramRulesFragranceTitle,
         description: l10n.ihramRulesFragranceDesc,
+        imagePath: null,
       ),
       (
         icon: Icons.shower_outlined,
         title: l10n.ihramRulesCleanlinessTitle,
         description: l10n.ihramRulesCleanlinessDesc,
+        imagePath: null,
       ),
       (
         icon: Icons.family_restroom_outlined,
         title: l10n.ihramRulesIntimacyTitle,
         description: l10n.ihramRulesIntimacyDesc,
+        imagePath: null,
       ),
     ];
 
@@ -83,6 +89,7 @@ class IhramRulesScreen extends StatelessWidget {
                     icon: topics[index].icon,
                     title: topics[index].title,
                     description: topics[index].description,
+                    imagePath: topics[index].imagePath,
                   ),
                   if (index != topics.length - 1)
                     const SizedBox(
