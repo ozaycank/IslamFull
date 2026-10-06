@@ -1,3 +1,4 @@
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -7,6 +8,7 @@ import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/routing/app_routes.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../../../../shared/widgets/app_card.dart';
+import '../../../../shared/widgets/guide_content_cards.dart';
 import '../../../../shared/widgets/section_header.dart';
 import '../../../prayer/prayer_times/application/providers/prayer_times_notifier.dart';
 import '../../../prayer/shared/presentation/utils/presentation_localizer.dart';
@@ -14,7 +16,9 @@ import '../../application/ramadan_day_provider.dart';
 import '../../domain/ramadan_day_state.dart';
 
 class RamadanHubScreen extends ConsumerWidget {
-  const RamadanHubScreen({super.key});
+  const RamadanHubScreen({
+    super.key,
+  });
 
   @override
   Widget build(
@@ -23,7 +27,6 @@ class RamadanHubScreen extends ConsumerWidget {
   ) {
     final l10n = context.l10n;
     final colorScheme = context.colorScheme;
-    final textTheme = context.textTheme;
 
     final prayerState = ref.watch(
       prayerTimesNotifierProvider,
@@ -36,10 +39,16 @@ class RamadanHubScreen extends ConsumerWidget {
     if (prayerState.isLoading && prayerState.schedule == null) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(l10n.ramadanTitle),
+          title: Text(
+            l10n.ramadanTitle,
+          ),
         ),
-        body: const Center(
-          child: CircularProgressIndicator(),
+        body: SafeArea(
+          child: Center(
+            child: CircularProgressIndicator(
+              semanticsLabel: l10n.ramadanTitle,
+            ),
+          ),
         ),
       );
     }
@@ -65,7 +74,9 @@ class RamadanHubScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.ramadanTitle),
+        title: Text(
+          l10n.ramadanTitle,
+        ),
       ),
       body: SafeArea(
         child: Align(
@@ -118,28 +129,9 @@ class RamadanHubScreen extends ConsumerWidget {
                 const SizedBox(
                   height: AppSpacing.xl,
                 ),
-                AppCard(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.info_outline,
-                        color: colorScheme.primary,
-                      ),
-                      const SizedBox(
-                        width: AppSpacing.md,
-                      ),
-                      Expanded(
-                        child: Text(
-                          l10n.ramadanTimesNote,
-                          style: textTheme.bodyMedium?.copyWith(
-                            color: colorScheme.onSurfaceVariant,
-                            height: 1.45,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                GuideInfoCard(
+                  icon: Icons.info_outline,
+                  description: l10n.ramadanTimesNote,
                 ),
                 const SizedBox(
                   height: AppSpacing.xl,
@@ -153,9 +145,11 @@ class RamadanHubScreen extends ConsumerWidget {
                 AppCard(
                   padding: EdgeInsets.zero,
                   child: ListTile(
-                    leading: Icon(
-                      Icons.menu_book_outlined,
-                      color: colorScheme.primary,
+                    leading: ExcludeSemantics(
+                      child: Icon(
+                        Icons.menu_book_outlined,
+                        color: colorScheme.primary,
+                      ),
                     ),
                     title: Text(
                       l10n.ramadanGuideTitle,
@@ -163,8 +157,10 @@ class RamadanHubScreen extends ConsumerWidget {
                     subtitle: Text(
                       l10n.ramadanGuideMenuDesc,
                     ),
-                    trailing: const Icon(
-                      Icons.chevron_right,
+                    trailing: Icon(
+                      Directionality.of(context) == ui.TextDirection.rtl
+                          ? Icons.chevron_left
+                          : Icons.chevron_right,
                     ),
                     onTap: () => context.push(
                       AppRoutes.ramadanGuide,
@@ -172,20 +168,20 @@ class RamadanHubScreen extends ConsumerWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: AppSpacing.lg,
+                  height: AppSpacing.xl,
                 ),
-                const SizedBox(
-                  height: AppSpacing.lg,
-                ),
-                OutlinedButton.icon(
-                  onPressed: () => context.go(
-                    AppRoutes.prayer,
-                  ),
-                  icon: const Icon(
-                    Icons.schedule_outlined,
-                  ),
-                  label: Text(
-                    l10n.ramadanViewPrayerTimes,
+                SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton.icon(
+                    onPressed: () => context.go(
+                      AppRoutes.prayer,
+                    ),
+                    icon: const Icon(
+                      Icons.schedule_outlined,
+                    ),
+                    label: Text(
+                      l10n.ramadanViewPrayerTimes,
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -219,11 +215,14 @@ class _RamadanHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(
-              Icons.location_on_outlined,
-              color: colorScheme.primary,
-              size: 20,
+            ExcludeSemantics(
+              child: Icon(
+                Icons.location_on_outlined,
+                color: colorScheme.primary,
+                size: 20,
+              ),
             ),
             const SizedBox(
               width: AppSpacing.sm,
@@ -241,10 +240,13 @@ class _RamadanHeader extends StatelessWidget {
         const SizedBox(
           height: AppSpacing.lg,
         ),
-        Text(
-          l10n.ramadanTitle,
-          style: textTheme.headlineMedium?.copyWith(
-            fontWeight: FontWeight.w700,
+        Semantics(
+          header: true,
+          child: Text(
+            l10n.ramadanTitle,
+            style: textTheme.headlineMedium?.copyWith(
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
         const SizedBox(
@@ -304,66 +306,80 @@ class _RamadanHero extends StatelessWidget {
         return const SizedBox.shrink();
     }
 
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(
-        AppSpacing.xl,
-      ),
-      decoration: BoxDecoration(
-        color: colorScheme.primaryContainer,
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (state.phase == RamadanDayPhase.afterIftar) ...[
-            Row(
-              children: [
-                Icon(
-                  Icons.nights_stay_outlined,
-                  color: colorScheme.onPrimaryContainer,
-                  size: 20,
+    final durationText = _formatDuration(
+      state.timeRemaining,
+    );
+
+    return Semantics(
+      container: true,
+      label: title,
+      value: durationText,
+      child: ExcludeSemantics(
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(
+            AppSpacing.xl,
+          ),
+          decoration: BoxDecoration(
+            color: colorScheme.primaryContainer,
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (state.phase == RamadanDayPhase.afterIftar) ...[
+                Row(
+                  children: [
+                    Icon(
+                      Icons.nights_stay_outlined,
+                      color: colorScheme.onPrimaryContainer,
+                      size: 20,
+                    ),
+                    const SizedBox(
+                      width: AppSpacing.sm,
+                    ),
+                    Expanded(
+                      child: Text(
+                        l10n.ramadanIftarEntered,
+                        style: textTheme.titleMedium?.copyWith(
+                          color: colorScheme.onPrimaryContainer,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
-                  width: AppSpacing.sm,
+                  height: AppSpacing.lg,
                 ),
-                Expanded(
-                  child: Text(
-                    l10n.ramadanIftarEntered,
-                    style: textTheme.titleMedium?.copyWith(
-                      color: colorScheme.onPrimaryContainer,
-                      fontWeight: FontWeight.w600,
-                    ),
+              ],
+              Text(
+                title,
+                style: textTheme.titleMedium?.copyWith(
+                  color: colorScheme.onPrimaryContainer,
+                ),
+              ),
+              const SizedBox(
+                height: AppSpacing.sm,
+              ),
+              FittedBox(
+                alignment: AlignmentDirectional.centerStart,
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  durationText,
+                  maxLines: 1,
+                  style: textTheme.displaySmall?.copyWith(
+                    color: colorScheme.onPrimaryContainer,
+                    fontWeight: FontWeight.w700,
+                    fontFeatures: const [
+                      FontFeature.tabularFigures(),
+                    ],
                   ),
                 ),
-              ],
-            ),
-            const SizedBox(
-              height: AppSpacing.lg,
-            ),
-          ],
-          Text(
-            title,
-            style: textTheme.titleMedium?.copyWith(
-              color: colorScheme.onPrimaryContainer,
-            ),
+              ),
+            ],
           ),
-          const SizedBox(
-            height: AppSpacing.sm,
-          ),
-          Text(
-            _formatDuration(
-              state.timeRemaining,
-            ),
-            style: textTheme.displaySmall?.copyWith(
-              color: colorScheme.onPrimaryContainer,
-              fontWeight: FontWeight.w700,
-              fontFeatures: const [
-                FontFeature.tabularFigures(),
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -373,11 +389,20 @@ class _RamadanHero extends StatelessWidget {
   ) {
     final safeDuration = duration.isNegative ? Duration.zero : duration;
 
-    final hours = safeDuration.inHours.toString().padLeft(2, '0');
+    final hours = safeDuration.inHours.toString().padLeft(
+          2,
+          '0',
+        );
 
-    final minutes = (safeDuration.inMinutes % 60).toString().padLeft(2, '0');
+    final minutes = (safeDuration.inMinutes % 60).toString().padLeft(
+          2,
+          '0',
+        );
 
-    final seconds = (safeDuration.inSeconds % 60).toString().padLeft(2, '0');
+    final seconds = (safeDuration.inSeconds % 60).toString().padLeft(
+          2,
+          '0',
+        );
 
     return '$hours:$minutes:$seconds';
   }
@@ -445,7 +470,9 @@ class _DailyTimesCard extends StatelessWidget {
 
     return DateFormat.Hm(
       context.l10n.localeName,
-    ).format(value);
+    ).format(
+      value,
+    );
   }
 }
 
@@ -460,12 +487,18 @@ class _ResponsiveTimeCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scaledBodySize = MediaQuery.textScalerOf(
+      context,
+    ).scale(
+      context.textTheme.bodyMedium?.fontSize ?? 14,
+    );
+
     return LayoutBuilder(
       builder: (
         context,
         constraints,
       ) {
-        if (constraints.maxWidth < 420) {
+        if (constraints.maxWidth < 420 || scaledBodySize >= 20) {
           return Column(
             children: [
               first,
@@ -478,6 +511,7 @@ class _ResponsiveTimeCards extends StatelessWidget {
         }
 
         return Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: first,
@@ -513,18 +547,21 @@ class _TimeItem extends StatelessWidget {
 
     return AppCard(
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 44,
-            height: 44,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: colorScheme.primaryContainer,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(
-              icon,
-              color: colorScheme.onPrimaryContainer,
+          ExcludeSemantics(
+            child: Container(
+              width: 44,
+              height: 44,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: colorScheme.primaryContainer,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(
+                icon,
+                color: colorScheme.onPrimaryContainer,
+              ),
             ),
           ),
           const SizedBox(
@@ -564,39 +601,11 @@ class _OutsideRamadanCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final colorScheme = context.colorScheme;
-    final textTheme = context.textTheme;
 
-    return AppCard(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(
-            Icons.calendar_month_outlined,
-            color: colorScheme.primary,
-            size: 30,
-          ),
-          const SizedBox(
-            height: AppSpacing.md,
-          ),
-          Text(
-            l10n.ramadanOutsideTitle,
-            style: textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          const SizedBox(
-            height: AppSpacing.sm,
-          ),
-          Text(
-            l10n.ramadanOutsideDesc,
-            style: textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onSurfaceVariant,
-              height: 1.45,
-            ),
-          ),
-        ],
-      ),
+    return GuideInfoCard(
+      icon: Icons.calendar_month_outlined,
+      title: l10n.ramadanOutsideTitle,
+      description: l10n.ramadanOutsideDesc,
     );
   }
 }
@@ -618,10 +627,12 @@ class _UnavailableCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(
-            Icons.schedule_outlined,
-            color: colorScheme.primary,
-            size: 30,
+          ExcludeSemantics(
+            child: Icon(
+              Icons.schedule_outlined,
+              color: colorScheme.primary,
+              size: 30,
+            ),
           ),
           const SizedBox(
             height: AppSpacing.md,

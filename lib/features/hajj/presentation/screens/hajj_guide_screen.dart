@@ -6,11 +6,14 @@ import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/routing/app_routes.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../../../../shared/widgets/app_card.dart';
+import '../../../../shared/widgets/guide_content_cards.dart';
 import '../../../../shared/widgets/primary_button.dart';
 import '../../../../shared/widgets/section_header.dart';
 
 class HajjGuideScreen extends StatelessWidget {
-  const HajjGuideScreen({super.key});
+  const HajjGuideScreen({
+    super.key,
+  });
 
   static final Uri _officialSiteUri = Uri.parse(
     'https://hacumre.diyanet.gov.tr',
@@ -26,11 +29,15 @@ class HajjGuideScreen extends StatelessWidget {
       );
 
       if (!launched && context.mounted) {
-        _showLaunchError(context);
+        _showLaunchError(
+          context,
+        );
       }
     } catch (_) {
       if (context.mounted) {
-        _showLaunchError(context);
+        _showLaunchError(
+          context,
+        );
       }
     }
   }
@@ -38,7 +45,9 @@ class HajjGuideScreen extends StatelessWidget {
   void _showLaunchError(
     BuildContext context,
   ) {
-    ScaffoldMessenger.of(context).showSnackBar(
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(
       SnackBar(
         content: Text(
           context.l10n.hajjOfficialLinkError,
@@ -71,37 +80,9 @@ class HajjGuideScreen extends StatelessWidget {
                 AppSpacing.lg,
               ),
               children: [
-                AppCard(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 48,
-                        height: 48,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: colorScheme.primaryContainer,
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        child: Icon(
-                          Icons.mosque_outlined,
-                          color: colorScheme.onPrimaryContainer,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: AppSpacing.md,
-                      ),
-                      Expanded(
-                        child: Text(
-                          l10n.hajjHubIntro,
-                          style: textTheme.bodyLarge?.copyWith(
-                            color: colorScheme.onSurfaceVariant,
-                            height: 1.5,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                GuideInfoCard(
+                  icon: Icons.mosque_outlined,
+                  description: l10n.hajjHubIntro,
                 ),
                 const SizedBox(
                   height: AppSpacing.xl,
@@ -116,115 +97,65 @@ class HajjGuideScreen extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   child: Column(
                     children: [
-                      ListTile(
-                        leading: Icon(
-                          Icons.auto_stories_outlined,
-                          color: colorScheme.primary,
-                        ),
-                        title: Text(
-                          l10n.hajjFundamentalsTitle,
-                        ),
-                        subtitle: Text(
-                          l10n.hajjFundamentalsMenuDesc,
-                        ),
-                        trailing: const Icon(
-                          Icons.chevron_right,
-                        ),
+                      _GuideNavigationTile(
+                        icon: Icons.auto_stories_outlined,
+                        title: l10n.hajjFundamentalsTitle,
+                        subtitle: l10n.hajjFundamentalsMenuDesc,
                         onTap: () => context.push(
                           AppRoutes.hajjFundamentals,
                         ),
                       ),
-                      const Divider(height: 1),
-                      ListTile(
-                        leading: Icon(
-                          Icons.flag_outlined,
-                          color: colorScheme.primary,
-                        ),
-                        title: Text(
-                          l10n.ihramRulesTitle,
-                        ),
-                        subtitle: Text(
-                          l10n.ihramRulesMenuDesc,
-                        ),
-                        trailing: const Icon(
-                          Icons.chevron_right,
-                        ),
+                      const Divider(
+                        height: 1,
+                      ),
+                      _GuideNavigationTile(
+                        icon: Icons.flag_outlined,
+                        title: l10n.ihramRulesTitle,
+                        subtitle: l10n.ihramRulesMenuDesc,
                         onTap: () => context.push(
                           AppRoutes.ihramRules,
                         ),
                       ),
-                      const Divider(height: 1),
-                      ListTile(
-                        leading: Icon(
-                          Icons.compare_arrows_outlined,
-                          color: colorScheme.primary,
-                        ),
-                        title: Text(
-                          l10n.hajjTypesTitle,
-                        ),
-                        subtitle: Text(
-                          l10n.hajjTypesMenuDesc,
-                        ),
-                        trailing: const Icon(
-                          Icons.chevron_right,
-                        ),
+                      const Divider(
+                        height: 1,
+                      ),
+                      _GuideNavigationTile(
+                        icon: Icons.compare_arrows_outlined,
+                        title: l10n.hajjTypesTitle,
+                        subtitle: l10n.hajjTypesMenuDesc,
                         onTap: () => context.push(
                           AppRoutes.hajjTypes,
                         ),
                       ),
-                      const Divider(height: 1),
-                      ListTile(
-                        leading: Icon(
-                          Icons.calendar_month_outlined,
-                          color: colorScheme.primary,
-                        ),
-                        title: Text(
-                          l10n.hajjDaysTitle,
-                        ),
-                        subtitle: Text(
-                          l10n.hajjDaysMenuDesc,
-                        ),
-                        trailing: const Icon(
-                          Icons.chevron_right,
-                        ),
+                      const Divider(
+                        height: 1,
+                      ),
+                      _GuideNavigationTile(
+                        icon: Icons.calendar_month_outlined,
+                        title: l10n.hajjDaysTitle,
+                        subtitle: l10n.hajjDaysMenuDesc,
                         onTap: () => context.push(
                           AppRoutes.hajjDays,
                         ),
                       ),
-                      const Divider(height: 1),
-                      ListTile(
-                        leading: Icon(
-                          Icons.directions_walk_outlined,
-                          color: colorScheme.primary,
-                        ),
-                        title: Text(
-                          l10n.umrahGuideTitle,
-                        ),
-                        subtitle: Text(
-                          l10n.umrahGuideMenuDesc,
-                        ),
-                        trailing: const Icon(
-                          Icons.chevron_right,
-                        ),
+                      const Divider(
+                        height: 1,
+                      ),
+                      _GuideNavigationTile(
+                        icon: Icons.directions_walk_outlined,
+                        title: l10n.umrahGuideTitle,
+                        subtitle: l10n.umrahGuideMenuDesc,
                         onTap: () => context.push(
                           AppRoutes.umrahGuide,
                         ),
                       ),
-                      const Divider(height: 1),
-                      ListTile(
-                        leading: Icon(
-                          Icons.help_outline,
-                          color: colorScheme.primary,
-                        ),
-                        title: Text(
-                          l10n.hajjSpecialCasesTitle,
-                        ),
-                        subtitle: Text(
-                          l10n.hajjSpecialCasesMenuDesc,
-                        ),
-                        trailing: const Icon(
-                          Icons.chevron_right,
-                        ),
+                      const Divider(
+                        height: 1,
+                      ),
+                      _GuideNavigationTile(
+                        icon: Icons.help_outline,
+                        title: l10n.hajjSpecialCasesTitle,
+                        subtitle: l10n.hajjSpecialCasesMenuDesc,
                         onTap: () => context.push(
                           AppRoutes.hajjSpecialCases,
                         ),
@@ -276,6 +207,46 @@ class HajjGuideScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _GuideNavigationTile extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final VoidCallback onTap;
+
+  const _GuideNavigationTile({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = context.colorScheme;
+
+    return ListTile(
+      leading: ExcludeSemantics(
+        child: Icon(
+          icon,
+          color: colorScheme.primary,
+        ),
+      ),
+      title: Text(
+        title,
+      ),
+      subtitle: Text(
+        subtitle,
+      ),
+      trailing: Icon(
+        Directionality.of(context) == TextDirection.rtl
+            ? Icons.chevron_left
+            : Icons.chevron_right,
+      ),
+      onTap: onTap,
     );
   }
 }

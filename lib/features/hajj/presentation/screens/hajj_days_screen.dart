@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
-import '../../../../shared/widgets/app_card.dart';
+import '../../../../shared/widgets/guide_content_cards.dart';
 import '../../../../shared/widgets/section_header.dart';
 import '../../../guidance/presentation/widgets/guidance_step_card.dart';
 
 class HajjDaysScreen extends StatelessWidget {
-  const HajjDaysScreen({super.key});
+  const HajjDaysScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final colorScheme = context.colorScheme;
-    final textTheme = context.textTheme;
 
     return Scaffold(
       appBar: AppBar(
@@ -33,14 +33,9 @@ class HajjDaysScreen extends StatelessWidget {
                 AppSpacing.lg,
               ),
               children: [
-                AppCard(
-                  child: Text(
-                    l10n.hajjDaysIntro,
-                    style: textTheme.bodyLarge?.copyWith(
-                      color: colorScheme.onSurfaceVariant,
-                      height: 1.5,
-                    ),
-                  ),
+                GuideInfoCard(
+                  icon: Icons.calendar_month_outlined,
+                  description: l10n.hajjDaysIntro,
                 ),
                 const SizedBox(
                   height: AppSpacing.xl,
@@ -91,42 +86,10 @@ class HajjDaysScreen extends StatelessWidget {
                 const SizedBox(
                   height: AppSpacing.xl,
                 ),
-                AppCard(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.info_outline,
-                        color: colorScheme.primary,
-                      ),
-                      const SizedBox(
-                        width: AppSpacing.md,
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              l10n.hajjDaysNote,
-                              style: textTheme.bodyMedium?.copyWith(
-                                height: 1.5,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: AppSpacing.sm,
-                            ),
-                            Text(
-                              l10n.hajjUmrahSourceNote,
-                              style: textTheme.bodySmall?.copyWith(
-                                color: colorScheme.onSurfaceVariant,
-                                height: 1.4,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                GuideInfoCard(
+                  icon: Icons.info_outline,
+                  description: l10n.hajjDaysNote,
+                  source: l10n.hajjUmrahSourceNote,
                 ),
                 const SizedBox(
                   height: AppSpacing.xxl,

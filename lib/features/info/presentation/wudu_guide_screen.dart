@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
-import '../../../../shared/widgets/app_card.dart';
+import '../../../../shared/widgets/guide_content_cards.dart';
 import '../../guidance/presentation/widgets/guidance_step_card.dart';
 
 class WuduGuideScreen extends StatelessWidget {
-  const WuduGuideScreen({super.key});
+  const WuduGuideScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final colorScheme = context.colorScheme;
 
     final steps = [
       (
@@ -76,53 +77,52 @@ class WuduGuideScreen extends StatelessWidget {
           l10n.wuduGuideTitle,
         ),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(AppSpacing.lg),
-        children: [
-          AppCard(
-            child: Text(
-              l10n.wuduGuideIntro,
-              style: context.textTheme.bodyLarge?.copyWith(
-                color: colorScheme.onSurfaceVariant,
-                height: 1.5,
-              ),
+      body: SafeArea(
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: 800,
             ),
-          ),
-          const SizedBox(height: AppSpacing.lg),
-          for (var index = 0; index < steps.length; index++) ...[
-            GuidanceStepCard(
-              icon: steps[index].icon,
-              title: steps[index].title,
-              description: steps[index].description,
-              imagePath: steps[index].imagePath,
-            ),
-            if (index != steps.length - 1)
-              const SizedBox(
-                height: AppSpacing.md,
+            child: ListView(
+              padding: const EdgeInsets.all(
+                AppSpacing.lg,
               ),
-          ],
-          const SizedBox(height: AppSpacing.xl),
-          AppCard(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  l10n.wuduGuideSchoolNote,
-                  style: context.textTheme.bodyMedium?.copyWith(
-                    height: 1.5,
-                  ),
+                GuideInfoCard(
+                  icon: Icons.water_drop_outlined,
+                  description: l10n.wuduGuideIntro,
                 ),
-                const SizedBox(height: AppSpacing.sm),
-                Text(
-                  l10n.guidanceSourceNote,
-                  style: context.textTheme.bodySmall?.copyWith(
-                    color: colorScheme.onSurfaceVariant,
+                const SizedBox(
+                  height: AppSpacing.lg,
+                ),
+                for (var index = 0; index < steps.length; index++) ...[
+                  GuidanceStepCard(
+                    icon: steps[index].icon,
+                    title: steps[index].title,
+                    description: steps[index].description,
+                    imagePath: steps[index].imagePath,
                   ),
+                  if (index != steps.length - 1)
+                    const SizedBox(
+                      height: AppSpacing.md,
+                    ),
+                ],
+                const SizedBox(
+                  height: AppSpacing.xl,
+                ),
+                GuideInfoCard(
+                  icon: Icons.info_outline,
+                  description: l10n.wuduGuideSchoolNote,
+                  source: l10n.guidanceSourceNote,
+                ),
+                const SizedBox(
+                  height: AppSpacing.xxl,
                 ),
               ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }
