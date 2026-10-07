@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/menu/presentation/screens/menu_screen.dart';
+import 'package:noor_life/features/menu/presentation/screens/privacy_screen.dart';
 import 'package:noor_life/l10n/generated/app_localizations.dart';
 
 void main() {
@@ -26,13 +26,13 @@ void main() {
             textScale,
           ),
         ),
-        child: const MenuScreen(),
+        child: const PrivacyScreen(),
       ),
     );
   }
 
   testWidgets(
-    'Menu screen renders main groups safely',
+    'privacy screen renders core disclosures',
     (tester) async {
       await tester.pumpWidget(
         buildTestableWidget(),
@@ -42,35 +42,28 @@ void main() {
 
       expect(
         find.text(
-          'Menu',
-        ),
-        findsWidgets,
-      );
-
-      expect(
-        find.text(
-          'App Settings',
+          'Privacy & Legal',
         ),
         findsOneWidget,
       );
 
       expect(
         find.text(
-          'Tools & Information',
+          'Privacy at a glance',
         ),
         findsOneWidget,
       );
 
-      await tester.scrollUntilVisible(
+      expect(
         find.text(
-          'Privacy & Legal',
+          'App data',
         ),
-        300,
+        findsOneWidget,
       );
 
       expect(
         find.text(
-          'Privacy & Legal',
+          'Location',
         ),
         findsOneWidget,
       );
@@ -83,7 +76,7 @@ void main() {
   );
 
   testWidgets(
-    'Menu screen remains responsive with large text',
+    'privacy screen remains safe with large text',
     (tester) async {
       await tester.binding.setSurfaceSize(
         const Size(
@@ -107,15 +100,15 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(
-        tester.takeException(),
-        isNull,
+        find.text(
+          'Privacy at a glance',
+        ),
+        findsOneWidget,
       );
 
       expect(
-        find.text(
-          'App Settings',
-        ),
-        findsOneWidget,
+        tester.takeException(),
+        isNull,
       );
     },
   );

@@ -1463,7 +1463,7 @@ abstract class AppLocalizations {
   /// Menu item
   ///
   /// In en, this message translates to:
-  /// **'Privacy Policy'**
+  /// **'Privacy & Legal'**
   String get menuPrivacy;
 
   /// Menu item
@@ -1664,11 +1664,137 @@ abstract class AppLocalizations {
   /// **'© 2026 IslamFull. All rights reserved.'**
   String get aboutCopyright;
 
-  /// Privacy policy full text
+  /// Legacy privacy policy summary
   ///
   /// In en, this message translates to:
-  /// **'1. Data Privacy and Security\nIslamFull places the highest priority on user privacy. All your worship history, dhikr, Quran reading progress, and bookmarks are stored entirely encrypted on your device\'s local storage (offline).\n\n2. Data Sharing\nYour personal data or usage habits are never transmitted to external servers, shared with third-party companies, or sold.\n\n3. Location Usage\nYour device\'s location is used momentarily to calculate precise prayer times and the Qibla direction. This data is only processed locally during the calculation and is not logged on remote servers.\n\n4. External Links\nModules such as the Hajj Guide may contain external links to official institutions. The privacy policies of these sites are not under our responsibility.\n\nYou can use IslamFull safely and peacefully.'**
+  /// **'IslamFull works without requiring a user account. Feature settings and progress may be stored locally on your device. Device location is accessed when requested for prayer times, Qibla and timezone calculations, and the platform geocoding service may be used to obtain a readable place name. Local notification permissions are used only if you enable reminders. Some preferences are stored using platform-protected secure storage. IslamFull does not sell personal data. External websites and operating-system services are subject to their own privacy practices.'**
   String get privacyPolicyContent;
+
+  /// Privacy introduction title
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy at a glance'**
+  String get privacyIntroTitle;
+
+  /// Privacy introduction description
+  ///
+  /// In en, this message translates to:
+  /// **'IslamFull is designed to work without requiring a user account. This page explains what the current app build accesses, what can remain on your device, and which operating-system or external services may be involved.'**
+  String get privacyIntroDesc;
+
+  /// Privacy data title
+  ///
+  /// In en, this message translates to:
+  /// **'App data'**
+  String get privacyDataTitle;
+
+  /// Privacy data description
+  ///
+  /// In en, this message translates to:
+  /// **'Feature settings and progress may be stored locally on your device. IslamFull does not sell personal data, and the current app build does not require an IslamFull account.'**
+  String get privacyDataDesc;
+
+  /// Privacy location title
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get privacyLocationTitle;
+
+  /// Privacy location description
+  ///
+  /// In en, this message translates to:
+  /// **'When you request device location, IslamFull uses foreground location to calculate prayer times, Qibla direction and the relevant timezone. The app may use the device or platform geocoding service to obtain a readable place name. You can use manual coordinates instead. IslamFull does not request background location.'**
+  String get privacyLocationDesc;
+
+  /// Privacy notifications title
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get privacyNotificationsTitle;
+
+  /// Privacy notifications description
+  ///
+  /// In en, this message translates to:
+  /// **'If you enable reminders, IslamFull schedules local prayer and Daily Verse notifications on your device. Notification permission is controlled by the operating system. On supported Android versions, precise scheduling may also depend on the system\'s exact-alarm access.'**
+  String get privacyNotificationsDesc;
+
+  /// Privacy storage title
+  ///
+  /// In en, this message translates to:
+  /// **'Local storage and security'**
+  String get privacyStorageTitle;
+
+  /// Privacy storage description
+  ///
+  /// In en, this message translates to:
+  /// **'Some preferences and journey state are stored using platform-protected secure storage. Other feature state can be stored in the app\'s local storage. Device security and operating-system backup or restore behavior may affect locally stored information.'**
+  String get privacyStorageDesc;
+
+  /// Privacy external title
+  ///
+  /// In en, this message translates to:
+  /// **'External services and links'**
+  String get privacyExternalTitle;
+
+  /// Privacy external description
+  ///
+  /// In en, this message translates to:
+  /// **'Some features may use operating-system services such as geocoding. Links you choose to open, including official Diyanet pages, leave IslamFull and are governed by the destination service\'s own terms and privacy practices.'**
+  String get privacyExternalDesc;
+
+  /// Privacy retention title
+  ///
+  /// In en, this message translates to:
+  /// **'Retention and deletion'**
+  String get privacyRetentionTitle;
+
+  /// Privacy retention description
+  ///
+  /// In en, this message translates to:
+  /// **'Locally stored app data remains on the device until it is removed by the app, cleared through the operating system, or removed with the application, subject to the device\'s backup and restore behavior. IslamFull currently does not maintain a user account on an IslamFull server.'**
+  String get privacyRetentionDesc;
+
+  /// Privacy rights title
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy requests'**
+  String get privacyRightsTitle;
+
+  /// Privacy rights description
+  ///
+  /// In en, this message translates to:
+  /// **'For questions or requests concerning privacy or personal data, use the developer privacy contact published with IslamFull in the relevant app-store listing and public privacy policy.'**
+  String get privacyRightsDesc;
+
+  /// Privacy religious info title
+  ///
+  /// In en, this message translates to:
+  /// **'Religious and calculation information'**
+  String get privacyReligiousInfoTitle;
+
+  /// Privacy religious info description
+  ///
+  /// In en, this message translates to:
+  /// **'IslamFull provides educational religious content and calculation aids. Prayer times, Qibla, Hijri dates, zakat estimates and guidance can vary according to calculation method, location, device data and jurisprudential context. For matters requiring an individual ruling or official procedure, verify the information with Diyanet or another qualified authority.'**
+  String get privacyReligiousInfoDesc;
+
+  /// Privacy terms title
+  ///
+  /// In en, this message translates to:
+  /// **'Use of the application'**
+  String get privacyTermsTitle;
+
+  /// Privacy terms description
+  ///
+  /// In en, this message translates to:
+  /// **'IslamFull is an informational and personal-use assistant. Calculations and guidance should not be treated as a guarantee, an individual fatwa, medical advice, financial advice or an official administrative decision. You remain responsible for decisions made using the application.'**
+  String get privacyTermsDesc;
+
+  /// Privacy policy last updated date
+  ///
+  /// In en, this message translates to:
+  /// **'Last updated: October 7, 2026'**
+  String get privacyUpdated;
 
   /// Title
   ///

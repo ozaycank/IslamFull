@@ -718,7 +718,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get menuAbout => 'About';
 
   @override
-  String get menuPrivacy => 'Privacy Policy';
+  String get menuPrivacy => 'Privacy & Legal';
 
   @override
   String get menuSources => 'Sources';
@@ -830,7 +830,81 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacyPolicyContent =>
-      '1. Data Privacy and Security\nIslamFull places the highest priority on user privacy. All your worship history, dhikr, Quran reading progress, and bookmarks are stored entirely encrypted on your device\'s local storage (offline).\n\n2. Data Sharing\nYour personal data or usage habits are never transmitted to external servers, shared with third-party companies, or sold.\n\n3. Location Usage\nYour device\'s location is used momentarily to calculate precise prayer times and the Qibla direction. This data is only processed locally during the calculation and is not logged on remote servers.\n\n4. External Links\nModules such as the Hajj Guide may contain external links to official institutions. The privacy policies of these sites are not under our responsibility.\n\nYou can use IslamFull safely and peacefully.';
+      'IslamFull works without requiring a user account. Feature settings and progress may be stored locally on your device. Device location is accessed when requested for prayer times, Qibla and timezone calculations, and the platform geocoding service may be used to obtain a readable place name. Local notification permissions are used only if you enable reminders. Some preferences are stored using platform-protected secure storage. IslamFull does not sell personal data. External websites and operating-system services are subject to their own privacy practices.';
+
+  @override
+  String get privacyIntroTitle => 'Privacy at a glance';
+
+  @override
+  String get privacyIntroDesc =>
+      'IslamFull is designed to work without requiring a user account. This page explains what the current app build accesses, what can remain on your device, and which operating-system or external services may be involved.';
+
+  @override
+  String get privacyDataTitle => 'App data';
+
+  @override
+  String get privacyDataDesc =>
+      'Feature settings and progress may be stored locally on your device. IslamFull does not sell personal data, and the current app build does not require an IslamFull account.';
+
+  @override
+  String get privacyLocationTitle => 'Location';
+
+  @override
+  String get privacyLocationDesc =>
+      'When you request device location, IslamFull uses foreground location to calculate prayer times, Qibla direction and the relevant timezone. The app may use the device or platform geocoding service to obtain a readable place name. You can use manual coordinates instead. IslamFull does not request background location.';
+
+  @override
+  String get privacyNotificationsTitle => 'Notifications';
+
+  @override
+  String get privacyNotificationsDesc =>
+      'If you enable reminders, IslamFull schedules local prayer and Daily Verse notifications on your device. Notification permission is controlled by the operating system. On supported Android versions, precise scheduling may also depend on the system\'s exact-alarm access.';
+
+  @override
+  String get privacyStorageTitle => 'Local storage and security';
+
+  @override
+  String get privacyStorageDesc =>
+      'Some preferences and journey state are stored using platform-protected secure storage. Other feature state can be stored in the app\'s local storage. Device security and operating-system backup or restore behavior may affect locally stored information.';
+
+  @override
+  String get privacyExternalTitle => 'External services and links';
+
+  @override
+  String get privacyExternalDesc =>
+      'Some features may use operating-system services such as geocoding. Links you choose to open, including official Diyanet pages, leave IslamFull and are governed by the destination service\'s own terms and privacy practices.';
+
+  @override
+  String get privacyRetentionTitle => 'Retention and deletion';
+
+  @override
+  String get privacyRetentionDesc =>
+      'Locally stored app data remains on the device until it is removed by the app, cleared through the operating system, or removed with the application, subject to the device\'s backup and restore behavior. IslamFull currently does not maintain a user account on an IslamFull server.';
+
+  @override
+  String get privacyRightsTitle => 'Privacy requests';
+
+  @override
+  String get privacyRightsDesc =>
+      'For questions or requests concerning privacy or personal data, use the developer privacy contact published with IslamFull in the relevant app-store listing and public privacy policy.';
+
+  @override
+  String get privacyReligiousInfoTitle =>
+      'Religious and calculation information';
+
+  @override
+  String get privacyReligiousInfoDesc =>
+      'IslamFull provides educational religious content and calculation aids. Prayer times, Qibla, Hijri dates, zakat estimates and guidance can vary according to calculation method, location, device data and jurisprudential context. For matters requiring an individual ruling or official procedure, verify the information with Diyanet or another qualified authority.';
+
+  @override
+  String get privacyTermsTitle => 'Use of the application';
+
+  @override
+  String get privacyTermsDesc =>
+      'IslamFull is an informational and personal-use assistant. Calculations and guidance should not be treated as a guarantee, an individual fatwa, medical advice, financial advice or an official administrative decision. You remain responsible for decisions made using the application.';
+
+  @override
+  String get privacyUpdated => 'Last updated: October 7, 2026';
 
   @override
   String get preferencesTitle => 'Preferences';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
@@ -9,15 +8,14 @@ import '../../../../shared/widgets/app_card.dart';
 import '../../../../shared/widgets/section_header.dart';
 
 /// Central hub for application settings, personalization, tools,
-/// educational content, and seasonal worship resources.
-class MenuScreen extends ConsumerWidget {
-  const MenuScreen({super.key});
+/// educational content, seasonal worship resources and app information.
+class MenuScreen extends StatelessWidget {
+  const MenuScreen({
+    super.key,
+  });
 
   @override
-  Widget build(
-    BuildContext context,
-    WidgetRef ref,
-  ) {
+  Widget build(BuildContext context) {
     final l10n = context.l10n;
 
     return Scaffold(
@@ -57,7 +55,9 @@ class MenuScreen extends ConsumerWidget {
                           AppRoutes.settings,
                         ),
                       ),
-                      const Divider(height: 1),
+                      const Divider(
+                        height: 1,
+                      ),
                       _MenuTile(
                         icon: Icons.notifications_none,
                         title: l10n.menuNotifications,
@@ -65,7 +65,9 @@ class MenuScreen extends ConsumerWidget {
                           AppRoutes.settings,
                         ),
                       ),
-                      const Divider(height: 1),
+                      const Divider(
+                        height: 1,
+                      ),
                       _MenuTile(
                         icon: Icons.access_time,
                         title: l10n.menuPrayerCalc,
@@ -73,7 +75,9 @@ class MenuScreen extends ConsumerWidget {
                           AppRoutes.settings,
                         ),
                       ),
-                      const Divider(height: 1),
+                      const Divider(
+                        height: 1,
+                      ),
                       _MenuTile(
                         icon: Icons.location_on_outlined,
                         title: l10n.menuLocation,
@@ -101,7 +105,9 @@ class MenuScreen extends ConsumerWidget {
                           AppRoutes.activity,
                         ),
                       ),
-                      const Divider(height: 1),
+                      const Divider(
+                        height: 1,
+                      ),
                       _MenuTile(
                         icon: Icons.tune,
                         title: l10n.menuPreferences,
@@ -129,7 +135,9 @@ class MenuScreen extends ConsumerWidget {
                           AppRoutes.ramadan,
                         ),
                       ),
-                      const Divider(height: 1),
+                      const Divider(
+                        height: 1,
+                      ),
                       _MenuTile(
                         icon: Icons.volunteer_activism_outlined,
                         title: l10n.qurbanTitle,
@@ -137,7 +145,9 @@ class MenuScreen extends ConsumerWidget {
                           AppRoutes.qurban,
                         ),
                       ),
-                      const Divider(height: 1),
+                      const Divider(
+                        height: 1,
+                      ),
                       _MenuTile(
                         icon: Icons.mosque_outlined,
                         title: l10n.menuHajjGuide,
@@ -145,7 +155,9 @@ class MenuScreen extends ConsumerWidget {
                           AppRoutes.hajj,
                         ),
                       ),
-                      const Divider(height: 1),
+                      const Divider(
+                        height: 1,
+                      ),
                       _MenuTile(
                         icon: Icons.auto_awesome_mosaic_outlined,
                         title: l10n.menuIslamicTools,
@@ -153,7 +165,9 @@ class MenuScreen extends ConsumerWidget {
                           AppRoutes.tools,
                         ),
                       ),
-                      const Divider(height: 1),
+                      const Divider(
+                        height: 1,
+                      ),
                       _MenuTile(
                         icon: Icons.menu_book_outlined,
                         title: l10n.menuInfoCenter,
@@ -181,7 +195,9 @@ class MenuScreen extends ConsumerWidget {
                           AppRoutes.about,
                         ),
                       ),
-                      const Divider(height: 1),
+                      const Divider(
+                        height: 1,
+                      ),
                       _MenuTile(
                         icon: Icons.privacy_tip_outlined,
                         title: l10n.menuPrivacy,
@@ -217,10 +233,14 @@ class _MenuTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isRtl = Directionality.of(context) == TextDirection.rtl;
+
     return ListTile(
-      leading: Icon(
-        icon,
-        color: context.colorScheme.primary,
+      leading: ExcludeSemantics(
+        child: Icon(
+          icon,
+          color: context.colorScheme.primary,
+        ),
       ),
       title: Text(
         title,
@@ -228,9 +248,11 @@ class _MenuTile extends StatelessWidget {
           fontWeight: FontWeight.w500,
         ),
       ),
-      trailing: const Icon(
-        Icons.chevron_right,
-        size: 20,
+      trailing: ExcludeSemantics(
+        child: Icon(
+          isRtl ? Icons.chevron_left : Icons.chevron_right,
+          size: 20,
+        ),
       ),
       onTap: onTap,
     );
