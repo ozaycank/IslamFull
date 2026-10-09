@@ -111,17 +111,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i599.GeolocatorDataSource());
     gh.lazySingleton<_i321.FlutterCompassDataSource>(
         () => _i321.FlutterCompassDataSource());
-    gh.lazySingleton<_i260.PrayerLocalDataSource>(
-        () => _i949.PrayerSecureStorageDataSource());
     gh.lazySingleton<_i61.QuranTranslationLocalDataSource>(
         () => _i61.QuranTranslationLocalDataSourceImpl());
-    gh.lazySingleton<_i612.CalculationMethodRepository>(() =>
-        _i699.CalculationMethodRepositoryImpl(
-            gh<_i260.PrayerLocalDataSource>()));
-    gh.lazySingleton<_i930.ActivityLocalDataSource>(
-        () => _i930.ActivityLocalDataSourceImpl());
-    gh.lazySingleton<_i725.ActivityRepository>(() =>
-        _i624.ActivityRepositoryImpl(gh<_i930.ActivityLocalDataSource>()));
+    gh.lazySingleton<_i260.PrayerLocalDataSource>(() =>
+        _i949.PrayerSecureStorageDataSource(gh<_i666.SecureStorageService>()));
+    gh.lazySingleton<_i930.ActivityLocalDataSource>(() =>
+        _i930.ActivityLocalDataSourceImpl(gh<_i666.SecureStorageService>()));
     gh.lazySingleton<_i986.QuranLocalDataSource>(
         () => _i986.QuranLocalDataSourceImpl());
     gh.lazySingleton<_i498.QuranRepository>(
@@ -150,11 +145,16 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i682.QuranTranslationRepository>(() =>
         _i821.QuranTranslationRepositoryImpl(
             gh<_i61.QuranTranslationLocalDataSource>()));
+    gh.lazySingleton<_i612.CalculationMethodRepository>(() =>
+        _i699.CalculationMethodRepositoryImpl(
+            gh<_i260.PrayerLocalDataSource>()));
     gh.lazySingleton<_i1067.LocationService>(() => _i933.LocationServiceImpl(
           gh<_i643.LocationPermissionService>(),
           gh<_i711.LocationGeocodingService>(),
           gh<_i599.GeolocatorDataSource>(),
         ));
+    gh.lazySingleton<_i725.ActivityRepository>(() =>
+        _i624.ActivityRepositoryImpl(gh<_i930.ActivityLocalDataSource>()));
     gh.lazySingleton<_i621.PrayerTimesRepository>(
         () => _i887.PrayerTimesRepositoryImpl(
               gh<_i260.PrayerLocalDataSource>(),

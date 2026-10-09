@@ -67,8 +67,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>IslamFull needs your location to accurately calculate prayer times based on your current timezone.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>IslamFull needs your location to accurately calculate prayer times based on your current timezone.</string>
+<string>IslamFull uses your location while the app is in use to calculate prayer times, determine Qibla direction, and select the correct timezone.</string>
 </dict>
 </plist>

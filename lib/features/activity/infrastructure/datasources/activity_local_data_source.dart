@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../../core/storage/secure_storage_service.dart';
 
 abstract class ActivityLocalDataSource {
   Future<Map<String, dynamic>> loadAllRecords();
@@ -15,11 +16,13 @@ abstract class ActivityLocalDataSource {
   as: ActivityLocalDataSource,
 )
 class ActivityLocalDataSourceImpl implements ActivityLocalDataSource {
-  final FlutterSecureStorage _storage;
-
   static const String _storageKey = 'noorlife_activity_records_v2';
 
-  ActivityLocalDataSourceImpl() : _storage = const FlutterSecureStorage();
+  final SecureStorageService _storage;
+
+  ActivityLocalDataSourceImpl(
+    this._storage,
+  );
 
   @override
   Future<Map<String, dynamic>> loadAllRecords() async {
