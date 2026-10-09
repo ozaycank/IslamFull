@@ -80,8 +80,8 @@
                 <p>
                     Most application settings and personal-use records are
                     stored locally on your device. Some location-related
-                    operations can involve operating-system services or an
-                    external geocoding service as described below.
+                    operations can involve operating-system services as
+                    described below.
                 </p>
 
                 <p>
@@ -93,39 +93,36 @@
         <section class="section section-muted">
             <div class="container narrow">
                 <p class="section-label">
-                    Data
+                    Geocoding
                 </p>
-
+        
                 <h2>
-                    Information stored on your device
+                    Platform geocoding
                 </h2>
-
+        
                 <p>
-                    IslamFull stores certain settings and feature state locally
-                    so that the application can remember your choices between
-                    sessions.
+                    IslamFull may use the geocoding capability provided
+                    by the device or operating-system platform to convert
+                    selected coordinates into a readable city and country
+                    name.
                 </p>
-
+        
                 <p>
-                    Depending on the features you use, locally stored
-                    information may include prayer calculation preferences,
-                    madhab and high-latitude calculation preferences, selected
-                    prayer location, notification preferences, theme and
-                    accessibility-related preferences, New Muslim Journey
-                    progress, Quran reading progress, Quran bookmarks, Quran
-                    reader settings and worship activity records.
+                    The relevant platform provider may process the
+                    geocoding request according to its own privacy
+                    practices.
                 </p>
-
+        
                 <p>
-                    Some of this information is stored using
-                    platform-protected secure storage provided by the operating
-                    system.
+                    If a readable place name cannot be obtained, IslamFull
+                    can continue using the valid coordinates and timezone
+                    information for supported calculations. In that case,
+                    a generic location label may be displayed instead.
                 </p>
-
+        
                 <p>
-                    IslamFull currently does not maintain an IslamFull user
-                    profile or account containing this information on an
-                    IslamFull-operated server.
+                    The current IslamFull release does not implement an
+                    additional direct OpenStreetMap Nominatim fallback.
                 </p>
             </div>
         </section>
@@ -180,7 +177,7 @@
                 </p>
 
                 <h2>
-                    Geocoding and OpenStreetMap Nominatim
+                    Geocoding and OpenStreetMap 
                 </h2>
 
                 <p>
@@ -192,32 +189,11 @@
                 </p>
 
                 <p>
-                    If that geocoding operation fails or does not return usable
-                    information, the current IslamFull release may use the
-                    public Nominatim geocoding service operated by the
-                    OpenStreetMap Foundation.
-                </p>
-
-                <p>
-                    When this fallback is used, the latitude and longitude
-                    required for the reverse-geocoding request are transmitted
-                    to the Nominatim service over HTTPS.
-                </p>
-
-                <p>
                     The OpenStreetMap Foundation may also receive technical
                     request information such as an IP address, application or
                     browser information, operating-system information, request
                     time and service-access information according to its own
                     privacy practices.
-                </p>
-
-                <p>
-                    Nominatim and OpenStreetMap services are operated
-                    independently from IslamFull. Their processing and
-                    retention practices are governed by the OpenStreetMap
-                    Foundation's own terms, privacy policy and service
-                    policies.
                 </p>
 
                 <p>
@@ -233,14 +209,6 @@
                     </a>
                 </p>
 
-                <p>
-                    <a
-                        href="https://operations.osmfoundation.org/policies/nominatim/"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        Nominatim Usage Policy
-                    </a>
-                </p>
             </div>
         </section>
 
@@ -326,11 +294,6 @@
                     IslamFull may rely on operating-system services for
                     permissions, location, geocoding, notifications and secure
                     storage.
-                </p>
-
-                <p>
-                    As described above, OpenStreetMap Foundation's Nominatim
-                    service may be used as a reverse-geocoding fallback.
                 </p>
 
                 <p>

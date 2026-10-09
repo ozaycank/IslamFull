@@ -830,7 +830,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacyPolicyContent =>
-      'IslamFull works without requiring a user account. Feature settings and personal-use records may be stored locally on your device. Device location is accessed when requested for prayer times, Qibla and timezone calculations. A readable place name may be obtained through platform geocoding and, if that does not return usable information, the current app may transmit the selected latitude and longitude over HTTPS to the public OpenStreetMap Foundation Nominatim service. Local notification permissions are used only if you enable reminders. Some preferences and records are stored using platform-protected secure storage. IslamFull does not sell personal data. External services and websites are subject to their own privacy practices.';
+      'IslamFull works without requiring a user account. Feature settings and personal-use records may be stored locally on your device. Device location is accessed when requested for prayer times, Qibla and timezone calculations. The device or operating-system geocoding service may be used to obtain a readable place name. Local notification permissions are used only if you enable reminders. Some preferences and records are stored using platform-protected secure storage. IslamFull does not sell personal data. Operating-system services and external websites are subject to their own privacy practices.';
 
   @override
   String get privacyIntroTitle => 'Privacy at a glance';
@@ -868,7 +868,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacyLocationDesc =>
-      'When you request device location, IslamFull uses foreground location for prayer-time calculation, Qibla direction and timezone selection. Your selected latitude, longitude, city, country and timezone may be stored locally so the app can remember the selected prayer location. You can use manual coordinates instead. IslamFull does not request continuous background location.';
+      'When you request device location, IslamFull uses foreground location for prayer-time calculation, Qibla direction and timezone selection. Your selected latitude, longitude, city, country and timezone may be stored locally so the app can remember the selected prayer location. The device or operating-system geocoding service may be used to obtain a readable place name. You can use manual coordinates instead. IslamFull does not request continuous background location.';
 
   @override
   String get privacyNotificationsTitle => 'Notifications';
@@ -889,7 +889,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacyExternalDesc =>
-      'IslamFull may use operating-system geocoding to obtain a readable place name. If that does not return usable information, the current app may send the selected latitude and longitude over HTTPS to the public Nominatim service operated by the OpenStreetMap Foundation for reverse geocoding. External links you choose to open, including official Diyanet pages, are governed by the destination service\'s own terms and privacy practices.';
+      'IslamFull may use operating-system services such as geocoding to obtain a readable place name. The relevant platform provider may process that request according to its own privacy practices. External links you choose to open, including official Diyanet pages, are governed by the destination service\'s own terms and privacy practices.';
 
   @override
   String get privacyRetentionTitle => 'Retention and deletion';

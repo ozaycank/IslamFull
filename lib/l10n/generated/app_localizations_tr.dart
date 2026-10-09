@@ -836,7 +836,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get privacyPolicyContent =>
-      'IslamFull kullanıcı hesabı gerektirmeden çalışacak şekilde tasarlanmıştır. Özellik ayarları ve kişisel kullanım kayıtları cihazınızda yerel olarak saklanabilir. Namaz vakitleri, kıble ve zaman dilimi hesaplamaları için kullanıcı istediğinde cihaz konumuna erişilir. Okunabilir yer adı platformun coğrafi kodlama hizmetiyle elde edilebilir; bu hizmet kullanılabilir bir sonuç vermezse mevcut uygulama seçilen enlem ve boylamı HTTPS üzerinden OpenStreetMap Foundation tarafından işletilen herkese açık Nominatim hizmetine gönderebilir. Yerel bildirim izinleri yalnızca hatırlatıcıları etkinleştirmeniz halinde kullanılır. Bazı tercihler ve kayıtlar platform tarafından korunan güvenli depolamada tutulur. IslamFull kişisel verileri satmaz. Harici hizmetler ve web siteleri kendi gizlilik uygulamalarına tabidir.';
+      'IslamFull kullanıcı hesabı gerektirmeden çalışacak şekilde tasarlanmıştır. Özellik ayarları ve kişisel kullanım kayıtları cihazınızda yerel olarak saklanabilir. Namaz vakitleri, kıble ve zaman dilimi hesaplamaları için kullanıcı istediğinde cihaz konumuna erişilir. Okunabilir yer adı elde etmek amacıyla cihazın veya işletim sisteminin coğrafi kodlama hizmeti kullanılabilir. Yerel bildirim izinleri yalnızca hatırlatıcıları etkinleştirmeniz halinde kullanılır. Bazı tercihler ve kayıtlar platform tarafından korunan güvenli depolamada tutulur. IslamFull kişisel verileri satmaz. İşletim sistemi hizmetleri ve harici web siteleri kendi gizlilik uygulamalarına tabidir.';
 
   @override
   String get privacyIntroTitle => 'Gizliliğe genel bakış';
@@ -874,7 +874,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get privacyLocationDesc =>
-      'Cihaz konumunu kullanmayı istediğinizde IslamFull; namaz vakti hesaplama, kıble yönü ve zaman dilimi seçimi için ön plan konumunu kullanır. Seçilen namaz konumunun hatırlanabilmesi için enlem, boylam, şehir, ülke ve zaman dilimi bilgileri cihazda yerel olarak saklanabilir. Bunun yerine koordinatları elle girebilirsiniz. IslamFull sürekli arka plan konumu istemez.';
+      'Cihaz konumunu kullanmayı istediğinizde IslamFull; namaz vakti hesaplama, kıble yönü ve zaman dilimi seçimi için ön plan konumunu kullanır. Seçilen namaz konumunun hatırlanabilmesi için enlem, boylam, şehir, ülke ve zaman dilimi bilgileri cihazda yerel olarak saklanabilir. Okunabilir yer adı elde etmek amacıyla cihazın veya işletim sisteminin coğrafi kodlama hizmeti kullanılabilir. Bunun yerine koordinatları elle girebilirsiniz. IslamFull sürekli arka plan konumu istemez.';
 
   @override
   String get privacyNotificationsTitle => 'Bildirimler';
@@ -895,7 +895,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get privacyExternalDesc =>
-      'IslamFull okunabilir yer adı elde etmek için işletim sistemi coğrafi kodlama hizmetini kullanabilir. Bu hizmet kullanılabilir bir sonuç vermezse mevcut uygulama, ters coğrafi kodlama amacıyla seçilen enlem ve boylamı HTTPS üzerinden OpenStreetMap Foundation tarafından işletilen herkese açık Nominatim hizmetine gönderebilir. Diyanet\'in resmî sayfaları dahil olmak üzere açmayı seçtiğiniz harici bağlantılar hedef hizmetin kendi kullanım şartları ve gizlilik uygulamalarına tabidir.';
+      'IslamFull okunabilir yer adı elde etmek amacıyla coğrafi kodlama gibi işletim sistemi hizmetlerini kullanabilir. İlgili platform sağlayıcısı bu isteği kendi gizlilik uygulamalarına göre işleyebilir. Diyanet\'in resmî sayfaları dahil olmak üzere açmayı seçtiğiniz harici bağlantılar hedef hizmetin kendi kullanım şartları ve gizlilik uygulamalarına tabidir.';
 
   @override
   String get privacyRetentionTitle => 'Saklama ve silme';
