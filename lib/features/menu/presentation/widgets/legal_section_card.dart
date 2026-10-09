@@ -7,12 +7,14 @@ class LegalSectionCard extends StatelessWidget {
   final IconData icon;
   final String title;
   final String description;
+  final Widget? footer;
 
   const LegalSectionCard({
     super.key,
     required this.icon,
     required this.title,
     required this.description,
+    this.footer,
   });
 
   @override
@@ -44,7 +46,9 @@ class LegalSectionCard extends StatelessWidget {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: colorScheme.primaryContainer,
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(
+                    14,
+                  ),
                 ),
                 child: Icon(
                   icon,
@@ -76,6 +80,12 @@ class LegalSectionCard extends StatelessWidget {
                     height: 1.55,
                   ),
                 ),
+                if (footer != null) ...[
+                  const SizedBox(
+                    height: AppSpacing.md,
+                  ),
+                  footer!,
+                ],
               ],
             );
 

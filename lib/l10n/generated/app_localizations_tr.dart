@@ -836,7 +836,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get privacyPolicyContent =>
-      'IslamFull kullanıcı hesabı gerektirmeden çalışacak şekilde tasarlanmıştır. Özellik ayarları ve ilerleme bilgileri cihazınızda yerel olarak saklanabilir. Namaz vakitleri, kıble ve zaman dilimi hesaplamaları için kullanıcı istediğinde cihaz konumuna erişilir; okunabilir yer adı elde etmek amacıyla cihazın veya platformun coğrafi kodlama hizmeti kullanılabilir. Yerel bildirim izinleri yalnızca hatırlatıcıları etkinleştirmeniz halinde kullanılır. Bazı tercihler platform tarafından korunan güvenli depolamada tutulur. IslamFull kişisel verileri satmaz. Harici web siteleri ve işletim sistemi hizmetleri kendi gizlilik uygulamalarına tabidir.';
+      'IslamFull kullanıcı hesabı gerektirmeden çalışacak şekilde tasarlanmıştır. Özellik ayarları ve kişisel kullanım kayıtları cihazınızda yerel olarak saklanabilir. Namaz vakitleri, kıble ve zaman dilimi hesaplamaları için kullanıcı istediğinde cihaz konumuna erişilir. Okunabilir yer adı platformun coğrafi kodlama hizmetiyle elde edilebilir; bu hizmet kullanılabilir bir sonuç vermezse mevcut uygulama seçilen enlem ve boylamı HTTPS üzerinden OpenStreetMap Foundation tarafından işletilen herkese açık Nominatim hizmetine gönderebilir. Yerel bildirim izinleri yalnızca hatırlatıcıları etkinleştirmeniz halinde kullanılır. Bazı tercihler ve kayıtlar platform tarafından korunan güvenli depolamada tutulur. IslamFull kişisel verileri satmaz. Harici hizmetler ve web siteleri kendi gizlilik uygulamalarına tabidir.';
 
   @override
   String get privacyIntroTitle => 'Gizliliğe genel bakış';
@@ -846,18 +846,35 @@ class AppLocalizationsTr extends AppLocalizations {
       'IslamFull kullanıcı hesabı gerektirmeden çalışacak şekilde tasarlanmıştır. Bu sayfa mevcut uygulama sürümünün hangi verilere erişebildiğini, hangi bilgilerin cihazınızda kalabildiğini ve hangi işletim sistemi veya harici hizmetlerin devreye girebildiğini açıklar.';
 
   @override
+  String get privacyPublicPolicyTitle => 'Herkese açık gizlilik politikası';
+
+  @override
+  String privacyPublicPolicyDesc(String email) {
+    return 'IslamFull\'un ayrıntılı Gizlilik Politikası IslamFull web sitesinde herkese açık olarak yayımlanır. Gizlilik iletişimi: $email';
+  }
+
+  @override
+  String get privacyOpenPolicy => 'Gizlilik Politikasını Aç';
+
+  @override
+  String get privacyEmailContact => 'Gizlilik iletişimine e-posta gönder';
+
+  @override
+  String get privacyLinkOpenFailed => 'Bağlantı açılamadı.';
+
+  @override
   String get privacyDataTitle => 'Uygulama verileri';
 
   @override
   String get privacyDataDesc =>
-      'Özellik ayarları ve ilerleme bilgileri cihazınızda yerel olarak saklanabilir. IslamFull kişisel verileri satmaz ve mevcut uygulama sürümü bir IslamFull kullanıcı hesabı gerektirmez.';
+      'Özellik ayarları ve kişisel kullanım kayıtları cihazınızda yerel olarak saklanabilir. Bunlar namaz ayarları ve seçilen konum, bildirim ve görünüm tercihleri, Yeni Müslüman Yolculuğu ilerlemesi, Kur\'an okuma ilerlemesi ve yer imleri, okuyucu ayarları ve ibadet kayıtlarını içerebilir. IslamFull kişisel verileri satmaz ve mevcut uygulama bir IslamFull kullanıcı hesabı gerektirmez.';
 
   @override
   String get privacyLocationTitle => 'Konum';
 
   @override
   String get privacyLocationDesc =>
-      'Cihaz konumunu kullanmayı istediğinizde IslamFull; namaz vakitlerini, kıble yönünü ve ilgili zaman dilimini hesaplamak için ön plan konumunu kullanır. Okunabilir yer adı elde etmek amacıyla cihazın veya platformun coğrafi kodlama hizmeti kullanılabilir. Bunun yerine koordinatları elle de girebilirsiniz. IslamFull arka plan konumu istemez.';
+      'Cihaz konumunu kullanmayı istediğinizde IslamFull; namaz vakti hesaplama, kıble yönü ve zaman dilimi seçimi için ön plan konumunu kullanır. Seçilen namaz konumunun hatırlanabilmesi için enlem, boylam, şehir, ülke ve zaman dilimi bilgileri cihazda yerel olarak saklanabilir. Bunun yerine koordinatları elle girebilirsiniz. IslamFull sürekli arka plan konumu istemez.';
 
   @override
   String get privacyNotificationsTitle => 'Bildirimler';
@@ -871,28 +888,28 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get privacyStorageDesc =>
-      'Bazı tercihler ve yolculuk durumu, platform tarafından korunan güvenli depolama kullanılarak saklanır. Diğer özellik durumları uygulamanın yerel depolama alanında tutulabilir. Cihaz güvenliği ile işletim sisteminin yedekleme ve geri yükleme davranışı yerel verileri etkileyebilir.';
+      'Bazı tercihler ve kayıtlar platform tarafından korunan güvenli depolama kullanılarak saklanır. Diğer özellik durumları da uygulamanın yerel depolama alanında kalabilir. Cihaz güvenliği ile işletim sisteminin yedekleme veya geri yükleme davranışı yerel verileri etkileyebilir.';
 
   @override
   String get privacyExternalTitle => 'Harici hizmetler ve bağlantılar';
 
   @override
   String get privacyExternalDesc =>
-      'Bazı özellikler coğrafi kodlama gibi işletim sistemi hizmetlerini kullanabilir. Diyanet\'in resmî sayfaları dahil olmak üzere açmayı seçtiğiniz harici bağlantılar IslamFull\'dan ayrılır ve hedef hizmetin kendi kullanım ve gizlilik uygulamalarına tabidir.';
+      'IslamFull okunabilir yer adı elde etmek için işletim sistemi coğrafi kodlama hizmetini kullanabilir. Bu hizmet kullanılabilir bir sonuç vermezse mevcut uygulama, ters coğrafi kodlama amacıyla seçilen enlem ve boylamı HTTPS üzerinden OpenStreetMap Foundation tarafından işletilen herkese açık Nominatim hizmetine gönderebilir. Diyanet\'in resmî sayfaları dahil olmak üzere açmayı seçtiğiniz harici bağlantılar hedef hizmetin kendi kullanım şartları ve gizlilik uygulamalarına tabidir.';
 
   @override
   String get privacyRetentionTitle => 'Saklama ve silme';
 
   @override
   String get privacyRetentionDesc =>
-      'Yerel uygulama verileri; uygulama tarafından kaldırılana, işletim sistemi üzerinden temizlenene veya uygulama kaldırılana kadar cihazda kalabilir. Cihazın yedekleme ve geri yükleme davranışı bu süreci etkileyebilir. IslamFull şu anda bir IslamFull sunucusunda kullanıcı hesabı tutmamaktadır.';
+      'Yerel uygulama verileri ilgili özellik sıfırlanana, desteklenen yerlerde uygulama depolaması temizlenene veya uygulama kaldırılana kadar kalabilir. İşletim sisteminin yedekleme, geri yükleme, güvenli depolama veya anahtar zinciri davranışı bazı bilgilerin kalmasına ya da yeniden yüklenmesine neden olabilir. IslamFull şu anda bir IslamFull kullanıcı hesabı veritabanı tutmamaktadır.';
 
   @override
   String get privacyRightsTitle => 'Gizlilik talepleri';
 
   @override
   String get privacyRightsDesc =>
-      'Gizlilik veya kişisel verilerle ilgili soru ve talepleriniz için IslamFull\'un ilgili uygulama mağazası kaydında ve yayımlanan gizlilik politikasında belirtilen geliştirici gizlilik iletişim kanalını kullanabilirsiniz.';
+      'IslamFull ile ilgili gizlilik ve kişisel veri soruları islamfull.app@gmail.com adresine gönderilebilir. Ayrıntılı herkese açık Gizlilik Politikasına da bu ekrandan ulaşabilirsiniz.';
 
   @override
   String get privacyReligiousInfoTitle => 'Dinî bilgiler ve hesaplamalar';
@@ -909,7 +926,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'IslamFull bilgilendirme ve kişisel kullanım amaçlı bir yardımcıdır. Hesaplamalar ve rehber içerikleri garanti, kişiye özel fetva, tıbbî tavsiye, finansal tavsiye veya resmî idari karar olarak değerlendirilmemelidir. Uygulamadan yararlanılarak alınan kararların sorumluluğu kullanıcıya aittir.';
 
   @override
-  String get privacyUpdated => 'Son güncelleme: 7 Ekim 2026';
+  String get privacyUpdated => 'Son güncelleme: 9 Ekim 2026';
 
   @override
   String get preferencesTitle => 'Tercihler';

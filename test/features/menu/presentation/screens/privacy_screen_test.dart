@@ -32,7 +32,7 @@ void main() {
   }
 
   testWidgets(
-    'privacy screen renders core disclosures',
+    'privacy screen renders core disclosures and public policy access',
     (tester) async {
       await tester.pumpWidget(
         buildTestableWidget(),
@@ -56,14 +56,28 @@ void main() {
 
       expect(
         find.text(
-          'App data',
+          'Public privacy policy',
         ),
         findsOneWidget,
       );
 
       expect(
         find.text(
-          'Location',
+          'Open Privacy Policy',
+        ),
+        findsOneWidget,
+      );
+
+      expect(
+        find.text(
+          'Email privacy contact',
+        ),
+        findsOneWidget,
+      );
+
+      expect(
+        find.textContaining(
+          'islamfull.app@gmail.com',
         ),
         findsOneWidget,
       );

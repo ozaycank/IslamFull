@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../core/constants/legal_links.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../widgets/legal_section_card.dart';
@@ -8,6 +10,36 @@ class PrivacyScreen extends StatelessWidget {
   const PrivacyScreen({
     super.key,
   });
+
+  Future<void> _openUri(
+    BuildContext context,
+    Uri uri,
+    String errorMessage,
+  ) async {
+    try {
+      final launched = await launchUrl(
+        uri,
+      );
+
+      if (launched) {
+        return;
+      }
+    } catch (_) {
+      // The user receives a localized message below.
+    }
+
+    if (!context.mounted) {
+      return;
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          errorMessage,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +69,48 @@ class PrivacyScreen extends StatelessWidget {
                   icon: Icons.shield_outlined,
                   title: l10n.privacyIntroTitle,
                   description: l10n.privacyIntroDesc,
+                ),
+                const SizedBox(
+                  height: AppSpacing.md,
+                ),
+                LegalSectionCard(
+                  icon: Icons.public_outlined,
+                  title: l10n.privacyPublicPolicyTitle,
+                  description: l10n.privacyPublicPolicyDesc(
+                    LegalLinks.privacyContactEmail,
+                  ),
+                  footer: Wrap(
+                    spacing: AppSpacing.sm,
+                    runSpacing: AppSpacing.sm,
+                    children: [
+                      FilledButton.icon(
+                        onPressed: () => _openUri(
+                          context,
+                          LegalLinks.privacyPolicyUri,
+                          l10n.privacyLinkOpenFailed,
+                        ),
+                        icon: const Icon(
+                          Icons.open_in_new,
+                        ),
+                        label: Text(
+                          l10n.privacyOpenPolicy,
+                        ),
+                      ),
+                      OutlinedButton.icon(
+                        onPressed: () => _openUri(
+                          context,
+                          LegalLinks.privacyContactUri,
+                          l10n.privacyLinkOpenFailed,
+                        ),
+                        icon: const Icon(
+                          Icons.mail_outline,
+                        ),
+                        label: Text(
+                          l10n.privacyEmailContact,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   height: AppSpacing.md,

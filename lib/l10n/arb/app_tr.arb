@@ -261,31 +261,44 @@
   "comingSoonAlert": "Bu özellik bir sonraki fazda eklenecektir.","aboutAppDescription": "IslamFull, günlük ibadetlerinizi takip etmeniz, Kur'an okumanız ve manevi hedeflerinize ulaşmanız için geliştirilmiş yerel ve gizlilik odaklı bir İslami yaşam asistanıdır.",
   "aboutVersion": "Sürüm 1.0.0",
   "aboutCopyright": "© 2026 IslamFull. Tüm hakları saklıdır.",
-  "privacyPolicyContent": "IslamFull kullanıcı hesabı gerektirmeden çalışacak şekilde tasarlanmıştır. Özellik ayarları ve ilerleme bilgileri cihazınızda yerel olarak saklanabilir. Namaz vakitleri, kıble ve zaman dilimi hesaplamaları için kullanıcı istediğinde cihaz konumuna erişilir; okunabilir yer adı elde etmek amacıyla cihazın veya platformun coğrafi kodlama hizmeti kullanılabilir. Yerel bildirim izinleri yalnızca hatırlatıcıları etkinleştirmeniz halinde kullanılır. Bazı tercihler platform tarafından korunan güvenli depolamada tutulur. IslamFull kişisel verileri satmaz. Harici web siteleri ve işletim sistemi hizmetleri kendi gizlilik uygulamalarına tabidir.",
+  "privacyPolicyContent": "IslamFull kullanıcı hesabı gerektirmeden çalışacak şekilde tasarlanmıştır. Özellik ayarları ve kişisel kullanım kayıtları cihazınızda yerel olarak saklanabilir. Namaz vakitleri, kıble ve zaman dilimi hesaplamaları için kullanıcı istediğinde cihaz konumuna erişilir. Okunabilir yer adı platformun coğrafi kodlama hizmetiyle elde edilebilir; bu hizmet kullanılabilir bir sonuç vermezse mevcut uygulama seçilen enlem ve boylamı HTTPS üzerinden OpenStreetMap Foundation tarafından işletilen herkese açık Nominatim hizmetine gönderebilir. Yerel bildirim izinleri yalnızca hatırlatıcıları etkinleştirmeniz halinde kullanılır. Bazı tercihler ve kayıtlar platform tarafından korunan güvenli depolamada tutulur. IslamFull kişisel verileri satmaz. Harici hizmetler ve web siteleri kendi gizlilik uygulamalarına tabidir.",
 
 "privacyIntroTitle": "Gizliliğe genel bakış",
 "privacyIntroDesc": "IslamFull kullanıcı hesabı gerektirmeden çalışacak şekilde tasarlanmıştır. Bu sayfa mevcut uygulama sürümünün hangi verilere erişebildiğini, hangi bilgilerin cihazınızda kalabildiğini ve hangi işletim sistemi veya harici hizmetlerin devreye girebildiğini açıklar.",
 
+"privacyPublicPolicyTitle": "Herkese açık gizlilik politikası",
+"privacyPublicPolicyDesc": "IslamFull'un ayrıntılı Gizlilik Politikası IslamFull web sitesinde herkese açık olarak yayımlanır. Gizlilik iletişimi: {email}",
+"@privacyPublicPolicyDesc": {
+  "placeholders": {
+    "email": {
+      "type": "String"
+    }
+  }
+},
+"privacyOpenPolicy": "Gizlilik Politikasını Aç",
+"privacyEmailContact": "Gizlilik iletişimine e-posta gönder",
+"privacyLinkOpenFailed": "Bağlantı açılamadı.",
+
 "privacyDataTitle": "Uygulama verileri",
-"privacyDataDesc": "Özellik ayarları ve ilerleme bilgileri cihazınızda yerel olarak saklanabilir. IslamFull kişisel verileri satmaz ve mevcut uygulama sürümü bir IslamFull kullanıcı hesabı gerektirmez.",
+"privacyDataDesc": "Özellik ayarları ve kişisel kullanım kayıtları cihazınızda yerel olarak saklanabilir. Bunlar namaz ayarları ve seçilen konum, bildirim ve görünüm tercihleri, Yeni Müslüman Yolculuğu ilerlemesi, Kur'an okuma ilerlemesi ve yer imleri, okuyucu ayarları ve ibadet kayıtlarını içerebilir. IslamFull kişisel verileri satmaz ve mevcut uygulama bir IslamFull kullanıcı hesabı gerektirmez.",
 
 "privacyLocationTitle": "Konum",
-"privacyLocationDesc": "Cihaz konumunu kullanmayı istediğinizde IslamFull; namaz vakitlerini, kıble yönünü ve ilgili zaman dilimini hesaplamak için ön plan konumunu kullanır. Okunabilir yer adı elde etmek amacıyla cihazın veya platformun coğrafi kodlama hizmeti kullanılabilir. Bunun yerine koordinatları elle de girebilirsiniz. IslamFull arka plan konumu istemez.",
+"privacyLocationDesc": "Cihaz konumunu kullanmayı istediğinizde IslamFull; namaz vakti hesaplama, kıble yönü ve zaman dilimi seçimi için ön plan konumunu kullanır. Seçilen namaz konumunun hatırlanabilmesi için enlem, boylam, şehir, ülke ve zaman dilimi bilgileri cihazda yerel olarak saklanabilir. Bunun yerine koordinatları elle girebilirsiniz. IslamFull sürekli arka plan konumu istemez.",
 
 "privacyNotificationsTitle": "Bildirimler",
 "privacyNotificationsDesc": "Hatırlatıcıları etkinleştirirseniz IslamFull namaz ve Günün Ayeti bildirimlerini cihazınızda yerel olarak zamanlar. Bildirim izni işletim sistemi tarafından yönetilir. Desteklenen Android sürümlerinde hassas zamanlama ayrıca sistemin tam alarm erişimine bağlı olabilir.",
 
 "privacyStorageTitle": "Yerel depolama ve güvenlik",
-"privacyStorageDesc": "Bazı tercihler ve yolculuk durumu, platform tarafından korunan güvenli depolama kullanılarak saklanır. Diğer özellik durumları uygulamanın yerel depolama alanında tutulabilir. Cihaz güvenliği ile işletim sisteminin yedekleme ve geri yükleme davranışı yerel verileri etkileyebilir.",
+"privacyStorageDesc": "Bazı tercihler ve kayıtlar platform tarafından korunan güvenli depolama kullanılarak saklanır. Diğer özellik durumları da uygulamanın yerel depolama alanında kalabilir. Cihaz güvenliği ile işletim sisteminin yedekleme veya geri yükleme davranışı yerel verileri etkileyebilir.",
 
 "privacyExternalTitle": "Harici hizmetler ve bağlantılar",
-"privacyExternalDesc": "Bazı özellikler coğrafi kodlama gibi işletim sistemi hizmetlerini kullanabilir. Diyanet'in resmî sayfaları dahil olmak üzere açmayı seçtiğiniz harici bağlantılar IslamFull'dan ayrılır ve hedef hizmetin kendi kullanım ve gizlilik uygulamalarına tabidir.",
+"privacyExternalDesc": "IslamFull okunabilir yer adı elde etmek için işletim sistemi coğrafi kodlama hizmetini kullanabilir. Bu hizmet kullanılabilir bir sonuç vermezse mevcut uygulama, ters coğrafi kodlama amacıyla seçilen enlem ve boylamı HTTPS üzerinden OpenStreetMap Foundation tarafından işletilen herkese açık Nominatim hizmetine gönderebilir. Diyanet'in resmî sayfaları dahil olmak üzere açmayı seçtiğiniz harici bağlantılar hedef hizmetin kendi kullanım şartları ve gizlilik uygulamalarına tabidir.",
 
 "privacyRetentionTitle": "Saklama ve silme",
-"privacyRetentionDesc": "Yerel uygulama verileri; uygulama tarafından kaldırılana, işletim sistemi üzerinden temizlenene veya uygulama kaldırılana kadar cihazda kalabilir. Cihazın yedekleme ve geri yükleme davranışı bu süreci etkileyebilir. IslamFull şu anda bir IslamFull sunucusunda kullanıcı hesabı tutmamaktadır.",
+"privacyRetentionDesc": "Yerel uygulama verileri ilgili özellik sıfırlanana, desteklenen yerlerde uygulama depolaması temizlenene veya uygulama kaldırılana kadar kalabilir. İşletim sisteminin yedekleme, geri yükleme, güvenli depolama veya anahtar zinciri davranışı bazı bilgilerin kalmasına ya da yeniden yüklenmesine neden olabilir. IslamFull şu anda bir IslamFull kullanıcı hesabı veritabanı tutmamaktadır.",
 
 "privacyRightsTitle": "Gizlilik talepleri",
-"privacyRightsDesc": "Gizlilik veya kişisel verilerle ilgili soru ve talepleriniz için IslamFull'un ilgili uygulama mağazası kaydında ve yayımlanan gizlilik politikasında belirtilen geliştirici gizlilik iletişim kanalını kullanabilirsiniz.",
+"privacyRightsDesc": "IslamFull ile ilgili gizlilik ve kişisel veri soruları islamfull.app@gmail.com adresine gönderilebilir. Ayrıntılı herkese açık Gizlilik Politikasına da bu ekrandan ulaşabilirsiniz.",
 
 "privacyReligiousInfoTitle": "Dinî bilgiler ve hesaplamalar",
 "privacyReligiousInfoDesc": "IslamFull eğitim amaçlı dinî içerikler ve hesaplama yardımcıları sunar. Namaz vakitleri, kıble, hicrî tarihler, zekât tahminleri ve rehber içerikleri; hesaplama yöntemi, konum, cihaz verileri ve fıkhî bağlama göre farklılık gösterebilir. Kişiye özel hüküm veya resmî işlem gerektiren konularda bilgiyi Diyanet veya yetkin başka bir merci ile doğrulayın.",
@@ -293,7 +306,7 @@
 "privacyTermsTitle": "Uygulamanın kullanımı",
 "privacyTermsDesc": "IslamFull bilgilendirme ve kişisel kullanım amaçlı bir yardımcıdır. Hesaplamalar ve rehber içerikleri garanti, kişiye özel fetva, tıbbî tavsiye, finansal tavsiye veya resmî idari karar olarak değerlendirilmemelidir. Uygulamadan yararlanılarak alınan kararların sorumluluğu kullanıcıya aittir.",
 
-"privacyUpdated": "Son güncelleme: 7 Ekim 2026",
+"privacyUpdated": "Son güncelleme: 9 Ekim 2026",
 "preferencesTitle": "Tercihler",
 "prefHapticFeedback": "Dokunmatik Titreşim",
   "prefHapticDesc": "Zikirmatik ve butonlarda dokunmatik titreşim",
