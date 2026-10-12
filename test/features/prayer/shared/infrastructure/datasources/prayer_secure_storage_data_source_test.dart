@@ -10,16 +10,18 @@ void main() {
   late MockSecureStorageService storage;
   late PrayerSecureStorageDataSource dataSource;
 
-  setUp(() {
-    storage = MockSecureStorageService();
+  setUp(
+    () {
+      storage = MockSecureStorageService();
 
-    dataSource = PrayerSecureStorageDataSource(
-      storage,
-    );
-  });
+      dataSource = PrayerSecureStorageDataSource(
+        storage,
+      );
+    },
+  );
 
   test(
-    'stores Hanafi selection as a technical double-shadow rule',
+    'stores double-shadow Asr convention directly',
     () async {
       when(
         () => storage.write(
@@ -38,8 +40,8 @@ void main() {
         (_) async {},
       );
 
-      await dataSource.saveSelectedMadhab(
-        'hanafi',
+      await dataSource.saveSelectedAsrConvention(
+        'double_shadow',
       );
 
       verify(
@@ -50,19 +52,11 @@ void main() {
       ).called(
         1,
       );
-
-      verify(
-        () => storage.delete(
-          key: 'prayer_madhab',
-        ),
-      ).called(
-        1,
-      );
     },
   );
 
   test(
-    'stores standard selection as a technical single-shadow rule',
+    'stores single-shadow Asr convention directly',
     () async {
       when(
         () => storage.write(
@@ -81,8 +75,8 @@ void main() {
         (_) async {},
       );
 
-      await dataSource.saveSelectedMadhab(
-        'shafi_hanbali_maliki',
+      await dataSource.saveSelectedAsrConvention(
+        'single_shadow',
       );
 
       verify(
@@ -97,10 +91,10 @@ void main() {
   );
 
   test(
-    'rejects unsupported madhab identifier',
+    'rejects unsupported Asr convention identifier',
     () async {
       expect(
-        () => dataSource.saveSelectedMadhab(
+        () => dataSource.saveSelectedAsrConvention(
           'unsupported',
         ),
         throwsArgumentError,
@@ -120,7 +114,7 @@ void main() {
   );
 
   test(
-    'maps persisted double-shadow rule back to Hanafi domain id',
+    'returns persisted double-shadow convention directly',
     () async {
       when(
         () => storage.read(
@@ -130,11 +124,11 @@ void main() {
         (_) async => 'double_shadow',
       );
 
-      final result = await dataSource.getSelectedMadhabId();
+      final result = await dataSource.getSelectedAsrConventionId();
 
       expect(
         result,
-        'hanafi',
+        'double_shadow',
       );
 
       verifyNever(
@@ -146,7 +140,7 @@ void main() {
   );
 
   test(
-    'migrates legacy madhab storage into technical Asr rule',
+    'migrates legacy Hanafi storage to double-shadow convention',
     () async {
       when(
         () => storage.read(
@@ -181,11 +175,11 @@ void main() {
         (_) async {},
       );
 
-      final result = await dataSource.getSelectedMadhabId();
+      final result = await dataSource.getSelectedAsrConventionId();
 
       expect(
         result,
-        'hanafi',
+        'double_shadow',
       );
 
       verify(
@@ -208,7 +202,7 @@ void main() {
   );
 
   test(
-    'removes an invalid technical rule when no legacy value exists',
+    'removes invalid convention when no legacy value exists',
     () async {
       when(
         () => storage.read(
@@ -234,7 +228,7 @@ void main() {
         (_) async => null,
       );
 
-      final result = await dataSource.getSelectedMadhabId();
+      final result = await dataSource.getSelectedAsrConventionId();
 
       expect(
         result,

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/storage/secure_storage_service.dart';
-import '../../../calculation_methods/domain/entities/madhab.dart';
+import '../../../calculation_methods/domain/entities/asr_convention.dart';
 import '../../../calculation_methods/domain/entities/prayer_calculation_method.dart';
 import '../../../location/domain/entities/prayer_location.dart';
 import '../../../location/infrastructure/models/prayer_location_model.dart';
@@ -16,21 +16,13 @@ import 'prayer_local_data_source.dart';
 class PrayerSecureStorageDataSource implements PrayerLocalDataSource {
   static const String _calculationMethodKey = 'prayer_calc_method';
 
-  static const String _asrShadowRuleKey = 'prayer_asr_shadow_rule_v1';
+  static const String _asrConventionKey = 'prayer_asr_shadow_rule_v1';
 
   static const String _legacyMadhabKey = 'prayer_madhab';
 
   static const String _highLatitudeStrategyKey = 'high_lat_strategy';
 
   static const String _prayerLocationKey = 'prayer_location';
-
-  static const String _standardMadhabId = 'shafi_hanbali_maliki';
-
-  static const String _hanafiMadhabId = 'hanafi';
-
-  static const String _singleShadowRule = 'single_shadow';
-
-  static const String _doubleShadowRule = 'double_shadow';
 
   final SecureStorageService _storage;
 
@@ -87,38 +79,28 @@ class PrayerSecureStorageDataSource implements PrayerLocalDataSource {
   }
 
   @override
-  Future<List<Madhab>> getSupportedMadhabs() async {
-    return const [
-      Madhab(
-        id: _standardMadhabId,
-        name: _standardMadhabId,
-      ),
-      Madhab(
-        id: _hanafiMadhabId,
-        name: _hanafiMadhabId,
-      ),
-    ];
+  Future<List<AsrConvention>> getSupportedAsrConventions() async {
+    return AsrConvention.values;
   }
 
   @override
-  Future<void> saveSelectedMadhab(
-    String madhabId,
+  Future<void> saveSelectedAsrConvention(
+    String conventionId,
   ) async {
-    final asrRule = _asrRuleForMadhabId(
-      madhabId,
-    );
-
-    if (asrRule == null) {
+    if (AsrConvention.fromId(
+          conventionId,
+        ) ==
+        null) {
       throw ArgumentError.value(
-        madhabId,
-        'madhabId',
+        conventionId,
+        'conventionId',
         'Unsupported Asr calculation convention.',
       );
     }
 
     await _storage.write(
-      key: _asrShadowRuleKey,
-      value: asrRule,
+      key: _asrConventionKey,
+      value: conventionId,
     );
 
     await _storage.delete(
@@ -127,22 +109,21 @@ class PrayerSecureStorageDataSource implements PrayerLocalDataSource {
   }
 
   @override
-  Future<String?> getSelectedMadhabId() async {
-    final persistedRule = await _storage.read(
-      key: _asrShadowRuleKey,
+  Future<String?> getSelectedAsrConventionId() async {
+    final persistedConventionId = await _storage.read(
+      key: _asrConventionKey,
     );
 
-    final persistedMadhabId = _madhabIdForAsrRule(
-      persistedRule,
-    );
-
-    if (persistedMadhabId != null) {
-      return persistedMadhabId;
+    if (AsrConvention.fromId(
+          persistedConventionId,
+        ) !=
+        null) {
+      return persistedConventionId;
     }
 
-    if (persistedRule != null) {
+    if (persistedConventionId != null) {
       await _storage.delete(
-        key: _asrShadowRuleKey,
+        key: _asrConventionKey,
       );
     }
 
@@ -154,11 +135,11 @@ class PrayerSecureStorageDataSource implements PrayerLocalDataSource {
       return null;
     }
 
-    final migratedRule = _asrRuleForMadhabId(
+    final migratedConventionId = _legacyMadhabToConventionId(
       legacyMadhabId,
     );
 
-    if (migratedRule == null) {
+    if (migratedConventionId == null) {
       await _storage.delete(
         key: _legacyMadhabKey,
       );
@@ -167,17 +148,15 @@ class PrayerSecureStorageDataSource implements PrayerLocalDataSource {
     }
 
     await _storage.write(
-      key: _asrShadowRuleKey,
-      value: migratedRule,
+      key: _asrConventionKey,
+      value: migratedConventionId,
     );
 
     await _storage.delete(
       key: _legacyMadhabKey,
     );
 
-    return _madhabIdForAsrRule(
-      migratedRule,
-    );
+    return migratedConventionId;
   }
 
   @override
@@ -254,30 +233,15 @@ class PrayerSecureStorageDataSource implements PrayerLocalDataSource {
     }
   }
 
-  static String? _asrRuleForMadhabId(
-    String madhabId,
+  static String? _legacyMadhabToConventionId(
+    String legacyMadhabId,
   ) {
-    switch (madhabId) {
-      case _standardMadhabId:
-        return _singleShadowRule;
+    switch (legacyMadhabId) {
+      case 'shafi_hanbali_maliki':
+        return AsrConvention.singleShadowId;
 
-      case _hanafiMadhabId:
-        return _doubleShadowRule;
-
-      default:
-        return null;
-    }
-  }
-
-  static String? _madhabIdForAsrRule(
-    String? asrRule,
-  ) {
-    switch (asrRule) {
-      case _singleShadowRule:
-        return _standardMadhabId;
-
-      case _doubleShadowRule:
-        return _hanafiMadhabId;
+      case 'hanafi':
+        return AsrConvention.doubleShadowId;
 
       default:
         return null;

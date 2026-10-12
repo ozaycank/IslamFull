@@ -86,7 +86,7 @@ class PrayerCalculator {
             );
       }
 
-      final asrShadowFactor = config.madhab.id == 'hanafi' ? 2.0 : 1.0;
+      final asrShadowFactor = config.asrConvention.shadowFactor;
       final latDeclDiff = (config.latitude - decl).abs();
       final asrAngle = AstronomicalMath.rad2deg(
         math.atan(

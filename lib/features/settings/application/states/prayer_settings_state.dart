@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import '../../../prayer/calculation_methods/domain/entities/madhab.dart';
+
+import '../../../prayer/calculation_methods/domain/entities/asr_convention.dart';
 import '../../../prayer/calculation_methods/domain/entities/prayer_calculation_method.dart';
 import '../../../prayer/prayer_times/domain/calculators/high_latitude_strategy.dart';
 import '../../../prayer/shared/domain/errors/prayer_failure.dart';
@@ -9,7 +10,9 @@ class PrayerSettingsState extends Equatable {
   final bool isSaving;
   final PrayerFailure? failure;
   final List<PrayerCalculationMethod> availableMethods;
-  final List<Madhab> availableMadhabs;
+
+  final List<AsrConvention> availableMadhabs;
+
   final String? selectedMethodId;
   final String? selectedMadhabId;
   final HighLatitudeStrategy? selectedHighLatStrategy;
@@ -30,7 +33,7 @@ class PrayerSettingsState extends Equatable {
     bool? isSaving,
     PrayerFailure? Function()? failure,
     List<PrayerCalculationMethod>? availableMethods,
-    List<Madhab>? availableMadhabs,
+    List<AsrConvention>? availableMadhabs,
     String? selectedMethodId,
     String? selectedMadhabId,
     HighLatitudeStrategy? selectedHighLatStrategy,

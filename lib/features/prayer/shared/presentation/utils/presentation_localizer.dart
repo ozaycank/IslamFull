@@ -199,13 +199,19 @@ class PresentationLocalizer {
     }
   }
 
-  static String localizeMadhab(BuildContext context, String id) {
+  static String localizeMadhab(
+    BuildContext context,
+    String id,
+  ) {
     final l10n = context.l10n;
+
     switch (id) {
-      case 'shafi_hanbali_maliki':
+      case 'single_shadow':
         return l10n.madhabStandard;
-      case 'hanafi':
+
+      case 'double_shadow':
         return l10n.madhabHanafi;
+
       default:
         return id;
     }

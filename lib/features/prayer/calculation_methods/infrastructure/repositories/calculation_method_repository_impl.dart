@@ -1,38 +1,53 @@
 import 'package:injectable/injectable.dart';
+
 import '../../../../../core/base/result.dart';
 import '../../../shared/domain/errors/prayer_failure.dart';
 import '../../../shared/infrastructure/datasources/prayer_local_data_source.dart';
-import '../../domain/entities/madhab.dart';
+import '../../domain/entities/asr_convention.dart';
 import '../../domain/entities/prayer_calculation_method.dart';
 import '../../domain/repositories/calculation_method_repository.dart';
 
-@LazySingleton(as: CalculationMethodRepository)
+@LazySingleton(
+  as: CalculationMethodRepository,
+)
 class CalculationMethodRepositoryImpl implements CalculationMethodRepository {
   final PrayerLocalDataSource _localDataSource;
 
-  CalculationMethodRepositoryImpl(this._localDataSource);
+  CalculationMethodRepositoryImpl(
+    this._localDataSource,
+  );
 
   @override
   Future<Result<List<PrayerCalculationMethod>, PrayerFailure>>
       getCalculationMethods() async {
     try {
       final methods = await _localDataSource.getSupportedMethods();
-      return Success(methods);
+
+      return Success(
+        methods,
+      );
     } catch (e) {
       return ResultFailure(
-        PrayerCalculationFailure('Failed to load calculation methods: $e'),
+        PrayerCalculationFailure(
+          'Failed to load calculation methods: $e',
+        ),
       );
     }
   }
 
   @override
-  Future<Result<List<Madhab>, PrayerFailure>> getMadhabs() async {
+  Future<Result<List<AsrConvention>, PrayerFailure>> getAsrConventions() async {
     try {
-      final madhabs = await _localDataSource.getSupportedMadhabs();
-      return Success(madhabs);
+      final conventions = await _localDataSource.getSupportedAsrConventions();
+
+      return Success(
+        conventions,
+      );
     } catch (e) {
       return ResultFailure(
-        PrayerCalculationFailure('Failed to load madhabs: $e'),
+        PrayerCalculationFailure(
+          'Failed to load Asr calculation conventions: $e',
+        ),
       );
     }
   }
@@ -42,23 +57,39 @@ class CalculationMethodRepositoryImpl implements CalculationMethodRepository {
     String methodId,
   ) async {
     try {
-      await _localDataSource.saveSelectedCalculationMethod(methodId);
-      return const Success(null);
+      await _localDataSource.saveSelectedCalculationMethod(
+        methodId,
+      );
+
+      return const Success(
+        null,
+      );
     } catch (e) {
       return ResultFailure(
-        PrayerCalculationFailure('Failed to update calculation method: $e'),
+        PrayerCalculationFailure(
+          'Failed to update calculation method: $e',
+        ),
       );
     }
   }
 
   @override
-  Future<Result<void, PrayerFailure>> updateMadhab(String madhabId) async {
+  Future<Result<void, PrayerFailure>> updateAsrConvention(
+    String conventionId,
+  ) async {
     try {
-      await _localDataSource.saveSelectedMadhab(madhabId);
-      return const Success(null);
+      await _localDataSource.saveSelectedAsrConvention(
+        conventionId,
+      );
+
+      return const Success(
+        null,
+      );
     } catch (e) {
       return ResultFailure(
-        PrayerCalculationFailure('Failed to update madhab: $e'),
+        PrayerCalculationFailure(
+          'Failed to update Asr calculation convention: $e',
+        ),
       );
     }
   }
