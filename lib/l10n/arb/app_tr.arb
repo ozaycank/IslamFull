@@ -844,5 +844,13 @@
 "locationInvalidCoordinatesMessage": "Konum koordinatları geçerli değil.",
 "locationTimezoneErrorMessage": "Bu konumun zaman dilimi belirlenemedi.",
 "locationSaveFailedMessage": "Seçilen konum kaydedilemedi.",
-"prayerLocationUnavailableMessage": "Namaz vakitlerinin hesaplanabilmesi için bir konum gereklidir. Cihaz konumunu yenileyin veya koordinatları manuel girin."
+"prayerLocationUnavailableMessage": "Namaz vakitlerinin hesaplanabilmesi için bir konum gereklidir. Cihaz konumunu yenileyin veya koordinatları manuel girin.","privacyReligiousProgressTitle": "İsteğe bağlı dinî ilerleme kayıtları",
+"privacyReligiousProgressDesc": "İzin vermeyi seçerseniz IslamFull, İbadetlerim işaretlerinizi ve Yeni Müslüman Yolculuğu ilerlemenizi bu özelliklerin kaldığınız yeri hatırlayabilmesi için yalnızca bu cihazda yerel olarak saklar. Bu tercih isteğe bağlıdır ve IslamFull'u kullanmak için gerekli değildir. Bu kayıtlar bir IslamFull hesabına veya analiz hizmetine gönderilmez. Rızanızı geri çekerseniz gelecekteki kayıt durdurulur ve bu yerel ilerleme kayıtları silinir.",
+"privacyReligiousProgressEnabled": "Yerel dinî ilerleme kaydı etkin.",
+"privacyReligiousProgressDisabled": "Yerel dinî ilerleme kaydı kapalı.",
+"privacyReligiousProgressAllow": "Yerel ilerleme kaydına izin ver",
+"privacyReligiousProgressWithdraw": "Rızayı geri çek ve ilerlemeyi sil",
+"privacyReligiousProgressActionFailed": "Gizlilik tercihi güncellenemedi.",
+"activityReligiousProgressConsentDesc": "İbadet takibi; tamamlandı olarak işaretlediğiniz namazları ve Kur'an okuma işaretinizi bu cihazda yerel olarak saklar. Bu ilerlemenin kaydedilmesi isteğe bağlıdır. IslamFull'un diğer özelliklerini bunu etkinleştirmeden kullanabilirsiniz.",
+"journeyReligiousProgressConsentDesc": "IslamFull, hangi öğrenme adımlarını ziyaret ettiğinizi veya incelendi olarak işaretlediğinizi yalnızca bu cihazda hatırlayabilir. Yeni Müslüman Yolculuğu ilerlemesinin kaydedilmesi isteğe bağlıdır; öğrenme rehberleri bu izin verilmeden de kullanılabilir."
 }

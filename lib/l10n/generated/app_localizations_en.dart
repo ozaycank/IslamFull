@@ -2346,4 +2346,38 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get prayerLocationUnavailableMessage =>
       'A location is required before prayer times can be calculated. Refresh the device location or enter coordinates manually.';
+
+  @override
+  String get privacyReligiousProgressTitle =>
+      'Optional Local Religious Progress';
+
+  @override
+  String get privacyReligiousProgressDesc =>
+      'IslamFull can save worship activity records and New Muslim Journey progress locally on this device only if you choose to enable this optional feature. You can withdraw this choice at any time. IslamFull will then stop saving this progress and delete the related local activity and journey records.';
+
+  @override
+  String get privacyReligiousProgressAllow => 'Allow Local Progress Saving';
+
+  @override
+  String get privacyReligiousProgressWithdraw => 'Stop & Delete Local Progress';
+
+  @override
+  String get privacyReligiousProgressWithdrawConfirmTitle =>
+      'Delete local religious progress?';
+
+  @override
+  String get privacyReligiousProgressWithdrawConfirmDesc =>
+      'This will stop optional religious progress saving and delete locally stored worship activity and New Muslim Journey progress. Learning content, prayer calculations, and Quran reading remain available.';
+
+  @override
+  String get privacyReligiousProgressActionFailed =>
+      'The privacy preference could not be updated. Please try again.';
+
+  @override
+  String get activityReligiousProgressConsentDesc =>
+      'To record completed prayers and Quran-reading activity in this section, allow optional local progress saving. These activity records stay on this device and are not required to use IslamFull.';
+
+  @override
+  String get journeyReligiousProgressConsentDesc =>
+      'You can use every learning guide without saving progress. If you choose to allow optional local progress saving, IslamFull can remember reviewed steps and where you last stopped on this device.';
 }

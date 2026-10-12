@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/constants/legal_links.dart';
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/privacy/religious_progress_consent_provider.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../widgets/legal_section_card.dart';
 
-class PrivacyScreen extends StatelessWidget {
+class PrivacyScreen extends ConsumerWidget {
   const PrivacyScreen({
     super.key,
   });
@@ -41,11 +43,112 @@ class PrivacyScreen extends StatelessWidget {
     );
   }
 
+  void _showConsentFailure(
+    BuildContext context,
+  ) {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          content: Text(
+            context.l10n.privacyReligiousProgressActionFailed,
+          ),
+        ),
+      );
+  }
+
+  Future<void> _grantReligiousProgress(
+    BuildContext context,
+    WidgetRef ref,
+  ) async {
+    final success = await ref
+        .read(
+          religiousProgressConsentProvider.notifier,
+        )
+        .grant();
+
+    if (!success && context.mounted) {
+      _showConsentFailure(
+        context,
+      );
+    }
+  }
+
+  Future<void> _withdrawReligiousProgress(
+    BuildContext context,
+    WidgetRef ref,
+  ) async {
+    final l10n = context.l10n;
+
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (
+        dialogContext,
+      ) {
+        return AlertDialog(
+          title: Text(
+            l10n.privacyReligiousProgressWithdrawConfirmTitle,
+          ),
+          content: Text(
+            l10n.privacyReligiousProgressWithdrawConfirmDesc,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(
+                dialogContext,
+              ).pop(
+                false,
+              ),
+              child: Text(
+                MaterialLocalizations.of(
+                  dialogContext,
+                ).cancelButtonLabel,
+              ),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.of(
+                dialogContext,
+              ).pop(
+                true,
+              ),
+              child: Text(
+                l10n.privacyReligiousProgressWithdraw,
+              ),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (confirmed != true || !context.mounted) {
+      return;
+    }
+
+    final success = await ref
+        .read(
+          religiousProgressConsentProvider.notifier,
+        )
+        .withdrawAndDelete();
+
+    if (!success && context.mounted) {
+      _showConsentFailure(
+        context,
+      );
+    }
+  }
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+    WidgetRef ref,
+  ) {
     final l10n = context.l10n;
     final colorScheme = context.colorScheme;
     final textTheme = context.textTheme;
+
+    final consentState = ref.watch(
+      religiousProgressConsentProvider,
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -119,6 +222,68 @@ class PrivacyScreen extends StatelessWidget {
                   icon: Icons.storage_outlined,
                   title: l10n.privacyDataTitle,
                   description: l10n.privacyDataDesc,
+                ),
+                const SizedBox(
+                  height: AppSpacing.md,
+                ),
+                LegalSectionCard(
+                  icon: Icons.fact_check_outlined,
+                  title: l10n.privacyReligiousProgressTitle,
+                  description: l10n.privacyReligiousProgressDesc,
+                  footer: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (consentState.isLoading)
+                        const SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                          ),
+                        )
+                      else if (consentState.granted)
+                        OutlinedButton.icon(
+                          onPressed: consentState.isUpdating
+                              ? null
+                              : () => _withdrawReligiousProgress(
+                                    context,
+                                    ref,
+                                  ),
+                          icon: const Icon(
+                            Icons.delete_outline,
+                          ),
+                          label: Text(
+                            l10n.privacyReligiousProgressWithdraw,
+                          ),
+                        )
+                      else
+                        FilledButton.icon(
+                          onPressed: consentState.isUpdating
+                              ? null
+                              : () => _grantReligiousProgress(
+                                    context,
+                                    ref,
+                                  ),
+                          icon: const Icon(
+                            Icons.lock_outline,
+                          ),
+                          label: Text(
+                            l10n.privacyReligiousProgressAllow,
+                          ),
+                        ),
+                      if (consentState.hasError) ...[
+                        const SizedBox(
+                          height: AppSpacing.sm,
+                        ),
+                        Text(
+                          l10n.privacyReligiousProgressActionFailed,
+                          style: textTheme.bodySmall?.copyWith(
+                            color: colorScheme.error,
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   height: AppSpacing.md,

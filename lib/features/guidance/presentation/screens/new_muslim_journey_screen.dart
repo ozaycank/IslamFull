@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/privacy/religious_progress_consent_provider.dart';
 import '../../../../core/routing/app_routes.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../../../../shared/widgets/app_card.dart';
@@ -10,13 +11,23 @@ import '../../application/journey_progress_provider.dart';
 import '../../domain/journey_step_id.dart';
 
 class NewMuslimJourneyScreen extends ConsumerWidget {
-  const NewMuslimJourneyScreen({super.key});
+  const NewMuslimJourneyScreen({
+    super.key,
+  });
 
   @override
   Widget build(
     BuildContext context,
     WidgetRef ref,
   ) {
+    final consentState = ref.watch(
+      religiousProgressConsentProvider,
+    );
+
+    final consentNotifier = ref.read(
+      religiousProgressConsentProvider.notifier,
+    );
+
     final l10n = context.l10n;
     final colorScheme = context.colorScheme;
     final textTheme = context.textTheme;
@@ -80,13 +91,14 @@ class NewMuslimJourneyScreen extends ConsumerWidget {
     Future<void> openStep(
       _JourneyStepData step,
     ) async {
-      try {
-        await notifier.markVisited(
-          step.id,
-        );
-      } catch (_) {
-        // Learning should remain accessible even if
-        // local progress persistence temporarily fails.
+      if (consentState.granted) {
+        try {
+          await notifier.markVisited(
+            step.id,
+          );
+        } catch (_) {
+          // Learning remains accessible if local persistence fails.
+        }
       }
 
       if (!context.mounted) {
@@ -99,6 +111,10 @@ class NewMuslimJourneyScreen extends ConsumerWidget {
     Future<void> toggleReviewed(
       _JourneyStepData step,
     ) async {
+      if (!consentState.granted) {
+        return;
+      }
+
       final reviewed = progress.isReviewed(
         step.id,
       );
@@ -125,9 +141,11 @@ class NewMuslimJourneyScreen extends ConsumerWidget {
       }
     }
 
-    final continueStep = steps.firstWhere(
-      (step) => step.id == progress.continueStep,
-    );
+    final continueStep = consentState.granted
+        ? steps.firstWhere(
+            (step) => step.id == progress.continueStep,
+          )
+        : steps.first;
 
     return Scaffold(
       appBar: AppBar(
@@ -149,7 +167,9 @@ class NewMuslimJourneyScreen extends ConsumerWidget {
                   height: 52,
                   decoration: BoxDecoration(
                     color: colorScheme.primaryContainer,
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(
+                      16,
+                    ),
                   ),
                   child: Icon(
                     Icons.explore_outlined,
@@ -157,14 +177,18 @@ class NewMuslimJourneyScreen extends ConsumerWidget {
                     size: 28,
                   ),
                 ),
-                const SizedBox(height: AppSpacing.md),
+                const SizedBox(
+                  height: AppSpacing.md,
+                ),
                 Text(
                   l10n.newMuslimJourneyWelcomeTitle,
                   style: textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                const SizedBox(height: AppSpacing.sm),
+                const SizedBox(
+                  height: AppSpacing.sm,
+                ),
                 Text(
                   l10n.newMuslimJourneySubtitle,
                   style: textTheme.bodyLarge?.copyWith(
@@ -175,14 +199,100 @@ class NewMuslimJourneyScreen extends ConsumerWidget {
               ],
             ),
           ),
-          const SizedBox(height: AppSpacing.xl),
+          if (!consentState.isLoading && !consentState.granted) ...[
+            const SizedBox(
+              height: AppSpacing.lg,
+            ),
+            AppCard(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.privacy_tip_outlined,
+                    color: colorScheme.primary,
+                  ),
+                  const SizedBox(
+                    height: AppSpacing.md,
+                  ),
+                  Text(
+                    l10n.privacyReligiousProgressTitle,
+                    style: textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: AppSpacing.sm,
+                  ),
+                  Text(
+                    l10n.journeyReligiousProgressConsentDesc,
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                      height: 1.45,
+                    ),
+                  ),
+                  if (consentState.hasError) ...[
+                    const SizedBox(
+                      height: AppSpacing.md,
+                    ),
+                    Text(
+                      l10n.privacyReligiousProgressActionFailed,
+                      style: textTheme.bodySmall?.copyWith(
+                        color: colorScheme.error,
+                      ),
+                    ),
+                  ],
+                  const SizedBox(
+                    height: AppSpacing.md,
+                  ),
+                  FilledButton.icon(
+                    onPressed: consentState.isUpdating
+                        ? null
+                        : () async {
+                            final granted = await consentNotifier.grant();
+
+                            if (granted) {
+                              await ref
+                                  .read(
+                                    journeyProgressProvider.notifier,
+                                  )
+                                  .reload();
+                            } else if (context.mounted) {
+                              ScaffoldMessenger.of(
+                                context,
+                              )
+                                ..hideCurrentSnackBar()
+                                ..showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      l10n.privacyReligiousProgressActionFailed,
+                                    ),
+                                  ),
+                                );
+                            }
+                          },
+                    icon: const Icon(
+                      Icons.lock_outline,
+                    ),
+                    label: Text(
+                      l10n.privacyReligiousProgressAllow,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+          const SizedBox(
+            height: AppSpacing.xl,
+          ),
           Text(
             l10n.journeyLearningPathTitle,
             style: textTheme.titleLarge?.copyWith(
               fontWeight: FontWeight.w700,
             ),
           ),
-          const SizedBox(height: AppSpacing.xs),
+          const SizedBox(
+            height: AppSpacing.xs,
+          ),
           Text(
             l10n.journeyLearningPathDesc,
             style: textTheme.bodyMedium?.copyWith(
@@ -190,7 +300,9 @@ class NewMuslimJourneyScreen extends ConsumerWidget {
               height: 1.45,
             ),
           ),
-          const SizedBox(height: AppSpacing.lg),
+          const SizedBox(
+            height: AppSpacing.lg,
+          ),
           FilledButton.icon(
             onPressed: progress.isLoading
                 ? null
@@ -204,14 +316,18 @@ class NewMuslimJourneyScreen extends ConsumerWidget {
               l10n.journeyContinueButton,
             ),
           ),
-          const SizedBox(height: AppSpacing.xl),
+          const SizedBox(
+            height: AppSpacing.xl,
+          ),
           Text(
             l10n.newMuslimJourneyStartHere,
             style: textTheme.titleLarge?.copyWith(
               fontWeight: FontWeight.w700,
             ),
           ),
-          const SizedBox(height: AppSpacing.md),
+          const SizedBox(
+            height: AppSpacing.md,
+          ),
           ...steps.asMap().entries.expand(
             (entry) {
               final index = entry.key;
@@ -223,10 +339,12 @@ class NewMuslimJourneyScreen extends ConsumerWidget {
                   icon: step.icon,
                   title: step.title,
                   description: step.description,
-                  reviewed: progress.isReviewed(
-                    step.id,
-                  ),
+                  reviewed: consentState.granted &&
+                      progress.isReviewed(
+                        step.id,
+                      ),
                   enabled: !progress.isLoading,
+                  trackingEnabled: consentState.granted && !progress.isLoading,
                   onTap: () => openStep(
                     step,
                   ),
@@ -241,7 +359,9 @@ class NewMuslimJourneyScreen extends ConsumerWidget {
               ];
             },
           ),
-          const SizedBox(height: AppSpacing.xl),
+          const SizedBox(
+            height: AppSpacing.xl,
+          ),
           AppCard(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -250,7 +370,9 @@ class NewMuslimJourneyScreen extends ConsumerWidget {
                   Icons.info_outline,
                   color: colorScheme.primary,
                 ),
-                const SizedBox(width: AppSpacing.md),
+                const SizedBox(
+                  width: AppSpacing.md,
+                ),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -261,7 +383,9 @@ class NewMuslimJourneyScreen extends ConsumerWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      const SizedBox(height: AppSpacing.xs),
+                      const SizedBox(
+                        height: AppSpacing.xs,
+                      ),
                       Text(
                         l10n.newMuslimJourneyNoteBody,
                         style: textTheme.bodyMedium?.copyWith(
@@ -288,6 +412,7 @@ class _JourneyStepCard extends StatelessWidget {
   final String description;
   final bool reviewed;
   final bool enabled;
+  final bool trackingEnabled;
   final VoidCallback onTap;
   final VoidCallback onToggleReviewed;
 
@@ -298,12 +423,15 @@ class _JourneyStepCard extends StatelessWidget {
     required this.description,
     required this.reviewed,
     required this.enabled,
+    required this.trackingEnabled,
     required this.onTap,
     required this.onToggleReviewed,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     final l10n = context.l10n;
     final colorScheme = context.colorScheme;
     final textTheme = context.textTheme;
@@ -314,9 +442,15 @@ class _JourneyStepCard extends StatelessWidget {
         children: [
           InkWell(
             onTap: enabled ? onTap : null,
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(16),
-            ),
+            borderRadius: trackingEnabled
+                ? const BorderRadius.vertical(
+                    top: Radius.circular(
+                      16,
+                    ),
+                  )
+                : BorderRadius.circular(
+                    16,
+                  ),
             child: Padding(
               padding: const EdgeInsets.all(
                 AppSpacing.md,
@@ -330,14 +464,18 @@ class _JourneyStepCard extends StatelessWidget {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: colorScheme.primaryContainer,
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(
+                        14,
+                      ),
                     ),
                     child: Icon(
                       icon,
                       color: colorScheme.onPrimaryContainer,
                     ),
                   ),
-                  const SizedBox(width: AppSpacing.md),
+                  const SizedBox(
+                    width: AppSpacing.md,
+                  ),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -348,7 +486,9 @@ class _JourneyStepCard extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        const SizedBox(height: AppSpacing.xs),
+                        const SizedBox(
+                          height: AppSpacing.xs,
+                        ),
                         Text(
                           description,
                           style: textTheme.bodyMedium?.copyWith(
@@ -356,37 +496,43 @@ class _JourneyStepCard extends StatelessWidget {
                             height: 1.35,
                           ),
                         ),
-                        const SizedBox(height: AppSpacing.sm),
-                        Row(
-                          children: [
-                            Icon(
-                              reviewed
-                                  ? Icons.check_circle_outline
-                                  : Icons.circle_outlined,
-                              size: 18,
-                              color: reviewed
-                                  ? colorScheme.primary
-                                  : colorScheme.onSurfaceVariant,
-                            ),
-                            const SizedBox(
-                              width: AppSpacing.xs,
-                            ),
-                            Text(
-                              reviewed
-                                  ? l10n.journeyReviewed
-                                  : l10n.journeyNotReviewed,
-                              style: textTheme.bodySmall?.copyWith(
+                        if (trackingEnabled) ...[
+                          const SizedBox(
+                            height: AppSpacing.sm,
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                reviewed
+                                    ? Icons.check_circle_outline
+                                    : Icons.circle_outlined,
+                                size: 18,
                                 color: reviewed
                                     ? colorScheme.primary
                                     : colorScheme.onSurfaceVariant,
                               ),
-                            ),
-                          ],
-                        ),
+                              const SizedBox(
+                                width: AppSpacing.xs,
+                              ),
+                              Text(
+                                reviewed
+                                    ? l10n.journeyReviewed
+                                    : l10n.journeyNotReviewed,
+                                style: textTheme.bodySmall?.copyWith(
+                                  color: reviewed
+                                      ? colorScheme.primary
+                                      : colorScheme.onSurfaceVariant,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ],
                     ),
                   ),
-                  const SizedBox(width: AppSpacing.sm),
+                  const SizedBox(
+                    width: AppSpacing.sm,
+                  ),
                   Icon(
                     Icons.chevron_right,
                     color: colorScheme.onSurfaceVariant,
@@ -395,24 +541,28 @@ class _JourneyStepCard extends StatelessWidget {
               ),
             ),
           ),
-          const Divider(height: 1),
-          Align(
-            alignment: AlignmentDirectional.centerEnd,
-            child: TextButton.icon(
-              onPressed: enabled ? onToggleReviewed : null,
-              icon: Icon(
-                reviewed
-                    ? Icons.remove_circle_outline
-                    : Icons.check_circle_outline,
-                size: 18,
-              ),
-              label: Text(
-                reviewed
-                    ? l10n.journeyRemoveReviewed
-                    : l10n.journeyMarkReviewed,
+          if (trackingEnabled) ...[
+            const Divider(
+              height: 1,
+            ),
+            Align(
+              alignment: AlignmentDirectional.centerEnd,
+              child: TextButton.icon(
+                onPressed: enabled ? onToggleReviewed : null,
+                icon: Icon(
+                  reviewed
+                      ? Icons.remove_circle_outline
+                      : Icons.check_circle_outline,
+                  size: 18,
+                ),
+                label: Text(
+                  reviewed
+                      ? l10n.journeyRemoveReviewed
+                      : l10n.journeyMarkReviewed,
+                ),
               ),
             ),
-          ),
+          ],
         ],
       ),
     );

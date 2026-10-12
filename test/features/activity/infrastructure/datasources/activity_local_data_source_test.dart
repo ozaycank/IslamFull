@@ -18,14 +18,44 @@ void main() {
     dataSource = ActivityLocalDataSourceImpl(
       storage,
     );
+
+    when(
+      () => storage.getReligiousProgressConsent(),
+    ).thenAnswer(
+      (_) async => true,
+    );
   });
+
+  test(
+    'returns empty map without reading activity data when consent is not granted',
+    () async {
+      when(
+        () => storage.getReligiousProgressConsent(),
+      ).thenAnswer(
+        (_) async => false,
+      );
+
+      final result = await dataSource.loadAllRecords();
+
+      expect(
+        result,
+        isEmpty,
+      );
+
+      verifyNever(
+        () => storage.read(
+          key: SecureStorageService.keyActivityRecords,
+        ),
+      );
+    },
+  );
 
   test(
     'returns empty map when no activity data is stored',
     () async {
       when(
         () => storage.read(
-          key: 'noorlife_activity_records_v2',
+          key: SecureStorageService.keyActivityRecords,
         ),
       ).thenAnswer(
         (_) async => null,
@@ -47,7 +77,7 @@ void main() {
 
       when(
         () => storage.read(
-          key: 'noorlife_activity_records_v2',
+          key: SecureStorageService.keyActivityRecords,
         ),
       ).thenAnswer(
         (_) async => encoded,
@@ -71,7 +101,7 @@ void main() {
     () async {
       when(
         () => storage.read(
-          key: 'noorlife_activity_records_v2',
+          key: SecureStorageService.keyActivityRecords,
         ),
       ).thenAnswer(
         (_) async => '[]',
@@ -87,7 +117,37 @@ void main() {
   );
 
   test(
-    'encodes activity records through shared secure storage',
+    'does not write activity data when consent is not granted',
+    () async {
+      when(
+        () => storage.getReligiousProgressConsent(),
+      ).thenAnswer(
+        (_) async => false,
+      );
+
+      await dataSource.saveAllRecords(
+        {
+          '2026-10-09': {
+            'quran': true,
+          },
+        },
+      );
+
+      verifyNever(
+        () => storage.write(
+          key: any(
+            named: 'key',
+          ),
+          value: any(
+            named: 'value',
+          ),
+        ),
+      );
+    },
+  );
+
+  test(
+    'encodes activity records through shared secure storage when consent is granted',
     () async {
       final records = <String, dynamic>{
         '2026-10-09': {
@@ -97,7 +157,7 @@ void main() {
 
       when(
         () => storage.write(
-          key: 'noorlife_activity_records_v2',
+          key: SecureStorageService.keyActivityRecords,
           value: any(
             named: 'value',
           ),
@@ -112,7 +172,7 @@ void main() {
 
       final verification = verify(
         () => storage.write(
-          key: 'noorlife_activity_records_v2',
+          key: SecureStorageService.keyActivityRecords,
           value: captureAny(
             named: 'value',
           ),

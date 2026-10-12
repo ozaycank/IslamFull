@@ -2350,4 +2350,39 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get prayerLocationUnavailableMessage =>
       'Namaz vakitlerinin hesaplanabilmesi için bir konum gereklidir. Cihaz konumunu yenileyin veya koordinatları manuel girin.';
+
+  @override
+  String get privacyReligiousProgressTitle =>
+      'İsteğe bağlı dinî ilerleme kayıtları';
+
+  @override
+  String get privacyReligiousProgressDesc =>
+      'İzin vermeyi seçerseniz IslamFull, İbadetlerim işaretlerinizi ve Yeni Müslüman Yolculuğu ilerlemenizi bu özelliklerin kaldığınız yeri hatırlayabilmesi için yalnızca bu cihazda yerel olarak saklar. Bu tercih isteğe bağlıdır ve IslamFull\'u kullanmak için gerekli değildir. Bu kayıtlar bir IslamFull hesabına veya analiz hizmetine gönderilmez. Rızanızı geri çekerseniz gelecekteki kayıt durdurulur ve bu yerel ilerleme kayıtları silinir.';
+
+  @override
+  String get privacyReligiousProgressAllow => 'Yerel ilerleme kaydına izin ver';
+
+  @override
+  String get privacyReligiousProgressWithdraw =>
+      'Rızayı geri çek ve ilerlemeyi sil';
+
+  @override
+  String get privacyReligiousProgressWithdrawConfirmTitle =>
+      'Delete local religious progress?';
+
+  @override
+  String get privacyReligiousProgressWithdrawConfirmDesc =>
+      'This will stop optional religious progress saving and delete locally stored worship activity and New Muslim Journey progress. Learning content, prayer calculations, and Quran reading remain available.';
+
+  @override
+  String get privacyReligiousProgressActionFailed =>
+      'Gizlilik tercihi güncellenemedi.';
+
+  @override
+  String get activityReligiousProgressConsentDesc =>
+      'İbadet takibi; tamamlandı olarak işaretlediğiniz namazları ve Kur\'an okuma işaretinizi bu cihazda yerel olarak saklar. Bu ilerlemenin kaydedilmesi isteğe bağlıdır. IslamFull\'un diğer özelliklerini bunu etkinleştirmeden kullanabilirsiniz.';
+
+  @override
+  String get journeyReligiousProgressConsentDesc =>
+      'IslamFull, hangi öğrenme adımlarını ziyaret ettiğinizi veya incelendi olarak işaretlediğinizi yalnızca bu cihazda hatırlayabilir. Yeni Müslüman Yolculuğu ilerlemesinin kaydedilmesi isteğe bağlıdır; öğrenme rehberleri bu izin verilmeden de kullanılabilir.';
 }

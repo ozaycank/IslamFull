@@ -4255,6 +4255,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'A location is required before prayer times can be calculated. Refresh the device location or enter coordinates manually.'**
   String get prayerLocationUnavailableMessage;
+
+  /// Title for the optional local religious progress privacy preference
+  ///
+  /// In en, this message translates to:
+  /// **'Optional Local Religious Progress'**
+  String get privacyReligiousProgressTitle;
+
+  /// Explains the scope and deletion behavior of optional local religious progress saving
+  ///
+  /// In en, this message translates to:
+  /// **'IslamFull can save worship activity records and New Muslim Journey progress locally on this device only if you choose to enable this optional feature. You can withdraw this choice at any time. IslamFull will then stop saving this progress and delete the related local activity and journey records.'**
+  String get privacyReligiousProgressDesc;
+
+  /// Button label for enabling optional local religious progress saving
+  ///
+  /// In en, this message translates to:
+  /// **'Allow Local Progress Saving'**
+  String get privacyReligiousProgressAllow;
+
+  /// Button label for withdrawing optional local religious progress saving and deleting related records
+  ///
+  /// In en, this message translates to:
+  /// **'Stop & Delete Local Progress'**
+  String get privacyReligiousProgressWithdraw;
+
+  /// Confirmation dialog title before withdrawing religious progress saving
+  ///
+  /// In en, this message translates to:
+  /// **'Delete local religious progress?'**
+  String get privacyReligiousProgressWithdrawConfirmTitle;
+
+  /// Confirmation explanation shown before deleting optional local religious progress
+  ///
+  /// In en, this message translates to:
+  /// **'This will stop optional religious progress saving and delete locally stored worship activity and New Muslim Journey progress. Learning content, prayer calculations, and Quran reading remain available.'**
+  String get privacyReligiousProgressWithdrawConfirmDesc;
+
+  /// Error shown when optional religious progress privacy preference cannot be updated
+  ///
+  /// In en, this message translates to:
+  /// **'The privacy preference could not be updated. Please try again.'**
+  String get privacyReligiousProgressActionFailed;
+
+  /// Activity screen explanation shown when optional local religious progress saving is disabled
+  ///
+  /// In en, this message translates to:
+  /// **'To record completed prayers and Quran-reading activity in this section, allow optional local progress saving. These activity records stay on this device and are not required to use IslamFull.'**
+  String get activityReligiousProgressConsentDesc;
+
+  /// New Muslim Journey explanation shown when optional local progress saving is disabled
+  ///
+  /// In en, this message translates to:
+  /// **'You can use every learning guide without saving progress. If you choose to allow optional local progress saving, IslamFull can remember reviewed steps and where you last stopped on this device.'**
+  String get journeyReligiousProgressConsentDesc;
 }
 
 class _AppLocalizationsDelegate

@@ -16,8 +16,6 @@ abstract class ActivityLocalDataSource {
   as: ActivityLocalDataSource,
 )
 class ActivityLocalDataSourceImpl implements ActivityLocalDataSource {
-  static const String _storageKey = 'noorlife_activity_records_v2';
-
   final SecureStorageService _storage;
 
   ActivityLocalDataSourceImpl(
@@ -26,8 +24,14 @@ class ActivityLocalDataSourceImpl implements ActivityLocalDataSource {
 
   @override
   Future<Map<String, dynamic>> loadAllRecords() async {
+    final consentGranted = await _storage.getReligiousProgressConsent();
+
+    if (!consentGranted) {
+      return {};
+    }
+
     final data = await _storage.read(
-      key: _storageKey,
+      key: SecureStorageService.keyActivityRecords,
     );
 
     if (data == null || data.isEmpty) {
@@ -53,12 +57,18 @@ class ActivityLocalDataSourceImpl implements ActivityLocalDataSource {
   Future<void> saveAllRecords(
     Map<String, dynamic> records,
   ) async {
+    final consentGranted = await _storage.getReligiousProgressConsent();
+
+    if (!consentGranted) {
+      return;
+    }
+
     final encoded = json.encode(
       records,
     );
 
     await _storage.write(
-      key: _storageKey,
+      key: SecureStorageService.keyActivityRecords,
       value: encoded,
     );
   }

@@ -33,7 +33,14 @@ class SecureStorageService {
   static const String keyShowDailyVerseOnHome =
       'sec_key_pref_show_daily_verse_home';
 
-  // New Muslim journey
+  // Optional religious-progress privacy preference
+  static const String keyReligiousProgressConsent =
+      'sec_key_privacy_religious_progress_consent_v1';
+
+  // Sensitive local activity progress
+  static const String keyActivityRecords = 'noorlife_activity_records_v2';
+
+  // New Muslim journey progress
   static const String keyJourneyReviewedSteps =
       'sec_key_journey_reviewed_steps_v1';
 
@@ -191,6 +198,37 @@ class SecureStorageService {
     );
   }
 
+  Future<bool> getReligiousProgressConsent() async {
+    final value = await read(
+      key: keyReligiousProgressConsent,
+    );
+
+    return value == 'true';
+  }
+
+  Future<void> setReligiousProgressConsent(
+    bool value,
+  ) async {
+    await write(
+      key: keyReligiousProgressConsent,
+      value: value.toString(),
+    );
+  }
+
+  Future<void> clearReligiousProgressData() async {
+    await delete(
+      key: keyActivityRecords,
+    );
+
+    await delete(
+      key: keyJourneyReviewedSteps,
+    );
+
+    await delete(
+      key: keyJourneyLastVisitedStep,
+    );
+  }
+
   Future<String?> getJourneyReviewedSteps() {
     return read(
       key: keyJourneyReviewedSteps,
@@ -219,6 +257,7 @@ class SecureStorageService {
       await delete(
         key: keyJourneyLastVisitedStep,
       );
+
       return;
     }
 

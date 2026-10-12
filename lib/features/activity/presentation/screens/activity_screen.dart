@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/privacy/religious_progress_consent_provider.dart';
 import '../../../../l10n/generated/app_localizations.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../../../../shared/widgets/app_card.dart';
@@ -36,12 +37,16 @@ class _ActivityScreenState extends ConsumerState<ActivityScreen> {
     switch (type) {
       case ActivityPrayerType.fajr:
         return l10n.prayerFajr;
+
       case ActivityPrayerType.dhuhr:
         return l10n.prayerDhuhr;
+
       case ActivityPrayerType.asr:
         return l10n.prayerAsr;
+
       case ActivityPrayerType.maghrib:
         return l10n.prayerMaghrib;
+
       case ActivityPrayerType.isha:
         return l10n.prayerIsha;
     }
@@ -57,6 +62,22 @@ class _ActivityScreenState extends ConsumerState<ActivityScreen> {
     }
   }
 
+  void _showConsentActionFailure(
+    BuildContext context,
+  ) {
+    final l10n = context.l10n;
+
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          content: Text(
+            l10n.privacyReligiousProgressActionFailed,
+          ),
+        ),
+      );
+  }
+
   @override
   Widget build(
     BuildContext context,
@@ -64,6 +85,14 @@ class _ActivityScreenState extends ConsumerState<ActivityScreen> {
     final l10n = context.l10n;
     final colorScheme = context.colorScheme;
     final textTheme = context.textTheme;
+
+    final consentState = ref.watch(
+      religiousProgressConsentProvider,
+    );
+
+    final consentNotifier = ref.read(
+      religiousProgressConsentProvider.notifier,
+    );
 
     final state = ref.watch(
       activityNotifierProvider,
@@ -94,7 +123,104 @@ class _ActivityScreenState extends ConsumerState<ActivityScreen> {
 
     Widget body;
 
-    if (state.isLoading && state.dailyActivity == null) {
+    if (consentState.isLoading) {
+      body = Center(
+        child: CircularProgressIndicator(
+          semanticsLabel: l10n.privacyReligiousProgressTitle,
+        ),
+      );
+    } else if (!consentState.granted) {
+      body = ListView(
+        padding: const EdgeInsets.all(
+          AppSpacing.lg,
+        ),
+        physics: const AlwaysScrollableScrollPhysics(),
+        children: [
+          Text(
+            todayStr,
+            style: textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: colorScheme.onSurface,
+            ),
+          ),
+          const SizedBox(
+            height: AppSpacing.xs,
+          ),
+          Text(
+            l10n.activityMotivation,
+            style: textTheme.bodyMedium?.copyWith(
+              color: colorScheme.onSurfaceVariant,
+            ),
+          ),
+          const SizedBox(
+            height: AppSpacing.xl,
+          ),
+          AppCard(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(
+                  Icons.privacy_tip_outlined,
+                  color: colorScheme.primary,
+                ),
+                const SizedBox(
+                  height: AppSpacing.md,
+                ),
+                Text(
+                  l10n.privacyReligiousProgressTitle,
+                  style: textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(
+                  height: AppSpacing.sm,
+                ),
+                Text(
+                  l10n.activityReligiousProgressConsentDesc,
+                  style: textTheme.bodyMedium?.copyWith(
+                    color: colorScheme.onSurfaceVariant,
+                    height: 1.45,
+                  ),
+                ),
+                if (consentState.hasError) ...[
+                  const SizedBox(
+                    height: AppSpacing.md,
+                  ),
+                  Text(
+                    l10n.privacyReligiousProgressActionFailed,
+                    style: textTheme.bodySmall?.copyWith(
+                      color: colorScheme.error,
+                    ),
+                  ),
+                ],
+                const SizedBox(
+                  height: AppSpacing.md,
+                ),
+                FilledButton.icon(
+                  onPressed: consentState.isUpdating
+                      ? null
+                      : () async {
+                          final granted = await consentNotifier.grant();
+
+                          if (!granted && context.mounted) {
+                            _showConsentActionFailure(
+                              context,
+                            );
+                          }
+                        },
+                  icon: const Icon(
+                    Icons.lock_outline,
+                  ),
+                  label: Text(
+                    l10n.privacyReligiousProgressAllow,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      );
+    } else if (state.isLoading && state.dailyActivity == null) {
       body = Center(
         child: CircularProgressIndicator(
           semanticsLabel: l10n.activityTitle,
@@ -191,7 +317,9 @@ class _ActivityScreenState extends ConsumerState<ActivityScreen> {
                     padding: EdgeInsets.symmetric(
                       vertical: AppSpacing.md,
                     ),
-                    child: Divider(height: 1),
+                    child: Divider(
+                      height: 1,
+                    ),
                   ),
                   _ActivitySummaryRow(
                     icon: Icons.auto_stories_outlined,

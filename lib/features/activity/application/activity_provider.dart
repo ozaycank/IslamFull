@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/base/result.dart';
 import '../../../core/di/injection_container.dart';
+import '../../../core/privacy/religious_progress_consent_provider.dart';
 import '../../quran/application/providers/quran_progress_provider.dart';
 import '../domain/activity_models.dart';
 import '../domain/activity_prayer_type.dart';
@@ -123,8 +124,6 @@ class ActivityNotifier extends StateNotifier<ActivityState> {
           );
 
         case ResultFailure(failure: final error):
-          // History is secondary to today's record. Preserve the previous
-          // history/statistics rather than replacing them with empty data.
           secondaryFailure = error;
       }
 
@@ -212,8 +211,6 @@ class ActivityNotifier extends StateNotifier<ActivityState> {
     required DailyActivity previousActivity,
     required DailyActivity updatedActivity,
   }) async {
-    // Invalidate any older load request so that it cannot overwrite the
-    // optimistic activity state when it completes later.
     _loadGeneration++;
 
     state = state.copyWith(
@@ -281,11 +278,15 @@ class ActivityNotifier extends StateNotifier<ActivityState> {
     if (existingIndex >= 0) {
       updated[existingIndex] = activity;
     } else {
-      updated.add(activity);
+      updated.add(
+        activity,
+      );
     }
 
     updated.sort(
-      (a, b) => b.date.compareTo(a.date),
+      (a, b) => b.date.compareTo(
+        a.date,
+      ),
     );
 
     return List.unmodifiable(
@@ -297,6 +298,12 @@ class ActivityNotifier extends StateNotifier<ActivityState> {
 final activityNotifierProvider =
     StateNotifierProvider<ActivityNotifier, ActivityState>(
   (ref) {
+    ref.watch(
+      religiousProgressConsentProvider.select(
+        (state) => state.granted,
+      ),
+    );
+
     return ActivityNotifier(
       getIt<ActivityRepository>(),
     );
@@ -312,6 +319,16 @@ final quranActivityBridgeProvider = Provider<void>(
         next,
       ) {
         if (next.lastRead == null) {
+          return;
+        }
+
+        final consentGranted = ref
+            .read(
+              religiousProgressConsentProvider,
+            )
+            .granted;
+
+        if (!consentGranted) {
           return;
         }
 

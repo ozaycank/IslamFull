@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/di/injection_container.dart';
+import '../../../core/privacy/religious_progress_consent_provider.dart';
 import '../../../core/storage/secure_storage_service.dart';
 import '../domain/journey_step_id.dart';
 
@@ -20,7 +21,9 @@ class JourneyProgressState {
   bool isReviewed(
     JourneyStepId step,
   ) {
-    return reviewedSteps.contains(step);
+    return reviewedSteps.contains(
+      step,
+    );
   }
 
   JourneyStepId get continueStep {
@@ -66,8 +69,16 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
   JourneyProgressState build() {
     _storage = getIt<SecureStorageService>();
 
+    final consentGranted = ref.watch(
+      religiousProgressConsentProvider.select(
+        (state) => state.granted,
+      ),
+    );
+
     Future.microtask(
-      _loadProgress,
+      () => _loadProgress(
+        consentGranted,
+      ),
     );
 
     return const JourneyProgressState();
@@ -76,6 +87,16 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
   Future<void> markVisited(
     JourneyStepId step,
   ) async {
+    final consentGranted = ref
+        .read(
+          religiousProgressConsentProvider,
+        )
+        .granted;
+
+    if (!consentGranted) {
+      return;
+    }
+
     if (state.lastVisitedStep == step) {
       return;
     }
@@ -95,6 +116,7 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
         lastVisitedStep: previousStep,
         clearLastVisitedStep: previousStep == null,
       );
+
       rethrow;
     }
   }
@@ -103,6 +125,16 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
     JourneyStepId step,
     bool reviewed,
   ) async {
+    final consentGranted = ref
+        .read(
+          religiousProgressConsentProvider,
+        )
+        .granted;
+
+    if (!consentGranted) {
+      return;
+    }
+
     final previousSteps = Set<JourneyStepId>.from(
       state.reviewedSteps,
     );
@@ -112,9 +144,13 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
     );
 
     if (reviewed) {
-      updatedSteps.add(step);
+      updatedSteps.add(
+        step,
+      );
     } else {
-      updatedSteps.remove(step);
+      updatedSteps.remove(
+        step,
+      );
     }
 
     if (updatedSteps.length == previousSteps.length) {
@@ -126,7 +162,9 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
     }
 
     state = state.copyWith(
-      reviewedSteps: Set.unmodifiable(updatedSteps),
+      reviewedSteps: Set.unmodifiable(
+        updatedSteps,
+      ),
     );
 
     try {
@@ -135,13 +173,38 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
       );
     } catch (_) {
       state = state.copyWith(
-        reviewedSteps: Set.unmodifiable(previousSteps),
+        reviewedSteps: Set.unmodifiable(
+          previousSteps,
+        ),
       );
+
       rethrow;
     }
   }
 
-  Future<void> _loadProgress() async {
+  Future<void> reload() {
+    final consentGranted = ref
+        .read(
+          religiousProgressConsentProvider,
+        )
+        .granted;
+
+    return _loadProgress(
+      consentGranted,
+    );
+  }
+
+  Future<void> _loadProgress(
+    bool consentGranted,
+  ) async {
+    if (!consentGranted) {
+      state = const JourneyProgressState(
+        isLoading: false,
+      );
+
+      return;
+    }
+
     try {
       final reviewedRaw = await _storage.getJourneyReviewedSteps();
 
@@ -157,7 +220,9 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
 
       state = JourneyProgressState(
         isLoading: false,
-        reviewedSteps: Set.unmodifiable(reviewedSteps),
+        reviewedSteps: Set.unmodifiable(
+          reviewedSteps,
+        ),
         lastVisitedStep: lastVisitedStep,
       );
     } catch (_) {
@@ -174,7 +239,9 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
       return {};
     }
 
-    final decoded = jsonDecode(rawValue);
+    final decoded = jsonDecode(
+      rawValue,
+    );
 
     if (decoded is! List) {
       return {};
@@ -187,10 +254,14 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
         continue;
       }
 
-      final step = _decodeStep(value);
+      final step = _decodeStep(
+        value,
+      );
 
       if (step != null) {
-        result.add(step);
+        result.add(
+          step,
+        );
       }
     }
 
@@ -217,12 +288,20 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
     Set<JourneyStepId> steps,
   ) async {
     final stableOrder = JourneyStepId.values
-        .where(steps.contains)
-        .map((step) => step.name)
-        .toList(growable: false);
+        .where(
+          steps.contains,
+        )
+        .map(
+          (step) => step.name,
+        )
+        .toList(
+          growable: false,
+        );
 
     await _storage.setJourneyReviewedSteps(
-      jsonEncode(stableOrder),
+      jsonEncode(
+        stableOrder,
+      ),
     );
   }
 }
