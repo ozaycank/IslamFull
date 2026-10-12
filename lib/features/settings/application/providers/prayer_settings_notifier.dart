@@ -16,13 +16,11 @@ final prayerSettingsNotifierProvider =
 
 class PrayerSettingsNotifier extends Notifier<PrayerSettingsState> {
   late final CalculationMethodRepository _repository;
-
   late final PrayerLocalDataSource _localDataSource;
 
   @override
   PrayerSettingsState build() {
     _repository = getIt<CalculationMethodRepository>();
-
     _localDataSource = getIt<PrayerLocalDataSource>();
 
     Future.microtask(
@@ -56,9 +54,9 @@ class PrayerSettingsNotifier extends Notifier<PrayerSettingsState> {
       state = state.copyWith(
         isLoading: false,
         availableMethods: (methodsResult as Success).value,
-        availableMadhabs: (asrConventionsResult as Success).value,
+        availableAsrConventions: (asrConventionsResult as Success).value,
         selectedMethodId: selectedMethodId,
-        selectedMadhabId: selectedAsrConventionId,
+        selectedAsrConventionId: selectedAsrConventionId,
         selectedHighLatStrategy: selectedHighLat,
       );
 
@@ -102,9 +100,7 @@ class PrayerSettingsNotifier extends Notifier<PrayerSettingsState> {
     return false;
   }
 
-  // Transitional method name. Renamed with the presentation API
-  // in Phase 9.2B-3B.1B.
-  Future<bool> updateMadhab(
+  Future<bool> updateAsrConvention(
     String id,
   ) async {
     state = state.copyWith(
@@ -119,7 +115,7 @@ class PrayerSettingsNotifier extends Notifier<PrayerSettingsState> {
     if (result is Success) {
       state = state.copyWith(
         isSaving: false,
-        selectedMadhabId: id,
+        selectedAsrConventionId: id,
       );
 
       return true;

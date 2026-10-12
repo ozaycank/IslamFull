@@ -115,9 +115,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get prayerCalculationMethod => 'Calculation Method';
 
   @override
-  String get prayerMadhab => 'Madhab / Juristic Method';
-
-  @override
   String get prayerLocationHeader => 'Prayer Location';
 
   @override
@@ -128,7 +125,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get prayerSettingsDesc =>
-      'Adjust your calculation methods and juristic preferences.';
+      'Adjust the prayer-time calculation method, Asr calculation rule, and high-latitude settings.';
 
   @override
   String get locationTitle => 'Location Settings';
@@ -167,7 +164,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get calculationMethodLabel => 'Calculation Method';
 
   @override
-  String get madhabLabel => 'Madhab / Juristic Method';
+  String get asrConventionLabel => 'Asr Calculation Rule';
 
   @override
   String get highLatitudeStrategyLabel => 'High Latitude Strategy';
@@ -368,10 +365,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get methodJafari => 'Shia Ithna-Ashari';
 
   @override
-  String get madhabStandard => 'Standard (Shafi / Maliki / Hanbali)';
+  String get asrSingleShadowLabel => 'One-shadow length';
 
   @override
-  String get madhabHanafi => 'Hanafi';
+  String get asrDoubleShadowLabel => 'Two-shadow length';
 
   @override
   String get hijriMuharram => 'Muharram';
@@ -410,7 +407,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hijriDhuAlHijjah => 'Dhu al-Hijjah';
 
   @override
-  String get asrConventionDesc => 'Asr calculation convention';
+  String get asrConventionDesc =>
+      'Shadow-length rule used to determine the beginning of Asr. One-shadow length corresponds to the majority view; two-shadow length corresponds to the view of Imam Abu Hanifa.';
 
   @override
   String get homeGreeting => 'Assalamu Alaikum';

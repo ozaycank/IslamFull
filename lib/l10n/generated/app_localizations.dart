@@ -296,12 +296,6 @@ abstract class AppLocalizations {
   /// **'Calculation Method'**
   String get prayerCalculationMethod;
 
-  /// Madhab setting label
-  ///
-  /// In en, this message translates to:
-  /// **'Madhab / Juristic Method'**
-  String get prayerMadhab;
-
   /// Prayer location header
   ///
   /// In en, this message translates to:
@@ -323,7 +317,7 @@ abstract class AppLocalizations {
   /// Prayer settings screen description
   ///
   /// In en, this message translates to:
-  /// **'Adjust your calculation methods and juristic preferences.'**
+  /// **'Adjust the prayer-time calculation method, Asr calculation rule, and high-latitude settings.'**
   String get prayerSettingsDesc;
 
   /// Location settings section title
@@ -398,11 +392,11 @@ abstract class AppLocalizations {
   /// **'Calculation Method'**
   String get calculationMethodLabel;
 
-  /// Madhab label
+  /// Label for the Asr shadow-length calculation rule
   ///
   /// In en, this message translates to:
-  /// **'Madhab / Juristic Method'**
-  String get madhabLabel;
+  /// **'Asr Calculation Rule'**
+  String get asrConventionLabel;
 
   /// High latitude strategy label
   ///
@@ -782,17 +776,17 @@ abstract class AppLocalizations {
   /// **'Shia Ithna-Ashari'**
   String get methodJafari;
 
-  /// Standard madhab option
+  /// Asr calculation option using one shadow length
   ///
   /// In en, this message translates to:
-  /// **'Standard (Shafi / Maliki / Hanbali)'**
-  String get madhabStandard;
+  /// **'One-shadow length'**
+  String get asrSingleShadowLabel;
 
-  /// Hanafi madhab option
+  /// Asr calculation option using two shadow lengths
   ///
   /// In en, this message translates to:
-  /// **'Hanafi'**
-  String get madhabHanafi;
+  /// **'Two-shadow length'**
+  String get asrDoubleShadowLabel;
 
   /// Muharram hijri month
   ///
@@ -869,7 +863,7 @@ abstract class AppLocalizations {
   /// Asr calculation convention description
   ///
   /// In en, this message translates to:
-  /// **'Asr calculation convention'**
+  /// **'Shadow-length rule used to determine the beginning of Asr. One-shadow length corresponds to the majority view; two-shadow length corresponds to the view of Imam Abu Hanifa.'**
   String get asrConventionDesc;
 
   /// Home greeting

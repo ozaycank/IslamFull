@@ -132,10 +132,6 @@
   "@prayerCalculationMethod": {
     "description": "Calculation method setting label"
   },
-  "prayerMadhab": "Madhab / Juristic Method",
-  "@prayerMadhab": {
-    "description": "Madhab setting label"
-  },
   "prayerLocationHeader": "Prayer Location",
   "@prayerLocationHeader": {
     "description": "Prayer location header"
@@ -148,7 +144,7 @@
   "@prayerSettingsTitle": {
     "description": "Prayer settings screen title"
   },
-  "prayerSettingsDesc": "Adjust your calculation methods and juristic preferences.",
+  "prayerSettingsDesc": "Adjust the prayer-time calculation method, Asr calculation rule, and high-latitude settings.",
   "@prayerSettingsDesc": {
     "description": "Prayer settings screen description"
   },
@@ -200,10 +196,10 @@
   "@calculationMethodLabel": {
     "description": "Calculation method label"
   },
-  "madhabLabel": "Madhab / Juristic Method",
-  "@madhabLabel": {
-    "description": "Madhab label"
-  },
+  "asrConventionLabel": "Asr Calculation Rule",
+"@asrConventionLabel": {
+  "description": "Label for the Asr shadow-length calculation rule"
+},
   "highLatitudeStrategyLabel": "High Latitude Strategy",
   "@highLatitudeStrategyLabel": {
     "description": "High latitude strategy label"
@@ -465,15 +461,14 @@
   "methodJafari": "Shia Ithna-Ashari",
   "@methodJafari": {
     "description": "Jafari calculation method"
-  },
-  "madhabStandard": "Standard (Shafi / Maliki / Hanbali)",
-  "@madhabStandard": {
-    "description": "Standard madhab option"
-  },
-  "madhabHanafi": "Hanafi",
-  "@madhabHanafi": {
-    "description": "Hanafi madhab option"
-  },
+  },"asrSingleShadowLabel": "One-shadow length",
+"@asrSingleShadowLabel": {
+  "description": "Asr calculation option using one shadow length"
+},
+"asrDoubleShadowLabel": "Two-shadow length",
+"@asrDoubleShadowLabel": {
+  "description": "Asr calculation option using two shadow lengths"
+},
   "hijriMuharram": "Muharram",
   "@hijriMuharram": {
     "description": "Muharram hijri month"
@@ -522,7 +517,7 @@
   "@hijriDhuAlHijjah": {
     "description": "Dhu al-Hijjah hijri month"
   },
-  "asrConventionDesc": "Asr calculation convention",
+  "asrConventionDesc": "Shadow-length rule used to determine the beginning of Asr. One-shadow length corresponds to the majority view; two-shadow length corresponds to the view of Imam Abu Hanifa.",
   "@asrConventionDesc": {
     "description": "Asr calculation convention description"
   },

@@ -10,9 +10,7 @@ import '../../../../lib/l10n/generated/app_localizations.dart';
 void main() {
   Widget buildTestContext(
     Locale locale,
-    Widget Function(
-      BuildContext,
-    ) builder,
+    Widget Function(BuildContext) builder,
   ) {
     return MaterialApp(
       locale: locale,
@@ -35,19 +33,15 @@ void main() {
   }
 
   testWidgets(
-    'PresentationLocalizer maps single-shadow convention using current English label',
+    'PresentationLocalizer maps English single-shadow Asr convention',
     (tester) async {
       late String localized;
 
       await tester.pumpWidget(
         buildTestContext(
-          const Locale(
-            'en',
-          ),
-          (
-            context,
-          ) {
-            localized = PresentationLocalizer.localizeMadhab(
+          const Locale('en'),
+          (context) {
+            localized = PresentationLocalizer.localizeAsrConvention(
               context,
               'single_shadow',
             );
@@ -61,27 +55,23 @@ void main() {
 
       expect(
         localized,
-        'Standard (Shafi / Maliki / Hanbali)',
+        'One-shadow length',
       );
     },
   );
 
   testWidgets(
-    'PresentationLocalizer maps single-shadow convention using current Turkish label',
+    'PresentationLocalizer maps Turkish double-shadow Asr convention',
     (tester) async {
       late String localized;
 
       await tester.pumpWidget(
         buildTestContext(
-          const Locale(
-            'tr',
-          ),
-          (
-            context,
-          ) {
-            localized = PresentationLocalizer.localizeMadhab(
+          const Locale('tr'),
+          (context) {
+            localized = PresentationLocalizer.localizeAsrConvention(
               context,
-              'single_shadow',
+              'double_shadow',
             );
 
             return const SizedBox();
@@ -93,7 +83,7 @@ void main() {
 
       expect(
         localized,
-        '1 Katı Gölge Boyu (Cumhur)',
+        '2 Gölge Boyu',
       );
     },
   );
@@ -105,12 +95,8 @@ void main() {
 
       await tester.pumpWidget(
         buildTestContext(
-          const Locale(
-            'en',
-          ),
-          (
-            context,
-          ) {
+          const Locale('en'),
+          (context) {
             location = PresentationLocalizer.formatLocation(
               context: context,
               cityName: 'Salihli',

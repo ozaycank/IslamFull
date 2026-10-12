@@ -116,9 +116,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get prayerCalculationMethod => 'Hesaplama Yöntemi';
 
   @override
-  String get prayerMadhab => 'Mezhep';
-
-  @override
   String get prayerLocationHeader => 'Konum';
 
   @override
@@ -129,7 +126,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get prayerSettingsDesc =>
-      'Hesaplama yöntemlerini ve mezhep tercihlerinizi düzenleyin.';
+      'Namaz vakti hesaplama yöntemini, ikindi hesaplama kuralını ve yüksek enlem ayarlarını düzenleyin.';
 
   @override
   String get locationTitle => 'Konum Ayarları';
@@ -168,7 +165,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get calculationMethodLabel => 'Hesaplama Yöntemi';
 
   @override
-  String get madhabLabel => 'Mezhep';
+  String get asrConventionLabel => 'İkindi Hesaplama Kuralı';
 
   @override
   String get highLatitudeStrategyLabel => 'Yüksek Enlem Kuralı';
@@ -369,10 +366,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get methodJafari => 'Şia İsna Aşeri (Caferi)';
 
   @override
-  String get madhabStandard => '1 Katı Gölge Boyu (Cumhur)';
+  String get asrSingleShadowLabel => '1 Gölge Boyu';
 
   @override
-  String get madhabHanafi => '2 Katı Gölge Boyu (Hanefi)';
+  String get asrDoubleShadowLabel => '2 Gölge Boyu';
 
   @override
   String get hijriMuharram => 'Muharrem';
@@ -411,7 +408,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get hijriDhuAlHijjah => 'Zilhicce';
 
   @override
-  String get asrConventionDesc => 'İkindi vakti hesaplama kuralı';
+  String get asrConventionDesc =>
+      'İkindi vaktinin başlangıcını belirlemek için kullanılan gölge uzunluğu kuralı. 1 gölge boyu çoğunluk görüşüyle, 2 gölge boyu İmam Ebû Hanîfe\'nin görüşüyle ilişkilidir.';
 
   @override
   String get homeGreeting => 'Selamun Aleyküm';

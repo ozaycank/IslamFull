@@ -10,11 +10,9 @@ class PrayerSettingsState extends Equatable {
   final bool isSaving;
   final PrayerFailure? failure;
   final List<PrayerCalculationMethod> availableMethods;
-
-  final List<AsrConvention> availableMadhabs;
-
+  final List<AsrConvention> availableAsrConventions;
   final String? selectedMethodId;
-  final String? selectedMadhabId;
+  final String? selectedAsrConventionId;
   final HighLatitudeStrategy? selectedHighLatStrategy;
 
   const PrayerSettingsState({
@@ -22,9 +20,9 @@ class PrayerSettingsState extends Equatable {
     this.isSaving = false,
     this.failure,
     this.availableMethods = const [],
-    this.availableMadhabs = const [],
+    this.availableAsrConventions = const [],
     this.selectedMethodId,
-    this.selectedMadhabId,
+    this.selectedAsrConventionId,
     this.selectedHighLatStrategy,
   });
 
@@ -33,9 +31,9 @@ class PrayerSettingsState extends Equatable {
     bool? isSaving,
     PrayerFailure? Function()? failure,
     List<PrayerCalculationMethod>? availableMethods,
-    List<AsrConvention>? availableMadhabs,
+    List<AsrConvention>? availableAsrConventions,
     String? selectedMethodId,
-    String? selectedMadhabId,
+    String? selectedAsrConventionId,
     HighLatitudeStrategy? selectedHighLatStrategy,
   }) {
     return PrayerSettingsState(
@@ -43,9 +41,11 @@ class PrayerSettingsState extends Equatable {
       isSaving: isSaving ?? this.isSaving,
       failure: failure != null ? failure() : this.failure,
       availableMethods: availableMethods ?? this.availableMethods,
-      availableMadhabs: availableMadhabs ?? this.availableMadhabs,
+      availableAsrConventions:
+          availableAsrConventions ?? this.availableAsrConventions,
       selectedMethodId: selectedMethodId ?? this.selectedMethodId,
-      selectedMadhabId: selectedMadhabId ?? this.selectedMadhabId,
+      selectedAsrConventionId:
+          selectedAsrConventionId ?? this.selectedAsrConventionId,
       selectedHighLatStrategy:
           selectedHighLatStrategy ?? this.selectedHighLatStrategy,
     );
@@ -57,9 +57,9 @@ class PrayerSettingsState extends Equatable {
         isSaving,
         failure,
         availableMethods,
-        availableMadhabs,
+        availableAsrConventions,
         selectedMethodId,
-        selectedMadhabId,
+        selectedAsrConventionId,
         selectedHighLatStrategy,
       ];
 }

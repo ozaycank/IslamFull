@@ -559,12 +559,12 @@ class _PrayerCalculationSection extends ConsumerWidget {
           )
         : '-';
 
-    final rawMadhabId = state.selectedMadhabId;
+    final rawAsrConventionId = state.selectedAsrConventionId;
 
-    final selectedMadhabName = rawMadhabId != null
-        ? PresentationLocalizer.localizeMadhab(
+    final selectedAsrConventionName = rawAsrConventionId != null
+        ? PresentationLocalizer.localizeAsrConvention(
             context,
-            rawMadhabId,
+            rawAsrConventionId,
           )
         : '-';
 
@@ -628,7 +628,9 @@ class _PrayerCalculationSection extends ConsumerWidget {
                   (id) => _handleSettingChange(
                     context,
                     ref,
-                    () => notifier.updateMethod(id),
+                    () => notifier.updateMethod(
+                      id,
+                    ),
                   ),
                 ),
               ),
@@ -636,28 +638,30 @@ class _PrayerCalculationSection extends ConsumerWidget {
                 height: 1,
               ),
               SettingsSelectionTile(
-                title: l10n.madhabLabel,
-                value: selectedMadhabName,
+                title: l10n.asrConventionLabel,
+                value: selectedAsrConventionName,
                 isLoading: state.isSaving,
                 onTap: () => _showSheet(
                   context,
-                  l10n.madhabLabel,
-                  state.availableMadhabs
+                  l10n.asrConventionLabel,
+                  state.availableAsrConventions
                       .map(
-                        (madhab) => SelectionItem(
-                          madhab.id,
-                          PresentationLocalizer.localizeMadhab(
+                        (convention) => SelectionItem(
+                          convention.id,
+                          PresentationLocalizer.localizeAsrConvention(
                             context,
-                            madhab.id,
+                            convention.id,
                           ),
                         ),
                       )
                       .toList(),
-                  state.selectedMadhabId,
+                  state.selectedAsrConventionId,
                   (id) => _handleSettingChange(
                     context,
                     ref,
-                    () => notifier.updateMadhab(id),
+                    () => notifier.updateAsrConvention(
+                      id,
+                    ),
                   ),
                 ),
               ),

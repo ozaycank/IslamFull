@@ -199,7 +199,7 @@ class PresentationLocalizer {
     }
   }
 
-  static String localizeMadhab(
+  static String localizeAsrConvention(
     BuildContext context,
     String id,
   ) {
@@ -207,10 +207,10 @@ class PresentationLocalizer {
 
     switch (id) {
       case 'single_shadow':
-        return l10n.madhabStandard;
+        return l10n.asrSingleShadowLabel;
 
       case 'double_shadow':
-        return l10n.madhabHanafi;
+        return l10n.asrDoubleShadowLabel;
 
       default:
         return id;

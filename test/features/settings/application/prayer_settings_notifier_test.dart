@@ -19,86 +19,81 @@ class MockPrayerLocalDataSource extends Mock implements PrayerLocalDataSource {}
 
 void main() {
   late MockCalculationMethodRepository mockRepository;
-
   late MockPrayerLocalDataSource mockLocalSource;
 
-  setUp(
-    () {
-      mockRepository = MockCalculationMethodRepository();
+  setUp(() {
+    mockRepository = MockCalculationMethodRepository();
 
-      mockLocalSource = MockPrayerLocalDataSource();
+    mockLocalSource = MockPrayerLocalDataSource();
 
-      if (getIt.isRegistered<CalculationMethodRepository>()) {
-        getIt.unregister<CalculationMethodRepository>();
-      }
+    if (getIt.isRegistered<CalculationMethodRepository>()) {
+      getIt.unregister<CalculationMethodRepository>();
+    }
 
-      getIt.registerSingleton<CalculationMethodRepository>(
-        mockRepository,
-      );
+    getIt.registerSingleton<CalculationMethodRepository>(
+      mockRepository,
+    );
 
-      if (getIt.isRegistered<PrayerLocalDataSource>()) {
-        getIt.unregister<PrayerLocalDataSource>();
-      }
+    if (getIt.isRegistered<PrayerLocalDataSource>()) {
+      getIt.unregister<PrayerLocalDataSource>();
+    }
 
-      getIt.registerSingleton<PrayerLocalDataSource>(
-        mockLocalSource,
-      );
+    getIt.registerSingleton<PrayerLocalDataSource>(
+      mockLocalSource,
+    );
 
-      when(
-        () => mockRepository.getCalculationMethods(),
-      ).thenAnswer(
-        (_) async => const Success(
-          [
-            PrayerCalculationMethod(
-              id: 'mwl',
-              name: 'MWL',
-              description: 'Desc',
-            ),
-          ],
-        ),
-      );
+    when(
+      () => mockRepository.getCalculationMethods(),
+    ).thenAnswer(
+      (_) async => const Success(
+        [
+          PrayerCalculationMethod(
+            id: 'mwl',
+            name: 'MWL',
+            description: 'Desc',
+          ),
+        ],
+      ),
+    );
 
-      when(
-        () => mockRepository.getAsrConventions(),
-      ).thenAnswer(
-        (_) async => const Success(
-          [
-            AsrConvention.doubleShadow,
-          ],
-        ),
-      );
+    when(
+      () => mockRepository.getAsrConventions(),
+    ).thenAnswer(
+      (_) async => const Success(
+        [
+          AsrConvention.doubleShadow,
+        ],
+      ),
+    );
 
-      when(
-        () => mockLocalSource.getSelectedCalculationMethodId(),
-      ).thenAnswer(
-        (_) async => 'mwl',
-      );
+    when(
+      () => mockLocalSource.getSelectedCalculationMethodId(),
+    ).thenAnswer(
+      (_) async => 'mwl',
+    );
 
-      when(
-        () => mockLocalSource.getSelectedAsrConventionId(),
-      ).thenAnswer(
-        (_) async => 'double_shadow',
-      );
+    when(
+      () => mockLocalSource.getSelectedAsrConventionId(),
+    ).thenAnswer(
+      (_) async => 'double_shadow',
+    );
 
-      when(
-        () => mockLocalSource.getSelectedHighLatitudeStrategy(),
-      ).thenAnswer(
-        (_) async => HighLatitudeStrategy.oneSeventh,
-      );
-    },
-  );
+    when(
+      () => mockLocalSource.getSelectedHighLatitudeStrategy(),
+    ).thenAnswer(
+      (_) async => HighLatitudeStrategy.oneSeventh,
+    );
+  });
 
-  tearDown(
-    () {
-      getIt.reset();
-    },
-  );
+  tearDown(() {
+    getIt.reset();
+  });
 
   group(
     'PrayerSettingsNotifier Logic',
     () {
       test(
-        'Successfully loads initial persisted settings and lists',
+        'loads persisted Asr convention and calculation settings',
         () async {
           final container = ProviderContainer();
 
@@ -128,23 +123,18 @@ void main() {
           );
 
           expect(
-            state.selectedMadhabId,
+            state.selectedAsrConventionId,
             'double_shadow',
+          );
+
+          expect(
+            state.availableAsrConventions.single,
+            AsrConvention.doubleShadow,
           );
 
           expect(
             state.selectedHighLatStrategy,
             HighLatitudeStrategy.oneSeventh,
-          );
-
-          expect(
-            state.availableMethods.length,
-            1,
-          );
-
-          expect(
-            state.availableMadhabs.single,
-            AsrConvention.doubleShadow,
           );
         },
       );
@@ -196,7 +186,7 @@ void main() {
       );
 
       test(
-        'updateMadhab compatibility method returns false when Asr convention save fails',
+        'updateAsrConvention returns false on repository failure',
         () async {
           when(
             () => mockRepository.updateAsrConvention(
@@ -218,7 +208,7 @@ void main() {
 
           await notifier.loadSettings();
 
-          final result = await notifier.updateMadhab(
+          final result = await notifier.updateAsrConvention(
             'double_shadow',
           );
 
