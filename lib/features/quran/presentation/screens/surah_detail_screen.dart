@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 import '../../../../core/di/injection_container.dart';
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/privacy/religious_progress_consent_provider.dart';
+import '../../../../core/routing/app_routes.dart';
 import '../../application/providers/quran_bookmark_provider.dart';
 import '../../application/providers/quran_progress_provider.dart';
 import '../../application/providers/quran_translation_provider.dart';
@@ -125,6 +128,10 @@ class _SurahDetailScreenState extends ConsumerState<SurahDetailScreen> {
   void _updateProgress(
     int ayahNumber,
   ) {
+    if (!ref.read(religiousProgressConsentProvider).granted) {
+      return;
+    }
+
     if (ayahNumber <= _highestVisibleAyah) {
       return;
     }
@@ -307,10 +314,24 @@ class _SurahDetailScreenState extends ConsumerState<SurahDetailScreen> {
                     isBookmarked: isBookmarked,
                     translation: ayahTranslation,
                     onBookmarkToggle: () {
+                      if (!ref.read(religiousProgressConsentProvider).granted) {
+                        ScaffoldMessenger.of(context)
+                          ..hideCurrentSnackBar()
+                          ..showSnackBar(
+                            SnackBar(
+                              content: Text(l10n.quranBookmarkConsentRequired),
+                              action: SnackBarAction(
+                                label: l10n.privacyReligiousProgressAllow,
+                                onPressed: () =>
+                                    context.push(AppRoutes.privacy),
+                              ),
+                            ),
+                          );
+                        return;
+                      }
+
                       ref
-                          .read(
-                            quranBookmarkNotifierProvider.notifier,
-                          )
+                          .read(quranBookmarkNotifierProvider.notifier)
                           .toggleBookmark(
                             surahNumber: widget.surahNumber,
                             ayahNumber: ayah.numberInSurah,

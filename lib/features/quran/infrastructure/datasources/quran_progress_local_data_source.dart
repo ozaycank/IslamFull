@@ -12,14 +12,15 @@ abstract class QuranProgressLocalDataSource {
 @LazySingleton(as: QuranProgressLocalDataSource)
 class QuranProgressLocalDataSourceImpl implements QuranProgressLocalDataSource {
   final SecureStorageService _secureStorage;
-  static const String _storageKey = 'quran_last_read';
 
   const QuranProgressLocalDataSourceImpl(this._secureStorage);
 
   @override
   Future<QuranReadingProgress?> getLastRead() async {
     try {
-      final jsonString = await _secureStorage.read(key: _storageKey);
+      final jsonString = await _secureStorage.readReligiousProgressData(
+        key: SecureStorageService.keyQuranLastRead,
+      );
       if (jsonString == null) return null;
 
       final Map<String, dynamic> jsonMap = json.decode(jsonString);
@@ -32,11 +33,16 @@ class QuranProgressLocalDataSourceImpl implements QuranProgressLocalDataSource {
   @override
   Future<void> saveLastRead(QuranReadingProgress progress) async {
     final jsonString = json.encode(progress.toJson());
-    await _secureStorage.write(key: _storageKey, value: jsonString);
+    await _secureStorage.writeReligiousProgressData(
+      key: SecureStorageService.keyQuranLastRead,
+      value: jsonString,
+    );
   }
 
   @override
   Future<void> clearProgress() async {
-    await _secureStorage.delete(key: _storageKey);
+    await _secureStorage.delete(
+      key: SecureStorageService.keyQuranLastRead,
+    );
   }
 }

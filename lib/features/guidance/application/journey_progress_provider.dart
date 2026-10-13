@@ -63,13 +63,11 @@ final journeyProgressProvider =
 );
 
 class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
-  late final SecureStorageService _storage;
+  SecureStorageService get _storage => getIt<SecureStorageService>();
   int _loadGeneration = 0;
 
   @override
   JourneyProgressState build() {
-    _storage = getIt<SecureStorageService>();
-
     final consentGranted = ref.watch(
       religiousProgressConsentProvider.select(
         (state) => state.granted,

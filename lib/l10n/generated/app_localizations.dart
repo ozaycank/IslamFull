@@ -4265,7 +4265,7 @@ abstract class AppLocalizations {
   /// Explains the scope and deletion behavior of optional local religious progress saving
   ///
   /// In en, this message translates to:
-  /// **'IslamFull can save worship activity records and New Muslim Journey progress locally on this device only if you choose to enable this optional feature. You can withdraw this choice at any time. IslamFull will then stop saving this progress and delete the related local activity and journey records.'**
+  /// **'If you choose to allow optional local religious progress saving, IslamFull stores worship activity, New Muslim Journey progress, your last-read Quran verse, and Quran bookmarks on this device. You can read the Quran and use other features without enabling it. These records are not sent to an IslamFull account or analytics service. Withdrawing consent stops future saving and deletes these local records.'**
   String get privacyReligiousProgressDesc;
 
   /// Button label for enabling optional local religious progress saving
@@ -4289,7 +4289,7 @@ abstract class AppLocalizations {
   /// Confirmation explanation shown before deleting optional local religious progress
   ///
   /// In en, this message translates to:
-  /// **'This will stop optional religious progress saving and delete locally stored worship activity and New Muslim Journey progress. Learning content, prayer calculations, and Quran reading remain available.'**
+  /// **'This will stop optional local progress saving and delete worship activity, New Muslim Journey progress, your last-read Quran verse, and Quran bookmarks from this device. Quran reading, learning guides, and prayer calculations remain available.'**
   String get privacyReligiousProgressWithdrawConfirmDesc;
 
   /// Error shown when optional religious progress privacy preference cannot be updated
@@ -4309,6 +4309,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You can use every learning guide without saving progress. If you choose to allow optional local progress saving, IslamFull can remember reviewed steps and where you last stopped on this device.'**
   String get journeyReligiousProgressConsentDesc;
+
+  /// Local religious progress saving is enabled message
+  ///
+  /// In en, this message translates to:
+  /// **'Local religious progress saving is enabled. You can withdraw this choice at any time.'**
+  String get privacyReligiousProgressEnabled;
+
+  /// Local religious progress saving is disabled message
+  ///
+  /// In en, this message translates to:
+  /// **'Local religious progress saving is disabled. You can allow it at any time.'**
+  String get privacyReligiousProgressDisabled;
+
+  /// Optional local Quran reading/bookmark saving explanation
+  ///
+  /// In en, this message translates to:
+  /// **'Allow optional local progress saving to remember your last-read Quran verse and bookmarks on this device. You can still read the Quran without allowing it.'**
+  String get quranLocalProgressConsentDesc;
+
+  /// Blocked bookmark feedback with privacy settings action
+  ///
+  /// In en, this message translates to:
+  /// **'To save bookmarks, allow optional local progress saving in Privacy settings.'**
+  String get quranBookmarkConsentRequired;
 }
 
 class _AppLocalizationsDelegate

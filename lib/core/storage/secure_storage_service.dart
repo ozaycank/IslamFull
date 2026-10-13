@@ -5,6 +5,11 @@ import 'package:injectable/injectable.dart';
 class SecureStorageService {
   final FlutterSecureStorage _storage;
 
+  // Serialize sensitive writes with withdrawal cleanup. A consent epoch
+  // prevents an old queued operation from writing after fresh consent.
+  Future<void> _religiousProgressWriteTail = Future<void>.value();
+  int _religiousProgressConsentEpoch = 0;
+
   SecureStorageService()
       : _storage = const FlutterSecureStorage(
           aOptions: AndroidOptions(
@@ -39,6 +44,10 @@ class SecureStorageService {
 
   // Sensitive local activity progress
   static const String keyActivityRecords = 'noorlife_activity_records_v2';
+
+  // Quran reading place and verse bookmarks (including legacy records)
+  static const String keyQuranLastRead = 'quran_last_read';
+  static const String keyQuranBookmarks = 'quran_bookmarks';
 
   // New Muslim journey progress
   static const String keyJourneyReviewedSteps =
@@ -206,41 +215,68 @@ class SecureStorageService {
     return value == 'true';
   }
 
-  /// Persist optional religious progress only while consent is valid.
-  ///
-  /// The second check removes an in-flight write if consent was revoked
-  /// while platform storage was completing the write.
+  /// Serialize optional religious-progress writes so withdrawal cleanup
+  /// cannot be overtaken by a previously queued storage operation.
   Future<void> writeReligiousProgressData({
     required String key,
     required String value,
-  }) async {
-    if (!await getReligiousProgressConsent()) {
-      return;
-    }
+  }) {
+    final writeEpoch = _religiousProgressConsentEpoch;
 
-    try {
-      await write(
-        key: key,
-        value: value,
-      );
-    } finally {
-      var stillGranted = false;
+    final operation = _religiousProgressWriteTail.then<void>((_) async {
+      if (writeEpoch != _religiousProgressConsentEpoch ||
+          !await getReligiousProgressConsent()) {
+        return;
+      }
 
       try {
-        stillGranted = await getReligiousProgressConsent();
+        await write(key: key, value: value);
       } finally {
-        if (!stillGranted) {
-          await delete(
-            key: key,
-          );
+        var stillGranted = false;
+        try {
+          stillGranted = await getReligiousProgressConsent();
+        } finally {
+          if (!stillGranted || writeEpoch != _religiousProgressConsentEpoch) {
+            await delete(key: key);
+          }
         }
       }
+    });
+
+    // Keep the queue usable after a failed platform write, while propagating
+    // that failure to the original caller.
+    _religiousProgressWriteTail = operation.then<void>(
+      (_) {},
+      onError: (Object _, StackTrace __) {},
+    );
+    return operation;
+  }
+
+  /// Read optional religious progress only with consent. A withdrawal
+  /// during platform storage access must not reveal a previously read value.
+  Future<String?> readReligiousProgressData({
+    required String key,
+  }) async {
+    if (!await getReligiousProgressConsent()) {
+      return null;
     }
+
+    final value = await read(key: key);
+
+    if (!await getReligiousProgressConsent()) {
+      return null;
+    }
+
+    return value;
   }
 
   Future<void> setReligiousProgressConsent(
     bool value,
   ) async {
+    if (!value) {
+      ++_religiousProgressConsentEpoch;
+    }
+
     await write(
       key: keyReligiousProgressConsent,
       value: value.toString(),
@@ -248,6 +284,8 @@ class SecureStorageService {
   }
 
   Future<void> clearReligiousProgressData() async {
+    await _religiousProgressWriteTail;
+
     await delete(
       key: keyActivityRecords,
     );
@@ -258,6 +296,14 @@ class SecureStorageService {
 
     await delete(
       key: keyJourneyLastVisitedStep,
+    );
+
+    await delete(
+      key: keyQuranLastRead,
+    );
+
+    await delete(
+      key: keyQuranBookmarks,
     );
   }
 

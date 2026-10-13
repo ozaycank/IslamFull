@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/privacy/religious_progress_consent_provider.dart';
 import '../../../../core/routing/app_routes.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../../../../shared/widgets/error_state_widget.dart';
@@ -29,6 +30,10 @@ class QuranHomeScreen extends ConsumerWidget {
 
     final notifier = ref.read(
       quranNotifierProvider.notifier,
+    );
+
+    final consentGranted = ref.watch(
+      religiousProgressConsentProvider.select((consent) => consent.granted),
     );
 
     final progressState = ref.watch(
@@ -100,6 +105,7 @@ class QuranHomeScreen extends ConsumerWidget {
                   ),
                 ),
                 if (!hasActiveSearch &&
+                    consentGranted &&
                     progressState.lastRead != null &&
                     state.surahs.isNotEmpty)
                   Padding(

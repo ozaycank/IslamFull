@@ -1,5 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../../core/di/injection_container.dart';
+import '../../../../core/privacy/religious_progress_consent_provider.dart';
 import '../../domain/entities/quran_bookmark.dart';
 import '../../domain/repositories/quran_bookmark_repository.dart';
 import '../states/quran_bookmark_state.dart';
@@ -10,24 +12,60 @@ final quranBookmarkNotifierProvider =
 );
 
 class QuranBookmarkNotifier extends Notifier<QuranBookmarkState> {
-  late final QuranBookmarkRepository _repository;
+  QuranBookmarkRepository get _repository => getIt<QuranBookmarkRepository>();
+  int _operationGeneration = 0;
 
   @override
   QuranBookmarkState build() {
-    _repository = getIt<QuranBookmarkRepository>();
-    Future.microtask(() => loadBookmarks());
-    return QuranBookmarkState.initial();
+    final consentGranted = ref.watch(
+      religiousProgressConsentProvider.select(
+        (consent) => consent.granted,
+      ),
+    );
+
+    final generation = ++_operationGeneration;
+    Future.microtask(
+      () => _loadBookmarks(consentGranted, generation),
+    );
+
+    return QuranBookmarkState(isLoading: consentGranted);
   }
 
-  Future<void> loadBookmarks() async {
-    state = state.copyWith(isLoading: true, failure: null);
+  Future<void> loadBookmarks() {
+    final consentGranted = ref.read(religiousProgressConsentProvider).granted;
+    final generation = ++_operationGeneration;
+    state = QuranBookmarkState(isLoading: consentGranted);
+    return _loadBookmarks(consentGranted, generation);
+  }
+
+  Future<void> _loadBookmarks(bool consentGranted, int generation) async {
+    if (generation != _operationGeneration) {
+      return;
+    }
+
+    if (!consentGranted) {
+      state = const QuranBookmarkState(isLoading: false);
+      return;
+    }
+
     try {
-      final items = await _repository.getBookmarks();
-      // Sort newest first naturally
-      items.sort((a, b) => b.createdAt.compareTo(a.createdAt));
-      state = state.copyWith(isLoading: false, bookmarks: items);
+      final items = List<QuranBookmark>.from(
+        await _repository.getBookmarks(),
+      )..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+
+      if (generation != _operationGeneration ||
+          !ref.read(religiousProgressConsentProvider).granted) {
+        return;
+      }
+
+      state = QuranBookmarkState(isLoading: false, bookmarks: items);
     } catch (e) {
-      state = state.copyWith(isLoading: false, failure: e.toString());
+      if (generation != _operationGeneration ||
+          !ref.read(religiousProgressConsentProvider).granted) {
+        return;
+      }
+
+      state = QuranBookmarkState(isLoading: false, failure: e.toString());
     }
   }
 
@@ -35,18 +73,25 @@ class QuranBookmarkNotifier extends Notifier<QuranBookmarkState> {
     required int surahNumber,
     required int ayahNumber,
   }) async {
-    final currentList = List<QuranBookmark>.from(state.bookmarks);
+    final consent = ref.read(religiousProgressConsentProvider);
+    if (!consent.granted || consent.isUpdating || state.isLoading) {
+      return;
+    }
 
-    final existingIndex = currentList.indexWhere(
-      (b) => b.surahNumber == surahNumber && b.ayahNumber == ayahNumber,
+    final generation = ++_operationGeneration;
+    final previousBookmarks = List<QuranBookmark>.from(state.bookmarks);
+    final updatedBookmarks = List<QuranBookmark>.from(previousBookmarks);
+
+    final existingIndex = updatedBookmarks.indexWhere(
+      (bookmark) =>
+          bookmark.surahNumber == surahNumber &&
+          bookmark.ayahNumber == ayahNumber,
     );
 
     if (existingIndex != -1) {
-      // Remove it
-      currentList.removeAt(existingIndex);
+      updatedBookmarks.removeAt(existingIndex);
     } else {
-      // Add it
-      currentList.insert(
+      updatedBookmarks.insert(
         0,
         QuranBookmark(
           surahNumber: surahNumber,
@@ -56,14 +101,24 @@ class QuranBookmarkNotifier extends Notifier<QuranBookmarkState> {
       );
     }
 
-    // Optimistic UI update
-    state = state.copyWith(bookmarks: currentList);
+    state = QuranBookmarkState(
+      isLoading: false,
+      bookmarks: updatedBookmarks,
+    );
 
     try {
-      await _repository.saveBookmarks(currentList);
+      await _repository.saveBookmarks(updatedBookmarks);
     } catch (e) {
-      // Revert on failure
-      loadBookmarks();
+      if (generation != _operationGeneration ||
+          !ref.read(religiousProgressConsentProvider).granted) {
+        return;
+      }
+
+      state = QuranBookmarkState(
+        isLoading: false,
+        bookmarks: previousBookmarks,
+        failure: e.toString(),
+      );
     }
   }
 }

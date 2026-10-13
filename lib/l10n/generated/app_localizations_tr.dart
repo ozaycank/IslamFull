@@ -2357,7 +2357,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get privacyReligiousProgressDesc =>
-      'İzin vermeyi seçerseniz IslamFull, İbadetlerim işaretlerinizi ve Yeni Müslüman Yolculuğu ilerlemenizi bu özelliklerin kaldığınız yeri hatırlayabilmesi için yalnızca bu cihazda yerel olarak saklar. Bu tercih isteğe bağlıdır ve IslamFull\'u kullanmak için gerekli değildir. Bu kayıtlar bir IslamFull hesabına veya analiz hizmetine gönderilmez. Rızanızı geri çekerseniz gelecekteki kayıt durdurulur ve bu yerel ilerleme kayıtları silinir.';
+      'İzin verirseniz IslamFull, İbadetlerim işaretlerinizi, Yeni Müslüman Yolculuğu ilerlemenizi, Kur\'an\'da son okuduğunuz ayeti ve yer imlerinizi yalnızca bu cihazda saklar. Bu kayıtlar isteğe bağlıdır; izin vermeden de Kur\'an okuyabilir ve diğer özellikleri kullanabilirsiniz. Kayıtlar IslamFull hesabına veya analiz hizmetine gönderilmez. Rızanızı geri çektiğinizde yeni kayıt durdurulur ve bu yerel kayıtlar silinir.';
 
   @override
   String get privacyReligiousProgressAllow => 'Yerel ilerleme kaydına izin ver';
@@ -2372,7 +2372,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get privacyReligiousProgressWithdrawConfirmDesc =>
-      'Bu işlem isteğe bağlı dinî ilerleme kaydını durdurur, İbadetlerim kayıtlarını ve Yeni Müslüman Yolculuğu ilerlemesini bu cihazdan siler. Öğrenme içerikleri, namaz vakti hesaplamaları ve Kur\'an okuma kullanılmaya devam edilebilir.';
+      'Bu işlem İbadetlerim ve Yeni Müslüman Yolculuğu ilerlemesini, Kur\'an son okunan ayetini ve yer imlerini bu cihazdan siler; yeni yerel ilerleme kaydını durdurur. Kur\'an okumaya, öğrenme rehberlerine ve namaz vakitlerine erişim devam eder.';
 
   @override
   String get privacyReligiousProgressActionFailed =>
@@ -2385,4 +2385,20 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get journeyReligiousProgressConsentDesc =>
       'IslamFull, hangi öğrenme adımlarını ziyaret ettiğinizi veya incelendi olarak işaretlediğinizi yalnızca bu cihazda hatırlayabilir. Yeni Müslüman Yolculuğu ilerlemesinin kaydedilmesi isteğe bağlıdır; öğrenme rehberleri bu izin verilmeden de kullanılabilir.';
+
+  @override
+  String get privacyReligiousProgressEnabled =>
+      'Yerel dinî ilerleme kaydı etkin.';
+
+  @override
+  String get privacyReligiousProgressDisabled =>
+      'Yerel dinî ilerleme kaydı kapalı.';
+
+  @override
+  String get quranLocalProgressConsentDesc =>
+      'Son okuduğunuz ayeti ve yer imlerinizi cihazınızda hatırlamak için isteğe bağlı yerel ilerleme kaydına izin verebilirsiniz. İzin vermeden de Kur\'an okuyabilirsiniz.';
+
+  @override
+  String get quranBookmarkConsentRequired =>
+      'Yer imi kaydetmek için Gizlilik bölümünden isteğe bağlı yerel ilerleme kaydına izin verin.';
 }

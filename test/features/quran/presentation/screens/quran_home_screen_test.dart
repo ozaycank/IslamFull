@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:noor_life/core/privacy/religious_progress_consent_provider.dart';
 import 'package:noor_life/features/quran/application/providers/quran_progress_provider.dart';
 import 'package:noor_life/features/quran/application/providers/quran_provider.dart';
 import 'package:noor_life/features/quran/application/states/quran_progress_state.dart';
@@ -37,6 +38,12 @@ class FakeQuranProgressNotifier extends QuranProgressNotifier {
   }
 }
 
+class FakeConsentNotifier extends ReligiousProgressConsentNotifier {
+  @override
+  ReligiousProgressConsentState build() =>
+      const ReligiousProgressConsentState(granted: true);
+}
+
 void main() {
   Widget buildTestableWidget({
     required QuranState state,
@@ -44,6 +51,7 @@ void main() {
   }) {
     return ProviderScope(
       overrides: [
+        religiousProgressConsentProvider.overrideWith(FakeConsentNotifier.new),
         quranNotifierProvider.overrideWith(
           () => FakeQuranNotifier(
             fakeState: state,
