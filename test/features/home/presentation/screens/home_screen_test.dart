@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 
+import 'package:noor_life/core/privacy/religious_progress_consent_provider.dart';
 import 'package:noor_life/features/home/presentation/screens/home_screen.dart';
 import 'package:noor_life/features/menu/application/preferences_provider.dart';
 import 'package:noor_life/features/prayer/location/application/providers/location_notifier.dart';
@@ -76,6 +77,16 @@ class FakeQuranNotifier extends QuranNotifier {
         surahs: [],
         searchQuery: '',
       );
+}
+
+class FakeReligiousProgressConsentNotifier
+    extends ReligiousProgressConsentNotifier {
+  @override
+  ReligiousProgressConsentState build() {
+    return const ReligiousProgressConsentState(
+      granted: false,
+    );
+  }
 }
 
 class FakeQuranRepository implements QuranRepository {
@@ -158,6 +169,9 @@ void main() {
     ),
   }) {
     return [
+      religiousProgressConsentProvider.overrideWith(
+        FakeReligiousProgressConsentNotifier.new,
+      ),
       locationNotifierProvider.overrideWith(
         () => FakeLocationNotifier(),
       ),
@@ -367,6 +381,7 @@ void main() {
       });
     },
   );
+
   testWidgets(
     'Home clamps negative prayer countdown and remains responsive with large text',
     (tester) async {
@@ -423,6 +438,7 @@ void main() {
       );
     },
   );
+
   testWidgets(
     'Home displays Eid day context in the Qurban shortcut',
     (tester) async {
