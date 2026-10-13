@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:noor_life/core/base/result.dart';
+import 'package:noor_life/core/privacy/religious_progress_consent_provider.dart';
 import 'package:noor_life/features/activity/application/activity_provider.dart';
 import 'package:noor_life/features/activity/domain/activity_models.dart';
 import 'package:noor_life/features/activity/domain/activity_prayer_type.dart';
@@ -50,6 +51,13 @@ class FakeActivityScreenRepository implements ActivityRepository {
   }
 }
 
+class _FakeGrantedConsentNotifier extends ReligiousProgressConsentNotifier {
+  @override
+  ReligiousProgressConsentState build() {
+    return const ReligiousProgressConsentState(granted: true);
+  }
+}
+
 void main() {
   Widget buildTestableWidget({
     double textScale = 1,
@@ -58,6 +66,9 @@ void main() {
 
     return ProviderScope(
       overrides: [
+        religiousProgressConsentProvider.overrideWith(
+          _FakeGrantedConsentNotifier.new,
+        ),
         activityNotifierProvider.overrideWith(
           (ref) => ActivityNotifier(
             repository,

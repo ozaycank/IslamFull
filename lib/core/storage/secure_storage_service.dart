@@ -206,6 +206,38 @@ class SecureStorageService {
     return value == 'true';
   }
 
+  /// Persist optional religious progress only while consent is valid.
+  ///
+  /// The second check removes an in-flight write if consent was revoked
+  /// while platform storage was completing the write.
+  Future<void> writeReligiousProgressData({
+    required String key,
+    required String value,
+  }) async {
+    if (!await getReligiousProgressConsent()) {
+      return;
+    }
+
+    try {
+      await write(
+        key: key,
+        value: value,
+      );
+    } finally {
+      var stillGranted = false;
+
+      try {
+        stillGranted = await getReligiousProgressConsent();
+      } finally {
+        if (!stillGranted) {
+          await delete(
+            key: key,
+          );
+        }
+      }
+    }
+  }
+
   Future<void> setReligiousProgressConsent(
     bool value,
   ) async {
@@ -238,7 +270,7 @@ class SecureStorageService {
   Future<void> setJourneyReviewedSteps(
     String value,
   ) async {
-    await write(
+    await writeReligiousProgressData(
       key: keyJourneyReviewedSteps,
       value: value,
     );
@@ -261,7 +293,7 @@ class SecureStorageService {
       return;
     }
 
-    await write(
+    await writeReligiousProgressData(
       key: keyJourneyLastVisitedStep,
       value: value,
     );

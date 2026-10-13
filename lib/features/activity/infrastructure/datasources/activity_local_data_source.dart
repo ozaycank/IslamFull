@@ -34,6 +34,11 @@ class ActivityLocalDataSourceImpl implements ActivityLocalDataSource {
       key: SecureStorageService.keyActivityRecords,
     );
 
+    // A withdrawal may have completed while the platform read was pending.
+    if (!await _storage.getReligiousProgressConsent()) {
+      return {};
+    }
+
     if (data == null || data.isEmpty) {
       return {};
     }
@@ -57,17 +62,11 @@ class ActivityLocalDataSourceImpl implements ActivityLocalDataSource {
   Future<void> saveAllRecords(
     Map<String, dynamic> records,
   ) async {
-    final consentGranted = await _storage.getReligiousProgressConsent();
-
-    if (!consentGranted) {
-      return;
-    }
-
     final encoded = json.encode(
       records,
     );
 
-    await _storage.write(
+    await _storage.writeReligiousProgressData(
       key: SecureStorageService.keyActivityRecords,
       value: encoded,
     );

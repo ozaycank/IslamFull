@@ -25,6 +25,7 @@ final religiousProgressConsentProvider = NotifierProvider<
 class ReligiousProgressConsentNotifier
     extends Notifier<ReligiousProgressConsentState> {
   late final SecureStorageService _storage;
+  int _operationVersion = 0;
 
   @override
   ReligiousProgressConsentState build() {
@@ -40,13 +41,33 @@ class ReligiousProgressConsentNotifier
   }
 
   Future<void> load() async {
+    final operationVersion = ++_operationVersion;
+
     try {
       final granted = await _storage.getReligiousProgressConsent();
+
+      if (operationVersion != _operationVersion) {
+        return;
+      }
+
+      if (!granted) {
+        // Complete any interrupted withdrawal, and purge pre-consent
+        // activity/journey records left by older application versions.
+        await _storage.clearReligiousProgressData();
+      }
+
+      if (operationVersion != _operationVersion) {
+        return;
+      }
 
       state = ReligiousProgressConsentState(
         granted: granted,
       );
     } catch (_) {
+      if (operationVersion != _operationVersion) {
+        return;
+      }
+
       state = const ReligiousProgressConsentState(
         hasError: true,
       );
@@ -54,15 +75,25 @@ class ReligiousProgressConsentNotifier
   }
 
   Future<bool> grant() async {
-    state = ReligiousProgressConsentState(
+    if (state.isUpdating) {
+      return false;
+    }
+
+    if (state.granted) {
+      return true;
+    }
+
+    ++_operationVersion;
+
+    state = const ReligiousProgressConsentState(
       isUpdating: true,
-      granted: state.granted,
     );
 
     try {
-      await _storage.setReligiousProgressConsent(
-        true,
-      );
+      // Never revive records from an incomplete deletion or a legacy
+      // installation when the user gives fresh consent.
+      await _storage.clearReligiousProgressData();
+      await _storage.setReligiousProgressConsent(true);
 
       state = const ReligiousProgressConsentState(
         granted: true,
@@ -70,8 +101,7 @@ class ReligiousProgressConsentNotifier
 
       return true;
     } catch (_) {
-      state = ReligiousProgressConsentState(
-        granted: state.granted,
+      state = const ReligiousProgressConsentState(
         hasError: true,
       );
 
@@ -80,28 +110,27 @@ class ReligiousProgressConsentNotifier
   }
 
   Future<bool> withdrawAndDelete() async {
-    state = ReligiousProgressConsentState(
+    if (state.isUpdating) {
+      return false;
+    }
+
+    ++_operationVersion;
+
+    // Disable UI-side processing before the asynchronous storage operation.
+    state = const ReligiousProgressConsentState(
       isUpdating: true,
-      granted: state.granted,
     );
 
     try {
-      // Stop future optional progress processing first.
-      await _storage.setReligiousProgressConsent(
-        false,
-      );
-
-      // Then remove the local progress covered by this preference.
+      await _storage.setReligiousProgressConsent(false);
       await _storage.clearReligiousProgressData();
 
-      state = const ReligiousProgressConsentState(
-        granted: false,
-      );
-
+      state = const ReligiousProgressConsentState();
       return true;
     } catch (_) {
+      // Fail closed: do not display or resume local religious progress.
+      // A future load/grant retries cleanup before using these records.
       state = const ReligiousProgressConsentState(
-        granted: false,
         hasError: true,
       );
 

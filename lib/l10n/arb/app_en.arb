@@ -2810,5 +2810,12 @@
 "journeyReligiousProgressConsentDesc": "You can use every learning guide without saving progress. If you choose to allow optional local progress saving, IslamFull can remember reviewed steps and where you last stopped on this device.",
 "@journeyReligiousProgressConsentDesc": {
   "description": "New Muslim Journey explanation shown when optional local progress saving is disabled"
-}
+},
+"privacyReligiousProgressEnabled": "Local religious progress saving is enabled. You can withdraw this choice at any time.",
+"@privacyReligiousProgressEnabled": {
+  "description": "Local religious progress saving is enabled message"
+},
+"privacyReligiousProgressDisabled": "Local religious progress saving is disabled. You can allow it at any time.",
+"@privacyReligiousProgressDisabled": {
+  "description": "Local religious progress saving is disabled message"
 }

@@ -2368,11 +2368,11 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get privacyReligiousProgressWithdrawConfirmTitle =>
-      'Delete local religious progress?';
+      'Yerel dinî ilerleme kayıtları silinsin mi?';
 
   @override
   String get privacyReligiousProgressWithdrawConfirmDesc =>
-      'This will stop optional religious progress saving and delete locally stored worship activity and New Muslim Journey progress. Learning content, prayer calculations, and Quran reading remain available.';
+      'Bu işlem isteğe bağlı dinî ilerleme kaydını durdurur, İbadetlerim kayıtlarını ve Yeni Müslüman Yolculuğu ilerlemesini bu cihazdan siler. Öğrenme içerikleri, namaz vakti hesaplamaları ve Kur\'an okuma kullanılmaya devam edilebilir.';
 
   @override
   String get privacyReligiousProgressActionFailed =>

@@ -64,6 +64,7 @@ final journeyProgressProvider =
 
 class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
   late final SecureStorageService _storage;
+  int _loadGeneration = 0;
 
   @override
   JourneyProgressState build() {
@@ -75,9 +76,12 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
       ),
     );
 
+    final loadGeneration = ++_loadGeneration;
+
     Future.microtask(
       () => _loadProgress(
         consentGranted,
+        loadGeneration,
       ),
     );
 
@@ -191,12 +195,18 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
 
     return _loadProgress(
       consentGranted,
+      ++_loadGeneration,
     );
   }
 
   Future<void> _loadProgress(
     bool consentGranted,
+    int loadGeneration,
   ) async {
+    if (loadGeneration != _loadGeneration) {
+      return;
+    }
+
     if (!consentGranted) {
       state = const JourneyProgressState(
         isLoading: false,
@@ -218,6 +228,11 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
         lastVisitedRaw,
       );
 
+      if (loadGeneration != _loadGeneration ||
+          !ref.read(religiousProgressConsentProvider).granted) {
+        return;
+      }
+
       state = JourneyProgressState(
         isLoading: false,
         reviewedSteps: Set.unmodifiable(
@@ -226,6 +241,10 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
         lastVisitedStep: lastVisitedStep,
       );
     } catch (_) {
+      if (loadGeneration != _loadGeneration) {
+        return;
+      }
+
       state = const JourneyProgressState(
         isLoading: false,
       );

@@ -1,32 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:noor_life/core/privacy/religious_progress_consent_provider.dart';
 import 'package:noor_life/features/menu/presentation/screens/privacy_screen.dart';
 import 'package:noor_life/l10n/generated/app_localizations.dart';
+
+class _FakeConsentNotifier extends ReligiousProgressConsentNotifier {
+  @override
+  ReligiousProgressConsentState build() {
+    return const ReligiousProgressConsentState();
+  }
+}
 
 void main() {
   Widget buildTestableWidget({
     double textScale = 1,
   }) {
-    return MaterialApp(
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en'),
-      ],
-      locale: const Locale('en'),
-      home: MediaQuery(
-        data: MediaQueryData(
-          textScaler: TextScaler.linear(
-            textScale,
-          ),
+    return ProviderScope(
+      overrides: [
+        religiousProgressConsentProvider.overrideWith(
+          _FakeConsentNotifier.new,
         ),
-        child: const PrivacyScreen(),
+      ],
+      child: MaterialApp(
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en'),
+        ],
+        locale: const Locale('en'),
+        home: MediaQuery(
+          data: MediaQueryData(
+            textScaler: TextScaler.linear(
+              textScale,
+            ),
+          ),
+          child: const PrivacyScreen(),
+        ),
       ),
     );
   }
