@@ -58,6 +58,8 @@ void main() {
     final consent = container.read(religiousProgressConsentProvider.notifier)
         as _ConsentNotifier;
     consent.update(true);
+    // Trigger the watched provider's lazy rebuild before awaiting its load.
+    container.read(journeyProgressProvider);
     await pumpEventQueue();
 
     final grantedState = container.read(journeyProgressProvider);

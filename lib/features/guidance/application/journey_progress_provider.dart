@@ -68,6 +68,16 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
 
   @override
   JourneyProgressState build() {
+    // Invalidate pending reads before a watched dependency rebuild occurs.
+    ref.listen(
+      religiousProgressConsentProvider.select(
+        (consent) => consent.granted,
+      ),
+      (previous, next) {
+        ++_loadGeneration;
+      },
+    );
+
     final consentGranted = ref.watch(
       religiousProgressConsentProvider.select(
         (state) => state.granted,
@@ -104,6 +114,7 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
     }
 
     final previousStep = state.lastVisitedStep;
+    final operationGeneration = _loadGeneration;
 
     state = state.copyWith(
       lastVisitedStep: step,
@@ -114,10 +125,12 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
         step.name,
       );
     } catch (_) {
-      state = state.copyWith(
-        lastVisitedStep: previousStep,
-        clearLastVisitedStep: previousStep == null,
-      );
+      if (operationGeneration == _loadGeneration) {
+        state = state.copyWith(
+          lastVisitedStep: previousStep,
+          clearLastVisitedStep: previousStep == null,
+        );
+      }
 
       rethrow;
     }
@@ -137,6 +150,7 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
       return;
     }
 
+    final operationGeneration = _loadGeneration;
     final previousSteps = Set<JourneyStepId>.from(
       state.reviewedSteps,
     );
@@ -174,11 +188,13 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
         updatedSteps,
       );
     } catch (_) {
-      state = state.copyWith(
-        reviewedSteps: Set.unmodifiable(
-          previousSteps,
-        ),
-      );
+      if (operationGeneration == _loadGeneration) {
+        state = state.copyWith(
+          reviewedSteps: Set.unmodifiable(
+            previousSteps,
+          ),
+        );
+      }
 
       rethrow;
     }
@@ -226,8 +242,7 @@ class JourneyProgressNotifier extends Notifier<JourneyProgressState> {
         lastVisitedRaw,
       );
 
-      if (loadGeneration != _loadGeneration ||
-          !ref.read(religiousProgressConsentProvider).granted) {
+      if (loadGeneration != _loadGeneration) {
         return;
       }
 

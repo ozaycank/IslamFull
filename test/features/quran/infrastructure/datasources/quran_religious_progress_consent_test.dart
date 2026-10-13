@@ -61,10 +61,14 @@ void main() {
 
     expect(await progressSource.getLastRead(), isNull);
     expect(await bookmarkSource.getBookmarks(), isEmpty);
-    expect(storage.data.containsKey(SecureStorageService.keyQuranLastRead),
-        isFalse);
-    expect(storage.data.containsKey(SecureStorageService.keyQuranBookmarks),
-        isFalse);
+    expect(
+      storage.data.containsKey(SecureStorageService.keyQuranLastRead),
+      isFalse,
+    );
+    expect(
+      storage.data.containsKey(SecureStorageService.keyQuranBookmarks),
+      isFalse,
+    );
   });
 
   test('consented Quran data uses legacy storage keys and round-trips',
@@ -73,10 +77,14 @@ void main() {
     await progressSource.saveLastRead(progress);
     await bookmarkSource.saveBookmarks([bookmark]);
 
-    expect(storage.data.containsKey(SecureStorageService.keyQuranLastRead),
-        isTrue);
-    expect(storage.data.containsKey(SecureStorageService.keyQuranBookmarks),
-        isTrue);
+    expect(
+      storage.data.containsKey(SecureStorageService.keyQuranLastRead),
+      isTrue,
+    );
+    expect(
+      storage.data.containsKey(SecureStorageService.keyQuranBookmarks),
+      isTrue,
+    );
     expect(await progressSource.getLastRead(), progress);
     expect(await bookmarkSource.getBookmarks(), [bookmark]);
   });
@@ -92,10 +100,14 @@ void main() {
     expect(await bookmarkSource.getBookmarks(), isEmpty);
 
     await storage.clearReligiousProgressData();
-    expect(storage.data.containsKey(SecureStorageService.keyQuranLastRead),
-        isFalse);
-    expect(storage.data.containsKey(SecureStorageService.keyQuranBookmarks),
-        isFalse);
+    expect(
+      storage.data.containsKey(SecureStorageService.keyQuranLastRead),
+      isFalse,
+    );
+    expect(
+      storage.data.containsKey(SecureStorageService.keyQuranBookmarks),
+      isFalse,
+    );
 
     await storage.setReligiousProgressConsent(true);
     expect(await progressSource.getLastRead(), isNull);
@@ -132,13 +144,17 @@ void main() {
     };
 
     await progressSource.saveLastRead(progress);
-    expect(storage.data.containsKey(SecureStorageService.keyQuranLastRead),
-        isFalse);
+    expect(
+      storage.data.containsKey(SecureStorageService.keyQuranLastRead),
+      isFalse,
+    );
 
     await storage.setReligiousProgressConsent(true);
     await bookmarkSource.saveBookmarks([bookmark]);
-    expect(storage.data.containsKey(SecureStorageService.keyQuranBookmarks),
-        isFalse);
+    expect(
+      storage.data.containsKey(SecureStorageService.keyQuranBookmarks),
+      isFalse,
+    );
   });
 
   test('pending Quran write is removed when consent changes mid-flight',
@@ -154,11 +170,15 @@ void main() {
     final write = bookmarkSource.saveBookmarks([bookmark]);
     await pumpEventQueue();
     await storage.setReligiousProgressConsent(false);
-    await storage.clearReligiousProgressData();
+    // Cleanup intentionally waits for the pending write. Start cleanup,
+    // release the write, then await both rather than deadlocking the test.
+    final cleanup = storage.clearReligiousProgressData();
     pendingWrite.complete();
-    await write;
+    await Future.wait<void>([write, cleanup]);
 
-    expect(storage.data.containsKey(SecureStorageService.keyQuranBookmarks),
-        isFalse);
+    expect(
+      storage.data.containsKey(SecureStorageService.keyQuranBookmarks),
+      isFalse,
+    );
   });
 }

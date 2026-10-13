@@ -17,6 +17,17 @@ class QuranBookmarkNotifier extends Notifier<QuranBookmarkState> {
 
   @override
   QuranBookmarkState build() {
+    // Invalidate in-flight results synchronously on consent changes, even
+    // before a watched provider is rebuilt by Riverpod.
+    ref.listen(
+      religiousProgressConsentProvider.select(
+        (consent) => consent.granted,
+      ),
+      (previous, next) {
+        ++_operationGeneration;
+      },
+    );
+
     final consentGranted = ref.watch(
       religiousProgressConsentProvider.select(
         (consent) => consent.granted,
@@ -53,15 +64,13 @@ class QuranBookmarkNotifier extends Notifier<QuranBookmarkState> {
         await _repository.getBookmarks(),
       )..sort((a, b) => b.createdAt.compareTo(a.createdAt));
 
-      if (generation != _operationGeneration ||
-          !ref.read(religiousProgressConsentProvider).granted) {
+      if (generation != _operationGeneration) {
         return;
       }
 
       state = QuranBookmarkState(isLoading: false, bookmarks: items);
     } catch (e) {
-      if (generation != _operationGeneration ||
-          !ref.read(religiousProgressConsentProvider).granted) {
+      if (generation != _operationGeneration) {
         return;
       }
 
@@ -109,8 +118,7 @@ class QuranBookmarkNotifier extends Notifier<QuranBookmarkState> {
     try {
       await _repository.saveBookmarks(updatedBookmarks);
     } catch (e) {
-      if (generation != _operationGeneration ||
-          !ref.read(religiousProgressConsentProvider).granted) {
+      if (generation != _operationGeneration) {
         return;
       }
 

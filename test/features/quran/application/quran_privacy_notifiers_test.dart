@@ -135,7 +135,11 @@ void main() {
     expect(bookmarkRepository.writeCalls, 0);
 
     consentNotifier().update(true);
+    // A watched notifier rebuilds lazily. Start its consented load first,
+    // then wait for it to finish before attempting a bookmark edit.
+    container.read(quranBookmarkNotifierProvider);
     await pumpEventQueue();
+    expect(container.read(quranBookmarkNotifierProvider).isLoading, isFalse);
     await container.read(quranBookmarkNotifierProvider.notifier).toggleBookmark(
           surahNumber: 2,
           ayahNumber: 5,

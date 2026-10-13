@@ -80,8 +80,10 @@ class QuranBookmarksScreen extends ConsumerWidget {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                leading: Icon(Icons.bookmark,
-                                    color: colorScheme.primary),
+                                leading: Icon(
+                                  Icons.bookmark,
+                                  color: colorScheme.primary,
+                                ),
                                 title: Text(
                                   surahName,
                                   style:
@@ -90,7 +92,8 @@ class QuranBookmarksScreen extends ConsumerWidget {
                                   ),
                                 ),
                                 subtitle: Text(
-                                    '${l10n.quranAyah} ${bookmark.ayahNumber}'),
+                                  '${l10n.quranAyah} ${bookmark.ayahNumber}',
+                                ),
                                 trailing: const Icon(Icons.chevron_right),
                                 onTap: () {
                                   // Jump directly to exact ayah

@@ -18,6 +18,17 @@ class QuranProgressNotifier extends Notifier<QuranProgressState> {
 
   @override
   QuranProgressState build() {
+    // Invalidate in-flight results synchronously on consent changes, even
+    // before a watched provider is rebuilt by Riverpod.
+    ref.listen(
+      religiousProgressConsentProvider.select(
+        (consent) => consent.granted,
+      ),
+      (previous, next) {
+        ++_operationGeneration;
+      },
+    );
+
     final consentGranted = ref.watch(
       religiousProgressConsentProvider.select(
         (consent) => consent.granted,
@@ -52,15 +63,13 @@ class QuranProgressNotifier extends Notifier<QuranProgressState> {
 
     try {
       final progress = await _repository.getLastRead();
-      if (generation != _operationGeneration ||
-          !ref.read(religiousProgressConsentProvider).granted) {
+      if (generation != _operationGeneration) {
         return;
       }
 
       state = QuranProgressState(isLoading: false, lastRead: progress);
     } catch (e) {
-      if (generation != _operationGeneration ||
-          !ref.read(religiousProgressConsentProvider).granted) {
+      if (generation != _operationGeneration) {
         return;
       }
 
@@ -87,8 +96,7 @@ class QuranProgressNotifier extends Notifier<QuranProgressState> {
     try {
       await _repository.saveLastRead(progress);
     } catch (e) {
-      if (generation != _operationGeneration ||
-          !ref.read(religiousProgressConsentProvider).granted) {
+      if (generation != _operationGeneration) {
         return;
       }
 
@@ -110,8 +118,7 @@ class QuranProgressNotifier extends Notifier<QuranProgressState> {
     try {
       await _repository.clearProgress();
     } catch (e) {
-      if (generation != _operationGeneration ||
-          !ref.read(religiousProgressConsentProvider).granted) {
+      if (generation != _operationGeneration) {
         return;
       }
 
