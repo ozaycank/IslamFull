@@ -315,15 +315,24 @@ class _SurahDetailScreenState extends ConsumerState<SurahDetailScreen> {
                     translation: ayahTranslation,
                     onBookmarkToggle: () {
                       if (!ref.read(religiousProgressConsentProvider).granted) {
+                        // Capture the router while this ayah widget is active.
+                        // The SnackBar action can outlive this item and route.
+                        final router = GoRouter.of(context);
+
                         ScaffoldMessenger.of(context)
                           ..hideCurrentSnackBar()
                           ..showSnackBar(
                             SnackBar(
-                              content: Text(l10n.quranBookmarkConsentRequired),
+                              content: Text(
+                                l10n.quranBookmarkConsentRequired,
+                              ),
                               action: SnackBarAction(
                                 label: l10n.privacyReligiousProgressAllow,
-                                onPressed: () =>
-                                    context.push(AppRoutes.privacy),
+                                onPressed: () {
+                                  router.push(
+                                    AppRoutes.privacy,
+                                  );
+                                },
                               ),
                             ),
                           );
