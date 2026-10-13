@@ -24,6 +24,13 @@ void main() {
     ).thenAnswer(
       (_) async => true,
     );
+
+    when(
+      () => storage.writeReligiousProgressData(
+        key: SecureStorageService.keyActivityRecords,
+        value: any(named: 'value'),
+      ),
+    ).thenAnswer((_) async {});
   });
 
   test(
@@ -117,14 +124,8 @@ void main() {
   );
 
   test(
-    'does not write activity data when consent is not granted',
+    'routes activity writes through consent-guarded secure storage',
     () async {
-      when(
-        () => storage.getReligiousProgressConsent(),
-      ).thenAnswer(
-        (_) async => false,
-      );
-
       await dataSource.saveAllRecords(
         {
           '2026-10-09': {
@@ -132,6 +133,13 @@ void main() {
           },
         },
       );
+
+      verify(
+        () => storage.writeReligiousProgressData(
+          key: SecureStorageService.keyActivityRecords,
+          value: any(named: 'value'),
+        ),
+      ).called(1);
 
       verifyNever(
         () => storage.write(
@@ -155,23 +163,12 @@ void main() {
         },
       };
 
-      when(
-        () => storage.write(
-          key: SecureStorageService.keyActivityRecords,
-          value: any(
-            named: 'value',
-          ),
-        ),
-      ).thenAnswer(
-        (_) async {},
-      );
-
       await dataSource.saveAllRecords(
         records,
       );
 
       final verification = verify(
-        () => storage.write(
+        () => storage.writeReligiousProgressData(
           key: SecureStorageService.keyActivityRecords,
           value: captureAny(
             named: 'value',
