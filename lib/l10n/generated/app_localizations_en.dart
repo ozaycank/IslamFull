@@ -894,7 +894,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacyRetentionDesc =>
-      'Locally stored app data may remain until the relevant feature is reset, application storage is cleared where supported, or the application is removed. Operating-system backup, restore, secure-storage or keychain behavior may cause some information to persist or be restored. IslamFull currently does not maintain an IslamFull user account database.';
+      'Optional religious progress is deleted locally when you withdraw consent or when an older consent no longer covers the current scope. Other locally stored app data may remain until its feature is reset, application storage is cleared where supported, or the application is removed. Operating-system backup, restore, secure-storage or keychain behavior may cause information to persist or reappear outside the app\'s immediate control. IslamFull currently does not maintain an IslamFull user account database.';
 
   @override
   String get privacyRightsTitle => 'Privacy requests';
@@ -919,7 +919,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'IslamFull is an informational and personal-use assistant. Calculations and guidance should not be treated as a guarantee, an individual fatwa, medical advice, financial advice or an official administrative decision. You remain responsible for decisions made using the application.';
 
   @override
-  String get privacyUpdated => 'Last updated: October 9, 2026';
+  String get privacyUpdated => 'Last updated: October 13, 2026';
 
   @override
   String get preferencesTitle => 'Preferences';
@@ -2353,7 +2353,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacyReligiousProgressDesc =>
-      'If you choose to allow optional local religious progress saving, IslamFull stores worship activity, New Muslim Journey progress, your last-read Quran verse, and Quran bookmarks on this device. You can read the Quran and use other features without enabling it. These records are not sent to an IslamFull account or analytics service. Withdrawing consent stops future saving and deletes these local records.';
+      'Optional local religious progress saving covers worship activity, New Muslim Journey reviewed/visited steps, the last-read Quran verse and Quran bookmarks on this device. You can decline and continue reading the Quran and using the rest of IslamFull. These records are not sent to an IslamFull account or analytics service. You can withdraw permission and delete these records at any time. When this consent scope changes, an earlier permission is not reused; previously saved local religious progress is deleted before a new opt-in.';
 
   @override
   String get privacyReligiousProgressAllow => 'Allow Local Progress Saving';

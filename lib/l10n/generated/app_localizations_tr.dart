@@ -900,7 +900,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get privacyRetentionDesc =>
-      'Yerel uygulama verileri ilgili özellik sıfırlanana, desteklenen yerlerde uygulama depolaması temizlenene veya uygulama kaldırılana kadar kalabilir. İşletim sisteminin yedekleme, geri yükleme, güvenli depolama veya anahtar zinciri davranışı bazı bilgilerin kalmasına ya da yeniden yüklenmesine neden olabilir. IslamFull şu anda bir IslamFull kullanıcı hesabı veritabanı tutmamaktadır.';
+      'İsteğe bağlı dinî ilerleme kayıtları rızanızı geri çektiğinizde veya eski rıza yeni kapsamı karşılamadığında cihazdan silinir. Diğer yerel uygulama verileri ilgili özellik sıfırlanana, desteklenen yerlerde uygulama depolaması temizlenene veya uygulama kaldırılana kadar kalabilir. İşletim sisteminin yedekleme, geri yükleme, güvenli depolama veya anahtar zinciri davranışı bazı bilgilerin uygulama dışı etkenlerle kalmasına ya da yeniden yüklenmesine neden olabilir. IslamFull şu anda bir IslamFull kullanıcı hesabı veritabanı tutmamaktadır.';
 
   @override
   String get privacyRightsTitle => 'Gizlilik talepleri';
@@ -924,7 +924,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'IslamFull bilgilendirme ve kişisel kullanım amaçlı bir yardımcıdır. Hesaplamalar ve rehber içerikleri garanti, kişiye özel fetva, tıbbî tavsiye, finansal tavsiye veya resmî idari karar olarak değerlendirilmemelidir. Uygulamadan yararlanılarak alınan kararların sorumluluğu kullanıcıya aittir.';
 
   @override
-  String get privacyUpdated => 'Son güncelleme: 9 Ekim 2026';
+  String get privacyUpdated => 'Son güncelleme: 13 Ekim 2026';
 
   @override
   String get preferencesTitle => 'Tercihler';
@@ -2357,7 +2357,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get privacyReligiousProgressDesc =>
-      'İzin verirseniz IslamFull, İbadetlerim işaretlerinizi, Yeni Müslüman Yolculuğu ilerlemenizi, Kur\'an\'da son okuduğunuz ayeti ve yer imlerinizi yalnızca bu cihazda saklar. Bu kayıtlar isteğe bağlıdır; izin vermeden de Kur\'an okuyabilir ve diğer özellikleri kullanabilirsiniz. Kayıtlar IslamFull hesabına veya analiz hizmetine gönderilmez. Rızanızı geri çektiğinizde yeni kayıt durdurulur ve bu yerel kayıtlar silinir.';
+      'İsteğe bağlı yerel dinî ilerleme kaydı; İbadetim işaretlerini, Yeni Müslüman Yolculuğu ziyaret/inceleme bilgilerini, Kur\'an\'da son okunan ayeti ve yer imlerini kapsar. Rıza vermeden Kur\'an okuyabilir ve diğer özellikleri kullanabilirsiniz. Bu kayıtlar IslamFull hesabına veya analiz hizmetine gönderilmez. Rızanızı istediğiniz zaman geri çekerek kayıtları cihazınızdan silebilirsiniz. Rıza kapsamı değişirse eski izin otomatik geçerli sayılmaz; yeni izin verilmeden önce önceki yerel dinî ilerleme kayıtları silinir.';
 
   @override
   String get privacyReligiousProgressAllow => 'Yerel ilerleme kaydına izin ver';

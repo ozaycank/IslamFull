@@ -38,9 +38,20 @@ class SecureStorageService {
   static const String keyShowDailyVerseOnHome =
       'sec_key_pref_show_daily_verse_home';
 
-  // Optional religious-progress privacy preference
+  // Optional religious-progress privacy preference. A legacy plain 'true'
+  // acknowledged the activity/journey-only scope and must not authorize the
+  // expanded Quran + activity + journey scope.
   static const String keyReligiousProgressConsent =
       'sec_key_privacy_religious_progress_consent_v1';
+
+  // Bump this whenever the scope or purposes of the consent change.
+  // The current version covers worship activity, New Muslim Journey progress,
+  // last-read Quran verse, and Quran bookmarks, all saved locally.
+  static const String currentReligiousProgressConsentVersion =
+      'religious-progress-v2';
+
+  static const String _currentConsentGrantValue =
+      'granted:$currentReligiousProgressConsentVersion';
 
   // Sensitive local activity progress
   static const String keyActivityRecords = 'noorlife_activity_records_v2';
@@ -212,7 +223,9 @@ class SecureStorageService {
       key: keyReligiousProgressConsent,
     );
 
-    return value == 'true';
+    // Deny missing, old unversioned, and unknown future consent values.
+    // A previous consent is not silently reused for a changed scope.
+    return value == _currentConsentGrantValue;
   }
 
   /// Serialize optional religious-progress writes so withdrawal cleanup
@@ -279,7 +292,7 @@ class SecureStorageService {
 
     await write(
       key: keyReligiousProgressConsent,
-      value: value.toString(),
+      value: value ? _currentConsentGrantValue : 'false',
     );
   }
 
