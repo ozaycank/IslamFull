@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 
@@ -17,7 +18,11 @@ class LoggerService {
     );
   }
 
-  void debug(dynamic message) => _logger.d(message);
+  void debug(dynamic message) {
+    if (kDebugMode) {
+      _logger.d(message);
+    }
+  }
 
   void info(dynamic message) => _logger.i(message);
 

@@ -189,7 +189,9 @@ class PrivacyScreen extends ConsumerWidget {
                       FilledButton.icon(
                         onPressed: () => _openUri(
                           context,
-                          LegalLinks.privacyPolicyUri,
+                          LegalLinks.privacyPolicyUriForLanguage(
+                            l10n.localeName,
+                          ),
                           l10n.privacyLinkOpenFailed,
                         ),
                         icon: const Icon(

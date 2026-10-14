@@ -24,6 +24,24 @@ void main() {
   );
 
   test(
+    'Turkish locale opens the published Turkish privacy notice',
+    () {
+      expect(
+        LegalLinks.privacyPolicyUriForLanguage('tr').toString(),
+        'https://ozaycank.github.io/IslamFull/privacy-tr.html',
+      );
+      expect(
+        LegalLinks.privacyPolicyUriForLanguage('tr-TR').scheme,
+        'https',
+      );
+      expect(
+        LegalLinks.privacyPolicyUriForLanguage('en').toString(),
+        LegalLinks.privacyPolicyUrl,
+      );
+    },
+  );
+
+  test(
     'privacy contact uses the dedicated IslamFull address',
     () {
       expect(

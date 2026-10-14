@@ -1,30 +1,42 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 
 enum EnvironmentType { development, staging, production }
 
+/// These values are PUBLIC build-time configuration, not a secret vault.
+/// Example: flutter run --dart-define=APP_ENV=development
+/// Never put API tokens or private credentials in --dart-define values.
 class EnvironmentConfig {
   EnvironmentConfig._();
 
-  static Future<void> init() async {
-    await dotenv.load(fileName: '.env');
-  }
-
   static EnvironmentType get environment {
-    final env = dotenv.env['APP_ENV'] ?? 'development';
+    const env = String.fromEnvironment(
+      'APP_ENV',
+      defaultValue: 'production',
+    );
+
     return EnvironmentType.values.firstWhere(
-      (e) => e.name == env,
-      orElse: () => EnvironmentType.development,
+      (value) => value.name == env,
+      orElse: () => EnvironmentType.production,
     );
   }
 
-  static String get apiBaseUrl =>
-      dotenv.env['API_BASE_URL'] ?? 'https://api.noorlife.example.com';
+  static const String apiBaseUrl = String.fromEnvironment(
+    'API_BASE_URL',
+    defaultValue: 'https://api.noorlife.example.com',
+  );
 
-  static int get connectTimeout =>
-      int.tryParse(dotenv.env['CONNECT_TIMEOUT'] ?? '30000') ?? 30000;
+  static const int connectTimeout = int.fromEnvironment(
+    'CONNECT_TIMEOUT',
+    defaultValue: 30000,
+  );
 
-  static int get receiveTimeout =>
-      int.tryParse(dotenv.env['RECEIVE_TIMEOUT'] ?? '30000') ?? 30000;
+  static const int receiveTimeout = int.fromEnvironment(
+    'RECEIVE_TIMEOUT',
+    defaultValue: 30000,
+  );
 
-  static bool get isDevelopment => environment == EnvironmentType.development;
+  // Debug logging must never be activated in profile/release builds even
+  // when APP_ENV is accidentally set to development.
+  static bool get isDevelopment =>
+      kDebugMode && environment == EnvironmentType.development;
 }

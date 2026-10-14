@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:injectable/injectable.dart';
 import '../config/environment_config.dart';
 import '../constants/app_constants.dart';
@@ -14,9 +15,9 @@ class DioClient {
       BaseOptions(
         baseUrl: EnvironmentConfig.apiBaseUrl,
         connectTimeout:
-            Duration(milliseconds: EnvironmentConfig.connectTimeout),
+            const Duration(milliseconds: EnvironmentConfig.connectTimeout),
         receiveTimeout:
-            Duration(milliseconds: EnvironmentConfig.receiveTimeout),
+            const Duration(milliseconds: EnvironmentConfig.receiveTimeout),
         headers: {
           'Content-Type': AppConstants.contentTypeJson,
           'Accept': AppConstants.contentTypeJson,
@@ -24,11 +25,14 @@ class DioClient {
       ),
     );
 
-    if (EnvironmentConfig.isDevelopment) {
+    if (kDebugMode && EnvironmentConfig.isDevelopment) {
       _dio.interceptors.add(
         LogInterceptor(
-          requestBody: true,
-          responseBody: true,
+          // Never log payloads or headers, which may hold sensitive data.
+          requestBody: false,
+          responseBody: false,
+          requestHeader: false,
+          responseHeader: false,
           logPrint: (object) => _loggerService.debug('[DIO] $object'),
         ),
       );
