@@ -119,4 +119,23 @@ void main() {
       );
     },
   );
+  testWidgets(
+    'Menu exposes one honest Settings destination',
+    (tester) async {
+      await tester.pumpWidget(
+        buildTestableWidget(),
+      );
+
+      await tester.pumpAndSettle();
+
+      expect(find.text('App Settings'), findsOneWidget);
+      expect(find.text('Settings'), findsOneWidget);
+      expect(find.byIcon(Icons.settings_outlined), findsOneWidget);
+      expect(find.byIcon(Icons.language), findsNothing);
+      expect(find.byIcon(Icons.notifications_none), findsNothing);
+      expect(find.byIcon(Icons.access_time), findsNothing);
+      expect(find.byIcon(Icons.location_on_outlined), findsNothing);
+      expect(tester.takeException(), isNull);
+    },
+  );
 }

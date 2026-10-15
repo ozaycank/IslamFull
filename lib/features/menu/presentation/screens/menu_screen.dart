@@ -46,46 +46,12 @@ class MenuScreen extends StatelessWidget {
                 ),
                 AppCard(
                   padding: EdgeInsets.zero,
-                  child: Column(
-                    children: [
-                      _MenuTile(
-                        icon: Icons.language,
-                        title: l10n.menuLanguage,
-                        onTap: () => context.push(
-                          AppRoutes.settings,
-                        ),
-                      ),
-                      const Divider(
-                        height: 1,
-                      ),
-                      _MenuTile(
-                        icon: Icons.notifications_none,
-                        title: l10n.menuNotifications,
-                        onTap: () => context.push(
-                          AppRoutes.settings,
-                        ),
-                      ),
-                      const Divider(
-                        height: 1,
-                      ),
-                      _MenuTile(
-                        icon: Icons.access_time,
-                        title: l10n.menuPrayerCalc,
-                        onTap: () => context.push(
-                          AppRoutes.settings,
-                        ),
-                      ),
-                      const Divider(
-                        height: 1,
-                      ),
-                      _MenuTile(
-                        icon: Icons.location_on_outlined,
-                        title: l10n.menuLocation,
-                        onTap: () => context.push(
-                          AppRoutes.settings,
-                        ),
-                      ),
-                    ],
+                  child: _MenuTile(
+                    icon: Icons.settings_outlined,
+                    title: l10n.settingsTitle,
+                    onTap: () => context.push(
+                      AppRoutes.settings,
+                    ),
                   ),
                 ),
                 const SizedBox(
