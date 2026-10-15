@@ -88,7 +88,7 @@ class LocationServiceImpl implements LocationService {
         );
       }
 
-      return _resolveCoordinates(
+      return await _resolveCoordinates(
         position.latitude,
         position.longitude,
       );
