@@ -1,0 +1,61 @@
+name: IslamFull Android Demo 0.0.1
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  android-demo:
+    name: Build Android demo APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Java 17 for Android Gradle
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install Flutter 3.47.7
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.47.7
+          cache: true
+
+      - name: Verify toolchain
+        run: |
+          flutter --version
+          flutter doctor -v
+
+      - name: Resolve dependencies
+        run: flutter pub get
+
+      - name: Check static analysis
+        run: flutter analyze
+
+      - name: Run all Flutter regression tests
+        run: flutter test --reporter compact
+
+      - name: Compile 0.0.1 Android debug demo
+        run: flutter build apk --debug --build-name=0.0.1 --build-number=1
+
+      - name: Rename demo APK
+        run: |
+          test -s build/app/outputs/flutter-apk/app-debug.apk
+          cp build/app/outputs/flutter-apk/app-debug.apk \
+            build/app/outputs/flutter-apk/IslamFull-Demo-0.0.1-debug.apk
+          sha256sum build/app/outputs/flutter-apk/IslamFull-Demo-0.0.1-debug.apk
+
+      - name: Upload downloadable APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: IslamFull-Android-Demo-0.0.1-APK
+          path: build/app/outputs/flutter-apk/IslamFull-Demo-0.0.1-debug.apk
+          if-no-files-found: error
+          retention-days: 7
