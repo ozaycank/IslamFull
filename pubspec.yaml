@@ -50,6 +50,10 @@ flutter:
   generate: true
   assets:
     - assets/images/
+    - assets/branding/islamfull_app_icon.svg
+    - assets/branding/islamfull_mark.svg
+    - assets/branding/islamfull_horizontal_light.svg
+    - assets/branding/islamfull_horizontal_dark.svg
     - assets/data/quran/surahs.json
     - assets/data/quran/quran.json
     - assets/data/quran/translations/tr/translation.json

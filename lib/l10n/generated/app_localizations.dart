@@ -527,8 +527,14 @@ abstract class AppLocalizations {
   /// Qibla disclaimer text
   ///
   /// In en, this message translates to:
-  /// **'Calculated from your current location. Turn-by-turn compass guidance is not enabled yet.'**
+  /// **'This bearing is calculated from your location using geographic north. On supported phones, use the compass below to face the Qibla.'**
   String get qiblaDisclaimer;
+
+  /// Guidance for using the device compass when it is available
+  ///
+  /// In en, this message translates to:
+  /// **'Hold the phone flat and turn its top edge toward the arrow. Magnetic interference and compass calibration can affect accuracy.'**
+  String get qiblaCompassUsageTip;
 
   /// Qibla undefined at Kaaba message
   ///

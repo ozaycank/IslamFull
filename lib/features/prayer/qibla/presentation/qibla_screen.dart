@@ -1,5 +1,3 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,6 +13,7 @@ import '../application/qibla_compass_provider.dart';
 import '../application/qibla_provider.dart';
 import '../domain/compass_alignment_rules.dart';
 import '../domain/qibla_models.dart';
+import 'widgets/qibla_compass_dial.dart';
 
 class QiblaScreen extends ConsumerWidget {
   const QiblaScreen({
@@ -183,13 +182,24 @@ class QiblaScreen extends ConsumerWidget {
           height: AppSpacing.xxl,
         ),
         ExcludeSemantics(
-          child: Transform.rotate(
-            angle: relative * (math.pi / 180),
-            child: Icon(
-              Icons.navigation,
-              color: indicatorColor,
-              size: 100,
-            ),
+          child: QiblaCompassDial(
+            headingDegrees: state.smoothedHeading!,
+            relativeQiblaAngle: relative,
+            isAligned: alignment == QiblaAlignmentStatus.aligned,
+            northLabel: l10n.dirNorth,
+            eastLabel: l10n.dirEast,
+            southLabel: l10n.dirSouth,
+            westLabel: l10n.dirWest,
+          ),
+        ),
+        const SizedBox(
+          height: AppSpacing.md,
+        ),
+        Text(
+          l10n.qiblaCompassUsageTip,
+          textAlign: TextAlign.center,
+          style: textTheme.bodySmall?.copyWith(
+            color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(

@@ -9,7 +9,9 @@ import 'package:noor_life/features/prayer/location/domain/entities/prayer_locati
 import 'package:noor_life/features/prayer/qibla/application/qibla_compass_provider.dart';
 import 'package:noor_life/features/prayer/qibla/application/qibla_provider.dart';
 import 'package:noor_life/features/prayer/qibla/domain/qibla_models.dart';
+import 'package:noor_life/features/prayer/qibla/domain/compass_alignment_rules.dart';
 import 'package:noor_life/features/prayer/qibla/presentation/qibla_screen.dart';
+import 'package:noor_life/features/prayer/qibla/presentation/widgets/qibla_compass_dial.dart';
 import 'package:noor_life/l10n/generated/app_localizations.dart';
 
 class FakeQiblaLocationNotifier extends LocationNotifier {
@@ -178,6 +180,48 @@ void main() {
         ),
         findsOneWidget,
       );
+    },
+  );
+
+  testWidgets(
+    'ready compass draws a direction dial without using the camera',
+    (tester) async {
+      final locationNotifier = FakeQiblaLocationNotifier(
+        const LocationState(
+          status: LocationStatus.success,
+          location: location,
+        ),
+      );
+      await tester.pumpWidget(
+        buildTestableWidget(
+          qiblaState: const QiblaState(
+            status: QiblaStatus.success,
+            direction: QiblaDirection(
+              bearingDegrees: 151.5,
+              compassDirection: CompassDirection.se,
+            ),
+          ),
+          locationNotifier: locationNotifier,
+          compassState: const QiblaCompassState(
+            status: CompassStatus.ready,
+            qiblaBearing: 151.5,
+            smoothedHeading: 90,
+            relativeQiblaAngle: 61.5,
+            alignmentStatus: QiblaAlignmentStatus.turnRight,
+          ),
+        ),
+      );
+      await tester.scrollUntilVisible(
+        find.byType(QiblaCompassDial),
+        250,
+      );
+      final dial = tester.widget<QiblaCompassDial>(
+        find.byType(QiblaCompassDial),
+      );
+      expect(dial.headingDegrees, 90);
+      expect(dial.relativeQiblaAngle, 61.5);
+      expect(dial.isAligned, isFalse);
+      expect(tester.takeException(), isNull);
     },
   );
 }

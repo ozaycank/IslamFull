@@ -16,9 +16,10 @@ class AppLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
-      AppAssets.logoSvg,
+      color == null ? AppAssets.logoSvg : AppAssets.logoMarkSvg,
       width: size,
       height: size,
+      semanticsLabel: 'IslamFull',
       colorFilter:
           color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
       placeholderBuilder: (_) => Icon(

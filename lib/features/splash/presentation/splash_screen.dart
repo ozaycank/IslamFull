@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:noor_life/core/extensions/context_extensions.dart';
 import 'package:noor_life/core/routing/app_routes.dart';
 import 'package:noor_life/shared/design_system/tokens/app_spacing.dart';
+import 'package:noor_life/shared/widgets/app_logo.dart';
 import 'package:noor_life/shared/widgets/loading_indicator.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -33,10 +34,8 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.mosque,
-              size: 80,
-              color: Theme.of(context).colorScheme.primary,
+            const AppLogo(
+              size: 104,
             ),
             const SizedBox(height: AppSpacing.lg),
             Text(

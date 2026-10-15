@@ -232,7 +232,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get qiblaDisclaimer =>
-      'Calculated from your current location. Turn-by-turn compass guidance is not enabled yet.';
+      'This bearing is calculated from your location using geographic north. On supported phones, use the compass below to face the Qibla.';
+
+  @override
+  String get qiblaCompassUsageTip =>
+      'Hold the phone flat and turn its top edge toward the arrow. Magnetic interference and compass calibration can affect accuracy.';
 
   @override
   String get qiblaUndefinedAtKaaba =>

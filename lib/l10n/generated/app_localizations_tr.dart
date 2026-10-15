@@ -234,7 +234,11 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get qiblaDisclaimer =>
-      'Konumunuza göre hesaplanmıştır. Telefon pusulası ile yönlendirme henüz etkin değildir.';
+      'Bu açı konumunuzdan coğrafi kuzeye göre hesaplanır. Desteklenen telefonlarda aşağıdaki pusula ile yönlenebilirsiniz.';
+
+  @override
+  String get qiblaCompassUsageTip =>
+      'Telefonu yatay tutup üst kenarını ok yönüne çevirin. Manyetik alanlar ve pusula kalibrasyonu sonucu etkileyebilir.';
 
   @override
   String get qiblaUndefinedAtKaaba => 'Kâbe\'desiniz. Kıble yönü tanımsızdır.';
