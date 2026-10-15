@@ -1,3 +1,4 @@
+
 name: noor_life
 description: Production-ready foundation for IslamFull.
 publish_to: "none"
@@ -27,7 +28,7 @@ dependencies:
   hijri: ^3.0.1
   geolocator: ^11.1.0
   lat_lng_to_timezone: ^0.2.0
-  geocoding: ^3.0.0
+  geocoding: ^4.0.0
   flutter_compass: ^0.8.1
   scrollable_positioned_list: ^0.3.8
   visibility_detector: ^0.4.0+2
