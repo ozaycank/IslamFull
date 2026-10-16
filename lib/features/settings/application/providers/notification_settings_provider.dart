@@ -1,10 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/di/injection_container.dart';
 import '../../../../core/services/local_notification_service.dart';
 import '../../../../core/services/notification_schedule_policy.dart';
 import '../../../../core/storage/secure_storage_service.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 import '../../../prayer/prayer_times/application/providers/prayer_times_notifier.dart';
+import '../services/prayer_notification_text.dart';
+import 'language_settings_notifier.dart';
 
 class NotificationSettingsState {
   final bool masterEnabled;
@@ -52,12 +57,33 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
   late final SecureStorageService _storage;
   late final LocalNotificationService _notificationService;
 
+  // Serialize notification writes. A later language or settings
+  // change will always be applied after any earlier operation.
+  Future<void> _prayerScheduleTail = Future<void>.value();
+
   @override
   NotificationSettingsState build() {
     _storage = getIt<SecureStorageService>();
     _notificationService = getIt<LocalNotificationService>();
 
-    Future.microtask(_loadSettings);
+    // Recreate pending prayer notifications when application language
+    // changes, including when a saved language preference is loaded.
+    ref.listen<LanguageState>(
+      languageSettingsNotifierProvider,
+      (previous, next) {
+        if (previous?.locale == next.locale || !state.isLoaded) {
+          return;
+        }
+
+        unawaited(
+          syncPrayerSchedule(),
+        );
+      },
+    );
+
+    Future.microtask(
+      _loadSettings,
+    );
 
     return NotificationSettingsState(
       platformSupported: _notificationService.isSupportedPlatform,
@@ -185,14 +211,32 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
     await _reschedulePrayerNotifications();
   }
 
-  Future<void> _reschedulePrayerNotifications() async {
+  Future<void> _reschedulePrayerNotifications() {
+    final operation = _prayerScheduleTail.then<void>(
+      (_) => _applyPrayerSchedule(),
+    );
+
+    // Preserve the queue after an error, while still reporting
+    // that error to the original operation's caller.
+    _prayerScheduleTail = operation.then<void>(
+      (_) {},
+      onError: (
+        Object _,
+        StackTrace __,
+      ) {},
+    );
+
+    return operation;
+  }
+
+  Future<void> _applyPrayerSchedule() async {
     if (!state.platformSupported) {
       return;
     }
 
     if (!state.masterEnabled) {
-      // Master disable owns the global cancellation operation because every
-      // notification category must be removed immediately.
+      // Disabling notifications cancels every notification category,
+      // including pending daily-verse notifications.
       await _notificationService.cancelAll();
       return;
     }
@@ -208,12 +252,27 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
       return;
     }
 
+    final selectedLocale = ref
+        .read(
+          languageSettingsNotifierProvider,
+        )
+        .locale;
+
+    final localizations = await AppLocalizations.delegate.load(
+      selectedLocale,
+    );
+
     for (final prayer in schedule.today.prayerTimes) {
+      final content = PrayerNotificationText.forPrayer(
+        prayer: prayer.name,
+        localizations: localizations,
+      );
+
       await _notificationService.schedulePrayer(
         prayer,
         state.prayerReminderMinutes,
-        'Prayer Time',
-        '${prayer.name.name.toUpperCase()} is approaching.',
+        content.title,
+        content.body,
         location.timezoneIdentifier,
       );
     }
