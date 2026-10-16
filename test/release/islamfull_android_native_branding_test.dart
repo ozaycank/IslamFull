@@ -39,11 +39,19 @@ void main() {
     expect(adaptive, contains('@drawable/islamfull_launcher_foreground'));
     expect(adaptive, contains('@drawable/islamfull_launcher_monochrome'));
 
-    expect(File('$root/drawable-nodpi/islamfull_launcher_foreground.png').existsSync(), isTrue);
-    expect(File('$root/drawable-nodpi/islamfull_launcher_monochrome.png').existsSync(), isTrue);
-    expect(File('$root/drawable-nodpi/islamfull_splash_icon.png').existsSync(), isTrue);
+    expect(
+        File('$root/drawable-nodpi/islamfull_launcher_foreground.png')
+            .existsSync(),
+        isTrue);
+    expect(
+        File('$root/drawable-nodpi/islamfull_launcher_monochrome.png')
+            .existsSync(),
+        isTrue);
+    expect(File('$root/drawable-nodpi/islamfull_splash_icon.png').existsSync(),
+        isTrue);
     for (final qualifier in <String>['drawable', 'drawable-v21']) {
-      final xml = File('$root/$qualifier/launch_background.xml').readAsStringSync();
+      final xml =
+          File('$root/$qualifier/launch_background.xml').readAsStringSync();
       expect(xml, contains('@drawable/islamfull_splash_logo'));
       expect(xml, contains('@color/islamfull_splash_background'));
     }
