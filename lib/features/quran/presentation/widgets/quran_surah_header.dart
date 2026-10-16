@@ -16,9 +16,12 @@ class QuranSurahHeader extends StatelessWidget {
     final colorScheme = context.colorScheme;
     final textTheme = context.textTheme;
 
-    final bool isTurkish = l10n.localeName.toLowerCase().startsWith('tr');
-    final displayName =
-        isTurkish ? surah.nameTurkish : surah.nameTransliteration;
+    final languageCode = l10n.localeName.split('_').first;
+    final displayName = switch (languageCode) {
+      'ar' => '', // Arabic name is already displayed immediately above.
+      'tr' => surah.nameTurkish,
+      _ => surah.nameTransliteration,
+    };
 
     final revelationStr = surah.revelationType == RevelationType.makkah
         ? l10n.quranMeccan
@@ -41,12 +44,13 @@ class QuranSurahHeader extends StatelessWidget {
               ),
             ),
             const SizedBox(height: AppSpacing.sm),
-            Text(
-              displayName,
-              style: textTheme.titleLarge?.copyWith(
-                color: colorScheme.onSecondaryContainer,
+            if (displayName.isNotEmpty)
+              Text(
+                displayName,
+                style: textTheme.titleLarge?.copyWith(
+                  color: colorScheme.onSecondaryContainer,
+                ),
               ),
-            ),
             const SizedBox(height: AppSpacing.md),
             Divider(color: colorScheme.outlineVariant.withValues(alpha: 0.5)),
             const SizedBox(height: AppSpacing.md),

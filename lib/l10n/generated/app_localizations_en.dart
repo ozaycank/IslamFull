@@ -288,6 +288,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get languageTurkish => 'Türkçe';
 
   @override
+  String get languageArabic => 'Arabic';
+
+  @override
   String get themeTitle => 'Theme';
 
   @override
@@ -636,6 +639,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get prayerReminders => 'Prayer Reminders';
+
+  @override
+  String prayerNotificationApproaching(String prayerName) {
+    return '$prayerName is approaching.';
+  }
 
   @override
   String get dailyVerseEnabled => 'Daily Quran Verse';

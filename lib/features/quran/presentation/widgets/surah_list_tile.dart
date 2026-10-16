@@ -17,9 +17,12 @@ class SurahListTile extends StatelessWidget {
     final colorScheme = context.colorScheme;
     final textTheme = context.textTheme;
 
-    final bool isTurkish = l10n.localeName.toLowerCase().startsWith('tr');
-    final displayName =
-        isTurkish ? surah.nameTurkish : surah.nameTransliteration;
+    final languageCode = l10n.localeName.split('_').first;
+    final displayName = switch (languageCode) {
+      'ar' => surah.nameArabic,
+      'tr' => surah.nameTurkish,
+      _ => surah.nameTransliteration,
+    };
 
     final revelationStr = surah.revelationType == RevelationType.makkah
         ? l10n.quranMeccan
@@ -70,13 +73,14 @@ class SurahListTile extends StatelessWidget {
               ],
             ),
           ),
-          Text(
-            surah.nameArabic,
-            style: textTheme.headlineSmall?.copyWith(
-              color: colorScheme.primary,
-              fontWeight: FontWeight.w500,
+          if (languageCode != 'ar')
+            Text(
+              surah.nameArabic,
+              style: textTheme.headlineSmall?.copyWith(
+                color: colorScheme.primary,
+                fontWeight: FontWeight.w500,
+              ),
             ),
-          ),
         ],
       ),
     );

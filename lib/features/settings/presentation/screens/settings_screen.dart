@@ -904,9 +904,11 @@ class _LanguageSection extends ConsumerWidget {
       languageSettingsNotifierProvider.notifier,
     );
 
-    final currentLanguageLabel = localeState.locale.languageCode == 'tr'
-        ? l10n.languageTurkish
-        : l10n.languageEnglish;
+    final currentLanguageLabel = switch (localeState.locale.languageCode) {
+      'tr' => l10n.languageTurkish,
+      'ar' => l10n.languageArabic,
+      _ => l10n.languageEnglish,
+    };
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -939,6 +941,10 @@ class _LanguageSection extends ConsumerWidget {
                     SelectionItem(
                       'tr',
                       l10n.languageTurkish,
+                    ),
+                    SelectionItem(
+                      'ar',
+                      l10n.languageArabic,
                     ),
                   ],
                   selectedId: localeState.locale.languageCode,

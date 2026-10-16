@@ -1,10 +1,7 @@
 import '../../../../l10n/generated/app_localizations.dart';
 import '../../../prayer/prayer_times/domain/value_objects/prayer_name.dart';
 
-/// Language-aware title and body for a scheduled prayer reminder.
-///
-/// Prayer names and reminder titles reuse existing ARB translations.
-/// Additional languages can extend the body template in a later phase.
+/// Builds prayer notifications using the selected application locale.
 class PrayerNotificationText {
   final String title;
   final String body;
@@ -27,16 +24,11 @@ class PrayerNotificationText {
       PrayerName.isha => localizations.prayerIsha,
     };
 
-    final languageCode = localizations.localeName.split('_').first;
-
-    final body = switch (languageCode) {
-      'tr' => '$prayerName vaktine az kaldı.',
-      _ => '$prayerName is approaching.',
-    };
-
     return PrayerNotificationText(
       title: localizations.prayerReminders,
-      body: body,
+      body: localizations.prayerNotificationApproaching(
+        prayerName,
+      ),
     );
   }
 }

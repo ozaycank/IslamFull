@@ -355,6 +355,8 @@
     "description": "English language option"
   },
   "languageTurkish": "Türkçe",
+  "languageArabic": "Arabic",
+  "@languageArabic": {"description": "Arabic language name shown in the language selector"},
   "@languageTurkish": {
     "description": "Turkish language option"
   },
@@ -770,6 +772,8 @@
   "notificationsEnabled": "Enable Notifications",
   "@notificationsEnabled": { "description": "Toggle for master notifications" },
   "prayerReminders": "Prayer Reminders",
+  "prayerNotificationApproaching": "{prayerName} is approaching.",
+  "@prayerNotificationApproaching": {"description": "Prayer reminder body", "placeholders": {"prayerName": {"type": "String"}}},
   "@prayerReminders": { "description": "Prayer reminder setting label" },
   "dailyVerseEnabled": "Daily Quran Verse",
   "@dailyVerseEnabled": { "description": "Toggle for daily verse" },

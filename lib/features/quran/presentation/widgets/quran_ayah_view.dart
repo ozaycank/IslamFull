@@ -81,7 +81,10 @@ class QuranAyahView extends ConsumerWidget {
     final textTheme = context.textTheme;
     final settingsState = ref.watch(quranReaderSettingsNotifierProvider);
     final currentFontSize = settingsState.settings.arabicFontSize;
-    final showTranslation = settingsState.settings.showTranslation;
+    // Arabic readers already see the original Quran text; an Arabic translation
+    // file does not exist, so never show English translation as Arabic.
+    final showTranslation = settingsState.settings.showTranslation &&
+        Localizations.localeOf(context).languageCode != 'ar';
 
     final cleanedText = _getCleanedAyahText();
 

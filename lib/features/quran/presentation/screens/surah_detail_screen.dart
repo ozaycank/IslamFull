@@ -233,9 +233,11 @@ class _SurahDetailScreenState extends ConsumerState<SurahDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          l10n.localeName == 'tr'
-              ? _surah!.nameTurkish
-              : _surah!.nameTransliteration,
+          l10n.localeName.startsWith('ar')
+              ? _surah!.nameArabic
+              : l10n.localeName == 'tr'
+                  ? _surah!.nameTurkish
+                  : _surah!.nameTransliteration,
         ),
         centerTitle: true,
         actions: [

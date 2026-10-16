@@ -704,8 +704,11 @@ class _QuranContinueReading extends ConsumerWidget {
       orElse: () => quranState.surahs.first,
     );
 
-    final surahName =
-        l10n.localeName == 'tr' ? surah.nameTurkish : surah.nameTransliteration;
+    final surahName = switch (l10n.localeName.split('_').first) {
+      'ar' => surah.nameArabic,
+      'tr' => surah.nameTurkish,
+      _ => surah.nameTransliteration,
+    };
 
     double progressPercent = 0;
 
@@ -843,10 +846,15 @@ class _DailyVerseCard extends ConsumerWidget {
       return const SizedBox.shrink();
     }
 
-    final surahName = l10n.localeName == 'tr'
-        ? dailyVerse.surah.nameTurkish
-        : dailyVerse.surah.nameTransliteration;
+    final isArabic = l10n.localeName.startsWith('ar');
+    final surahName = isArabic
+        ? dailyVerse.surah.nameArabic
+        : l10n.localeName == 'tr'
+            ? dailyVerse.surah.nameTurkish
+            : dailyVerse.surah.nameTransliteration;
 
+    // Arabic users already see the original Arabic Quran verse.
+    // Keep a supported translation source for existing data providers.
     final languageCode = l10n.localeName == 'tr' ? 'tr' : 'en';
 
     final contentAsync = ref.watch(
@@ -916,14 +924,15 @@ class _DailyVerseCard extends ConsumerWidget {
                         const SizedBox(
                           height: AppSpacing.md,
                         ),
-                        Text(
-                          content.translation,
-                          style: textTheme.bodyMedium?.copyWith(
-                            fontStyle: FontStyle.italic,
-                            color: colorScheme.onSurfaceVariant,
+                        if (!isArabic)
+                          Text(
+                            content.translation,
+                            style: textTheme.bodyMedium?.copyWith(
+                              fontStyle: FontStyle.italic,
+                              color: colorScheme.onSurfaceVariant,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                          textAlign: TextAlign.center,
-                        ),
                       ],
                     );
                   },

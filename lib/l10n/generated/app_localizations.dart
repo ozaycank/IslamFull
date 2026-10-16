@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
+import 'app_localizations_ar.dart';
 import 'app_localizations_en.dart';
 import 'app_localizations_tr.dart';
 
@@ -94,6 +95,7 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
+    Locale('ar'),
     Locale('en'),
     Locale('tr')
   ];
@@ -619,6 +621,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Türkçe'**
   String get languageTurkish;
+
+  /// Arabic language name shown in the language selector
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get languageArabic;
 
   /// Theme preference section title
   ///
@@ -1303,6 +1311,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Prayer Reminders'**
   String get prayerReminders;
+
+  /// Prayer reminder body
+  ///
+  /// In en, this message translates to:
+  /// **'{prayerName} is approaching.'**
+  String prayerNotificationApproaching(String prayerName);
 
   /// Toggle for daily verse
   ///
@@ -4352,7 +4366,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['en', 'tr'].contains(locale.languageCode);
+      <String>['ar', 'en', 'tr'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -4361,6 +4375,8 @@ class _AppLocalizationsDelegate
 AppLocalizations lookupAppLocalizations(Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
+    case 'ar':
+      return AppLocalizationsAr();
     case 'en':
       return AppLocalizationsEn();
     case 'tr':

@@ -23,7 +23,9 @@ class DailyVerseNotificationContent {
 
   String get reference => '$surahName $surahNumber:$ayahNumber';
 
-  String get notificationBody => '$arabicText\n\n$translation\n$reference';
+  String get notificationBody => translation.isEmpty
+      ? '$arabicText\n$reference'
+      : '$arabicText\n\n$translation\n$reference';
 
   /// Semantic payload intentionally remains independent from GoRouter.
   ///
@@ -100,6 +102,21 @@ class DailyVerseNotificationContentService {
 
     if (arabicText.isEmpty) {
       return null;
+    }
+
+    // The Quran's original Arabic is already bundled. When the UI is
+    // Arabic, do not try to load a non-existent Arabic translation JSON.
+    if (normalizedLanguageCode == 'ar') {
+      return DailyVerseNotificationContent(
+        date: DateTime(date.year, date.month, date.day),
+        surahNumber: surahNumber,
+        ayahNumber: selection.ayahNumber,
+        surahName: selection.surah.nameArabic.trim().isNotEmpty
+            ? selection.surah.nameArabic.trim()
+            : selection.surah.nameTransliteration.trim(),
+        arabicText: arabicText,
+        translation: '',
+      );
     }
 
     final translations = await _loadTranslationMap(
@@ -193,8 +210,11 @@ class DailyVerseNotificationContentService {
     Surah surah,
     String languageCode,
   ) {
-    final localizedName =
-        languageCode == 'tr' ? surah.nameTurkish : surah.nameEnglish;
+    final localizedName = switch (languageCode) {
+      'ar' => surah.nameArabic,
+      'tr' => surah.nameTurkish,
+      _ => surah.nameEnglish,
+    };
 
     if (localizedName.trim().isNotEmpty) {
       return localizedName.trim();

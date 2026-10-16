@@ -1,14 +1,13 @@
 import 'package:flutter/widgets.dart';
 
-/// Defines how IslamFull resolves the initial application language.
-///
-/// A manually selected, supported language takes precedence over the
-/// device's primary language. Unsupported languages fall back to English.
+/// Resolves the initial device language and validates manual selections.
+/// A saved supported language takes precedence in LanguageSettingsNotifier.
 class AppLocalePolicy {
   AppLocalePolicy._();
 
   static const Locale english = Locale('en');
   static const Locale turkish = Locale('tr');
+  static const Locale arabic = Locale('ar');
 
   static Locale fromDeviceLocale(
     Locale deviceLocale,
@@ -28,6 +27,9 @@ class AppLocalePolicy {
 
       case 'tr':
         return turkish;
+
+      case 'ar':
+        return arabic;
 
       default:
         return null;

@@ -32,7 +32,6 @@ void main() {
 
     test('unsupported device languages default to English', () {
       for (final code in <String>[
-        'ar',
         'de',
         'fr',
         'und',
@@ -46,7 +45,7 @@ void main() {
       }
     });
 
-    test('stored Turkish and English preferences are recognized', () {
+    test('stored Turkish, English and Arabic preferences are recognized', () {
       expect(
         AppLocalePolicy.fromSavedCode('tr'),
         const Locale('tr'),
@@ -55,6 +54,11 @@ void main() {
       expect(
         AppLocalePolicy.fromSavedCode('en'),
         const Locale('en'),
+      );
+
+      expect(
+        AppLocalePolicy.fromSavedCode('ar'),
+        const Locale('ar'),
       );
     });
 
@@ -70,7 +74,7 @@ void main() {
       );
 
       expect(
-        AppLocalePolicy.fromSavedCode('ar'),
+        AppLocalePolicy.fromSavedCode('de'),
         isNull,
       );
     });
@@ -84,8 +88,15 @@ void main() {
       );
 
       expect(
+        AppLocalePolicy.validateSelection(
+          const Locale('ar', 'SA'),
+        ),
+        const Locale('ar'),
+      );
+
+      expect(
         () => AppLocalePolicy.validateSelection(
-          const Locale('ar'),
+          const Locale('de'),
         ),
         throwsArgumentError,
       );

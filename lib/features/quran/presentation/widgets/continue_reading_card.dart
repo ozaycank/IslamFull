@@ -28,9 +28,11 @@ class ContinueReadingCard extends StatelessWidget {
       orElse: () => surahs.first,
     );
 
-    final surahName = l10n.localeName == 'tr'
-        ? targetSurah.nameTurkish
-        : targetSurah.nameTransliteration;
+    final surahName = switch (l10n.localeName.split('_').first) {
+      'ar' => targetSurah.nameArabic,
+      'tr' => targetSurah.nameTurkish,
+      _ => targetSurah.nameTransliteration,
+    };
 
     return AppCard(
       onTap: onTap,
