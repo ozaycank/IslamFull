@@ -52,4 +52,42 @@ void main() {
       );
     },
   );
+
+  testWidgets(
+    'guide illustration resolves legacy image paths to bundled assets',
+    (tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: SingleChildScrollView(
+              child: GuideIllustration(
+                imagePath: 'images/wudu/step1.png',
+              ),
+            ),
+          ),
+        ),
+      );
+
+      final image = tester.widget<Image>(
+        find.byType(Image),
+      );
+
+      expect(
+        image.image,
+        isA<AssetImage>(),
+      );
+
+      expect(
+        (image.image as AssetImage).assetName,
+        'assets/images/wudu/step1.png',
+      );
+
+      await tester.pumpAndSettle();
+
+      expect(
+        tester.takeException(),
+        isNull,
+      );
+    },
+  );
 }

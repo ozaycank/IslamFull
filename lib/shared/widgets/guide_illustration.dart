@@ -14,14 +14,22 @@ class GuideIllustration extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (imagePath.trim().isEmpty) {
+    final normalizedPath = imagePath.trim();
+
+    if (normalizedPath.isEmpty) {
       return const SizedBox.shrink();
     }
+
+    // Existing guide screens use paths such as images/wudu/step1.png.
+    // The Flutter asset bundle uses assets/images/wudu/step1.png.
+    final assetPath = normalizedPath.startsWith('images/')
+        ? 'assets/$normalizedPath'
+        : normalizedPath;
 
     return ClipRRect(
       borderRadius: borderRadius,
       child: Image.asset(
-        imagePath,
+        assetPath,
         width: double.infinity,
         fit: BoxFit.fitWidth,
         alignment: Alignment.topCenter,
@@ -32,8 +40,8 @@ class GuideIllustration extends StatelessWidget {
           error,
           stackTrace,
         ) {
-          // Illustrations supplement the text. Missing optional assets must
-          // never make religious guidance unavailable or break layout.
+          // Illustrations supplement the text. Missing optional assets
+          // must not make religious guidance unavailable or break layout.
           return const SizedBox.shrink();
         },
       ),

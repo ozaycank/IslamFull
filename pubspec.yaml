@@ -51,6 +51,13 @@ flutter:
   generate: true
   assets:
     - assets/images/
+    - assets/images/eid_prayer/
+    - assets/images/ghusl/
+    - assets/images/hajj/
+    - assets/images/prayer/
+    - assets/images/qurban/
+    - assets/images/umrah/
+    - assets/images/wudu/
     - assets/branding/islamfull_app_icon.svg
     - assets/branding/islamfull_mark.svg
     - assets/branding/islamfull_horizontal_light.svg

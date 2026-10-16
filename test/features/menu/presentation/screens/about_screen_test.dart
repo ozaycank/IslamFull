@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:noor_life/features/menu/presentation/screens/about_screen.dart';
 import 'package:noor_life/l10n/generated/app_localizations.dart';
+import 'package:noor_life/shared/widgets/app_logo.dart';
 
 void main() {
   Widget buildTestableWidget({
@@ -32,7 +33,7 @@ void main() {
   }
 
   testWidgets(
-    'about screen renders product information',
+    'about screen renders product information and IslamFull logo',
     (tester) async {
       await tester.pumpWidget(
         buildTestableWidget(),
@@ -41,23 +42,22 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(
-        find.text(
-          'IslamFull',
-        ),
+        find.byType(AppLogo),
         findsOneWidget,
       );
 
       expect(
-        find.textContaining(
-          'Version',
-        ),
+        find.text('IslamFull'),
         findsOneWidget,
       );
 
       expect(
-        find.textContaining(
-          'Made with',
-        ),
+        find.textContaining('Version'),
+        findsOneWidget,
+      );
+
+      expect(
+        find.textContaining('Made with'),
         findsNothing,
       );
 
@@ -93,9 +93,12 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(
-        find.text(
-          'IslamFull',
-        ),
+        find.byType(AppLogo),
+        findsOneWidget,
+      );
+
+      expect(
+        find.text('IslamFull'),
         findsOneWidget,
       );
 

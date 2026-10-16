@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../../../../shared/widgets/app_card.dart';
+import '../../../../shared/widgets/app_logo.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({
@@ -35,11 +36,9 @@ class AboutScreen extends StatelessWidget {
                 vertical: AppSpacing.xxxl,
               ),
               children: [
-                ExcludeSemantics(
-                  child: Icon(
-                    Icons.mosque,
+                const ExcludeSemantics(
+                  child: AppLogo(
                     size: 96,
-                    color: colorScheme.primary,
                   ),
                 ),
                 const SizedBox(
