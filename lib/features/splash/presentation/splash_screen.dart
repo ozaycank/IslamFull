@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:noor_life/core/extensions/context_extensions.dart';
@@ -14,17 +16,30 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  Timer? _navigationTimer;
+
   @override
   void initState() {
     super.initState();
-    _navigateToHome();
+
+    _navigationTimer = Timer(
+      const Duration(
+        milliseconds: 1200,
+      ),
+      () {
+        if (mounted) {
+          context.go(
+            AppRoutes.home,
+          );
+        }
+      },
+    );
   }
 
-  Future<void> _navigateToHome() async {
-    await Future.delayed(const Duration(seconds: 2));
-    if (mounted) {
-      context.go(AppRoutes.home);
-    }
+  @override
+  void dispose() {
+    _navigationTimer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -37,16 +52,22 @@ class _SplashScreenState extends State<SplashScreen> {
             const AppLogo(
               size: 104,
             ),
-            const SizedBox(height: AppSpacing.lg),
+            const SizedBox(
+              height: AppSpacing.lg,
+            ),
             Text(
               'IslamFull',
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
-            const SizedBox(height: AppSpacing.xxl),
+            const SizedBox(
+              height: AppSpacing.xxl,
+            ),
             const LoadingIndicator(),
-            const SizedBox(height: AppSpacing.md),
+            const SizedBox(
+              height: AppSpacing.md,
+            ),
             Text(
               context.l10n.splashLoading,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(

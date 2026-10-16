@@ -4,29 +4,17 @@ import 'package:timezone/data/latest_all.dart' as tz;
 
 import 'app.dart';
 import 'core/di/injection_container.dart';
-import 'core/logging/logger_service.dart';
-import 'core/services/local_notification_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Prayer calculations and timezone conversion require timezone data.
   tz.initializeTimeZones();
 
   await configureDependencies();
 
-  if (getIt.isRegistered<LocalNotificationService>()) {
-    try {
-      await getIt<LocalNotificationService>().init();
-    } catch (_) {
-      if (getIt.isRegistered<LoggerService>()) {
-        getIt<LoggerService>().debug(
-          '[NOTIFICATIONS] '
-          'Initialization failed; application startup will continue.',
-        );
-      }
-    }
-  }
-
+  // Render the app without waiting for native notification initialization.
+  // Notification startup is coordinated after the first Flutter frame.
   runApp(
     const ProviderScope(
       child: NoorLifeApp(),

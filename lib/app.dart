@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'core/di/injection_container.dart';
 import 'core/logging/logger_service.dart';
 import 'core/notifications/notification_payload.dart';
+import 'core/notifications/notification_startup_coordinator.dart';
 import 'core/providers/notification_coordinator_provider.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/route_location_policy.dart';
@@ -32,6 +33,9 @@ class _NoorLifeAppState extends ConsumerState<NoorLifeApp> {
   late final GoRouter _router;
 
   StreamSubscription<String>? _notificationPayloadSubscription;
+  NotificationStartupCoordinator? _notificationStartup;
+
+  bool _notificationsReady = false;
 
   @override
   void initState() {
@@ -44,6 +48,7 @@ class _NoorLifeAppState extends ConsumerState<NoorLifeApp> {
       try {
         localNotificationService = getIt<LocalNotificationService>();
 
+        // Preserve compatibility with an already initialized service.
         final initialPayload =
             localNotificationService.takeInitialNotificationPayload();
 
@@ -59,7 +64,7 @@ class _NoorLifeAppState extends ConsumerState<NoorLifeApp> {
 
         _logNavigationNotice(
           '[NOTIFICATION NAVIGATION] '
-          'Initial notification payload unavailable.',
+          'Initial notification service unavailable.',
         );
       }
     }
@@ -68,26 +73,75 @@ class _NoorLifeAppState extends ConsumerState<NoorLifeApp> {
       initialLocation: initialLocation,
     );
 
-    if (localNotificationService != null) {
-      _notificationPayloadSubscription =
-          localNotificationService.notificationPayloads.listen(
-        _handleNotificationPayload,
-        onError: (
-          Object _,
-          StackTrace __,
-        ) {
-          _logNavigationNotice(
-            '[NOTIFICATION NAVIGATION] '
-            'Notification payload stream error.',
-          );
-        },
+    if (localNotificationService == null) {
+      _notificationsReady = true;
+      return;
+    }
+
+    final service = localNotificationService;
+
+    // Register the listener before starting native initialization.
+    _notificationPayloadSubscription = service.notificationPayloads.listen(
+      _handleNotificationPayload,
+      onError: (
+        Object _,
+        StackTrace __,
+      ) {
+        _logNavigationNotice(
+          '[NOTIFICATION NAVIGATION] '
+          'Notification payload stream error.',
+        );
+      },
+    );
+
+    _notificationStartup = NotificationStartupCoordinator(
+      initialize: service.init,
+      takeInitialPayload: service.takeInitialNotificationPayload,
+      handleInitialPayload: _handleNotificationPayload,
+    );
+
+    // Draw the IslamFull Flutter splash before native plugin startup.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) {
+        return;
+      }
+
+      unawaited(
+        _completeNotificationStartup(),
       );
+    });
+  }
+
+  Future<void> _completeNotificationStartup() async {
+    final startup = _notificationStartup;
+
+    if (startup == null) {
+      return;
+    }
+
+    try {
+      await startup.start();
+    } catch (_) {
+      _logNavigationNotice(
+        '[NOTIFICATIONS] '
+        'Initialization failed; application startup will continue.',
+      );
+    } finally {
+      if (mounted) {
+        setState(() {
+          _notificationsReady = true;
+        });
+      }
     }
   }
 
   void _handleNotificationPayload(
     String rawPayload,
   ) {
+    if (!mounted) {
+      return;
+    }
+
     final payload = NotificationPayload.tryParse(
       rawPayload,
     );
@@ -135,6 +189,7 @@ class _NoorLifeAppState extends ConsumerState<NoorLifeApp> {
 
   @override
   void dispose() {
+    _notificationStartup?.dispose();
     _notificationPayloadSubscription?.cancel();
     _router.dispose();
 
@@ -153,9 +208,12 @@ class _NoorLifeAppState extends ConsumerState<NoorLifeApp> {
       languageSettingsNotifierProvider,
     );
 
-    ref.watch(
-      notificationCoordinatorProvider,
-    );
+    // Notification scheduling cannot race with plugin initialization.
+    if (_notificationsReady) {
+      ref.watch(
+        notificationCoordinatorProvider,
+      );
+    }
 
     return MaterialApp.router(
       title: 'IslamFull',
