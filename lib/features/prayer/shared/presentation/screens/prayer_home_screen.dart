@@ -9,6 +9,8 @@ import '../../../../../shared/widgets/app_card.dart';
 import '../../../../../shared/widgets/section_header.dart';
 import '../../../location/application/providers/location_notifier.dart';
 import '../../../location/application/states/location_state.dart';
+import '../../../location/presentation/utils/location_failure_localizer.dart';
+import '../../../location/presentation/widgets/location_resume_recovery_listener.dart';
 import '../../../prayer_times/application/providers/prayer_times_notifier.dart';
 import '../../../prayer_times/presentation/providers/prayer_live_state_provider.dart';
 import '../../../prayer_times/presentation/widgets/prayer_card.dart';
@@ -16,7 +18,6 @@ import '../utils/presentation_localizer.dart';
 import '../widgets/prayer_error_widget.dart';
 import '../widgets/prayer_header.dart';
 import 'prayer_loading_screen.dart';
-import '../../../location/presentation/utils/location_failure_localizer.dart';
 
 class PrayerHomeScreen extends ConsumerWidget {
   const PrayerHomeScreen({super.key});
@@ -57,29 +58,39 @@ class PrayerHomeScreen extends ConsumerWidget {
     }
 
     if (state.failure != null && state.schedule == null) {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            l10n.prayerTitle,
-          ),
+      return LocationResumeRecoveryListener(
+        shouldRetry: () => isLocationSettingsRecoveryFailure(
+          ref.read(locationNotifierProvider).failure?.code,
         ),
-        body: SafeArea(
-          child: Align(
-            alignment: Alignment.topCenter,
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxWidth: 800,
-              ),
-              child: PrayerErrorWidget(
-                message: LocationFailureLocalizer.message(
-                  context,
-                  code: state.failure!.code,
-                  fallback: state.failure!.message,
+        onRetry: () async {
+          await ref
+              .read(locationNotifierProvider.notifier)
+              .acquireDeviceLocation();
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              l10n.prayerTitle,
+            ),
+          ),
+          body: SafeArea(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxWidth: 800,
                 ),
-                onRetry: () => _refreshData(
-                  ref,
+                child: PrayerErrorWidget(
+                  message: LocationFailureLocalizer.message(
+                    context,
+                    code: state.failure!.code,
+                    fallback: state.failure!.message,
+                  ),
+                  onRetry: () => _refreshData(
+                    ref,
+                  ),
+                  failureCode: state.failure!.code,
                 ),
-                failureCode: state.failure!.code,
               ),
             ),
           ),
