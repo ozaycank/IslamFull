@@ -29,7 +29,7 @@ void main() {
       final trKeys = translationKeys(tr);
       final arKeys = translationKeys(ar);
 
-      expect(enKeys.length, 709);
+      expect(enKeys.length, 711);
       expect(trKeys, enKeys);
       expect(arKeys, enKeys);
       expect(ar['@@locale'], 'ar');
