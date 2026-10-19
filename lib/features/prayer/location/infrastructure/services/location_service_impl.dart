@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:geolocator/geolocator.dart' show Position;
+import 'package:geolocator/geolocator.dart'
+    show LocationServiceDisabledException, Position;
 import 'package:injectable/injectable.dart';
 import 'package:lat_lng_to_timezone/lat_lng_to_timezone.dart' as tzmap;
 
@@ -28,6 +29,7 @@ class LocationServiceImpl implements LocationService {
   @override
   Future<Result<PrayerLocation, LocationFailure>> getCurrentLocation() async {
     try {
+      // Avoid requesting permission while the device-wide GPS switch is off.
       final serviceEnabled = await _geoDataSource.isLocationServiceEnabled();
 
       if (!serviceEnabled) {
@@ -92,6 +94,14 @@ class LocationServiceImpl implements LocationService {
         position.latitude,
         position.longitude,
       );
+    } on LocationServiceDisabledException {
+      // GPS can be turned off between the preflight check and the position fix.
+      return const ResultFailure(
+        LocationFailure(
+          'Location services are disabled.',
+          code: 'locationServiceDisabled',
+        ),
+      );
     } on TimeoutException {
       return const ResultFailure(
         LocationFailure(
@@ -126,10 +136,53 @@ class LocationServiceImpl implements LocationService {
       );
     }
 
+    // Manual coordinates must remain available without GPS/permission.
     return _resolveCoordinates(
       latitude,
       longitude,
     );
+  }
+
+  @override
+  Future<PrayerLocation> refreshSavedLocationName(
+    PrayerLocation location,
+  ) async {
+    try {
+      final result = await _geocodingService.reverseGeocode(
+        location.latitude,
+        location.longitude,
+      );
+
+      if (result case Success(value: final names)) {
+        final city = names.$1.trim();
+        final country = names.$2.trim();
+
+        // Do not replace a cached name with another empty or generic label.
+        if (city.isEmpty) {
+          return location;
+        }
+
+        final updatedCountry =
+            country.isNotEmpty ? country : location.countryName;
+
+        if (city == location.cityName &&
+            updatedCountry == location.countryName) {
+          return location;
+        }
+
+        return PrayerLocation(
+          latitude: location.latitude,
+          longitude: location.longitude,
+          cityName: city,
+          countryName: updatedCountry,
+          timezoneIdentifier: location.timezoneIdentifier,
+        );
+      }
+    } catch (_) {
+      // A human-readable label is optional. Never lose selected coordinates.
+    }
+
+    return location;
   }
 
   Future<Result<PrayerLocation, LocationFailure>> _resolveCoordinates(
@@ -155,28 +208,31 @@ class LocationServiceImpl implements LocationService {
     var resolvedCity = 'Current Location';
     var resolvedCountry = 'Unknown';
 
-    final geocodingResult = await _geocodingService.reverseGeocode(
-      latitude,
-      longitude,
-    );
+    // Geocoding is optional. It must not block valid prayer calculations.
+    try {
+      final geocodingResult = await _geocodingService.reverseGeocode(
+        latitude,
+        longitude,
+      );
 
-    switch (geocodingResult) {
-      case Success(value: final result):
-        final city = result.$1.trim();
-        final country = result.$2.trim();
+      switch (geocodingResult) {
+        case Success(value: final result):
+          final city = result.$1.trim();
+          final country = result.$2.trim();
 
-        if (city.isNotEmpty) {
-          resolvedCity = city;
-        }
+          if (city.isNotEmpty) {
+            resolvedCity = city;
+          }
 
-        if (country.isNotEmpty) {
-          resolvedCountry = country;
-        }
+          if (country.isNotEmpty) {
+            resolvedCountry = country;
+          }
 
-      case ResultFailure():
-        // Accurate coordinates and timezone remain valid even when
-        // the optional human-readable place name cannot be resolved.
-        break;
+        case ResultFailure():
+          break;
+      }
+    } catch (_) {
+      // A temporary native reverse-geocoding failure is not a GPS failure.
     }
 
     return Success(

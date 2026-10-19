@@ -79,6 +79,7 @@ class PrayerHomeScreen extends ConsumerWidget {
                 onRetry: () => _refreshData(
                   ref,
                 ),
+                failureCode: state.failure!.code,
               ),
             ),
           ),
@@ -145,6 +146,8 @@ class PrayerHomeScreen extends ConsumerWidget {
                     PrayerHeader(
                       cityName: location.cityName,
                       countryName: location.countryName,
+                      latitude: location.latitude,
+                      longitude: location.longitude,
                       hijriYear: null,
                       hijriMonthIndex: null,
                       hijriDay: null,

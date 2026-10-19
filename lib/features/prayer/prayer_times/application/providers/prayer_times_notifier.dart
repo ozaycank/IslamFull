@@ -71,6 +71,21 @@ class PrayerTimesNotifier extends Notifier<PrayerTimesState> {
     final location = next.location;
 
     if (next.status == LocationStatus.success && location != null) {
+      // Updating an old country-only label must not recalculate unchanged
+      // prayer times or reset a loaded prayer schedule.
+      final current = state.location;
+      if (current != null &&
+          state.schedule != null &&
+          current.latitude == location.latitude &&
+          current.longitude == location.longitude &&
+          current.timezoneIdentifier == location.timezoneIdentifier &&
+          current != location) {
+        state = state.copyWith(
+          location: () => location,
+        );
+        return;
+      }
+
       final locationChanged =
           previous?.location != location || state.location != location;
 

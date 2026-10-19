@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -197,6 +199,102 @@ void main() {
           manualLocation,
         ),
       );
+    },
+  );
+  test(
+    'repairs a saved fallback name asynchronously without device GPS',
+    () async {
+      const cached = PrayerLocation(
+        latitude: 39.15,
+        longitude: 42.54,
+        cityName: 'Current Location',
+        countryName: 'Türkiye',
+        timezoneIdentifier: 'Europe/Istanbul',
+      );
+      const resolved = PrayerLocation(
+        latitude: 39.15,
+        longitude: 42.54,
+        cityName: 'Malazgirt',
+        countryName: 'Türkiye',
+        timezoneIdentifier: 'Europe/Istanbul',
+      );
+      final geocodeGate = Completer<PrayerLocation>();
+
+      when(() => localDataSource.getSelectedLocation()).thenAnswer(
+        (_) async => cached,
+      );
+      when(() => locationService.refreshSavedLocationName(cached)).thenAnswer(
+        (_) => geocodeGate.future,
+      );
+      when(() => localDataSource.saveSelectedLocation(resolved)).thenAnswer(
+        (_) async {},
+      );
+
+      final container = ProviderContainer();
+      addTearDown(container.dispose);
+      container.read(locationNotifierProvider);
+      await pumpEventQueue();
+
+      expect(container.read(locationNotifierProvider).location, cached);
+      geocodeGate.complete(resolved);
+      await pumpEventQueue(times: 5);
+
+      expect(container.read(locationNotifierProvider).location, resolved);
+      expect(
+        container.read(locationNotifierProvider).status,
+        LocationStatus.success,
+      );
+      verify(() => localDataSource.saveSelectedLocation(resolved)).called(1);
+      verifyNever(() => locationService.getCurrentLocation());
+    },
+  );
+
+  test(
+    'slow saved-name lookup cannot overwrite a newer manual selection',
+    () async {
+      const cached = PrayerLocation(
+        latitude: 39.15,
+        longitude: 42.54,
+        cityName: 'Current Location',
+        countryName: 'Türkiye',
+        timezoneIdentifier: 'Europe/Istanbul',
+      );
+      const resolved = PrayerLocation(
+        latitude: 39.15,
+        longitude: 42.54,
+        cityName: 'Malazgirt',
+        countryName: 'Türkiye',
+        timezoneIdentifier: 'Europe/Istanbul',
+      );
+      final geocodeGate = Completer<PrayerLocation>();
+      when(() => localDataSource.getSelectedLocation()).thenAnswer(
+        (_) async => cached,
+      );
+      when(() => locationService.refreshSavedLocationName(cached)).thenAnswer(
+        (_) => geocodeGate.future,
+      );
+      when(() => locationService.resolveManualLocation(39.3292, 42.289504))
+          .thenAnswer((_) async => const Success(manualLocation));
+      when(
+        () => localDataSource.saveSelectedLocation(manualLocation),
+      ).thenAnswer(
+        (_) async {},
+      );
+
+      final container = ProviderContainer();
+      addTearDown(container.dispose);
+      container.read(locationNotifierProvider);
+      await pumpEventQueue();
+
+      final manualSuccess = await container
+          .read(locationNotifierProvider.notifier)
+          .setManualCoordinates(39.3292, 42.289504);
+      expect(manualSuccess, isTrue);
+
+      geocodeGate.complete(resolved);
+      await pumpEventQueue(times: 5);
+      expect(container.read(locationNotifierProvider).location, manualLocation);
+      verifyNever(() => localDataSource.saveSelectedLocation(resolved));
     },
   );
 }

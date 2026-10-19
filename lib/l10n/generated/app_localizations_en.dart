@@ -2408,4 +2408,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get quranBookmarkConsentRequired =>
       'To save bookmarks, allow optional local progress saving in Privacy settings.';
+
+  @override
+  String get locationOpenDeviceSettings => 'Open location settings';
+
+  @override
+  String get locationOpenAppSettings => 'Open app settings';
 }

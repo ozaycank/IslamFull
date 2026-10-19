@@ -710,5 +710,9 @@
   "activityReligiousProgressConsentDesc": "تُحفظ الصلوات التي تحددها مكتملة وعلامة قراءتك للقرآن محليًا على هذا الجهاز. حفظ هذا التقدم اختياري؛ ويمكنك استخدام بقية ميزات IslamFull دون تفعيله.",
   "journeyReligiousProgressConsentDesc": "يمكن لتطبيق IslamFull تذكر خطوات التعلم التي زرتها أو حددتها «تم الاطلاع» على هذا الجهاز فقط. حفظ تقدم رحلة المسلم الجديد اختياري، ويمكن استخدام الأدلة التعليمية دون هذا الإذن.",
   "quranLocalProgressConsentDesc": "يمكنك السماح بحفظ تقدم القراءة المحلي اختياريًا لتذكر آخر آية قرأتها وعلاماتك المرجعية على جهازك. يمكنك قراءة القرآن دون السماح بذلك.",
-  "quranBookmarkConsentRequired": "لحفظ علامة مرجعية، يُرجى السماح بحفظ التقدم المحلي الاختياري من قسم الخصوصية."
+  "quranBookmarkConsentRequired": "لحفظ علامة مرجعية، يُرجى السماح بحفظ التقدم المحلي الاختياري من قسم الخصوصية.",
+  "locationOpenDeviceSettings": "فتح إعدادات الموقع",
+  "@locationOpenDeviceSettings": {"description":"Open device-wide location services settings when GPS is disabled."},
+  "locationOpenAppSettings": "فتح إعدادات التطبيق",
+  "@locationOpenAppSettings": {"description":"Open this application permission settings when location permission is blocked."}
 }

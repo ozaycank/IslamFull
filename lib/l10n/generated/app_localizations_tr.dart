@@ -2413,4 +2413,10 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get quranBookmarkConsentRequired =>
       'Yer imi kaydetmek için Gizlilik bölümünden isteğe bağlı yerel ilerleme kaydına izin verin.';
+
+  @override
+  String get locationOpenDeviceSettings => 'Konum ayarlarını aç';
+
+  @override
+  String get locationOpenAppSettings => 'Uygulama ayarlarını aç';
 }

@@ -863,5 +863,9 @@
   "quranLocalProgressConsentDesc": "Son okuduğunuz ayeti ve yer imlerinizi cihazınızda hatırlamak için isteğe bağlı yerel ilerleme kaydına izin verebilirsiniz. İzin vermeden de Kur'an okuyabilirsiniz.",
   "@quranLocalProgressConsentDesc": {"description": "Optional local Quran reading/bookmark saving explanation"},
   "quranBookmarkConsentRequired": "Yer imi kaydetmek için Gizlilik bölümünden isteğe bağlı yerel ilerleme kaydına izin verin.",
-  "@quranBookmarkConsentRequired": {"description": "Blocked bookmark feedback with privacy settings action"}
+  "@quranBookmarkConsentRequired": {"description": "Blocked bookmark feedback with privacy settings action"},
+  "locationOpenDeviceSettings": "Konum ayarlarını aç",
+  "@locationOpenDeviceSettings": {"description":"Open device-wide location services settings when GPS is disabled."},
+  "locationOpenAppSettings": "Uygulama ayarlarını aç",
+  "@locationOpenAppSettings": {"description":"Open this application permission settings when location permission is blocked."}
 }

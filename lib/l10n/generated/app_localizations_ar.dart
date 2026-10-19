@@ -2394,4 +2394,10 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get quranBookmarkConsentRequired =>
       'لحفظ علامة مرجعية، يُرجى السماح بحفظ التقدم المحلي الاختياري من قسم الخصوصية.';
+
+  @override
+  String get locationOpenDeviceSettings => 'فتح إعدادات الموقع';
+
+  @override
+  String get locationOpenAppSettings => 'فتح إعدادات التطبيق';
 }

@@ -133,25 +133,36 @@ class PresentationLocalizer {
   }) {
     final parts = <String>[];
 
-    if (cityName != null && cityName.trim().isNotEmpty) {
-      parts.add(cityName.trim());
+    // Older releases persisted the literal English placeholder as a city.
+    // Do not present it as though it were a geocoded district.
+    final city = cityName?.trim() ?? '';
+    final cityIsKnown = city.isNotEmpty &&
+        city.toLowerCase() != 'current location' &&
+        city.toLowerCase() != 'mevcut konum' &&
+        city.toLowerCase() != 'unknown';
+
+    if (cityIsKnown) {
+      parts.add(city);
     }
-    if (subAdminArea != null &&
-        subAdminArea.trim().isNotEmpty &&
-        subAdminArea.trim() != cityName?.trim()) {
-      parts.add(subAdminArea.trim());
+    final district = subAdminArea?.trim() ?? '';
+    if (district.isNotEmpty && district != city) {
+      parts.add(district);
     }
-    if (countryName != null &&
-        countryName.trim().isNotEmpty &&
-        countryName.trim() != cityName?.trim() &&
-        countryName.trim() != subAdminArea?.trim()) {
-      parts.add(countryName.trim());
+    final country = countryName?.trim() ?? '';
+    if (country.isNotEmpty &&
+        country.toLowerCase() != 'unknown' &&
+        country != city &&
+        country != district) {
+      parts.add(country);
+    }
+
+    if (!cityIsKnown && lat != null && lon != null) {
+      final coordinates =
+          '${lat.toStringAsFixed(4)}, ${lon.toStringAsFixed(4)}';
+      return parts.isEmpty ? coordinates : '${parts.join(', ')} ($coordinates)';
     }
 
     if (parts.isEmpty) {
-      if (lat != null && lon != null) {
-        return '${lat.toStringAsFixed(4)}, ${lon.toStringAsFixed(4)}';
-      }
       return context.l10n.locationUnavailable;
     }
 

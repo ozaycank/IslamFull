@@ -154,4 +154,43 @@ void main() {
       );
     },
   );
+  test(
+    'finds Malazgirt district in a later placemark after a country-only result',
+    () async {
+      when(() => dataSource.getPlacemarks(39.15, 42.54)).thenAnswer(
+        (_) async => [
+          const Placemark(country: 'Türkiye'),
+          const Placemark(
+            locality: 'Aktuzla',
+            subAdministrativeArea: 'Malazgirt',
+            administrativeArea: 'Muş',
+            country: 'Türkiye',
+          ),
+        ],
+      );
+
+      final result = await service.reverseGeocode(39.15, 42.54);
+      expect(result, isA<Success<(String, String), LocationFailure>>());
+      final names =
+          (result as Success<(String, String), LocationFailure>).value;
+      expect(names.$1, 'Malazgirt');
+      expect(names.$2, 'Türkiye');
+    },
+  );
+
+  test(
+    'country-only geocoding is not misrepresented as a city',
+    () async {
+      when(() => dataSource.getPlacemarks(39.0, 42.0)).thenAnswer(
+        (_) async => [const Placemark(country: 'Türkiye')],
+      );
+
+      final result = await service.reverseGeocode(39.0, 42.0);
+      expect(result, isA<Success<(String, String), LocationFailure>>());
+      final names =
+          (result as Success<(String, String), LocationFailure>).value;
+      expect(names.$1, isEmpty);
+      expect(names.$2, 'Türkiye');
+    },
+  );
 }

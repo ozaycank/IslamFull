@@ -4353,6 +4353,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'To save bookmarks, allow optional local progress saving in Privacy settings.'**
   String get quranBookmarkConsentRequired;
+
+  /// Open device-wide location services settings when GPS is disabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Open location settings'**
+  String get locationOpenDeviceSettings;
+
+  /// Open this application permission settings when location permission is blocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Open app settings'**
+  String get locationOpenAppSettings;
 }
 
 class _AppLocalizationsDelegate

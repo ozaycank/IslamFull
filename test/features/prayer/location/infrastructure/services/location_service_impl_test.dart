@@ -3,6 +3,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:noor_life/core/base/result.dart';
+import 'package:noor_life/features/prayer/location/domain/entities/prayer_location.dart';
 import 'package:noor_life/features/prayer/location/domain/interfaces/location_geocoding_service.dart';
 import 'package:noor_life/features/prayer/location/domain/interfaces/location_permission_service.dart';
 import 'package:noor_life/features/prayer/location/domain/interfaces/location_service.dart';
@@ -296,6 +297,102 @@ void main() {
           any(),
         ),
       );
+    },
+  );
+  test(
+    'GPS disabled returns actionable failure without requesting permission',
+    () async {
+      when(() => mockGeoSource.isLocationServiceEnabled()).thenAnswer(
+        (_) async => false,
+      );
+
+      final result = await locationService.getCurrentLocation();
+      expect(result, isA<ResultFailure>());
+      final failure = (result as ResultFailure).failure as LocationFailure;
+      expect(failure.code, 'locationServiceDisabled');
+      verifyNever(() => mockPermissionService.checkPermission());
+      verifyNever(() => mockGeoSource.getCurrentPosition());
+      verifyNever(() => mockGeocodingService.reverseGeocode(any(), any()));
+    },
+  );
+
+  test(
+    'permanently blocked permission never requests GPS fix',
+    () async {
+      when(() => mockPermissionService.checkPermission()).thenAnswer(
+        (_) async => AppLocationPermission.permanentlyDenied,
+      );
+
+      final result = await locationService.getCurrentLocation();
+      expect(result, isA<ResultFailure>());
+      final failure = (result as ResultFailure).failure as LocationFailure;
+      expect(failure.code, 'permissionDeniedForever');
+      verifyNever(() => mockPermissionService.requestPermission());
+      verifyNever(() => mockGeoSource.getCurrentPosition());
+    },
+  );
+
+  test(
+    'refreshes cached place name without GPS or permission',
+    () async {
+      const cached = PrayerLocation(
+        latitude: 39.15,
+        longitude: 42.54,
+        cityName: 'Current Location',
+        countryName: 'TÃ¼rkiye',
+        timezoneIdentifier: 'Europe/Istanbul',
+      );
+      when(
+        () => mockGeocodingService.reverseGeocode(
+          39.15,
+          42.54,
+        ),
+      ).thenAnswer(
+        (_) async => const Success(
+          ('Malazgirt', 'TÃ¼rkiye'),
+        ),
+      );
+
+      final updated = await locationService.refreshSavedLocationName(
+        cached,
+      );
+      expect(updated.cityName, 'Malazgirt');
+      expect(updated.latitude, cached.latitude);
+      expect(updated.longitude, cached.longitude);
+      expect(updated.timezoneIdentifier, cached.timezoneIdentifier);
+      verifyNever(() => mockGeoSource.isLocationServiceEnabled());
+      verifyNever(() => mockGeoSource.getCurrentPosition());
+      verifyNever(() => mockPermissionService.checkPermission());
+    },
+  );
+
+  test(
+    'keeps cached coordinates and label when geocoding fails',
+    () async {
+      const cached = PrayerLocation(
+        latitude: 39.15,
+        longitude: 42.54,
+        cityName: 'Current Location',
+        countryName: 'TÃ¼rkiye',
+        timezoneIdentifier: 'Europe/Istanbul',
+      );
+      when(
+        () => mockGeocodingService.reverseGeocode(
+          39.15,
+          42.54,
+        ),
+      ).thenAnswer(
+        (_) async => const ResultFailure(
+          LocationFailure(
+            'Native geocoder unavailable',
+          ),
+        ),
+      );
+
+      final updated = await locationService.refreshSavedLocationName(
+        cached,
+      );
+      expect(updated, cached);
     },
   );
 }

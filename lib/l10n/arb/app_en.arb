@@ -2830,5 +2830,9 @@
   "quranLocalProgressConsentDesc": "Allow optional local progress saving to remember your last-read Quran verse and bookmarks on this device. You can still read the Quran without allowing it.",
   "@quranLocalProgressConsentDesc": {"description": "Optional local Quran reading/bookmark saving explanation"},
   "quranBookmarkConsentRequired": "To save bookmarks, allow optional local progress saving in Privacy settings.",
-  "@quranBookmarkConsentRequired": {"description": "Blocked bookmark feedback with privacy settings action"}
+  "@quranBookmarkConsentRequired": {"description": "Blocked bookmark feedback with privacy settings action"},
+  "locationOpenDeviceSettings": "Open location settings",
+  "@locationOpenDeviceSettings": {"description":"Open device-wide location services settings when GPS is disabled."},
+  "locationOpenAppSettings": "Open app settings",
+  "@locationOpenAppSettings": {"description":"Open this application permission settings when location permission is blocked."}
 }

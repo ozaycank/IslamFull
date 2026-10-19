@@ -19,6 +19,7 @@ import '../../application/providers/prayer_settings_notifier.dart';
 import '../widgets/selection_bottom_sheet.dart';
 import '../widgets/settings_selection_tile.dart';
 import '../../../prayer/location/presentation/utils/location_failure_localizer.dart';
+import '../../../prayer/location/presentation/widgets/location_settings_action.dart';
 import '../widgets/manual_location_sheet.dart';
 
 class SettingsScreen extends ConsumerWidget {
@@ -343,6 +344,8 @@ class _LocationSection extends ConsumerWidget {
             cityName: location.cityName,
             subAdminArea: null,
             countryName: location.countryName,
+            lat: location.latitude,
+            lon: location.longitude,
           )
         : l10n.locationUnavailable;
 
@@ -410,6 +413,10 @@ class _LocationSection extends ConsumerWidget {
                   ),
                 ),
               ],
+              if (locationState.failure != null)
+                LocationSettingsAction(
+                  failureCode: locationState.failure!.code,
+                ),
               const SizedBox(
                 height: AppSpacing.lg,
               ),

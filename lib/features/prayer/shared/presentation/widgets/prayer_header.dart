@@ -7,6 +7,8 @@ class PrayerHeader extends StatelessWidget {
   final String? cityName;
   final String? countryName;
   final String? subAdministrativeArea;
+  final double? latitude;
+  final double? longitude;
   final int? hijriMonthIndex;
   final int? hijriDay;
   final int? hijriYear;
@@ -19,6 +21,8 @@ class PrayerHeader extends StatelessWidget {
     this.cityName,
     this.countryName,
     this.subAdministrativeArea,
+    this.latitude,
+    this.longitude,
     this.hijriMonthIndex,
     this.hijriDay,
     this.hijriYear,
@@ -38,6 +42,8 @@ class PrayerHeader extends StatelessWidget {
       cityName: cityName,
       subAdminArea: subAdministrativeArea,
       countryName: countryName,
+      lat: latitude,
+      lon: longitude,
     );
 
     String formattedHijri = customHijriString ?? '-';
