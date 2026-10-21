@@ -65,8 +65,16 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
+      backgroundColor: Colors.transparent,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.asset(
+            'assets/images/islamfull_splash_background.png',
+            fit: BoxFit.cover,
+          ),
+          Center(
+            child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const AppLogo(
@@ -105,6 +113,8 @@ class _SplashScreenState extends State<SplashScreen> {
           ],
         ),
       ),
-    );
+    ],
+  ),
+);
   }
 }
