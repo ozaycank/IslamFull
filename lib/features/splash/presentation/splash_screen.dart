@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:noor_life/core/extensions/context_extensions.dart';
 import 'package:noor_life/core/routing/app_routes.dart';
 import 'package:noor_life/shared/design_system/tokens/app_spacing.dart';
@@ -17,10 +18,13 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   Timer? _navigationTimer;
+  String? _appVersion;
 
   @override
   void initState() {
     super.initState();
+
+    unawaited(_loadAppVersion());
 
     _navigationTimer = Timer(
       const Duration(
@@ -34,6 +38,22 @@ class _SplashScreenState extends State<SplashScreen> {
         }
       },
     );
+  }
+
+  Future<void> _loadAppVersion() async {
+    try {
+      final packageInfo = await PackageInfo.fromPlatform();
+
+      if (!mounted) {
+        return;
+      }
+
+      setState(() {
+        _appVersion = packageInfo.version;
+      });
+    } catch (_) {
+      // Keep the splash screen usable if version metadata is unavailable.
+    }
   }
 
   @override
@@ -61,6 +81,14 @@ class _SplashScreenState extends State<SplashScreen> {
                     fontWeight: FontWeight.bold,
                   ),
             ),
+            const SizedBox(height: 4),
+            if (_appVersion != null)
+              Text(
+                'Version: $_appVersion',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+              ),
             const SizedBox(
               height: AppSpacing.xxl,
             ),
