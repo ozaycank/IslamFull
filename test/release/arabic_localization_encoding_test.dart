@@ -55,7 +55,7 @@ void main() {
 
       expect(
         tr['prayerNotificationApproaching'],
-        '{prayerName} vaktine az kaldı.',
+        '{prayerName} vaktine {minutes} dakika kaldı.',
       );
     },
   );
