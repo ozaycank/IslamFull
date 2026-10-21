@@ -13,6 +13,7 @@ class PrayerNotificationText {
 
   factory PrayerNotificationText.forPrayer({
     required PrayerName prayer,
+    required int minutes,
     required AppLocalizations localizations,
   }) {
     final prayerName = switch (prayer) {
@@ -28,6 +29,7 @@ class PrayerNotificationText {
       title: localizations.prayerReminders,
       body: localizations.prayerNotificationApproaching(
         prayerName,
+        minutes,
       ),
     );
   }

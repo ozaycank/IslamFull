@@ -167,7 +167,7 @@ void main() {
       );
 
       expect(
-        find.text('₺2500.00'),
+        find.text('₺2,500.00'),
         findsOneWidget,
       );
     },

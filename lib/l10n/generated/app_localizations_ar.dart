@@ -636,8 +636,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get prayerReminders => 'تذكير الصلاة';
 
   @override
-  String prayerNotificationApproaching(String prayerName) {
-    return 'اقترب وقت صلاة $prayerName.';
+  String prayerNotificationApproaching(String prayerName, int minutes) {
+    return 'تبقّى $minutes دقيقة على صلاة $prayerName.';
   }
 
   @override
@@ -830,7 +830,7 @@ class AppLocalizationsAr extends AppLocalizations {
       'IslamFull مساعد إسلامي للحياة اليومية يركز على الخصوصية والبيانات المحلية، صُمم لمتابعة عباداتك اليومية وقراءة القرآن وتحقيق أهدافك الروحية.';
 
   @override
-  String get aboutVersion => 'الإصدار 1.0.0';
+  String get aboutVersion => 'الإصدار';
 
   @override
   String get aboutCopyright => '© 2026 IslamFull. جميع الحقوق محفوظة.';

@@ -1315,8 +1315,8 @@ abstract class AppLocalizations {
   /// Prayer reminder body
   ///
   /// In en, this message translates to:
-  /// **'{prayerName} is approaching.'**
-  String prayerNotificationApproaching(String prayerName);
+  /// **'{minutes} minutes until {prayerName} prayer.'**
+  String prayerNotificationApproaching(String prayerName, int minutes);
 
   /// Toggle for daily verse
   ///
@@ -1669,7 +1669,7 @@ abstract class AppLocalizations {
   /// App version
   ///
   /// In en, this message translates to:
-  /// **'Version 1.0.0'**
+  /// **'Version'**
   String get aboutVersion;
 
   /// Copyright notice

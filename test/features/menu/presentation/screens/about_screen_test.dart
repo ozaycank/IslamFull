@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import 'package:noor_life/features/menu/presentation/screens/about_screen.dart';
 import 'package:noor_life/l10n/generated/app_localizations.dart';
@@ -32,6 +33,17 @@ void main() {
     );
   }
 
+  setUp(() {
+    PackageInfo.setMockInitialValues(
+      appName: 'IslamFull',
+      packageName: 'com.example.noorlife',
+      version: '0.0.2',
+      buildNumber: '2',
+      buildSignature: '',
+      installerStore: null,
+    );
+  });
+
   testWidgets(
     'about screen renders product information and IslamFull logo',
     (tester) async {
@@ -48,6 +60,11 @@ void main() {
 
       expect(
         find.text('IslamFull'),
+        findsOneWidget,
+      );
+
+      expect(
+        find.text('Version 0.0.2'),
         findsOneWidget,
       );
 

@@ -644,8 +644,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get prayerReminders => 'Namaz Hatırlatıcı';
 
   @override
-  String prayerNotificationApproaching(String prayerName) {
-    return '$prayerName vaktine az kaldı.';
+  String prayerNotificationApproaching(String prayerName, int minutes) {
+    return '$prayerName vaktine $minutes dakika kaldı.';
   }
 
   @override
@@ -839,7 +839,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'IslamFull, günlük ibadetlerinizi takip etmeniz, Kur\'an okumanız ve manevi hedeflerinize ulaşmanız için geliştirilmiş yerel ve gizlilik odaklı bir İslami yaşam asistanıdır.';
 
   @override
-  String get aboutVersion => 'Sürüm 1.0.0';
+  String get aboutVersion => 'Sürüm';
 
   @override
   String get aboutCopyright => '© 2026 IslamFull. Tüm hakları saklıdır.';

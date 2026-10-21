@@ -265,6 +265,7 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
     for (final prayer in schedule.today.prayerTimes) {
       final content = PrayerNotificationText.forPrayer(
         prayer: prayer.name,
+        minutes: state.prayerReminderMinutes,
         localizations: localizations,
       );
 

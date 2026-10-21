@@ -6,6 +6,7 @@ import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../../../../shared/widgets/app_card.dart';
 import '../../../../shared/widgets/primary_button.dart';
 import '../../../../shared/widgets/section_header.dart';
+import '../utils/zakat_amount_formatter.dart';
 
 /// Provides a general zakat calculation estimate based on the user's inputs.
 ///
@@ -154,6 +155,7 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final locale = Localizations.localeOf(context).languageCode;
     final textTheme = context.textTheme;
     final colorScheme = context.colorScheme;
 
@@ -311,12 +313,18 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
                     children: [
                       _ResultRow(
                         label: l10n.zakatTotalWealth,
-                        value: '₺${_totalNetWealth.toStringAsFixed(2)}',
+                        value: ZakatAmountFormatter.format(
+                          _totalNetWealth,
+                          locale: locale,
+                        ),
                       ),
                       const Divider(),
                       _ResultRow(
                         label: l10n.zakatNisabAmount,
-                        value: '₺${_nisabThreshold.toStringAsFixed(2)}',
+                        value: ZakatAmountFormatter.format(
+                          _nisabThreshold,
+                          locale: locale,
+                        ),
                       ),
                       const Divider(
                         thickness: 2,
@@ -339,7 +347,10 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
                                 height: AppSpacing.xs,
                               ),
                               Text(
-                                '₺${_zakatAmount.toStringAsFixed(2)}',
+                                ZakatAmountFormatter.format(
+                                  _zakatAmount,
+                                  locale: locale,
+                                ),
                                 style: textTheme.headlineMedium?.copyWith(
                                   color: colorScheme.primary,
                                   fontWeight: FontWeight.w700,

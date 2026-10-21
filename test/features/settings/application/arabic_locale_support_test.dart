@@ -54,11 +54,18 @@ void main() {
 
       final reminder = PrayerNotificationText.forPrayer(
         prayer: PrayerName.asr,
+        minutes: 30,
         localizations: localizations,
       );
 
-      expect(reminder.title, 'تذكير الصلاة');
-      expect(reminder.body, 'اقترب وقت صلاة العصر.');
+      expect(reminder.title, localizations.prayerReminders);
+      expect(
+        reminder.body,
+        localizations.prayerNotificationApproaching(
+          localizations.prayerAsr,
+          30,
+        ),
+      );
     },
   );
 

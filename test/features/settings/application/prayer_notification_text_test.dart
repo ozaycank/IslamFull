@@ -15,6 +15,7 @@ void main() {
 
     final content = PrayerNotificationText.forPrayer(
       prayer: PrayerName.asr,
+      minutes: 45,
       localizations: localizations,
     );
 
@@ -25,7 +26,7 @@ void main() {
 
     expect(
       content.body,
-      '${localizations.prayerAsr} vaktine az kaldı.',
+      '${localizations.prayerAsr} vaktine 45 dakika kaldı.',
     );
 
     expect(
@@ -41,6 +42,7 @@ void main() {
 
     final content = PrayerNotificationText.forPrayer(
       prayer: PrayerName.isha,
+      minutes: 45,
       localizations: localizations,
     );
 
@@ -51,7 +53,7 @@ void main() {
 
     expect(
       content.body,
-      '${localizations.prayerIsha} is approaching.',
+      '45 minutes until ${localizations.prayerIsha} prayer.',
     );
   });
 
@@ -71,12 +73,13 @@ void main() {
     for (final entry in expectedNames.entries) {
       final content = PrayerNotificationText.forPrayer(
         prayer: entry.key,
+        minutes: 30,
         localizations: localizations,
       );
 
       expect(
         content.body,
-        '${entry.value} vaktine az kaldı.',
+        '${entry.value} vaktine 30 dakika kaldı.',
       );
     }
   });
