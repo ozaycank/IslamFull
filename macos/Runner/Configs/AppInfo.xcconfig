@@ -8,7 +8,7 @@
 PRODUCT_NAME = IslamFull
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.noorlife
+PRODUCT_BUNDLE_IDENTIFIER = com.ozaycank.islamfull
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2026 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2026 Özay Can KIRLI. All rights reserved.

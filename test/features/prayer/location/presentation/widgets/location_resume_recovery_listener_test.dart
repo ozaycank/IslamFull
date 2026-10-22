@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/prayer/location/presentation/widgets/location_resume_recovery_listener.dart';
+import 'package:islamfull/features/prayer/location/presentation/widgets/location_resume_recovery_listener.dart';
 
 void main() {
   Future<void> pumpListener(

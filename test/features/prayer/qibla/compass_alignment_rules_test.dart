@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:noor_life/features/prayer/qibla/domain/compass_alignment_rules.dart';
+import 'package:islamfull/features/prayer/qibla/domain/compass_alignment_rules.dart';
 
 void main() {
   group('CompassAlignmentRules Domain Logic', () {

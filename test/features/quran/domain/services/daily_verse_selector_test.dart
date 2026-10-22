@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:noor_life/features/quran/domain/entities/revelation_type.dart';
-import 'package:noor_life/features/quran/domain/entities/surah.dart';
-import 'package:noor_life/features/quran/domain/services/daily_verse_selector.dart';
+import 'package:islamfull/features/quran/domain/entities/revelation_type.dart';
+import 'package:islamfull/features/quran/domain/entities/surah.dart';
+import 'package:islamfull/features/quran/domain/services/daily_verse_selector.dart';
 
 void main() {
   const selector = DailyVerseSelector();

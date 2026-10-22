@@ -114,7 +114,7 @@ void main() {
 
       expect(
         xml,
-        contains('@color/islamfull_splash_background'),
+        contains('@drawable/islamfull_splash_background'),
       );
     }
 

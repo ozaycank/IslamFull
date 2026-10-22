@@ -4,21 +4,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:noor_life/core/di/injection_container.dart';
-import 'package:noor_life/core/privacy/religious_progress_consent_provider.dart';
-import 'package:noor_life/core/routing/app_routes.dart';
-import 'package:noor_life/features/quran/application/providers/quran_bookmark_provider.dart';
-import 'package:noor_life/features/quran/application/providers/quran_progress_provider.dart';
-import 'package:noor_life/features/quran/application/providers/quran_reader_settings_provider.dart';
-import 'package:noor_life/features/quran/application/states/quran_bookmark_state.dart';
-import 'package:noor_life/features/quran/application/states/quran_progress_state.dart';
-import 'package:noor_life/features/quran/application/states/quran_reader_settings_state.dart';
-import 'package:noor_life/features/quran/domain/entities/ayah.dart';
-import 'package:noor_life/features/quran/domain/entities/revelation_type.dart';
-import 'package:noor_life/features/quran/domain/entities/surah.dart';
-import 'package:noor_life/features/quran/domain/repositories/quran_repository.dart';
-import 'package:noor_life/features/quran/presentation/screens/surah_detail_screen.dart';
-import 'package:noor_life/l10n/generated/app_localizations.dart';
+import 'package:islamfull/core/di/injection_container.dart';
+import 'package:islamfull/core/privacy/religious_progress_consent_provider.dart';
+import 'package:islamfull/core/routing/app_routes.dart';
+import 'package:islamfull/features/quran/application/providers/quran_bookmark_provider.dart';
+import 'package:islamfull/features/quran/application/providers/quran_progress_provider.dart';
+import 'package:islamfull/features/quran/application/providers/quran_reader_settings_provider.dart';
+import 'package:islamfull/features/quran/application/states/quran_bookmark_state.dart';
+import 'package:islamfull/features/quran/application/states/quran_progress_state.dart';
+import 'package:islamfull/features/quran/application/states/quran_reader_settings_state.dart';
+import 'package:islamfull/features/quran/domain/entities/ayah.dart';
+import 'package:islamfull/features/quran/domain/entities/revelation_type.dart';
+import 'package:islamfull/features/quran/domain/entities/surah.dart';
+import 'package:islamfull/features/quran/domain/repositories/quran_repository.dart';
+import 'package:islamfull/features/quran/presentation/screens/surah_detail_screen.dart';
+import 'package:islamfull/l10n/generated/app_localizations.dart';
 
 class _FakeQuranRepository implements QuranRepository {
   @override

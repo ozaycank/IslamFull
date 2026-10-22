@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/settings/presentation/widgets/selection_bottom_sheet.dart';
+import 'package:islamfull/features/settings/presentation/widgets/selection_bottom_sheet.dart';
 
 void main() {
   Widget buildTestableWidget({

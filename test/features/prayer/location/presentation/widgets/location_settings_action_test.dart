@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/prayer/location/presentation/widgets/location_settings_action.dart';
-import 'package:noor_life/l10n/generated/app_localizations.dart';
+import 'package:islamfull/features/prayer/location/presentation/widgets/location_settings_action.dart';
+import 'package:islamfull/l10n/generated/app_localizations.dart';
 
 void main() {
   void testWidgetsOnAndroid(

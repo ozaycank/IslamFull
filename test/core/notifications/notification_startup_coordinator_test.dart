@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:noor_life/core/notifications/notification_startup_coordinator.dart';
+import 'package:islamfull/core/notifications/notification_startup_coordinator.dart';
 
 void main() {
   group('NotificationStartupCoordinator', () {

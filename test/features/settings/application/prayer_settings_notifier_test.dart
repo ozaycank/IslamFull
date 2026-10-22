@@ -2,15 +2,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:noor_life/core/base/result.dart';
-import 'package:noor_life/core/di/injection_container.dart';
-import 'package:noor_life/features/prayer/calculation_methods/domain/entities/asr_convention.dart';
-import 'package:noor_life/features/prayer/calculation_methods/domain/entities/prayer_calculation_method.dart';
-import 'package:noor_life/features/prayer/calculation_methods/domain/repositories/calculation_method_repository.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/calculators/high_latitude_strategy.dart';
-import 'package:noor_life/features/prayer/shared/domain/errors/prayer_failure.dart';
-import 'package:noor_life/features/prayer/shared/infrastructure/datasources/prayer_local_data_source.dart';
-import 'package:noor_life/features/settings/application/providers/prayer_settings_notifier.dart';
+import 'package:islamfull/core/base/result.dart';
+import 'package:islamfull/core/di/injection_container.dart';
+import 'package:islamfull/features/prayer/calculation_methods/domain/entities/asr_convention.dart';
+import 'package:islamfull/features/prayer/calculation_methods/domain/entities/prayer_calculation_method.dart';
+import 'package:islamfull/features/prayer/calculation_methods/domain/repositories/calculation_method_repository.dart';
+import 'package:islamfull/features/prayer/prayer_times/domain/calculators/high_latitude_strategy.dart';
+import 'package:islamfull/features/prayer/shared/domain/errors/prayer_failure.dart';
+import 'package:islamfull/features/prayer/shared/infrastructure/datasources/prayer_local_data_source.dart';
+import 'package:islamfull/features/settings/application/providers/prayer_settings_notifier.dart';
 
 class MockCalculationMethodRepository extends Mock
     implements CalculationMethodRepository {}

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/menu/presentation/widgets/legal_section_card.dart';
+import 'package:islamfull/features/menu/presentation/widgets/legal_section_card.dart';
 
 void main() {
   testWidgets(

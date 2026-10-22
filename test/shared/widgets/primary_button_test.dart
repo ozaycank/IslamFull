@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/shared/widgets/primary_button.dart';
+import 'package:islamfull/shared/widgets/primary_button.dart';
 
 void main() {
   testWidgets(

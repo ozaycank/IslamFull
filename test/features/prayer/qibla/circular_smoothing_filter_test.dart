@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:noor_life/features/prayer/qibla/domain/circular_smoothing_filter.dart';
+import 'package:islamfull/features/prayer/qibla/domain/circular_smoothing_filter.dart';
 
 void main() {
   group('CircularSmoothingFilter Deterministic Math', () {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/prayer/prayer_times/domain/value_objects/prayer_name.dart';
-import 'package:noor_life/features/settings/application/services/prayer_notification_text.dart';
-import 'package:noor_life/l10n/generated/app_localizations.dart';
+import 'package:islamfull/features/prayer/prayer_times/domain/value_objects/prayer_name.dart';
+import 'package:islamfull/features/settings/application/services/prayer_notification_text.dart';
+import 'package:islamfull/l10n/generated/app_localizations.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

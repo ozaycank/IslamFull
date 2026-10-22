@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/core/di/injection_container.dart';
-import 'package:noor_life/core/privacy/religious_progress_consent_provider.dart';
-import 'package:noor_life/features/quran/application/providers/quran_bookmark_provider.dart';
-import 'package:noor_life/features/quran/application/providers/quran_progress_provider.dart';
-import 'package:noor_life/features/quran/domain/entities/quran_bookmark.dart';
-import 'package:noor_life/features/quran/domain/entities/quran_reading_progress.dart';
-import 'package:noor_life/features/quran/domain/repositories/quran_bookmark_repository.dart';
-import 'package:noor_life/features/quran/domain/repositories/quran_progress_repository.dart';
+import 'package:islamfull/core/di/injection_container.dart';
+import 'package:islamfull/core/privacy/religious_progress_consent_provider.dart';
+import 'package:islamfull/features/quran/application/providers/quran_bookmark_provider.dart';
+import 'package:islamfull/features/quran/application/providers/quran_progress_provider.dart';
+import 'package:islamfull/features/quran/domain/entities/quran_bookmark.dart';
+import 'package:islamfull/features/quran/domain/entities/quran_reading_progress.dart';
+import 'package:islamfull/features/quran/domain/repositories/quran_bookmark_repository.dart';
+import 'package:islamfull/features/quran/domain/repositories/quran_progress_repository.dart';
 
 class _MutableConsentNotifier extends ReligiousProgressConsentNotifier {
   @override

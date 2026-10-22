@@ -22,7 +22,7 @@ class EnvironmentConfig {
 
   static const String apiBaseUrl = String.fromEnvironment(
     'API_BASE_URL',
-    defaultValue: 'https://api.noorlife.example.com',
+    defaultValue: 'https://api.islamfull.example.com',
   );
 
   static const int connectTimeout = int.fromEnvironment(

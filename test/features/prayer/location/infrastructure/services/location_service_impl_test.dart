@@ -2,13 +2,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:noor_life/core/base/result.dart';
-import 'package:noor_life/features/prayer/location/domain/entities/prayer_location.dart';
-import 'package:noor_life/features/prayer/location/domain/interfaces/location_geocoding_service.dart';
-import 'package:noor_life/features/prayer/location/domain/interfaces/location_permission_service.dart';
-import 'package:noor_life/features/prayer/location/domain/interfaces/location_service.dart';
-import 'package:noor_life/features/prayer/location/infrastructure/datasources/geolocator_data_source.dart';
-import 'package:noor_life/features/prayer/location/infrastructure/services/location_service_impl.dart';
+import 'package:islamfull/core/base/result.dart';
+import 'package:islamfull/features/prayer/location/domain/entities/prayer_location.dart';
+import 'package:islamfull/features/prayer/location/domain/interfaces/location_geocoding_service.dart';
+import 'package:islamfull/features/prayer/location/domain/interfaces/location_permission_service.dart';
+import 'package:islamfull/features/prayer/location/domain/interfaces/location_service.dart';
+import 'package:islamfull/features/prayer/location/infrastructure/datasources/geolocator_data_source.dart';
+import 'package:islamfull/features/prayer/location/infrastructure/services/location_service_impl.dart';
 
 class MockGeolocatorDataSource extends Mock implements GeolocatorDataSource {}
 

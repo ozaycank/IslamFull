@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/guidance/presentation/widgets/guidance_step_card.dart';
+import 'package:islamfull/features/guidance/presentation/widgets/guidance_step_card.dart';
 
 void main() {
   testWidgets(

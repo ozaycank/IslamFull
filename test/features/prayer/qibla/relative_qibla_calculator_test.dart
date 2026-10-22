@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:noor_life/features/prayer/qibla/domain/relative_qibla_calculator.dart';
+import 'package:islamfull/features/prayer/qibla/domain/relative_qibla_calculator.dart';
 
 void main() {
   group('RelativeQiblaCalculator Deterministic Math', () {

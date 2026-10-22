@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
+            VALUE "CompanyName", "Özay Can KIRLI" "\0"
             VALUE "FileDescription", "IslamFull" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "IslamFull" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2026 com.example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 Özay Can KIRLI. All rights reserved." "\0"
             VALUE "OriginalFilename", "IslamFull.exe" "\0"
             VALUE "ProductName", "IslamFull" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

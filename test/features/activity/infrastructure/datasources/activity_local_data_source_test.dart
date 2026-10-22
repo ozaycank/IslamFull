@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:noor_life/core/storage/secure_storage_service.dart';
-import 'package:noor_life/features/activity/infrastructure/datasources/activity_local_data_source.dart';
+import 'package:islamfull/core/storage/secure_storage_service.dart';
+import 'package:islamfull/features/activity/infrastructure/datasources/activity_local_data_source.dart';
 
 class MockSecureStorageService extends Mock implements SecureStorageService {}
 

@@ -20,16 +20,16 @@ import 'core/theme/theme_provider.dart';
 import 'features/settings/application/providers/language_settings_notifier.dart';
 import 'l10n/generated/app_localizations.dart';
 
-class NoorLifeApp extends ConsumerStatefulWidget {
-  const NoorLifeApp({
+class IslamFullApp extends ConsumerStatefulWidget {
+  const IslamFullApp({
     super.key,
   });
 
   @override
-  ConsumerState<NoorLifeApp> createState() => _NoorLifeAppState();
+  ConsumerState<IslamFullApp> createState() => _IslamFullAppState();
 }
 
-class _NoorLifeAppState extends ConsumerState<NoorLifeApp> {
+class _IslamFullAppState extends ConsumerState<IslamFullApp> {
   late final GoRouter _router;
 
   StreamSubscription<String>? _notificationPayloadSubscription;

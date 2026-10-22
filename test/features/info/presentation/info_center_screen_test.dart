@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/info/presentation/info_center_screen.dart';
-import 'package:noor_life/l10n/generated/app_localizations.dart';
+import 'package:islamfull/features/info/presentation/info_center_screen.dart';
+import 'package:islamfull/l10n/generated/app_localizations.dart';
 
 void main() {
   Widget buildTestableWidget() {

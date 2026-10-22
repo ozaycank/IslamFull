@@ -3,13 +3,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/core/privacy/religious_progress_consent_provider.dart';
-import 'package:noor_life/features/quran/application/providers/quran_bookmark_provider.dart';
-import 'package:noor_life/features/quran/application/providers/quran_provider.dart';
-import 'package:noor_life/features/quran/application/states/quran_bookmark_state.dart';
-import 'package:noor_life/features/quran/application/states/quran_state.dart';
-import 'package:noor_life/features/quran/presentation/screens/quran_bookmarks_screen.dart';
-import 'package:noor_life/l10n/generated/app_localizations.dart';
+import 'package:islamfull/core/privacy/religious_progress_consent_provider.dart';
+import 'package:islamfull/features/quran/application/providers/quran_bookmark_provider.dart';
+import 'package:islamfull/features/quran/application/providers/quran_provider.dart';
+import 'package:islamfull/features/quran/application/states/quran_bookmark_state.dart';
+import 'package:islamfull/features/quran/application/states/quran_state.dart';
+import 'package:islamfull/features/quran/presentation/screens/quran_bookmarks_screen.dart';
+import 'package:islamfull/l10n/generated/app_localizations.dart';
 
 class _FakeConsentNotifier extends ReligiousProgressConsentNotifier {
   _FakeConsentNotifier(this.initiallyGranted);

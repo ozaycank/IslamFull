@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:noor_life/features/zakat/presentation/utils/zakat_amount_formatter.dart';
+import 'package:islamfull/features/zakat/presentation/utils/zakat_amount_formatter.dart';
 
 void main() {
   group('ZakatAmountFormatter', () {

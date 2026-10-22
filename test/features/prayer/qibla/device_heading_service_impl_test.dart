@@ -2,10 +2,10 @@ import 'dart:async';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:flutter_compass/flutter_compass.dart';
-import 'package:noor_life/core/base/result.dart';
-import 'package:noor_life/features/prayer/qibla/domain/compass_models.dart';
-import 'package:noor_life/features/prayer/qibla/infrastructure/datasources/flutter_compass_data_source.dart';
-import 'package:noor_life/features/prayer/qibla/infrastructure/services/device_heading_service_impl.dart';
+import 'package:islamfull/core/base/result.dart';
+import 'package:islamfull/features/prayer/qibla/domain/compass_models.dart';
+import 'package:islamfull/features/prayer/qibla/infrastructure/datasources/flutter_compass_data_source.dart';
+import 'package:islamfull/features/prayer/qibla/infrastructure/services/device_heading_service_impl.dart';
 
 class MockFlutterCompassDataSource extends Mock
     implements FlutterCompassDataSource {}

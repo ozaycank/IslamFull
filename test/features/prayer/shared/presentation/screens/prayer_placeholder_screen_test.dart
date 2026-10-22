@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/prayer/shared/presentation/screens/prayer_placeholder_screen.dart';
-import 'package:noor_life/features/prayer/shared/presentation/widgets/prayer_empty_widget.dart';
-import 'package:noor_life/l10n/generated/app_localizations.dart';
+import 'package:islamfull/features/prayer/shared/presentation/screens/prayer_placeholder_screen.dart';
+import 'package:islamfull/features/prayer/shared/presentation/widgets/prayer_empty_widget.dart';
+import 'package:islamfull/l10n/generated/app_localizations.dart';
 
 void main() {
   testWidgets(

@@ -4,13 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:noor_life/core/base/result.dart';
-import 'package:noor_life/core/di/injection_container.dart';
-import 'package:noor_life/features/prayer/location/application/providers/location_notifier.dart';
-import 'package:noor_life/features/prayer/location/application/states/location_state.dart';
-import 'package:noor_life/features/prayer/location/domain/entities/prayer_location.dart';
-import 'package:noor_life/features/prayer/location/domain/interfaces/location_service.dart';
-import 'package:noor_life/features/prayer/shared/infrastructure/datasources/prayer_local_data_source.dart';
+import 'package:islamfull/core/base/result.dart';
+import 'package:islamfull/core/di/injection_container.dart';
+import 'package:islamfull/features/prayer/location/application/providers/location_notifier.dart';
+import 'package:islamfull/features/prayer/location/application/states/location_state.dart';
+import 'package:islamfull/features/prayer/location/domain/entities/prayer_location.dart';
+import 'package:islamfull/features/prayer/location/domain/interfaces/location_service.dart';
+import 'package:islamfull/features/prayer/shared/infrastructure/datasources/prayer_local_data_source.dart';
 
 class MockLocationService extends Mock implements LocationService {}
 

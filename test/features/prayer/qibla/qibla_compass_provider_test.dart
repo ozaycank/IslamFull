@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/prayer/qibla/application/qibla_compass_provider.dart';
+import 'package:islamfull/features/prayer/qibla/application/qibla_compass_provider.dart';
 
 void main() {
   group(

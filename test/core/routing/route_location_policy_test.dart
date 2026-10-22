@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/core/routing/app_routes.dart';
-import 'package:noor_life/core/routing/route_location_policy.dart';
+import 'package:islamfull/core/routing/app_routes.dart';
+import 'package:islamfull/core/routing/route_location_policy.dart';
 
 void main() {
   group(

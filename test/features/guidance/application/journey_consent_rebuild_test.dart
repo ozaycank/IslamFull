@@ -1,11 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/core/di/injection_container.dart';
-import 'package:noor_life/core/privacy/religious_progress_consent_provider.dart';
-import 'package:noor_life/core/storage/secure_storage_service.dart';
-import 'package:noor_life/features/guidance/application/journey_progress_provider.dart';
-import 'package:noor_life/features/guidance/domain/journey_step_id.dart';
+import 'package:islamfull/core/di/injection_container.dart';
+import 'package:islamfull/core/privacy/religious_progress_consent_provider.dart';
+import 'package:islamfull/core/storage/secure_storage_service.dart';
+import 'package:islamfull/features/guidance/application/journey_progress_provider.dart';
+import 'package:islamfull/features/guidance/domain/journey_step_id.dart';
 
 class _ConsentNotifier extends ReligiousProgressConsentNotifier {
   @override

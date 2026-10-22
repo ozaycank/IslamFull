@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:noor_life/core/di/injection_container.dart';
-import 'package:noor_life/features/prayer/location/infrastructure/datasources/geolocator_data_source.dart';
-import 'package:noor_life/features/prayer/location/infrastructure/datasources/geocoding_data_source.dart';
-import 'package:noor_life/features/prayer/location/domain/interfaces/location_permission_service.dart';
-import 'package:noor_life/features/prayer/location/domain/interfaces/location_service.dart';
-import 'package:noor_life/features/prayer/location/domain/interfaces/location_geocoding_service.dart';
+import 'package:islamfull/core/di/injection_container.dart';
+import 'package:islamfull/features/prayer/location/infrastructure/datasources/geolocator_data_source.dart';
+import 'package:islamfull/features/prayer/location/infrastructure/datasources/geocoding_data_source.dart';
+import 'package:islamfull/features/prayer/location/domain/interfaces/location_permission_service.dart';
+import 'package:islamfull/features/prayer/location/domain/interfaces/location_service.dart';
+import 'package:islamfull/features/prayer/location/domain/interfaces/location_geocoding_service.dart';
 
 void main() {
   setUpAll(() async {

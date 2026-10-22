@@ -2,10 +2,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:noor_life/core/base/result.dart';
-import 'package:noor_life/features/prayer/location/domain/interfaces/location_service.dart';
-import 'package:noor_life/features/prayer/location/infrastructure/datasources/geocoding_data_source.dart';
-import 'package:noor_life/features/prayer/location/infrastructure/services/location_geocoding_service_impl.dart';
+import 'package:islamfull/core/base/result.dart';
+import 'package:islamfull/features/prayer/location/domain/interfaces/location_service.dart';
+import 'package:islamfull/features/prayer/location/infrastructure/datasources/geocoding_data_source.dart';
+import 'package:islamfull/features/prayer/location/infrastructure/services/location_geocoding_service_impl.dart';
 
 class MockGeocodingDataSource extends Mock implements GeocodingDataSource {}
 

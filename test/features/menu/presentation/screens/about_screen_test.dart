@@ -3,9 +3,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import 'package:noor_life/features/menu/presentation/screens/about_screen.dart';
-import 'package:noor_life/l10n/generated/app_localizations.dart';
-import 'package:noor_life/shared/widgets/app_logo.dart';
+import 'package:islamfull/features/menu/presentation/screens/about_screen.dart';
+import 'package:islamfull/l10n/generated/app_localizations.dart';
+import 'package:islamfull/shared/widgets/app_logo.dart';
 
 void main() {
   Widget buildTestableWidget({
@@ -36,7 +36,7 @@ void main() {
   setUp(() {
     PackageInfo.setMockInitialValues(
       appName: 'IslamFull',
-      packageName: 'com.example.noorlife',
+      packageName: 'com.ozaycank.islamfull',
       version: '0.0.2',
       buildNumber: '2',
       buildSignature: '',

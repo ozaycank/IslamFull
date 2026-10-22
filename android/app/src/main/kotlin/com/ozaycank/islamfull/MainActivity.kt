@@ -1,4 +1,4 @@
-package com.example.noorlife
+package com.ozaycank.islamfull
 
 import io.flutter.embedding.android.FlutterActivity
 

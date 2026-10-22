@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:noor_life/core/storage/secure_storage_service.dart';
-import 'package:noor_life/features/prayer/shared/infrastructure/datasources/prayer_secure_storage_data_source.dart';
+import 'package:islamfull/core/storage/secure_storage_service.dart';
+import 'package:islamfull/features/prayer/shared/infrastructure/datasources/prayer_secure_storage_data_source.dart';
 
 class MockSecureStorageService extends Mock implements SecureStorageService {}
 

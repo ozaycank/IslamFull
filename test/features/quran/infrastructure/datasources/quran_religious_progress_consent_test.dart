@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/core/storage/secure_storage_service.dart';
-import 'package:noor_life/features/quran/domain/entities/quran_bookmark.dart';
-import 'package:noor_life/features/quran/domain/entities/quran_reading_progress.dart';
-import 'package:noor_life/features/quran/infrastructure/datasources/quran_bookmark_local_data_source.dart';
-import 'package:noor_life/features/quran/infrastructure/datasources/quran_progress_local_data_source.dart';
+import 'package:islamfull/core/storage/secure_storage_service.dart';
+import 'package:islamfull/features/quran/domain/entities/quran_bookmark.dart';
+import 'package:islamfull/features/quran/domain/entities/quran_reading_progress.dart';
+import 'package:islamfull/features/quran/infrastructure/datasources/quran_bookmark_local_data_source.dart';
+import 'package:islamfull/features/quran/infrastructure/datasources/quran_progress_local_data_source.dart';
 
 class _MemorySecureStorage extends SecureStorageService {
   final Map<String, String> data = {};

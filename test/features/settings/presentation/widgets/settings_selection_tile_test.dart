@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/settings/presentation/widgets/settings_selection_tile.dart';
+import 'package:islamfull/features/settings/presentation/widgets/settings_selection_tile.dart';
 
 void main() {
   testWidgets(

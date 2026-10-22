@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:noor_life/core/services/notification_schedule_policy.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/value_objects/prayer_name.dart';
+import 'package:islamfull/core/services/notification_schedule_policy.dart';
+import 'package:islamfull/features/prayer/prayer_times/domain/value_objects/prayer_name.dart';
 
 void main() {
   group('NotificationSchedulePolicy - prayer notifications', () {

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/calculators/astronomical_math.dart';
+import 'package:islamfull/features/prayer/prayer_times/domain/calculators/astronomical_math.dart';
 
 void main() {
   group('AstronomicalMath Exact Precision Validation', () {

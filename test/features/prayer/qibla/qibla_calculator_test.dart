@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:noor_life/core/base/result.dart';
-import 'package:noor_life/features/prayer/qibla/domain/qibla_calculator.dart';
-import 'package:noor_life/features/prayer/qibla/domain/qibla_models.dart';
+import 'package:islamfull/core/base/result.dart';
+import 'package:islamfull/features/prayer/qibla/domain/qibla_calculator.dart';
+import 'package:islamfull/features/prayer/qibla/domain/qibla_models.dart';
 
 void main() {
   group('QiblaCalculator Deterministic Tests', () {

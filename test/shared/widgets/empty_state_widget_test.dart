@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/shared/widgets/empty_state_widget.dart';
+import 'package:islamfull/shared/widgets/empty_state_widget.dart';
 
 void main() {
   testWidgets(

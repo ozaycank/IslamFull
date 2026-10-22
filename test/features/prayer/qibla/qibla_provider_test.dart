@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/prayer/location/application/states/location_state.dart';
-import 'package:noor_life/features/prayer/location/domain/entities/prayer_location.dart';
-import 'package:noor_life/features/prayer/qibla/application/qibla_provider.dart';
+import 'package:islamfull/features/prayer/location/application/states/location_state.dart';
+import 'package:islamfull/features/prayer/location/domain/entities/prayer_location.dart';
+import 'package:islamfull/features/prayer/qibla/application/qibla_provider.dart';
 
 void main() {
   group(

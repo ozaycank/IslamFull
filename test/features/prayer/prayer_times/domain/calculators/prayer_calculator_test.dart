@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
-import 'package:noor_life/core/base/result.dart';
-import 'package:noor_life/features/prayer/calculation_methods/domain/entities/asr_convention.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/calculators/calculation_method_profile.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/calculators/high_latitude_strategy.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/calculators/prayer_calculation_config.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/calculators/prayer_calculator.dart';
+import 'package:islamfull/core/base/result.dart';
+import 'package:islamfull/features/prayer/calculation_methods/domain/entities/asr_convention.dart';
+import 'package:islamfull/features/prayer/prayer_times/domain/calculators/calculation_method_profile.dart';
+import 'package:islamfull/features/prayer/prayer_times/domain/calculators/high_latitude_strategy.dart';
+import 'package:islamfull/features/prayer/prayer_times/domain/calculators/prayer_calculation_config.dart';
+import 'package:islamfull/features/prayer/prayer_times/domain/calculators/prayer_calculator.dart';
 
 void main() {
   setUpAll(

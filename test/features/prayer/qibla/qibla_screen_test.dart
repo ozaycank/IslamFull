@@ -3,16 +3,16 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/prayer/location/application/providers/location_notifier.dart';
-import 'package:noor_life/features/prayer/location/application/states/location_state.dart';
-import 'package:noor_life/features/prayer/location/domain/entities/prayer_location.dart';
-import 'package:noor_life/features/prayer/qibla/application/qibla_compass_provider.dart';
-import 'package:noor_life/features/prayer/qibla/application/qibla_provider.dart';
-import 'package:noor_life/features/prayer/qibla/domain/qibla_models.dart';
-import 'package:noor_life/features/prayer/qibla/domain/compass_alignment_rules.dart';
-import 'package:noor_life/features/prayer/qibla/presentation/qibla_screen.dart';
-import 'package:noor_life/features/prayer/qibla/presentation/widgets/qibla_compass_dial.dart';
-import 'package:noor_life/l10n/generated/app_localizations.dart';
+import 'package:islamfull/features/prayer/location/application/providers/location_notifier.dart';
+import 'package:islamfull/features/prayer/location/application/states/location_state.dart';
+import 'package:islamfull/features/prayer/location/domain/entities/prayer_location.dart';
+import 'package:islamfull/features/prayer/qibla/application/qibla_compass_provider.dart';
+import 'package:islamfull/features/prayer/qibla/application/qibla_provider.dart';
+import 'package:islamfull/features/prayer/qibla/domain/qibla_models.dart';
+import 'package:islamfull/features/prayer/qibla/domain/compass_alignment_rules.dart';
+import 'package:islamfull/features/prayer/qibla/presentation/qibla_screen.dart';
+import 'package:islamfull/features/prayer/qibla/presentation/widgets/qibla_compass_dial.dart';
+import 'package:islamfull/l10n/generated/app_localizations.dart';
 
 class FakeQiblaLocationNotifier extends LocationNotifier {
   final LocationState initialState;

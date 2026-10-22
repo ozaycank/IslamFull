@@ -17,7 +17,7 @@ Future<void> main() async {
   // Notification startup is coordinated after the first Flutter frame.
   runApp(
     const ProviderScope(
-      child: NoorLifeApp(),
+      child: IslamFullApp(),
     ),
   );
 }

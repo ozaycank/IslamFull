@@ -3,13 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:noor_life/app.dart';
-import 'package:noor_life/core/di/injection_container.dart';
-import 'package:noor_life/core/logging/logger_service.dart';
-import 'package:noor_life/core/providers/notification_coordinator_provider.dart';
-import 'package:noor_life/core/theme/theme_provider.dart';
-import 'package:noor_life/features/settings/application/providers/language_settings_notifier.dart';
-import 'package:noor_life/features/menu/application/preferences_provider.dart';
+import 'package:islamfull/app.dart';
+import 'package:islamfull/core/di/injection_container.dart';
+import 'package:islamfull/core/logging/logger_service.dart';
+import 'package:islamfull/core/providers/notification_coordinator_provider.dart';
+import 'package:islamfull/core/theme/theme_provider.dart';
+import 'package:islamfull/features/settings/application/providers/language_settings_notifier.dart';
+import 'package:islamfull/features/menu/application/preferences_provider.dart';
 
 class MockLoggerService extends Mock implements LoggerService {}
 
@@ -84,14 +84,14 @@ void main() {
               ),
               showDailyVerseSettingProvider.overrideWithValue(true),
             ],
-            child: const NoorLifeApp(),
+            child: const IslamFullApp(),
           ),
         );
 
         await tester.pump();
 
         expect(
-          find.byType(NoorLifeApp),
+          find.byType(IslamFullApp),
           findsOneWidget,
         );
       });

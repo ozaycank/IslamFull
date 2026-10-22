@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/settings/application/services/app_locale_policy.dart';
+import 'package:islamfull/features/settings/application/services/app_locale_policy.dart';
 
 void main() {
   group('AppLocalePolicy', () {

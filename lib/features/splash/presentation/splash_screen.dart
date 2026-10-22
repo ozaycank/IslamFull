@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:noor_life/core/extensions/context_extensions.dart';
-import 'package:noor_life/core/routing/app_routes.dart';
-import 'package:noor_life/shared/design_system/tokens/app_spacing.dart';
-import 'package:noor_life/shared/widgets/app_logo.dart';
-import 'package:noor_life/shared/widgets/loading_indicator.dart';
+import 'package:islamfull/core/extensions/context_extensions.dart';
+import 'package:islamfull/core/routing/app_routes.dart';
+import 'package:islamfull/shared/design_system/tokens/app_spacing.dart';
+import 'package:islamfull/shared/widgets/app_logo.dart';
+import 'package:islamfull/shared/widgets/loading_indicator.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

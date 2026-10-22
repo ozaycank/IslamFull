@@ -3,17 +3,17 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
-import 'package:noor_life/core/base/result.dart';
-import 'package:noor_life/core/di/injection_container.dart';
-import 'package:noor_life/core/logging/logger_service.dart';
-import 'package:noor_life/features/prayer/location/application/providers/location_notifier.dart';
-import 'package:noor_life/features/prayer/location/application/states/location_state.dart';
-import 'package:noor_life/features/prayer/location/domain/entities/prayer_location.dart';
-import 'package:noor_life/features/prayer/location/domain/interfaces/location_service.dart';
-import 'package:noor_life/features/prayer/prayer_times/application/providers/prayer_times_notifier.dart';
-import 'package:noor_life/features/prayer/prayer_times/application/services/prayer_orchestrator_service.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/entities/prayer_day.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/entities/prayer_schedule.dart';
+import 'package:islamfull/core/base/result.dart';
+import 'package:islamfull/core/di/injection_container.dart';
+import 'package:islamfull/core/logging/logger_service.dart';
+import 'package:islamfull/features/prayer/location/application/providers/location_notifier.dart';
+import 'package:islamfull/features/prayer/location/application/states/location_state.dart';
+import 'package:islamfull/features/prayer/location/domain/entities/prayer_location.dart';
+import 'package:islamfull/features/prayer/location/domain/interfaces/location_service.dart';
+import 'package:islamfull/features/prayer/prayer_times/application/providers/prayer_times_notifier.dart';
+import 'package:islamfull/features/prayer/prayer_times/application/services/prayer_orchestrator_service.dart';
+import 'package:islamfull/features/prayer/prayer_times/domain/entities/prayer_day.dart';
+import 'package:islamfull/features/prayer/prayer_times/domain/entities/prayer_schedule.dart';
 
 class MockPrayerOrchestratorService extends Mock
     implements PrayerOrchestratorService {}

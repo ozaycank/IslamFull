@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:noor_life/core/di/injection_container.dart';
-import 'package:noor_life/core/privacy/religious_progress_consent_provider.dart';
-import 'package:noor_life/core/storage/secure_storage_service.dart';
+import 'package:islamfull/core/di/injection_container.dart';
+import 'package:islamfull/core/privacy/religious_progress_consent_provider.dart';
+import 'package:islamfull/core/storage/secure_storage_service.dart';
 
 class _FakeSecureStorage extends SecureStorageService {
   bool consent = false;

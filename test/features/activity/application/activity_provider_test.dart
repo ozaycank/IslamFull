@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/core/base/result.dart';
-import 'package:noor_life/features/activity/application/activity_provider.dart';
-import 'package:noor_life/features/activity/domain/activity_models.dart';
-import 'package:noor_life/features/activity/domain/activity_prayer_type.dart';
-import 'package:noor_life/features/activity/utils/activity_date_utils.dart';
+import 'package:islamfull/core/base/result.dart';
+import 'package:islamfull/features/activity/application/activity_provider.dart';
+import 'package:islamfull/features/activity/domain/activity_models.dart';
+import 'package:islamfull/features/activity/domain/activity_prayer_type.dart';
+import 'package:islamfull/features/activity/utils/activity_date_utils.dart';
 
 class FakeActivityRepository implements ActivityRepository {
   late Result<DailyActivity, ActivityFailure> dailyResult;

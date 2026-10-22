@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/core/logging/logger_service.dart';
-import 'package:noor_life/core/routing/app_navigation_observer.dart';
+import 'package:islamfull/core/logging/logger_service.dart';
+import 'package:islamfull/core/routing/app_navigation_observer.dart';
 
 class FakeLoggerService extends LoggerService {
   final List<String> messages = [];

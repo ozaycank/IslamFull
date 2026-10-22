@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.noorlife"
+    namespace = "com.ozaycank.islamfull"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -21,7 +21,7 @@ android {
     defaultConfig {
         // Internal application identity. Keep this stable until the dedicated
         // production package/bundle ID migration before store release.
-        applicationId = "com.example.noorlife"
+        applicationId = "com.ozaycank.islamfull"
 
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion

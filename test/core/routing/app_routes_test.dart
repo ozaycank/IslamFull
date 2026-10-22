@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/core/routing/app_routes.dart';
+import 'package:islamfull/core/routing/app_routes.dart';
 
 void main() {
   test(

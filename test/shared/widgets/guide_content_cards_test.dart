@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/shared/widgets/guide_content_cards.dart';
+import 'package:islamfull/shared/widgets/guide_content_cards.dart';
 
 void main() {
   testWidgets(

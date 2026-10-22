@@ -1,16 +1,16 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:noor_life/features/prayer/location/domain/entities/prayer_location.dart';
-import 'package:noor_life/features/prayer/prayer_times/application/providers/prayer_times_notifier.dart';
-import 'package:noor_life/features/prayer/prayer_times/application/states/prayer_times_state.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/entities/prayer_day.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/entities/prayer_schedule.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/entities/prayer_time.dart';
-import 'package:noor_life/features/prayer/prayer_times/domain/value_objects/prayer_name.dart';
-import 'package:noor_life/features/prayer/prayer_times/presentation/providers/prayer_live_state_provider.dart';
-import 'package:noor_life/features/ramadan/application/ramadan_day_provider.dart';
-import 'package:noor_life/features/ramadan/domain/ramadan_day_state.dart';
+import 'package:islamfull/features/prayer/location/domain/entities/prayer_location.dart';
+import 'package:islamfull/features/prayer/prayer_times/application/providers/prayer_times_notifier.dart';
+import 'package:islamfull/features/prayer/prayer_times/application/states/prayer_times_state.dart';
+import 'package:islamfull/features/prayer/prayer_times/domain/entities/prayer_day.dart';
+import 'package:islamfull/features/prayer/prayer_times/domain/entities/prayer_schedule.dart';
+import 'package:islamfull/features/prayer/prayer_times/domain/entities/prayer_time.dart';
+import 'package:islamfull/features/prayer/prayer_times/domain/value_objects/prayer_name.dart';
+import 'package:islamfull/features/prayer/prayer_times/presentation/providers/prayer_live_state_provider.dart';
+import 'package:islamfull/features/ramadan/application/ramadan_day_provider.dart';
+import 'package:islamfull/features/ramadan/domain/ramadan_day_state.dart';
 
 class FakePrayerTimesNotifier extends PrayerTimesNotifier {
   final PrayerTimesState fakeState;

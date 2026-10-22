@@ -1,13 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:noor_life/core/services/local_notification_service.dart';
-import 'package:noor_life/features/quran/application/services/daily_verse_notification_content_service.dart';
-import 'package:noor_life/features/quran/application/services/daily_verse_notification_scheduler.dart';
-import 'package:noor_life/features/quran/domain/entities/ayah.dart';
-import 'package:noor_life/features/quran/domain/entities/quran_translation.dart';
-import 'package:noor_life/features/quran/domain/entities/revelation_type.dart';
-import 'package:noor_life/features/quran/domain/entities/surah.dart';
-import 'package:noor_life/features/quran/domain/repositories/quran_repository.dart';
-import 'package:noor_life/features/quran/domain/repositories/quran_translation_repository.dart';
+import 'package:islamfull/core/services/local_notification_service.dart';
+import 'package:islamfull/features/quran/application/services/daily_verse_notification_content_service.dart';
+import 'package:islamfull/features/quran/application/services/daily_verse_notification_scheduler.dart';
+import 'package:islamfull/features/quran/domain/entities/ayah.dart';
+import 'package:islamfull/features/quran/domain/entities/quran_translation.dart';
+import 'package:islamfull/features/quran/domain/entities/revelation_type.dart';
+import 'package:islamfull/features/quran/domain/entities/surah.dart';
+import 'package:islamfull/features/quran/domain/repositories/quran_repository.dart';
+import 'package:islamfull/features/quran/domain/repositories/quran_translation_repository.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 
 void main() {
