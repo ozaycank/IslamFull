@@ -8,7 +8,8 @@ import '../../../../core/services/notification_schedule_policy.dart';
 import '../../../../core/storage/secure_storage_service.dart';
 import '../../../../l10n/generated/app_localizations.dart';
 import '../../../prayer/prayer_times/application/providers/prayer_times_notifier.dart';
-import '../services/prayer_notification_text.dart';
+import '../services/prayer_notification_scheduler.dart';
+import '../../../prayer/prayer_times/domain/repositories/prayer_times_repository.dart';
 import 'language_settings_notifier.dart';
 
 class NotificationSettingsState {
@@ -20,9 +21,9 @@ class NotificationSettingsState {
   final bool platformSupported;
 
   const NotificationSettingsState({
-    this.masterEnabled = true,
+    this.masterEnabled = false,
     this.prayerReminderMinutes = 30,
-    this.dailyVerseEnabled = true,
+    this.dailyVerseEnabled = false,
     this.dailyVerseTime = '20:00',
     this.isLoaded = false,
     this.platformSupported = true,
@@ -56,6 +57,7 @@ final notificationSettingsProvider =
 class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
   late final SecureStorageService _storage;
   late final LocalNotificationService _notificationService;
+  late final PrayerNotificationScheduler _prayerNotificationScheduler;
 
   // Serialize notification writes. A later language or settings
   // change will always be applied after any earlier operation.
@@ -65,6 +67,10 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
   NotificationSettingsState build() {
     _storage = getIt<SecureStorageService>();
     _notificationService = getIt<LocalNotificationService>();
+    _prayerNotificationScheduler = PrayerNotificationScheduler(
+      repository: getIt<PrayerTimesRepository>(),
+      notificationService: _notificationService,
+    );
 
     // Recreate pending prayer notifications when application language
     // changes, including when a saved language preference is loaded.
@@ -125,6 +131,8 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
         await _storage.setNotificationsEnabled(
           false,
         );
+
+        await _notificationService.cancelAll();
 
         return false;
       }
@@ -245,10 +253,19 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
       prayerTimesNotifierProvider,
     );
 
-    final schedule = prayerState.schedule;
+    if (prayerState.isLoading) {
+      return;
+    }
+
     final location = prayerState.location;
 
-    if (schedule == null || location == null) {
+    if (location == null || prayerState.schedule == null) {
+      final now = DateTime.now();
+
+      await _notificationService.cancelPrayerNotificationsWindow(
+        DateTime(now.year, now.month, now.day - 2),
+        days: NotificationSchedulePolicy.prayerCleanupWindowDays + 2,
+      );
       return;
     }
 
@@ -262,21 +279,11 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
       selectedLocale,
     );
 
-    for (final prayer in schedule.today.prayerTimes) {
-      final content = PrayerNotificationText.forPrayer(
-        prayer: prayer.name,
-        minutes: state.prayerReminderMinutes,
-        localizations: localizations,
-      );
-
-      await _notificationService.schedulePrayer(
-        prayer,
-        state.prayerReminderMinutes,
-        content.title,
-        content.body,
-        location.timezoneIdentifier,
-      );
-    }
+    await _prayerNotificationScheduler.reschedule(
+      location: location,
+      reminderMinutes: state.prayerReminderMinutes,
+      localizations: localizations,
+    );
   }
 
   bool _isValidTime(

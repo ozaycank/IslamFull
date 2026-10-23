@@ -17,6 +17,7 @@ import 'core/services/notification_service.dart';
 import 'core/theme/dark_theme.dart';
 import 'core/theme/light_theme.dart';
 import 'core/theme/theme_provider.dart';
+import 'features/prayer/prayer_times/application/providers/prayer_times_notifier.dart';
 import 'features/settings/application/providers/language_settings_notifier.dart';
 import 'l10n/generated/app_localizations.dart';
 
@@ -29,7 +30,8 @@ class IslamFullApp extends ConsumerStatefulWidget {
   ConsumerState<IslamFullApp> createState() => _IslamFullAppState();
 }
 
-class _IslamFullAppState extends ConsumerState<IslamFullApp> {
+class _IslamFullAppState extends ConsumerState<IslamFullApp>
+    with WidgetsBindingObserver {
   late final GoRouter _router;
 
   StreamSubscription<String>? _notificationPayloadSubscription;
@@ -40,6 +42,8 @@ class _IslamFullAppState extends ConsumerState<IslamFullApp> {
   @override
   void initState() {
     super.initState();
+
+    WidgetsBinding.instance.addObserver(this);
 
     LocalNotificationService? localNotificationService;
     String? initialLocation;
@@ -192,8 +196,22 @@ class _IslamFullAppState extends ConsumerState<IslamFullApp> {
     _notificationStartup?.dispose();
     _notificationPayloadSubscription?.cancel();
     _router.dispose();
+    WidgetsBinding.instance.removeObserver(this);
 
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state != AppLifecycleState.resumed) {
+      return;
+    }
+
+    unawaited(
+      ref
+          .read(prayerTimesNotifierProvider.notifier)
+          .refreshIfCalendarDayChanged(),
+    );
   }
 
   @override

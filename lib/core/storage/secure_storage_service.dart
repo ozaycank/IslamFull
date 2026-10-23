@@ -98,7 +98,7 @@ class SecureStorageService {
       key: keyNotificationsEnabled,
     );
 
-    return value != 'false';
+    return value == 'true';
   }
 
   Future<void> setNotificationsEnabled(
@@ -132,7 +132,7 @@ class SecureStorageService {
       key: keyDailyVerseEnabled,
     );
 
-    return value != 'false';
+    return value == 'true';
   }
 
   Future<void> setDailyVerseEnabled(

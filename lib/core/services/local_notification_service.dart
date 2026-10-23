@@ -233,6 +233,46 @@ class LocalNotificationService {
     }
   }
 
+  /// Cancels current and legacy prayer notification IDs for a calendar window.
+  ///
+  /// IDs are date-based, so cancellation does not depend on the exact prayer
+  /// time that was used by a previously scheduled notification.
+  Future<void> cancelPrayerNotificationsWindow(
+    DateTime startDate, {
+    required int days,
+  }) async {
+    if (days < 1) {
+      throw RangeError.value(
+        days,
+        'days',
+        'The cancellation window must contain at least one day.',
+      );
+    }
+
+    if (!isSupportedPlatform) {
+      return;
+    }
+
+    await _ensureInitialized();
+
+    for (var offset = 0; offset < days; offset++) {
+      final date = DateTime(
+        startDate.year,
+        startDate.month,
+        startDate.day + offset,
+      );
+
+      for (final prayer in PrayerName.values) {
+        await _plugin.cancel(
+          NotificationSchedulePolicy.prayerNotificationId(prayer, date),
+        );
+        await _plugin.cancel(
+          NotificationSchedulePolicy.legacyPrayerNotificationId(prayer, date),
+        );
+      }
+    }
+  }
+
   Future<void> schedulePrayer(
     PrayerTime prayer,
     int reminderMinutes,

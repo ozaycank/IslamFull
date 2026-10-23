@@ -25,6 +25,12 @@ final class NotificationSchedulePolicy {
   /// Maximum prayer reminder offset currently supported by the application.
   static const int maxPrayerReminderMinutes = 180;
 
+  /// Number of calendar days kept in the future prayer reminder window.
+  static const int prayerRollingWindowDays = 7;
+
+  /// Includes yesterday and one extra future day to remove stale schedules.
+  static const int prayerCleanupWindowDays = prayerRollingWindowDays + 2;
+
   /// Creates a collision-safe deterministic prayer notification ID.
   static int prayerNotificationId(
     PrayerName name,

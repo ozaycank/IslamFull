@@ -97,12 +97,11 @@ final notificationCoordinatorProvider = Provider<void>((ref) {
   ref.listen(
     prayerTimesNotifierProvider,
     (previous, next) {
-      final scheduleAvailable = next.schedule != null && next.location != null;
-
       final scheduleChanged = previous?.schedule != next.schedule ||
-          previous?.location != next.location;
+          previous?.location != next.location ||
+          previous?.isLoading != next.isLoading;
 
-      if (scheduleAvailable && scheduleChanged) {
+      if (scheduleChanged) {
         unawaited(
           ref
               .read(
