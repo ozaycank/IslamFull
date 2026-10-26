@@ -57,6 +57,17 @@ class QuranHomeScreen extends ConsumerWidget {
               '${AppRoutes.quran}/bookmarks',
             ),
           ),
+          IconButton(
+            icon: const Icon(Icons.info_outline),
+            tooltip: Localizations.localeOf(context).languageCode == 'tr'
+                ? 'Kaynaklar ve atıflar'
+                : Localizations.localeOf(context).languageCode == 'ar'
+                    ? 'المصادر والإسناد'
+                    : 'Sources and attributions',
+            onPressed: () => context.push(
+              '${AppRoutes.quran}/sources',
+            ),
+          ),
         ],
       ),
       body: SafeArea(

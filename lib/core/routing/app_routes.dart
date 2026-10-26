@@ -12,9 +12,11 @@ class AppRoutes {
 
   // Quran child routes.
   static const String quranBookmarks = '/quran/bookmarks';
+  static const String quranSources = '/quran/sources';
   static const String surahDetail = '/quran/surah/:id';
 
   static const String quranBookmarksSegment = 'bookmarks';
+  static const String quranSourcesSegment = 'sources';
   static const String surahDetailSegment = 'surah/:id';
 
   // Standalone module pages.

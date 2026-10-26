@@ -25,6 +25,7 @@ import '../../features/prayer/qibla/presentation/qibla_screen.dart';
 import '../../features/prayer/shared/presentation/screens/prayer_home_screen.dart';
 import '../../features/quran/presentation/screens/quran_bookmarks_screen.dart';
 import '../../features/quran/presentation/screens/quran_home_screen.dart';
+import '../../features/quran/presentation/screens/quran_sources_screen.dart';
 import '../../features/quran/presentation/screens/surah_detail_screen.dart';
 import '../../features/qurban/presentation/screens/qurban_eid_guide_screen.dart';
 import '../../features/qurban/presentation/screens/qurban_guide_screen.dart';
@@ -380,6 +381,14 @@ class AppRouter {
                         state,
                       ) =>
                           const QuranBookmarksScreen(),
+                    ),
+                    GoRoute(
+                      path: AppRoutes.quranSourcesSegment,
+                      builder: (
+                        context,
+                        state,
+                      ) =>
+                          const QuranSourcesScreen(),
                     ),
                     GoRoute(
                       path: AppRoutes.surahDetailSegment,
