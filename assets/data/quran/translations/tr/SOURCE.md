@@ -2,7 +2,7 @@
 
 - **Source Name:** AçıkKuran
 - **Language:** Turkish (tr)
-- **Translator:** [VERIFY FROM ACTUAL TRANSLATION DATA]
+- **Translator:** Erhan Aktaş (Kerim Kur'an)
 - **License:** CC BY-NC-SA 4.0
 - **Source URL:** https://api.acikkuran.com/
 - **Repository:** https://github.com/acik-kuran/acikkuran-api

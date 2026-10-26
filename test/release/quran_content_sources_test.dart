@@ -24,20 +24,35 @@ void main() {
     );
   });
 
-  test('Turkish translation rights remain explicitly unverified', () {
-    final metadata = File(
-      'assets/data/quran/translations/tr/SOURCE.md',
-    ).readAsStringSync();
-    final sourceScreen = File(
-      'lib/features/quran/presentation/screens/quran_sources_screen.dart',
-    ).readAsStringSync();
+  test(
+    'Turkish translation is attributed and redistribution rights remain a release check',
+    () {
+      final metadata = File(
+        'assets/data/quran/translations/tr/SOURCE.md',
+      ).readAsStringSync();
+      final sourceScreen = File(
+        'lib/features/quran/presentation/screens/quran_sources_screen.dart',
+      ).readAsStringSync();
 
-    expect(metadata, contains('NOT VERIFIED'));
-    expect(metadata, contains('BLOCKED'));
-    expect(metadata, isNot(contains('**License:** CC BY-NC-SA 4.0')));
-    expect(sourceScreen, contains('have not yet been verified'));
-    expect(sourceScreen, contains('henüz doğrulanmamıştır'));
-  });
+      expect(metadata, contains('Erhan Aktaş'));
+      expect(metadata, contains('Kerim Kur'));
+      expect(metadata, contains('CC BY-NC-SA 4.0'));
+      expect(
+        metadata,
+        isNot(contains('[VERIFY FROM ACTUAL TRANSLATION DATA]')),
+      );
+
+      expect(sourceScreen, contains('Erhan Aktaş'));
+      expect(
+        sourceScreen,
+        contains('must be verified'),
+      );
+      expect(
+        sourceScreen,
+        contains('yayın öncesinde doğrulanmalıdır'),
+      );
+    },
+  );
 
   test('Quran sources screen is reachable from the Quran home screen', () {
     final routes = File(
