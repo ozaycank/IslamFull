@@ -8,6 +8,7 @@ import '../../../../core/di/injection_container.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/privacy/religious_progress_consent_provider.dart';
 import '../../../../core/routing/app_routes.dart';
+import '../../../../shared/widgets/error_state_widget.dart';
 import '../../application/providers/quran_bookmark_provider.dart';
 import '../../application/providers/quran_progress_provider.dart';
 import '../../application/providers/quran_translation_provider.dart';
@@ -35,7 +36,7 @@ class SurahDetailScreen extends ConsumerStatefulWidget {
 
 class _SurahDetailScreenState extends ConsumerState<SurahDetailScreen> {
   Surah? _surah;
-  String? _error;
+  bool _hasError = false;
   bool _isLoading = true;
 
   final ItemScrollController _itemScrollController = ItemScrollController();
@@ -68,18 +69,33 @@ class _SurahDetailScreenState extends ConsumerState<SurahDetailScreen> {
       setState(() {
         _surah = surah;
         _initialScrollIndex = initialScrollIndex;
+        _hasError = false;
         _isLoading = false;
       });
-    } catch (error) {
+    } catch (_) {
       if (!mounted) {
         return;
       }
 
+      // Keep technical exception details out of the user interface.
       setState(() {
-        _error = error.toString();
+        _hasError = true;
         _isLoading = false;
       });
     }
+  }
+
+  Future<void> _retryLoadSurahDetail() async {
+    if (!mounted) {
+      return;
+    }
+
+    setState(() {
+      _hasError = false;
+      _isLoading = true;
+    });
+
+    await _loadSurahDetail();
   }
 
   int _resolveInitialScrollIndex(
@@ -188,21 +204,18 @@ class _SurahDetailScreenState extends ConsumerState<SurahDetailScreen> {
       );
     }
 
-    if (_error != null || _surah == null) {
+    if (_hasError || _surah == null) {
       return Scaffold(
         appBar: AppBar(
           title: Text(
             l10n.errorStateDefaultTitle,
           ),
         ),
-        body: Center(
-          child: Text(
-            _error ?? l10n.generalError,
-            style: textTheme.bodyLarge?.copyWith(
-              color: colorScheme.error,
-            ),
-            textAlign: TextAlign.center,
-          ),
+        body: ErrorStateWidget(
+          title: l10n.errorStateDefaultTitle,
+          message: l10n.generalError,
+          retryText: l10n.retryButton,
+          onRetry: _retryLoadSurahDetail,
         ),
       );
     }
