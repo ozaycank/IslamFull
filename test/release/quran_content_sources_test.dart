@@ -45,7 +45,7 @@ void main() {
       expect(sourceScreen, contains('Erhan Aktaş'));
       expect(
         sourceScreen,
-        contains('must be verified'),
+        contains('Before release, verify that this license covers'),
       );
       expect(
         sourceScreen,
