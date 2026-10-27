@@ -1,7 +1,60 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android plugin.
     id("dev.flutter.flutter-gradle-plugin")
+}
+
+val keystorePropertiesFile = rootProject.file("key.properties")
+val keystoreProperties = Properties()
+
+if (keystorePropertiesFile.isFile) {
+    keystorePropertiesFile.inputStream().use {
+        keystoreProperties.load(it)
+    }
+}
+
+// Release tasks must never silently fall back to a debug signing key.
+val releaseTaskRequested = gradle.startParameter.taskNames.any { taskName ->
+    taskName.substringAfterLast(':').contains("release", ignoreCase = true)
+}
+
+if (releaseTaskRequested) {
+    if (!keystorePropertiesFile.isFile) {
+        throw GradleException(
+            "Release signing is not configured. Create android/key.properties " +
+                "with your private signing details before running a release task.",
+        )
+    }
+
+    val requiredSigningProperties = listOf(
+        "keyAlias",
+        "keyPassword",
+        "storeFile",
+        "storePassword",
+    )
+
+    val missingSigningProperties = requiredSigningProperties.filter {
+        keystoreProperties.getProperty(it).isNullOrBlank()
+    }
+
+    if (missingSigningProperties.isNotEmpty()) {
+        throw GradleException(
+            "Missing required entries in android/key.properties: " +
+                missingSigningProperties.joinToString(", "),
+        )
+    }
+
+    val configuredStoreFile = file(
+        keystoreProperties.getProperty("storeFile").orEmpty(),
+    )
+
+    if (!configuredStoreFile.isFile) {
+        throw GradleException(
+            "The release keystore file does not exist at the configured storeFile path.",
+        )
+    }
 }
 
 android {
@@ -19,8 +72,7 @@ android {
     }
 
     defaultConfig {
-        // Internal application identity. Keep this stable until the dedicated
-        // production package/bundle ID migration before store release.
+        // Keep this identifier stable after the first store publication.
         applicationId = "com.ozaycank.islamfull"
 
         minSdk = flutter.minSdkVersion
@@ -30,11 +82,20 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        create("release") {
+            keyAlias = keystoreProperties.getProperty("keyAlias")
+            keyPassword = keystoreProperties.getProperty("keyPassword")
+            storeFile = keystoreProperties.getProperty("storeFile")?.let {
+                file(it)
+            }
+            storePassword = keystoreProperties.getProperty("storePassword")
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Replace the debug signing configuration with the production
-            // signing configuration before publishing IslamFull.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 }
