@@ -1,0 +1,79 @@
+
+name: IslamFull iOS Free Device Test 0.0.3
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ios-free-test:
+    name: Build unsigned iOS IPA for free device testing
+    runs-on: macos-26
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Install Flutter 3.47.7
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.47.7
+          cache: true
+
+      - name: Verify Apple and Flutter toolchains
+        run: |
+          flutter --version
+          xcodebuild -version
+
+      - name: Resolve dependencies
+        run: flutter pub get
+
+      - name: Check static analysis
+        run: flutter analyze
+
+      - name: Run Flutter regression tests
+        run: flutter test --reporter compact
+
+      - name: Build unsigned iOS app
+        run: |
+          flutter build ios \
+            --release \
+            --no-codesign \
+            --build-name=0.0.3 \
+            --build-number=3
+
+      - name: Package unsigned IPA for Sideloadly
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          APP_PATH="build/ios/iphoneos/Runner.app"
+          IPA_DIR="build/ios/free-test"
+          IPA_NAME="IslamFull-iOS-Free-Test-0.0.3-unsigned.ipa"
+
+          test -d "$APP_PATH"
+
+          rm -rf "$IPA_DIR"
+          mkdir -p "$IPA_DIR/Payload"
+
+          ditto "$APP_PATH" "$IPA_DIR/Payload/Runner.app"
+
+          (
+            cd "$IPA_DIR"
+            zip -qry "$IPA_NAME" Payload
+          )
+
+          test -s "$IPA_DIR/$IPA_NAME"
+          shasum -a 256 "$IPA_DIR/$IPA_NAME"
+
+      - name: Upload iOS test IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: IslamFull-iOS-Free-Test-0.0.3-Unsigned-IPA
+          path: build/ios/free-test/IslamFull-iOS-Free-Test-0.0.3-unsigned.ipa
+          if-no-files-found: error
+          retention-days: 7
