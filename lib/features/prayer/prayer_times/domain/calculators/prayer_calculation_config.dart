@@ -20,21 +20,29 @@ class PrayerCalculationConfig extends Equatable {
     required this.asrConvention,
     this.highLatitudeStrategy = HighLatitudeStrategy.angleBased,
   }) {
+    if (!latitude.isFinite) {
+      throw ArgumentError('Latitude must be a finite number.');
+    }
+
     if (latitude < -90 || latitude > 90) {
       throw ArgumentError(
-        'Latitude must be between -90 and 90',
+        'Latitude must be between -90 and 90.',
       );
+    }
+
+    if (!longitude.isFinite) {
+      throw ArgumentError('Longitude must be a finite number.');
     }
 
     if (longitude < -180 || longitude > 180) {
       throw ArgumentError(
-        'Longitude must be between -180 and 180',
+        'Longitude must be between -180 and 180.',
       );
     }
 
     if (!dateUtc.isUtc) {
       throw ArgumentError(
-        'Calculation date must be explicitly UTC',
+        'Calculation date must be explicitly UTC.',
       );
     }
   }
