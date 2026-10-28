@@ -155,7 +155,60 @@ void main() {
       },
     );
   });
+  test(
+    'creates distinct IDs for reminders and exact prayer-time notifications',
+    () {
+      final dates = <DateTime>[
+        DateTime(2026, 1, 1),
+        DateTime(2026, 9, 18),
+        DateTime(2026, 12, 31),
+      ];
 
+      for (final date in dates) {
+        for (final prayer in PrayerName.values) {
+          final reminderId = NotificationSchedulePolicy.prayerNotificationId(
+            prayer,
+            date,
+          );
+
+          final exactTimeId =
+              NotificationSchedulePolicy.exactPrayerNotificationId(
+            prayer,
+            date,
+          );
+
+          expect(
+            exactTimeId,
+            isNot(reminderId),
+            reason: 'Reminder and exact-time IDs collided for '
+                '${prayer.name} on $date',
+          );
+
+          expect(
+            exactTimeId,
+            isNot(
+              NotificationSchedulePolicy.dailyVerseNotificationIdForDate(date),
+            ),
+            reason: 'Exact-time prayer ID collided with the daily verse ID '
+                'on $date',
+          );
+        }
+      }
+    },
+  );
+
+  test(
+    'keeps exact prayer-time IDs within signed 32-bit integer range',
+    () {
+      final id = NotificationSchedulePolicy.exactPrayerNotificationId(
+        PrayerName.isha,
+        DateTime(9999, 12, 31),
+      );
+
+      expect(id, greaterThan(0));
+      expect(id, lessThanOrEqualTo(2147483647));
+    },
+  );
   group('NotificationSchedulePolicy - daily verse', () {
     test(
       'keeps historical daily verse IDs stable for migration',

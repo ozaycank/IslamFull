@@ -221,14 +221,20 @@ class LocalNotificationService {
       prayer.time,
     );
 
+    final exactTimeId = NotificationSchedulePolicy.exactPrayerNotificationId(
+      prayer.name,
+      prayer.time,
+    );
+
     final legacyId = NotificationSchedulePolicy.legacyPrayerNotificationId(
       prayer.name,
       prayer.time,
     );
 
     await _plugin.cancel(currentId);
+    await _plugin.cancel(exactTimeId);
 
-    if (legacyId != currentId) {
+    if (legacyId != currentId && legacyId != exactTimeId) {
       await _plugin.cancel(legacyId);
     }
   }
@@ -266,6 +272,11 @@ class LocalNotificationService {
         await _plugin.cancel(
           NotificationSchedulePolicy.prayerNotificationId(prayer, date),
         );
+
+        await _plugin.cancel(
+          NotificationSchedulePolicy.exactPrayerNotificationId(prayer, date),
+        );
+
         await _plugin.cancel(
           NotificationSchedulePolicy.legacyPrayerNotificationId(prayer, date),
         );
@@ -348,6 +359,72 @@ class LocalNotificationService {
       scheduledDate: scheduledDate,
       details: details,
       payload: 'prayer:${prayer.name.name}',
+    );
+  }
+
+  /// Schedules a notification for the exact beginning of a prayer time.
+  ///
+  /// This notification is independent of the existing before-prayer reminder.
+  Future<void> schedulePrayerAtTime(
+    PrayerTime prayer,
+    String title,
+    String body,
+    String timezoneId,
+  ) async {
+    if (!isSupportedPlatform) {
+      return;
+    }
+
+    if (prayer.name == PrayerName.sunrise) {
+      return;
+    }
+
+    await _ensureInitialized();
+
+    final location = _resolveLocation(timezoneId);
+
+    if (location == null) {
+      return;
+    }
+
+    final scheduledDate = tz.TZDateTime.from(
+      prayer.time,
+      location,
+    );
+
+    final id = NotificationSchedulePolicy.exactPrayerNotificationId(
+      prayer.name,
+      prayer.time,
+    );
+
+    // Remove a previous version of this exact-time notification.
+    await _plugin.cancel(id);
+
+    final now = tz.TZDateTime.now(location);
+
+    // Do not schedule a prayer notification in the past.
+    if (!scheduledDate.isAfter(now)) {
+      return;
+    }
+
+    const details = NotificationDetails(
+      android: AndroidNotificationDetails(
+        'prayer_times',
+        'Prayer Times',
+        channelDescription: 'Notifications when prayer times begin',
+        importance: Importance.max,
+        priority: Priority.high,
+      ),
+      iOS: DarwinNotificationDetails(),
+    );
+
+    await _scheduleWithAndroidFallback(
+      id: id,
+      title: title,
+      body: body,
+      scheduledDate: scheduledDate,
+      details: details,
+      payload: 'prayer-time:${prayer.name.name}',
     );
   }
 

@@ -2419,4 +2419,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get locationOpenAppSettings => 'Uygulama ayarlarını aç';
+
+  @override
+  String prayerNotificationAtTime(String prayerName) {
+    return '$prayerName namaz vakti girdi.';
+  }
 }

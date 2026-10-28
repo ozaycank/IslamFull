@@ -2831,8 +2831,21 @@
   "@quranLocalProgressConsentDesc": {"description": "Optional local Quran reading/bookmark saving explanation"},
   "quranBookmarkConsentRequired": "To save bookmarks, allow optional local progress saving in Privacy settings.",
   "@quranBookmarkConsentRequired": {"description": "Blocked bookmark feedback with privacy settings action"},
-  "locationOpenDeviceSettings": "Open location settings",
-  "@locationOpenDeviceSettings": {"description":"Open device-wide location services settings when GPS is disabled."},
+   "locationOpenDeviceSettings": "Open location settings",
+  "@locationOpenDeviceSettings": {
+    "description": "Open device-wide location services settings when GPS is disabled."
+  },
   "locationOpenAppSettings": "Open app settings",
-  "@locationOpenAppSettings": {"description":"Open this application permission settings when location permission is blocked."}
+  "@locationOpenAppSettings": {
+    "description": "Open this application permission settings when location permission is blocked."
+  },
+  "prayerNotificationAtTime": "It is time for {prayerName} prayer.",
+  "@prayerNotificationAtTime": {
+    "description": "Notification body displayed when a prayer time begins",
+    "placeholders": {
+      "prayerName": {
+        "type": "String"
+      }
+    }
+  }
 }

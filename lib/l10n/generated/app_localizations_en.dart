@@ -2414,4 +2414,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get locationOpenAppSettings => 'Open app settings';
+
+  @override
+  String prayerNotificationAtTime(String prayerName) {
+    return 'It is time for $prayerName prayer.';
+  }
 }

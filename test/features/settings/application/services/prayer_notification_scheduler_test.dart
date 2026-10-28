@@ -64,6 +64,17 @@ void main() {
     expect(notifications.events.first, 'cancel-window');
     expect(notifications.scheduledPrayers, hasLength(35));
     expect(
+      notifications.scheduledAtPrayerTimes,
+      hasLength(35),
+    );
+
+    expect(
+      notifications.scheduledAtPrayerTimes.any(
+        (item) => item.name == PrayerName.sunrise,
+      ),
+      isFalse,
+    );
+    expect(
       notifications.scheduledPrayers.any(
         (item) => item.name == PrayerName.sunrise,
       ),
@@ -95,6 +106,10 @@ void main() {
 
     expect(repository.requestedDates, hasLength(7));
     expect(notifications.scheduledPrayers, hasLength(30));
+    expect(
+      notifications.scheduledAtPrayerTimes,
+      hasLength(30),
+    );
     expect(
       notifications.scheduledPrayers.any((item) => item.time.day == 20),
       isFalse,
@@ -180,6 +195,7 @@ class _FakeLocalNotificationService extends LocalNotificationService {
   int? cancelledWindowDays;
   final List<String> events = [];
   final List<_ScheduledPrayer> scheduledPrayers = [];
+  final List<_ScheduledPrayer> scheduledAtPrayerTimes = [];
 
   @override
   bool get isSupportedPlatform => true;
@@ -208,6 +224,24 @@ class _FakeLocalNotificationService extends LocalNotificationService {
         name: prayer.name,
         time: prayer.time,
         reminderMinutes: reminderMinutes,
+      ),
+    );
+  }
+
+  @override
+  Future<void> schedulePrayerAtTime(
+    PrayerTime prayer,
+    String title,
+    String body,
+    String timezoneId,
+  ) async {
+    events.add('schedule-exact-${prayer.name.name}-${prayer.time.day}');
+
+    scheduledAtPrayerTimes.add(
+      _ScheduledPrayer(
+        name: prayer.name,
+        time: prayer.time,
+        reminderMinutes: 0,
       ),
     );
   }

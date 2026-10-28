@@ -22,6 +22,12 @@ final class NotificationSchedulePolicy {
   /// First ID reserved for date-specific daily verse notifications.
   static const int _dailyVerseDateIdBase = 1000000000;
 
+  /// First ID reserved for exact prayer-time notifications.
+  ///
+  /// This range is separate from the existing prayer reminder IDs and
+  /// date-specific daily verse IDs.
+  static const int _exactPrayerNotificationIdBase = 1100000000;
+
   /// Maximum prayer reminder offset currently supported by the application.
   static const int maxPrayerReminderMinutes = 180;
 
@@ -31,7 +37,7 @@ final class NotificationSchedulePolicy {
   /// Includes yesterday and one extra future day to remove stale schedules.
   static const int prayerCleanupWindowDays = prayerRollingWindowDays + 2;
 
-  /// Creates a collision-safe deterministic prayer notification ID.
+  /// Creates a deterministic ID for a prayer reminder scheduled before prayer.
   static int prayerNotificationId(
     PrayerName name,
     DateTime prayerTime,
@@ -41,10 +47,23 @@ final class NotificationSchedulePolicy {
     return (dateKey * 10) + name.index;
   }
 
+  /// Creates a deterministic ID for a notification at the exact prayer time.
+  ///
+  /// This ID is independent of the ID used for the before-prayer reminder,
+  /// allowing both notifications to be scheduled for the same prayer.
+  static int exactPrayerNotificationId(
+    PrayerName name,
+    DateTime prayerTime,
+  ) {
+    final dateKey = _dateKey(prayerTime);
+
+    return _exactPrayerNotificationIdBase + (dateKey * 10) + name.index;
+  }
+
   /// Returns the ID format used by the legacy prayer implementation.
   ///
-  /// Kept temporarily so notifications created by previous versions can be
-  /// removed safely.
+  /// Kept temporarily so notifications created by previous versions can
+  /// be removed safely.
   static int legacyPrayerNotificationId(
     PrayerName name,
     DateTime prayerTime,

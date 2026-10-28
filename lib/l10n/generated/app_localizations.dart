@@ -4365,6 +4365,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Open app settings'**
   String get locationOpenAppSettings;
+
+  /// Notification body displayed when a prayer time begins
+  ///
+  /// In en, this message translates to:
+  /// **'It is time for {prayerName} prayer.'**
+  String prayerNotificationAtTime(String prayerName);
 }
 
 class _AppLocalizationsDelegate

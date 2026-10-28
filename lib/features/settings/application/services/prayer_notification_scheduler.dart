@@ -14,8 +14,12 @@ import 'prayer_notification_text.dart';
 
 /// Rebuilds a rolling window of local prayer notifications.
 ///
+/// For each prayer, the scheduler creates:
+/// - the existing notification before the prayer time;
+/// - a separate notification at the exact prayer time.
+///
 /// Prayer times are calculated for each selected-location calendar date so
-/// reminders continue to exist when the app is not opened daily.
+/// notifications continue to exist when the app is not opened daily.
 class PrayerNotificationScheduler {
   final PrayerTimesRepository _repository;
   final LocalNotificationService _notificationService;
@@ -95,23 +99,49 @@ class PrayerNotificationScheduler {
           continue;
         }
 
-        final content = PrayerNotificationText.forPrayer(
+        final reminderContent = PrayerNotificationText.forPrayer(
           prayer: prayer.name,
           minutes: reminderMinutes,
           localizations: localizations,
         );
 
+        final exactTimeContent = PrayerNotificationText.atPrayerTime(
+          prayer: prayer.name,
+          localizations: localizations,
+        );
+
+        // Schedule the existing before-prayer reminder independently.
         try {
           await _notificationService.schedulePrayer(
             prayer,
             reminderMinutes,
-            content.title,
-            content.body,
+            reminderContent.title,
+            reminderContent.body,
             location.timezoneIdentifier,
           );
         } catch (error, stackTrace) {
           developer.log(
-            'Failed to schedule ${prayer.name.name} on $targetDate.',
+            'Failed to schedule the ${prayer.name.name} reminder '
+            'on $targetDate.',
+            name: 'PrayerNotificationScheduler',
+            error: error,
+            stackTrace: stackTrace,
+          );
+        }
+
+        // A failure in the reminder must not prevent the exact-time
+        // notification from being scheduled, and vice versa.
+        try {
+          await _notificationService.schedulePrayerAtTime(
+            prayer,
+            exactTimeContent.title,
+            exactTimeContent.body,
+            location.timezoneIdentifier,
+          );
+        } catch (error, stackTrace) {
+          developer.log(
+            'Failed to schedule the exact-time ${prayer.name.name} '
+            'notification on $targetDate.',
             name: 'PrayerNotificationScheduler',
             error: error,
             stackTrace: stackTrace,

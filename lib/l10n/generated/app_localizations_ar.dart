@@ -2400,4 +2400,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get locationOpenAppSettings => 'فتح إعدادات التطبيق';
+
+  @override
+  String prayerNotificationAtTime(String prayerName) {
+    return 'حان وقت صلاة $prayerName.';
+  }
 }

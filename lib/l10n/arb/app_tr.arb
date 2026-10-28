@@ -864,8 +864,21 @@
   "@quranLocalProgressConsentDesc": {"description": "Optional local Quran reading/bookmark saving explanation"},
   "quranBookmarkConsentRequired": "Yer imi kaydetmek için Gizlilik bölümünden isteğe bağlı yerel ilerleme kaydına izin verin.",
   "@quranBookmarkConsentRequired": {"description": "Blocked bookmark feedback with privacy settings action"},
-  "locationOpenDeviceSettings": "Konum ayarlarını aç",
-  "@locationOpenDeviceSettings": {"description":"Open device-wide location services settings when GPS is disabled."},
+    "locationOpenDeviceSettings": "Konum ayarlarını aç",
+  "@locationOpenDeviceSettings": {
+    "description": "Open device-wide location services settings when GPS is disabled."
+  },
   "locationOpenAppSettings": "Uygulama ayarlarını aç",
-  "@locationOpenAppSettings": {"description":"Open this application permission settings when location permission is blocked."}
+  "@locationOpenAppSettings": {
+    "description": "Open this application permission settings when location permission is blocked."
+  },
+  "prayerNotificationAtTime": "{prayerName} namaz vakti girdi.",
+  "@prayerNotificationAtTime": {
+    "description": "Namaz vakti başladığında gönderilen bildirimin metni",
+    "placeholders": {
+      "prayerName": {
+        "type": "String"
+      }
+    }
+  }
 }
