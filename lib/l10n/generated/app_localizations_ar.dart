@@ -2405,4 +2405,27 @@ class AppLocalizationsAr extends AppLocalizations {
   String prayerNotificationAtTime(String prayerName) {
     return 'حان وقت صلاة $prayerName.';
   }
+
+  @override
+  String get homeLocationSetupTitle => 'حدّد موقعك';
+
+  @override
+  String get homeLocationSetupDescription =>
+      'يستخدم IslamFull موقعك لحساب مواقيت الصلاة واتجاه القبلة. يمكنك أيضًا إدخال الإحداثيات يدويًا.';
+
+  @override
+  String get homeUseCurrentLocation => 'استخدام موقعي الحالي';
+
+  @override
+  String get homeNotificationSetupTitle => 'ابقَ على اطلاع بمواقيت الصلاة';
+
+  @override
+  String get homeNotificationSetupDescription =>
+      'اسمح بالإشعارات لتلقي تذكير قبل الصلاة وتنبيه عند دخول وقتها. يمكنك تغيير هذا الخيار لاحقًا من الإعدادات.';
+
+  @override
+  String get homeEnableNotifications => 'تفعيل الإشعارات';
+
+  @override
+  String get homeNotificationLater => 'ليس الآن';
 }

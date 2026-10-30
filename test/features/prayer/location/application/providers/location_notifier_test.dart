@@ -62,7 +62,51 @@ void main() {
   tearDown(() async {
     await getIt.reset();
   });
+  test(
+    'does not request device location automatically when no saved location exists',
+    () async {
+      when(
+        () => localDataSource.getSelectedLocation(),
+      ).thenAnswer(
+        (_) async => null,
+      );
 
+      final container = ProviderContainer();
+
+      addTearDown(
+        container.dispose,
+      );
+
+      container.read(
+        locationNotifierProvider,
+      );
+
+      await pumpEventQueue();
+
+      final state = container.read(
+        locationNotifierProvider,
+      );
+
+      expect(
+        state.status,
+        LocationStatus.failure,
+      );
+
+      expect(
+        state.location,
+        isNull,
+      );
+
+      expect(
+        state.failure?.code,
+        'locationNotConfigured',
+      );
+
+      verifyNever(
+        () => locationService.getCurrentLocation(),
+      );
+    },
+  );
   test(
     'manual coordinates are resolved persisted and exposed as current location',
     () async {

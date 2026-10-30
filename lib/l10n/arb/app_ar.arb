@@ -727,5 +727,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "homeLocationSetupTitle": "حدّد موقعك",
+"homeLocationSetupDescription": "يستخدم IslamFull موقعك لحساب مواقيت الصلاة واتجاه القبلة. يمكنك أيضًا إدخال الإحداثيات يدويًا.",
+"homeUseCurrentLocation": "استخدام موقعي الحالي",
+"homeNotificationSetupTitle": "ابقَ على اطلاع بمواقيت الصلاة",
+"homeNotificationSetupDescription": "اسمح بالإشعارات لتلقي تذكير قبل الصلاة وتنبيه عند دخول وقتها. يمكنك تغيير هذا الخيار لاحقًا من الإعدادات.",
+"homeEnableNotifications": "تفعيل الإشعارات",
+"homeNotificationLater": "ليس الآن"
 }

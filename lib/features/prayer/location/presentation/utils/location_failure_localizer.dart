@@ -23,6 +23,7 @@ class LocationFailureLocalizer {
       'timezoneResolutionFailed' => l10n.locationTimezoneErrorMessage,
       'locationPersistenceFailed' => l10n.locationSaveFailedMessage,
       'prayerLocationUnavailable' => l10n.prayerLocationUnavailableMessage,
+      'locationNotConfigured' => l10n.homeLocationSetupDescription,
       _ => fallback,
     };
   }

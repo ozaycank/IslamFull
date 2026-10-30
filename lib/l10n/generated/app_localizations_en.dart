@@ -2419,4 +2419,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String prayerNotificationAtTime(String prayerName) {
     return 'It is time for $prayerName prayer.';
   }
+
+  @override
+  String get homeLocationSetupTitle => 'Set your location';
+
+  @override
+  String get homeLocationSetupDescription =>
+      'IslamFull uses your location to calculate prayer times and Qibla direction. You can also enter coordinates manually.';
+
+  @override
+  String get homeUseCurrentLocation => 'Use my current location';
+
+  @override
+  String get homeNotificationSetupTitle => 'Stay informed about prayer times';
+
+  @override
+  String get homeNotificationSetupDescription =>
+      'Allow notifications to receive reminders before prayer and alerts when each prayer time begins. You can change this anytime in Settings.';
+
+  @override
+  String get homeEnableNotifications => 'Enable notifications';
+
+  @override
+  String get homeNotificationLater => 'Not now';
 }

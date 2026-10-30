@@ -2847,5 +2847,33 @@
         "type": "String"
       }
     }
+  },
+  "homeLocationSetupTitle": "Set your location",
+  "@homeLocationSetupTitle": {
+    "description": "Title of the home screen location setup section"
+  },
+  "homeLocationSetupDescription": "IslamFull uses your location to calculate prayer times and Qibla direction. You can also enter coordinates manually.",
+  "@homeLocationSetupDescription": {
+    "description": "Description of the home screen location setup section"
+  },
+  "homeUseCurrentLocation": "Use my current location",
+  "@homeUseCurrentLocation": {
+    "description": "Label for the option to use current location"
+  },
+  "homeNotificationSetupTitle": "Stay informed about prayer times",
+  "@homeNotificationSetupTitle": {
+    "description": "Title of the home screen notification setup section"
+  },
+  "homeNotificationSetupDescription": "Allow notifications to receive reminders before prayer and alerts when each prayer time begins. You can change this anytime in Settings.",
+  "@homeNotificationSetupDescription": {
+    "description": "Description of the home screen notification setup section"
+  },
+  "homeEnableNotifications": "Enable notifications",
+  "@homeEnableNotifications": {
+    "description": "Label for the option to enable notifications"
+  },
+  "homeNotificationLater": "Not now",
+  "@homeNotificationLater": {
+    "description": "Label for the option to defer notification setup"
   }
 }

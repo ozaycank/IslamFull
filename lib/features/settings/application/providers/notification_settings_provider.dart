@@ -8,8 +8,8 @@ import '../../../../core/services/notification_schedule_policy.dart';
 import '../../../../core/storage/secure_storage_service.dart';
 import '../../../../l10n/generated/app_localizations.dart';
 import '../../../prayer/prayer_times/application/providers/prayer_times_notifier.dart';
-import '../services/prayer_notification_scheduler.dart';
 import '../../../prayer/prayer_times/domain/repositories/prayer_times_repository.dart';
+import '../services/prayer_notification_scheduler.dart';
 import 'language_settings_notifier.dart';
 
 class NotificationSettingsState {
@@ -19,6 +19,7 @@ class NotificationSettingsState {
   final String dailyVerseTime;
   final bool isLoaded;
   final bool platformSupported;
+  final bool notificationPromptDismissed;
 
   const NotificationSettingsState({
     this.masterEnabled = false,
@@ -27,6 +28,7 @@ class NotificationSettingsState {
     this.dailyVerseTime = '20:00',
     this.isLoaded = false,
     this.platformSupported = true,
+    this.notificationPromptDismissed = false,
   });
 
   NotificationSettingsState copyWith({
@@ -36,6 +38,7 @@ class NotificationSettingsState {
     String? dailyVerseTime,
     bool? isLoaded,
     bool? platformSupported,
+    bool? notificationPromptDismissed,
   }) {
     return NotificationSettingsState(
       masterEnabled: masterEnabled ?? this.masterEnabled,
@@ -45,6 +48,8 @@ class NotificationSettingsState {
       dailyVerseTime: dailyVerseTime ?? this.dailyVerseTime,
       isLoaded: isLoaded ?? this.isLoaded,
       platformSupported: platformSupported ?? this.platformSupported,
+      notificationPromptDismissed:
+          notificationPromptDismissed ?? this.notificationPromptDismissed,
     );
   }
 }
@@ -67,6 +72,7 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
   NotificationSettingsState build() {
     _storage = getIt<SecureStorageService>();
     _notificationService = getIt<LocalNotificationService>();
+
     _prayerNotificationScheduler = PrayerNotificationScheduler(
       repository: getIt<PrayerTimesRepository>(),
       notificationService: _notificationService,
@@ -101,16 +107,28 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
     final reminderMinutes = await _storage.getPrayerReminderMinutes();
     final dailyVerseEnabled = await _storage.getDailyVerseEnabled();
     final dailyVerseTime = await _storage.getDailyVerseTime();
+    final notificationPromptDismissed =
+        await _storage.getNotificationPromptDismissed();
 
     state = state.copyWith(
       masterEnabled: enabled,
       prayerReminderMinutes: reminderMinutes,
       dailyVerseEnabled: dailyVerseEnabled,
       dailyVerseTime: dailyVerseTime,
+      notificationPromptDismissed: notificationPromptDismissed,
       isLoaded: true,
     );
 
     await _reschedulePrayerNotifications();
+  }
+
+  /// Permanently dismisses the optional home-screen notification prompt.
+  Future<void> dismissNotificationPrompt() async {
+    await _storage.setNotificationPromptDismissed(true);
+
+    state = state.copyWith(
+      notificationPromptDismissed: true,
+    );
   }
 
   Future<bool> toggleMaster(
@@ -128,22 +146,23 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
           masterEnabled: false,
         );
 
-        await _storage.setNotificationsEnabled(
-          false,
-        );
-
+        await _storage.setNotificationsEnabled(false);
         await _notificationService.cancelAll();
 
         return false;
       }
     }
 
-    await _storage.setNotificationsEnabled(
-      enabled,
-    );
+    // This write must happen for both enabling and disabling.
+    await _storage.setNotificationsEnabled(enabled);
+
+    if (enabled) {
+      await _storage.setNotificationPromptDismissed(true);
+    }
 
     state = state.copyWith(
       masterEnabled: enabled,
+      notificationPromptDismissed: enabled ? true : null,
     );
 
     await _reschedulePrayerNotifications();
@@ -211,6 +230,7 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
     // Daily Verse scheduling is owned by NotificationCoordinator.
   }
 
+  /// Public synchronization entry point used by NotificationCoordinator.
   Future<void> syncPrayerSchedule() async {
     if (!state.isLoaded) {
       return;
@@ -266,6 +286,7 @@ class NotificationSettingsNotifier extends Notifier<NotificationSettingsState> {
         DateTime(now.year, now.month, now.day - 2),
         days: NotificationSchedulePolicy.prayerCleanupWindowDays + 2,
       );
+
       return;
     }
 

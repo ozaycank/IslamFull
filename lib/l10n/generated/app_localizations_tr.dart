@@ -2424,4 +2424,27 @@ class AppLocalizationsTr extends AppLocalizations {
   String prayerNotificationAtTime(String prayerName) {
     return '$prayerName namaz vakti girdi.';
   }
+
+  @override
+  String get homeLocationSetupTitle => 'Konumunu belirle';
+
+  @override
+  String get homeLocationSetupDescription =>
+      'Namaz vakitlerini ve kıble yönünü hesaplamak için konum bilgine ihtiyacımız var. İstersen koordinatları kendin de girebilirsin.';
+
+  @override
+  String get homeUseCurrentLocation => 'Mevcut konumumu kullan';
+
+  @override
+  String get homeNotificationSetupTitle => 'Namaz vakitlerini kaçırma';
+
+  @override
+  String get homeNotificationSetupDescription =>
+      'Namazdan önce hatırlatma ve vakit girdiğinde bildirim almak için bildirimlere izin ver. Bu tercihi daha sonra Ayarlar\'dan değiştirebilirsin.';
+
+  @override
+  String get homeEnableNotifications => 'Bildirimleri etkinleştir';
+
+  @override
+  String get homeNotificationLater => 'Şimdi değil';
 }

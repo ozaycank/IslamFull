@@ -22,6 +22,7 @@ import '../../../ramadan/application/ramadan_day_provider.dart';
 import '../../../ramadan/domain/ramadan_day_state.dart';
 import '../../../qurban/application/qurban_season_provider.dart';
 import '../../../qurban/domain/qurban_season_state.dart';
+import '../widgets/home_onboarding_cards.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -55,12 +56,14 @@ class HomeScreen extends ConsumerWidget {
               ),
               children: const [
                 _HomeHeader(),
+                HomeLocationSetupCard(),
                 SizedBox(height: AppSpacing.xl),
                 _NextPrayerHero(),
                 SizedBox(height: AppSpacing.xl),
                 _RamadanShortcut(),
                 _QurbanSeasonShortcut(),
                 _PrayerSummary(),
+                HomeNotificationSetupCard(),
                 SizedBox(height: AppSpacing.xl),
                 _QuranContinueReading(),
                 SizedBox(height: AppSpacing.xl),

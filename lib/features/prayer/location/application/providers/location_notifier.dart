@@ -45,9 +45,15 @@ class LocationNotifier extends Notifier<LocationState> {
     try {
       saved = await _localDataSource.getSelectedLocation();
     } catch (_) {
-      // Corrupt or unavailable storage should not crash the prayer screen.
+      // A storage error must not trigger an automatic device-location request.
       if (!_disposed && generation == _selectionGeneration) {
-        await acquireDeviceLocation();
+        state = state.copyWith(
+          status: LocationStatus.failure,
+          failure: () => const LocationFailure(
+            'The saved prayer location could not be loaded.',
+            code: 'locationStorageUnavailable',
+          ),
+        );
       }
       return;
     }
@@ -57,10 +63,20 @@ class LocationNotifier extends Notifier<LocationState> {
     }
 
     if (saved == null) {
-      await acquireDeviceLocation();
+      // First launch: let the user explicitly choose how to provide a location.
+      // Do not display the native permission dialog automatically.
+      state = state.copyWith(
+        status: LocationStatus.failure,
+        failure: () => const LocationFailure(
+          'A prayer location has not been selected yet.',
+          code: 'locationNotConfigured',
+        ),
+      );
       return;
     }
 
+    // A previously selected location remains usable even if GPS is currently
+    // disabled or the device is offline.
     state = state.copyWith(
       status: LocationStatus.success,
       location: () => saved,
@@ -68,8 +84,7 @@ class LocationNotifier extends Notifier<LocationState> {
     );
 
     if (_hasPlaceholderName(saved.cityName)) {
-      // Cached coordinates work even with GPS disabled. Repair only the
-      // old display label, without requesting native location access.
+      // Repair only the display name. Do not request GPS permission.
       unawaited(
         _refreshSavedName(saved, generation),
       );

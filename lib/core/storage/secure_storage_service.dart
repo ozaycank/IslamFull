@@ -66,7 +66,8 @@ class SecureStorageService {
 
   static const String keyJourneyLastVisitedStep =
       'sec_key_journey_last_visited_step_v1';
-
+  static const String keyNotificationPromptDismissed =
+      'sec_key_notif_prompt_dismissed_v1';
   Future<void> write({
     required String key,
     required String value,
@@ -158,6 +159,23 @@ class SecureStorageService {
     await write(
       key: keyDailyVerseTime,
       value: value,
+    );
+  }
+
+  Future<bool> getNotificationPromptDismissed() async {
+    final value = await read(
+      key: keyNotificationPromptDismissed,
+    );
+
+    return value == 'true';
+  }
+
+  Future<void> setNotificationPromptDismissed(
+    bool value,
+  ) async {
+    await write(
+      key: keyNotificationPromptDismissed,
+      value: value.toString(),
     );
   }
 

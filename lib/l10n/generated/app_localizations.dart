@@ -4371,6 +4371,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'It is time for {prayerName} prayer.'**
   String prayerNotificationAtTime(String prayerName);
+
+  /// Title of the home screen location setup section
+  ///
+  /// In en, this message translates to:
+  /// **'Set your location'**
+  String get homeLocationSetupTitle;
+
+  /// Description of the home screen location setup section
+  ///
+  /// In en, this message translates to:
+  /// **'IslamFull uses your location to calculate prayer times and Qibla direction. You can also enter coordinates manually.'**
+  String get homeLocationSetupDescription;
+
+  /// Label for the option to use current location
+  ///
+  /// In en, this message translates to:
+  /// **'Use my current location'**
+  String get homeUseCurrentLocation;
+
+  /// Title of the home screen notification setup section
+  ///
+  /// In en, this message translates to:
+  /// **'Stay informed about prayer times'**
+  String get homeNotificationSetupTitle;
+
+  /// Description of the home screen notification setup section
+  ///
+  /// In en, this message translates to:
+  /// **'Allow notifications to receive reminders before prayer and alerts when each prayer time begins. You can change this anytime in Settings.'**
+  String get homeNotificationSetupDescription;
+
+  /// Label for the option to enable notifications
+  ///
+  /// In en, this message translates to:
+  /// **'Enable notifications'**
+  String get homeEnableNotifications;
+
+  /// Label for the option to defer notification setup
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get homeNotificationLater;
 }
 
 class _AppLocalizationsDelegate
