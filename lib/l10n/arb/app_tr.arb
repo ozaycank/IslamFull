@@ -887,5 +887,18 @@
 "homeNotificationSetupTitle": "Namaz vakitlerini kaçırma",
 "homeNotificationSetupDescription": "Namazdan önce hatırlatma ve vakit girdiğinde bildirim almak için bildirimlere izin ver. Bu tercihi daha sonra Ayarlar'dan değiştirebilirsin.",
 "homeEnableNotifications": "Bildirimleri etkinleştir",
-"homeNotificationLater": "Şimdi değil"
+"homeNotificationLater": "Şimdi değil",
+  "tasbihDigitalTab": "Dijital",
+  "tasbihPhysicalTab": "Gerçek Tesbih",
+  "tasbihResetConfirmation": "Zikri sıfırlamak istediğinize emin misiniz?",
+  "tasbihTapToCount": "Dokunarak sayacı artırın",
+  "tasbihPhysicalStart": "Başlangıç / İmame",
+  "tasbihPhysicalStartHint": "Boncukları aşağı kaydırarak ilerleyin",
+  "tasbihPhysicalSeparator": "Ayraç (Nişane)",
+  "tasbihPhysicalContinue": "Devam edin",
+  "tasbihDhikrSubhanallah": "Sübhanallah",
+  "tasbihDhikrAlhamdulillah": "Elhamdülillah",
+  "tasbihDhikrAllahuAkbar": "Allahu Ekber",
+  "tasbihTotalProgress": "{current} / {total}",
+  "tasbihSegmentProgress": "{dhikr} ({current}/33)"
 }

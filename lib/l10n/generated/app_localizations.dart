@@ -4413,6 +4413,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Not now'**
   String get homeNotificationLater;
+
+  /// Label for the digital tasbih tab
+  ///
+  /// In en, this message translates to:
+  /// **'Digital'**
+  String get tasbihDigitalTab;
+
+  /// Label for the physical tasbih tab
+  ///
+  /// In en, this message translates to:
+  /// **'Physical Tasbih'**
+  String get tasbihPhysicalTab;
+
+  /// Confirmation message before resetting the digital counter
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to reset the count?'**
+  String get tasbihResetConfirmation;
+
+  /// Instruction displayed below the digital tasbih counter
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to increment the counter'**
+  String get tasbihTapToCount;
+
+  /// Initial status of the physical tasbih
+  ///
+  /// In en, this message translates to:
+  /// **'Start / Imamah'**
+  String get tasbihPhysicalStart;
+
+  /// Instruction for starting the physical tasbih
+  ///
+  /// In en, this message translates to:
+  /// **'Scroll down to move the beads'**
+  String get tasbihPhysicalStartHint;
+
+  /// Status displayed when reaching a physical tasbih separator
+  ///
+  /// In en, this message translates to:
+  /// **'Separator'**
+  String get tasbihPhysicalSeparator;
+
+  /// Instruction displayed at a physical tasbih separator
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get tasbihPhysicalContinue;
+
+  /// First dhikr phrase in a 33-bead tasbih
+  ///
+  /// In en, this message translates to:
+  /// **'SubhanAllah'**
+  String get tasbihDhikrSubhanallah;
+
+  /// Second dhikr phrase in a 33-bead tasbih
+  ///
+  /// In en, this message translates to:
+  /// **'Alhamdulillah'**
+  String get tasbihDhikrAlhamdulillah;
+
+  /// Third dhikr phrase in a 33-bead tasbih
+  ///
+  /// In en, this message translates to:
+  /// **'Allahu Akbar'**
+  String get tasbihDhikrAllahuAkbar;
+
+  /// Overall physical tasbih progress
+  ///
+  /// In en, this message translates to:
+  /// **'{current} / {total}'**
+  String tasbihTotalProgress(int current, int total);
+
+  /// Progress within the current dhikr segment
+  ///
+  /// In en, this message translates to:
+  /// **'{dhikr} ({current}/33)'**
+  String tasbihSegmentProgress(String dhikr, int current);
 }
 
 class _AppLocalizationsDelegate

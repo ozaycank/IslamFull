@@ -2875,5 +2875,73 @@
   "homeNotificationLater": "Not now",
   "@homeNotificationLater": {
     "description": "Label for the option to defer notification setup"
+  },
+  "tasbihDigitalTab": "Digital",
+  "@tasbihDigitalTab": {
+    "description": "Label for the digital tasbih tab"
+  },
+  "tasbihPhysicalTab": "Physical Tasbih",
+  "@tasbihPhysicalTab": {
+    "description": "Label for the physical tasbih tab"
+  },
+  "tasbihResetConfirmation": "Are you sure you want to reset the count?",
+  "@tasbihResetConfirmation": {
+    "description": "Confirmation message before resetting the digital counter"
+  },
+  "tasbihTapToCount": "Tap to increment the counter",
+  "@tasbihTapToCount": {
+    "description": "Instruction displayed below the digital tasbih counter"
+  },
+  "tasbihPhysicalStart": "Start / Imamah",
+  "@tasbihPhysicalStart": {
+    "description": "Initial status of the physical tasbih"
+  },
+  "tasbihPhysicalStartHint": "Scroll down to move the beads",
+  "@tasbihPhysicalStartHint": {
+    "description": "Instruction for starting the physical tasbih"
+  },
+  "tasbihPhysicalSeparator": "Separator",
+  "@tasbihPhysicalSeparator": {
+    "description": "Status displayed when reaching a physical tasbih separator"
+  },
+  "tasbihPhysicalContinue": "Continue",
+  "@tasbihPhysicalContinue": {
+    "description": "Instruction displayed at a physical tasbih separator"
+  },
+  "tasbihDhikrSubhanallah": "SubhanAllah",
+  "@tasbihDhikrSubhanallah": {
+    "description": "First dhikr phrase in a 33-bead tasbih"
+  },
+  "tasbihDhikrAlhamdulillah": "Alhamdulillah",
+  "@tasbihDhikrAlhamdulillah": {
+    "description": "Second dhikr phrase in a 33-bead tasbih"
+  },
+  "tasbihDhikrAllahuAkbar": "Allahu Akbar",
+  "@tasbihDhikrAllahuAkbar": {
+    "description": "Third dhikr phrase in a 33-bead tasbih"
+  },
+  "tasbihTotalProgress": "{current} / {total}",
+  "@tasbihTotalProgress": {
+    "description": "Overall physical tasbih progress",
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "tasbihSegmentProgress": "{dhikr} ({current}/33)",
+  "@tasbihSegmentProgress": {
+    "description": "Progress within the current dhikr segment",
+    "placeholders": {
+      "dhikr": {
+        "type": "String"
+      },
+      "current": {
+        "type": "int"
+      }
+    }
   }
 }

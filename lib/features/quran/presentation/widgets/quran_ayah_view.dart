@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
+import '../../application/providers/quran_reader_settings_provider.dart';
 import '../../domain/entities/ayah.dart';
 import '../../domain/entities/quran_translation.dart';
-import '../../application/providers/quran_reader_settings_provider.dart';
 import '../constants/quran_reader_typography.dart';
 
 class QuranAyahView extends ConsumerWidget {
@@ -12,6 +13,7 @@ class QuranAyahView extends ConsumerWidget {
   final bool isBookmarked;
   final VoidCallback onBookmarkToggle;
   final QuranTranslation? translation;
+  final bool translationIsLoading;
 
   const QuranAyahView({
     super.key,
@@ -19,27 +21,20 @@ class QuranAyahView extends ConsumerWidget {
     required this.isBookmarked,
     required this.onBookmarkToggle,
     this.translation,
+    this.translationIsLoading = false,
   });
 
-  /// FIX: Cleans the repetitive Bismillah from the beginning of the first Ayah
-  /// for all Surahs except Surah Al-Fatihah (1) and Surah At-Tawbah (9).
+  /// Cleans repetitive Bismillah text from the first Ayah
+  /// for Surahs other than Al-Fatihah and At-Tawbah.
   String _getCleanedAyahText() {
     String text = ayah.text;
 
-    // Only attempt to trim Bismillah if it's the very first Ayah of a Surah
     if (ayah.numberInSurah == 1) {
-      // Bismillah Unicode String commonly found at the start of Tanzil datasets
       const String bismillah = 'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ';
+
       const String bismillahAlternative =
           'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ';
 
-      // We do NOT remove it for Surah 1 (Fatihah) because Bismillah is officially Ayah 1.
-      // We do NOT remove it for Surah 9 (Tawbah) because it doesn't have a Bismillah anyway.
-      // Wait, how do we know the Surah number from the Ayah entity?
-      // Typically, an Ayah entity has a `surahNumber` property. Let's safely check if we can remove it.
-
-      // If the text starts with the exact Bismillah characters, and it is long enough, trim it.
-      // Note: We leave the space (if any) or trim it entirely.
       if (text.startsWith(bismillah) && text.length > bismillah.length) {
         text = text.substring(bismillah.length).trim();
       } else if (text.startsWith(bismillahAlternative) &&
@@ -47,18 +42,14 @@ class QuranAyahView extends ConsumerWidget {
         text = text.substring(bismillahAlternative.length).trim();
       }
 
-      // There is also a famous special character "bismillah symbol" (U+FDFD)
-      // or zero-width joiners sometimes glued to the start.
-      // A more brute-force but universally safe approach for Tanzil text:
       final bismillahWords = bismillah.split(' ');
+
       if (text.contains(bismillahWords[0]) &&
           text.contains(bismillahWords[1])) {
-        // Find the index of "Ar-Raheem" and cut everything after it.
         final raheemIndex = text.indexOf('ٱلرَّحِيمِ');
         final raheemAltIndex = text.indexOf('الرَّحِيمِ');
 
         if (raheemIndex != -1 && raheemIndex < 35) {
-          // Ensure we are cutting from the very start
           text = text.substring(raheemIndex + 'ٱلرَّحِيمِ'.length).trim();
         } else if (raheemAltIndex != -1 && raheemAltIndex < 35) {
           text = text.substring(raheemAltIndex + 'الرَّحِيمِ'.length).trim();
@@ -66,8 +57,6 @@ class QuranAyahView extends ConsumerWidget {
       }
     }
 
-    // If after trimming the text becomes completely empty (which happens in Surah Fatihah Ayah 1),
-    // we revert to the original text to ensure we don't display a blank Ayah.
     if (text.isEmpty) {
       return ayah.text;
     }
@@ -79,10 +68,15 @@ class QuranAyahView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colorScheme = context.colorScheme;
     final textTheme = context.textTheme;
-    final settingsState = ref.watch(quranReaderSettingsNotifierProvider);
+
+    final settingsState = ref.watch(
+      quranReaderSettingsNotifierProvider,
+    );
+
     final currentFontSize = settingsState.settings.arabicFontSize;
-    // Arabic readers already see the original Quran text; an Arabic translation
-    // file does not exist, so never show English translation as Arabic.
+
+    // Arabic readers already see the original Quran text.
+    // An Arabic translation file does not exist.
     final showTranslation = settingsState.settings.showTranslation &&
         Localizations.localeOf(context).languageCode != 'ar';
 
@@ -117,7 +111,9 @@ class QuranAyahView extends ConsumerWidget {
                       ),
                       WidgetSpan(
                         alignment: PlaceholderAlignment.middle,
-                        child: _AyahNumberMarker(number: ayah.numberInSurah),
+                        child: _AyahNumberMarker(
+                          number: ayah.numberInSurah,
+                        ),
                       ),
                     ],
                   ),
@@ -139,7 +135,10 @@ class QuranAyahView extends ConsumerWidget {
               ),
             ],
           ),
-          if (showTranslation) ...[
+
+          // Do not display an unavailable-translation message
+          // while the translation provider is still loading.
+          if (showTranslation && !translationIsLoading) ...[
             const SizedBox(height: AppSpacing.lg),
             if (translation != null)
               Text(
@@ -162,6 +161,7 @@ class QuranAyahView extends ConsumerWidget {
                 textDirection: TextDirection.ltr,
               ),
           ],
+
           const SizedBox(height: AppSpacing.lg),
           Divider(color: colorScheme.surfaceContainerHighest),
         ],
@@ -173,7 +173,9 @@ class QuranAyahView extends ConsumerWidget {
 class _AyahNumberMarker extends StatelessWidget {
   final int number;
 
-  const _AyahNumberMarker({required this.number});
+  const _AyahNumberMarker({
+    required this.number,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:islamfull/l10n/generated/app_localizations.dart';
+
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../../menu/application/preferences_provider.dart';
@@ -36,6 +38,7 @@ class _TasbihScreenState extends ConsumerState<TasbihScreen>
     });
 
     final useHaptic = ref.read(hapticFeedbackProvider);
+
     if (useHaptic) {
       if (_digitalCount % _goal == 0) {
         HapticFeedback.heavyImpact();
@@ -48,20 +51,22 @@ class _TasbihScreenState extends ConsumerState<TasbihScreen>
   void _resetDigital() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
+      builder: (dialogContext) => AlertDialog(
         title: Text(context.l10n.tasbihReset),
-        content: const Text('Zikri sıfırlamak istediğinize emin misiniz?'),
+        content: Text(context.l10n.tasbihResetConfirmation),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('İptal'),
+            onPressed: () => Navigator.of(dialogContext).pop(),
+            child: Text(
+              MaterialLocalizations.of(context).cancelButtonLabel,
+            ),
           ),
           FilledButton(
             onPressed: () {
               setState(() => _digitalCount = 0);
-              Navigator.pop(context);
+              Navigator.of(dialogContext).pop();
             },
-            child: const Text('Sıfırla'),
+            child: Text(context.l10n.tasbihReset),
           ),
         ],
       ),
@@ -88,9 +93,9 @@ class _TasbihScreenState extends ConsumerState<TasbihScreen>
           labelColor: colorScheme.primary,
           unselectedLabelColor: colorScheme.onSurfaceVariant,
           indicatorColor: colorScheme.primary,
-          tabs: const [
-            Tab(text: 'Dijital'),
-            Tab(text: 'Gerçek Tesbih'),
+          tabs: [
+            Tab(text: l10n.tasbihDigitalTab),
+            Tab(text: l10n.tasbihPhysicalTab),
           ],
         ),
       ),
@@ -107,7 +112,7 @@ class _TasbihScreenState extends ConsumerState<TasbihScreen>
 
   Widget _buildDigitalTasbih(
     BuildContext context,
-    dynamic l10n,
+    AppLocalizations l10n,
     ColorScheme colorScheme,
   ) {
     return SafeArea(
@@ -157,7 +162,7 @@ class _TasbihScreenState extends ConsumerState<TasbihScreen>
           ),
           const SizedBox(height: 60),
           Text(
-            'Dokunarak sayacı artırın',
+            l10n.tasbihTapToCount,
             style: context.textTheme.bodyMedium?.copyWith(
               color: colorScheme.onSurfaceVariant,
             ),
@@ -168,9 +173,7 @@ class _TasbihScreenState extends ConsumerState<TasbihScreen>
   }
 }
 
-/// ---------------------------------------------------------
-/// FİZİKSEL TESBİH ANİMASYONU
-/// ---------------------------------------------------------
+/// Physical tasbih visualization.
 class _PhysicalTasbihView extends ConsumerStatefulWidget {
   const _PhysicalTasbihView();
 
@@ -184,7 +187,8 @@ class _PhysicalTasbihViewState extends ConsumerState<_PhysicalTasbihView> {
 
   int _scrollIndex = 0;
 
-  // FİZİKSEL DİZİLİM: Toplam 102 eleman. (1 İmame + 33 Boncuk + 1 Ayraç + 33 Boncuk + 1 Ayraç + 33 Boncuk = 102)
+  // 1 imamah + 33 beads + 1 separator + 33 beads +
+  // 1 separator + 33 beads = 102 items.
   final int _totalListItems = 102;
 
   @override
@@ -205,11 +209,12 @@ class _PhysicalTasbihViewState extends ConsumerState<_PhysicalTasbihView> {
     });
 
     final useHaptic = ref.read(hapticFeedbackProvider);
+
     if (!useHaptic) return;
 
     final normalizedIndex = index % _totalListItems;
 
-    // İmame (0) veya Ayraçlarda (34, 68) ağır titreşim ver. Boncuklarda normal titreşim.
+    // Give stronger feedback at the imamah and separators.
     if (normalizedIndex == 0 ||
         normalizedIndex == 34 ||
         normalizedIndex == 68) {
@@ -223,46 +228,48 @@ class _PhysicalTasbihViewState extends ConsumerState<_PhysicalTasbihView> {
   Widget build(BuildContext context) {
     final colorScheme = context.colorScheme;
     final textTheme = context.textTheme;
+    final l10n = context.l10n;
 
     final normalizedIndex = _scrollIndex % _totalListItems;
 
-    // GERÇEK NAMAZ TESBİHİ MANTIĞI:
-    String statusText = '';
-    String subText = '';
+    String statusText;
+    String subText;
 
     if (normalizedIndex == 0) {
-      statusText = 'Başlangıç / İmame';
-      subText = 'Aşağı doğru kaydırarak çekin';
+      statusText = l10n.tasbihPhysicalStart;
+      subText = l10n.tasbihPhysicalStartHint;
     } else if (normalizedIndex == 34 || normalizedIndex == 68) {
-      statusText = 'Ayraç (Nişane)';
-      subText = 'Devam edin';
+      statusText = l10n.tasbihPhysicalSeparator;
+      subText = l10n.tasbihPhysicalContinue;
     } else {
       int totalCount;
       int segmentCount;
-      String zikirName;
+      String dhikrName;
 
       if (normalizedIndex <= 33) {
         totalCount = normalizedIndex;
         segmentCount = normalizedIndex;
-        zikirName = 'Sübhanallah';
+        dhikrName = l10n.tasbihDhikrSubhanallah;
       } else if (normalizedIndex <= 67) {
         totalCount = normalizedIndex - 1;
-        segmentCount = normalizedIndex - 34; // 35. eleman -> 1. Elhamdülillah
-        zikirName = 'Elhamdülillah';
+        segmentCount = normalizedIndex - 34;
+        dhikrName = l10n.tasbihDhikrAlhamdulillah;
       } else {
         totalCount = normalizedIndex - 2;
-        segmentCount = normalizedIndex - 68; // 69. eleman -> 1. Allahu Ekber
-        zikirName = 'Allahu Ekber';
+        segmentCount = normalizedIndex - 68;
+        dhikrName = l10n.tasbihDhikrAllahuAkbar;
       }
 
-      statusText = '$totalCount / 99';
-      subText = '$zikirName ($segmentCount/33)';
+      statusText = l10n.tasbihTotalProgress(totalCount, 99);
+      subText = l10n.tasbihSegmentProgress(
+        dhikrName,
+        segmentCount,
+      );
     }
 
     return Column(
       children: [
         const SizedBox(height: AppSpacing.xxl),
-        // Ana Sayaç
         Text(
           statusText,
           style: textTheme.displaySmall?.copyWith(
@@ -271,7 +278,6 @@ class _PhysicalTasbihViewState extends ConsumerState<_PhysicalTasbihView> {
           ),
         ),
         const SizedBox(height: 4),
-        // Zikir İsmi ve 33'lük Sayaç
         Text(
           subText,
           style: textTheme.titleMedium?.copyWith(
@@ -284,20 +290,17 @@ class _PhysicalTasbihViewState extends ConsumerState<_PhysicalTasbihView> {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              // ÖZEL KAVİSLİ İP (0.2 offAxisFraction EĞİMİNE KUSURSUZ UYUMLU)
               CustomPaint(
                 size: const Size(200, double.infinity),
                 painter: _CurvedStringPainter(
                   color: colorScheme.outlineVariant.withValues(alpha: 0.5),
                 ),
               ),
-
-              // 3D SİLİNDİR
               ListWheelScrollView.useDelegate(
                 controller: _scrollController,
                 itemExtent: 80,
                 diameterRatio: 2.0,
-                offAxisFraction: 0.2, // Eğimi sağlayan ayar
+                offAxisFraction: 0.2,
                 physics: const FixedExtentScrollPhysics(),
                 onSelectedItemChanged: _onSelectedItemChanged,
                 childDelegate: ListWheelChildBuilderDelegate(
@@ -314,8 +317,6 @@ class _PhysicalTasbihViewState extends ConsumerState<_PhysicalTasbihView> {
                   },
                 ),
               ),
-
-              // SEÇİLİ ALAN VURGUSU
               IgnorePointer(
                 child: Container(
                   height: 80,
@@ -419,9 +420,7 @@ class _PhysicalTasbihViewState extends ConsumerState<_PhysicalTasbihView> {
   }
 }
 
-/// ---------------------------------------------------------
-/// TESBİH İPİ ÇİZİMİ (0.2 offAxisFraction İçin Tam Ortalı Eğik İp)
-/// ---------------------------------------------------------
+/// Draws the curved tasbih string.
 class _CurvedStringPainter extends CustomPainter {
   final Color color;
 
@@ -437,17 +436,12 @@ class _CurvedStringPainter extends CustomPainter {
 
     final path = Path();
 
-    // Matematiksel Uyum: offAxisFraction = 0.2 olduğunda,
-    // boncuklar ortada sola doğru kavis yapar, üstte ve altta sağa kayarlar.
-
-    // Üst Başlangıç Noktası (Biraz sağdan başlar)
     path.moveTo(size.width / 2 + 15, 0);
 
-    // Quadratic Bezier Eğrisi
     path.quadraticBezierTo(
-      size.width / 2 + 25, // Kontrol Noktası
-      size.height / 2, // Kontrol Noktası Y (Tam orta)
-      size.width / 2 - 25, // Alt Bitiş Noktası (Tekrar sağda biter)
+      size.width / 2 + 25,
+      size.height / 2,
+      size.width / 2 - 25,
       size.height,
     );
 
@@ -455,5 +449,7 @@ class _CurvedStringPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant _CurvedStringPainter oldDelegate) {
+    return oldDelegate.color != color;
+  }
 }

@@ -734,5 +734,18 @@
 "homeNotificationSetupTitle": "ابقَ على اطلاع بمواقيت الصلاة",
 "homeNotificationSetupDescription": "اسمح بالإشعارات لتلقي تذكير قبل الصلاة وتنبيه عند دخول وقتها. يمكنك تغيير هذا الخيار لاحقًا من الإعدادات.",
 "homeEnableNotifications": "تفعيل الإشعارات",
-"homeNotificationLater": "ليس الآن"
+"homeNotificationLater": "ليس الآن",
+  "tasbihDigitalTab": "السبحة الرقمية",
+  "tasbihPhysicalTab": "السبحة التقليدية",
+  "tasbihResetConfirmation": "هل أنت متأكد من إعادة ضبط العدّاد؟",
+  "tasbihTapToCount": "اضغط لزيادة العدّاد",
+  "tasbihPhysicalStart": "بداية السبحة",
+  "tasbihPhysicalStartHint": "اسحب الخرز إلى الأسفل للمتابعة",
+  "tasbihPhysicalSeparator": "الفاصل (علامة)",
+  "tasbihPhysicalContinue": "تابع",
+  "tasbihDhikrSubhanallah": "سبحان الله",
+  "tasbihDhikrAlhamdulillah": "الحمد لله",
+  "tasbihDhikrAllahuAkbar": "الله أكبر",
+  "tasbihTotalProgress": "{current} / {total}",
+  "tasbihSegmentProgress": "{dhikr} ({current}/33)"
 }

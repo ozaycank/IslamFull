@@ -242,7 +242,7 @@ class _SurahDetailScreenState extends ConsumerState<SurahDetailScreen> {
     );
 
     final translationsMap = translationAsyncValue.valueOrNull ?? {};
-
+    final translationIsLoading = translationAsyncValue.isLoading;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -328,6 +328,7 @@ class _SurahDetailScreenState extends ConsumerState<SurahDetailScreen> {
                     ayah: ayah,
                     isBookmarked: isBookmarked,
                     translation: ayahTranslation,
+                    translationIsLoading: translationIsLoading,
                     onBookmarkToggle: () {
                       if (!ref.read(religiousProgressConsentProvider).granted) {
                         // Capture the router while this ayah widget is active.

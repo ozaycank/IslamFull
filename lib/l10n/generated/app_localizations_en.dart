@@ -2442,4 +2442,48 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeNotificationLater => 'Not now';
+
+  @override
+  String get tasbihDigitalTab => 'Digital';
+
+  @override
+  String get tasbihPhysicalTab => 'Physical Tasbih';
+
+  @override
+  String get tasbihResetConfirmation =>
+      'Are you sure you want to reset the count?';
+
+  @override
+  String get tasbihTapToCount => 'Tap to increment the counter';
+
+  @override
+  String get tasbihPhysicalStart => 'Start / Imamah';
+
+  @override
+  String get tasbihPhysicalStartHint => 'Scroll down to move the beads';
+
+  @override
+  String get tasbihPhysicalSeparator => 'Separator';
+
+  @override
+  String get tasbihPhysicalContinue => 'Continue';
+
+  @override
+  String get tasbihDhikrSubhanallah => 'SubhanAllah';
+
+  @override
+  String get tasbihDhikrAlhamdulillah => 'Alhamdulillah';
+
+  @override
+  String get tasbihDhikrAllahuAkbar => 'Allahu Akbar';
+
+  @override
+  String tasbihTotalProgress(int current, int total) {
+    return '$current / $total';
+  }
+
+  @override
+  String tasbihSegmentProgress(String dhikr, int current) {
+    return '$dhikr ($current/33)';
+  }
 }

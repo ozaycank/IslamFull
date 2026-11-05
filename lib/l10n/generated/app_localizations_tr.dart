@@ -2447,4 +2447,48 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get homeNotificationLater => 'Şimdi değil';
+
+  @override
+  String get tasbihDigitalTab => 'Dijital';
+
+  @override
+  String get tasbihPhysicalTab => 'Gerçek Tesbih';
+
+  @override
+  String get tasbihResetConfirmation =>
+      'Zikri sıfırlamak istediğinize emin misiniz?';
+
+  @override
+  String get tasbihTapToCount => 'Dokunarak sayacı artırın';
+
+  @override
+  String get tasbihPhysicalStart => 'Başlangıç / İmame';
+
+  @override
+  String get tasbihPhysicalStartHint => 'Boncukları aşağı kaydırarak ilerleyin';
+
+  @override
+  String get tasbihPhysicalSeparator => 'Ayraç (Nişane)';
+
+  @override
+  String get tasbihPhysicalContinue => 'Devam edin';
+
+  @override
+  String get tasbihDhikrSubhanallah => 'Sübhanallah';
+
+  @override
+  String get tasbihDhikrAlhamdulillah => 'Elhamdülillah';
+
+  @override
+  String get tasbihDhikrAllahuAkbar => 'Allahu Ekber';
+
+  @override
+  String tasbihTotalProgress(int current, int total) {
+    return '$current / $total';
+  }
+
+  @override
+  String tasbihSegmentProgress(String dhikr, int current) {
+    return '$dhikr ($current/33)';
+  }
 }
