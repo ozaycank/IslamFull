@@ -69,7 +69,7 @@ void main() {
     'NotificationPayload - Prayer',
     () {
       test(
-        'parses a valid prayer payload',
+        'parses the existing before-prayer reminder payload',
         () {
           final payload = NotificationPayload.tryParse(
             'prayer:isha',
@@ -95,14 +95,50 @@ void main() {
       );
 
       test(
-        'rejects an unknown prayer name',
+        'parses the new exact-prayer-time notification payload',
         () {
-          expect(
-            NotificationPayload.tryParse(
-              'prayer:not-a-prayer',
-            ),
-            isNull,
+          final payload = NotificationPayload.tryParse(
+            'prayer-time:fajr',
           );
+
+          expect(
+            payload,
+            isA<PrayerNotificationPayload>(),
+          );
+
+          final prayer = payload! as PrayerNotificationPayload;
+
+          expect(
+            prayer.prayerName,
+            PrayerName.fajr,
+          );
+
+          expect(
+            prayer.location,
+            '/prayer',
+          );
+        },
+      );
+
+      test(
+        'rejects unknown prayer names in both payload formats',
+        () {
+          const invalidPayloads = [
+            'prayer:not-a-prayer',
+            'prayer-time:not-a-prayer',
+            'prayer',
+            'prayer-time',
+            'prayer:isha:extra',
+            'prayer-time:fajr:extra',
+          ];
+
+          for (final rawPayload in invalidPayloads) {
+            expect(
+              NotificationPayload.tryParse(rawPayload),
+              isNull,
+              reason: 'Payload should be rejected: $rawPayload',
+            );
+          }
         },
       );
     },
@@ -112,30 +148,22 @@ void main() {
     'ignores empty and unknown notification payloads',
     () {
       expect(
-        NotificationPayload.tryParse(
-          null,
-        ),
+        NotificationPayload.tryParse(null),
         isNull,
       );
 
       expect(
-        NotificationPayload.tryParse(
-          '',
-        ),
+        NotificationPayload.tryParse(''),
         isNull,
       );
 
       expect(
-        NotificationPayload.tryParse(
-          '   ',
-        ),
+        NotificationPayload.tryParse('   '),
         isNull,
       );
 
       expect(
-        NotificationPayload.tryParse(
-          'unknown:payload',
-        ),
+        NotificationPayload.tryParse('unknown:payload'),
         isNull,
       );
     },

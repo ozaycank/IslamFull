@@ -31,7 +31,10 @@ sealed class NotificationPayload {
       case 'daily-verse':
         return _parseDailyVerse(parts);
 
+      // Keep the original reminder payload and also accept the newer
+      // exact-prayer-time notification payload.
       case 'prayer':
+      case 'prayer-time':
         return _parsePrayer(parts);
 
       default:

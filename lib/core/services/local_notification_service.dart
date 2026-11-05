@@ -99,13 +99,20 @@ class LocalNotificationService {
       final notificationPermission =
           await androidPlugin.requestNotificationsPermission();
 
+      // Do not request separate exact-alarm access when the user
+      // has denied the application notification permission.
+      if (notificationPermission != true) {
+        return false;
+      }
+
       try {
         await androidPlugin.requestExactAlarmsPermission();
       } on PlatformException {
-        // Exact alarm permission is independent from notification permission.
+        // Exact-alarm access is independent from notification permission.
+        // The scheduler already supports inexact delivery as a fallback.
       }
 
-      return notificationPermission ?? false;
+      return true;
     }
 
     final iosPlugin = _plugin.resolvePlatformSpecificImplementation<
