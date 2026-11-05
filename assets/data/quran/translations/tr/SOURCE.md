@@ -1,10 +1,10 @@
-# Translation Source Metadata
+# Turkish Translation Source Metadata
 
-- **Source Name:** AçıkKuran
 - **Language:** Turkish (tr)
-- **Translator:** Erhan Aktaş (Kerim Kur'an)
-- **License:** CC BY-NC-SA 4.0
-- **Source URL:** https://api.acikkuran.com/
-- **Repository:** https://github.com/acik-kuran/acikkuran-api
-- **Retrieval Date:** 2026-08-28
-- **Attribution:** AçıkKuran API. The translator name must be attributed according to the source's licensing requirements.
+- **Source provenance:** Not independently verified.
+- **Translator / rights holder:** Not verified from the bundled dataset.
+- **License / redistribution:** Not verified.
+- **Observed reference match:** Representative bundled passages, including Bakara 2:26–27, Bakara 2:65–66 and Nâs 114:1–6, match the text displayed on Quran.com under the name "Turkish Translation (Diyanet)".
+- **Comparison reference:** https://quran.com/tr/bakara/26/translations/quran.tr.diyanet
+- **Terms reference:** https://quran.com/terms-and-conditions
+

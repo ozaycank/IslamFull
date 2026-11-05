@@ -27,38 +27,24 @@ class QuranAyahView extends ConsumerWidget {
   /// Cleans repetitive Bismillah text from the first Ayah
   /// for Surahs other than Al-Fatihah and At-Tawbah.
   String _getCleanedAyahText() {
-    String text = ayah.text;
+    final text = ayah.text;
 
-    if (ayah.numberInSurah == 1) {
-      const String bismillah = 'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ';
-
-      const String bismillahAlternative =
-          'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ';
-
-      if (text.startsWith(bismillah) && text.length > bismillah.length) {
-        text = text.substring(bismillah.length).trim();
-      } else if (text.startsWith(bismillahAlternative) &&
-          text.length > bismillahAlternative.length) {
-        text = text.substring(bismillahAlternative.length).trim();
-      }
-
-      final bismillahWords = bismillah.split(' ');
-
-      if (text.contains(bismillahWords[0]) &&
-          text.contains(bismillahWords[1])) {
-        final raheemIndex = text.indexOf('ٱلرَّحِيمِ');
-        final raheemAltIndex = text.indexOf('الرَّحِيمِ');
-
-        if (raheemIndex != -1 && raheemIndex < 35) {
-          text = text.substring(raheemIndex + 'ٱلرَّحِيمِ'.length).trim();
-        } else if (raheemAltIndex != -1 && raheemAltIndex < 35) {
-          text = text.substring(raheemAltIndex + 'الرَّحِيمِ'.length).trim();
-        }
-      }
+    if (ayah.numberInSurah != 1) {
+      return text;
     }
 
-    if (text.isEmpty) {
-      return ayah.text;
+    // The bundled Uthmani dataset contains two valid Bismillah
+    // spellings at the beginning of surah 95 and surah 97.
+    const bismillahPrefixes = <String>[
+      'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ',
+      'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
+      'بِّسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ',
+    ];
+
+    for (final prefix in bismillahPrefixes) {
+      if (text.startsWith(prefix) && text.length > prefix.length) {
+        return text.substring(prefix.length).trim();
+      }
     }
 
     return text;

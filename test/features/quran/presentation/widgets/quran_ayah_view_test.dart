@@ -27,7 +27,18 @@ class _FakeQuranReaderSettingsNotifier extends QuranReaderSettingsNotifier {
 Widget _buildTestApp({
   required bool translationIsLoading,
   QuranTranslation? translation,
+  Ayah? ayah,
 }) {
+  final testAyah = ayah ??
+      const Ayah(
+        number: 2,
+        numberInSurah: 2,
+        text: 'الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ',
+        page: 1,
+        hizbQuarter: 1,
+        juz: 1,
+      );
+
   return ProviderScope(
     overrides: [
       quranReaderSettingsNotifierProvider.overrideWith(
@@ -45,14 +56,7 @@ Widget _buildTestApp({
       ],
       home: Scaffold(
         body: QuranAyahView(
-          ayah: const Ayah(
-            number: 2,
-            numberInSurah: 2,
-            text: 'الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ',
-            page: 1,
-            hizbQuarter: 1,
-            juz: 1,
-          ),
+          ayah: testAyah,
           isBookmarked: false,
           onBookmarkToggle: () {},
           translation: translation,
@@ -61,6 +65,34 @@ Widget _buildTestApp({
       ),
     ),
   );
+}
+
+Future<void> _expectBismillahRemoved(
+  WidgetTester tester, {
+  required Ayah ayah,
+  required String remainingText,
+}) async {
+  await tester.pumpWidget(
+    _buildTestApp(
+      translationIsLoading: false,
+      ayah: ayah,
+    ),
+  );
+
+  await tester.pumpAndSettle();
+
+  final arabicTextFinder = find.byWidgetPredicate(
+    (widget) =>
+        widget is RichText && widget.text.toPlainText().contains(remainingText),
+  );
+
+  expect(arabicTextFinder, findsOneWidget);
+
+  final displayedText =
+      tester.widget<RichText>(arabicTextFinder).text.toPlainText();
+
+  expect(displayedText, contains(remainingText));
+  expect(displayedText, isNot(contains('بِّسْمِ')));
 }
 
 void main() {
@@ -139,6 +171,44 @@ void main() {
       expect(
         find.text('Translation unavailable'),
         findsNothing,
+      );
+    },
+  );
+
+  testWidgets(
+    'removes the Bismillah variant with initial shadda in At-Tin',
+    (tester) async {
+      await _expectBismillahRemoved(
+        tester,
+        ayah: const Ayah(
+          number: 1,
+          numberInSurah: 1,
+          text:
+              'بِّسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ وَٱلتِّينِ وَٱلزَّيْتُونِ',
+          page: 1,
+          hizbQuarter: 1,
+          juz: 1,
+        ),
+        remainingText: 'وَٱلتِّينِ',
+      );
+    },
+  );
+
+  testWidgets(
+    'removes the Bismillah variant with initial shadda in Al-Qadr',
+    (tester) async {
+      await _expectBismillahRemoved(
+        tester,
+        ayah: const Ayah(
+          number: 1,
+          numberInSurah: 1,
+          text:
+              'بِّسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ إِنَّآ أَنزَلْنَٰهُ فِى لَيْلَةِ ٱلْقَدْرِ',
+          page: 1,
+          hizbQuarter: 1,
+          juz: 1,
+        ),
+        remainingText: 'إِنَّآ',
       );
     },
   );
