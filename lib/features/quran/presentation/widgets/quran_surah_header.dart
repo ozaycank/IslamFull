@@ -4,6 +4,7 @@ import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../../../../shared/widgets/app_card.dart';
 import '../../domain/entities/revelation_type.dart';
 import '../../domain/entities/surah.dart';
+import '../../../../core/constants/app_assets.dart';
 
 class QuranSurahHeader extends StatelessWidget {
   final Surah surah;
@@ -36,11 +37,35 @@ class QuranSurahHeader extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Text(
-              surah.nameArabic,
-              style: textTheme.displaySmall?.copyWith(
-                color: colorScheme.onSecondaryContainer,
-                fontWeight: FontWeight.bold,
+            SizedBox(
+              width: double.infinity,
+              height: 104,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Positioned.fill(
+                    child: Image.asset(
+                      AppAssets.surahHeader,
+                      fit: BoxFit.contain,
+                      excludeFromSemantics: true,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.lg,
+                    ),
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        surah.nameArabic,
+                        style: textTheme.displaySmall?.copyWith(
+                          color: colorScheme.onSecondaryContainer,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: AppSpacing.sm),

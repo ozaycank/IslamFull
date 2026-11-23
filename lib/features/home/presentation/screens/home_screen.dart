@@ -23,6 +23,7 @@ import '../../../ramadan/domain/ramadan_day_state.dart';
 import '../../../qurban/application/qurban_season_provider.dart';
 import '../../../qurban/domain/qurban_season_state.dart';
 import '../widgets/home_onboarding_cards.dart';
+import '../../../../core/constants/app_assets.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -1240,6 +1241,7 @@ class _QuickActions extends StatelessWidget {
         Expanded(
           child: _QuickActionCard(
             icon: Icons.explore,
+            imageAssetPath: AppAssets.kaaba,
             label: l10n.homeQibla,
             onTap: () => context.push(
               AppRoutes.qibla,
@@ -1277,11 +1279,13 @@ class _QuickActions extends StatelessWidget {
 
 class _QuickActionCard extends StatelessWidget {
   final IconData icon;
+  final String? imageAssetPath;
   final String label;
   final VoidCallback onTap;
 
   const _QuickActionCard({
     required this.icon,
+    this.imageAssetPath,
     required this.label,
     required this.onTap,
   });
@@ -1304,11 +1308,19 @@ class _QuickActionCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Icon(
-              icon,
-              size: 28,
-              color: colorScheme.onSurface,
-            ),
+            imageAssetPath != null
+                ? Image.asset(
+                    imageAssetPath!,
+                    width: 28,
+                    height: 28,
+                    fit: BoxFit.contain,
+                    excludeFromSemantics: true,
+                  )
+                : Icon(
+                    icon,
+                    size: 28,
+                    color: colorScheme.onSurface,
+                  ),
             const SizedBox(
               height: AppSpacing.sm,
             ),

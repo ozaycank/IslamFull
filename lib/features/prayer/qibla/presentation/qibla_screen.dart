@@ -14,6 +14,7 @@ import '../application/qibla_provider.dart';
 import '../domain/compass_alignment_rules.dart';
 import '../domain/qibla_models.dart';
 import 'widgets/qibla_compass_dial.dart';
+import '../../../../core/constants/app_assets.dart';
 
 class QiblaScreen extends ConsumerWidget {
   const QiblaScreen({
@@ -363,10 +364,12 @@ class QiblaScreen extends ConsumerWidget {
                         alpha: 0.5,
                       ),
                     ),
-                    child: Icon(
-                      Icons.explore,
-                      size: 64,
-                      color: colorScheme.primary,
+                    child: Image.asset(
+                      AppAssets.kaaba,
+                      width: 64,
+                      height: 64,
+                      fit: BoxFit.contain,
+                      excludeFromSemantics: true,
                     ),
                   ),
                 ),

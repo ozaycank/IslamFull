@@ -14,6 +14,7 @@ import '../../../prayer/prayer_times/application/providers/prayer_times_notifier
 import '../../../prayer/shared/presentation/utils/presentation_localizer.dart';
 import '../../application/ramadan_day_provider.dart';
 import '../../domain/ramadan_day_state.dart';
+import '../../../../core/constants/app_assets.dart';
 
 class RamadanHubScreen extends ConsumerWidget {
   const RamadanHubScreen({
@@ -90,6 +91,21 @@ class RamadanHubScreen extends ConsumerWidget {
                 AppSpacing.lg,
               ),
               children: [
+                if (ramadanState.isRamadan) ...[
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.asset(
+                      AppAssets.ramadanBanner,
+                      width: double.infinity,
+                      height: 160,
+                      fit: BoxFit.cover,
+                      excludeFromSemantics: true,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: AppSpacing.lg,
+                  ),
+                ],
                 _RamadanHeader(
                   location: locationText,
                   hijriDate: hijriDate,

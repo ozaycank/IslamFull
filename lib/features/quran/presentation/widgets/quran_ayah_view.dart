@@ -7,6 +7,7 @@ import '../../application/providers/quran_reader_settings_provider.dart';
 import '../../domain/entities/ayah.dart';
 import '../../domain/entities/quran_translation.dart';
 import '../constants/quran_reader_typography.dart';
+import '../../../../core/constants/app_assets.dart';
 
 class QuranAyahView extends ConsumerWidget {
   final Ayah ayah;
@@ -108,12 +109,18 @@ class QuranAyahView extends ConsumerWidget {
                 ),
               ),
               IconButton(
-                icon: Icon(
-                  isBookmarked ? Icons.bookmark : Icons.bookmark_border,
-                  color: isBookmarked
-                      ? colorScheme.primary
-                      : colorScheme.onSurfaceVariant,
-                ),
+                icon: isBookmarked
+                    ? Icon(
+                        Icons.bookmark,
+                        color: colorScheme.primary,
+                      )
+                    : Image.asset(
+                        AppAssets.bookmarkOutline,
+                        width: 24,
+                        height: 24,
+                        fit: BoxFit.contain,
+                        excludeFromSemantics: true,
+                      ),
                 onPressed: onBookmarkToggle,
                 tooltip: isBookmarked
                     ? context.l10n.quranBookmarkRemove

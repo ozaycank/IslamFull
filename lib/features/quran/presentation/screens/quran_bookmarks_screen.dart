@@ -7,6 +7,7 @@ import '../../../../core/routing/app_routes.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../../application/providers/quran_bookmark_provider.dart';
 import '../../application/providers/quran_provider.dart';
+import '../../../../core/constants/app_assets.dart';
 
 class QuranBookmarksScreen extends ConsumerWidget {
   const QuranBookmarksScreen({super.key});
@@ -52,10 +53,30 @@ class QuranBookmarksScreen extends ConsumerWidget {
                     ? const Center(child: CircularProgressIndicator())
                     : state.bookmarks.isEmpty
                         ? Center(
-                            child: Text(
-                              l10n.quranNoBookmarksYet,
-                              style: context.textTheme.titleMedium?.copyWith(
-                                color: colorScheme.onSurfaceVariant,
+                            child: Padding(
+                              padding: const EdgeInsets.all(AppSpacing.lg),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Image.asset(
+                                    AppAssets.emptyBookmark,
+                                    width: 160,
+                                    height: 160,
+                                    fit: BoxFit.contain,
+                                    excludeFromSemantics: true,
+                                  ),
+                                  const SizedBox(
+                                    height: AppSpacing.md,
+                                  ),
+                                  Text(
+                                    l10n.quranNoBookmarksYet,
+                                    textAlign: TextAlign.center,
+                                    style:
+                                        context.textTheme.titleMedium?.copyWith(
+                                      color: colorScheme.onSurfaceVariant,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           )
