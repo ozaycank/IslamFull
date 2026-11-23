@@ -25,32 +25,67 @@ void main() {
   });
 
   test(
-    'Turkish translation is attributed and redistribution rights remain a release check',
+    'Turkish translation provenance is disclosed as unverified and rights remain a release check',
     () {
       final metadata = File(
         'assets/data/quran/translations/tr/SOURCE.md',
       ).readAsStringSync();
+
       final sourceScreen = File(
         'lib/features/quran/presentation/screens/quran_sources_screen.dart',
       ).readAsStringSync();
 
-      expect(metadata, contains('Erhan Aktaş'));
-      expect(metadata, contains('Kerim Kur'));
-      expect(metadata, contains('CC BY-NC-SA 4.0'));
       expect(
         metadata,
-        isNot(contains('[VERIFY FROM ACTUAL TRANSLATION DATA]')),
+        contains('**Source provenance:** Not independently verified.'),
       );
 
-      expect(sourceScreen, contains('Erhan Aktaş'));
+      expect(
+        metadata,
+        contains(
+            '**Translator / rights holder:** Not verified from the bundled dataset.',),
+      );
+
+      expect(
+        metadata,
+        contains('**License / redistribution:** Not verified.'),
+      );
+
+      expect(
+        metadata,
+        contains(
+            'https://quran.com/tr/bakara/26/translations/quran.tr.diyanet',),
+      );
+
       expect(
         sourceScreen,
-        contains('Before release, verify that this license covers'),
+        contains('not been independently verified'),
       );
+
+      expect(
+        sourceScreen,
+        contains(
+            'Before release, obtain and verify a license or written permission',),
+      );
+
       expect(
         sourceScreen,
         contains('yayın öncesinde doğrulanmalıdır'),
       );
+
+      expect(
+        sourceScreen,
+        contains(
+            'https://quran.com/tr/bakara/26/translations/quran.tr.diyanet',),
+      );
+
+      expect(
+        sourceScreen,
+        contains('https://quran.com/terms-and-conditions'),
+      );
+
+      expect(sourceScreen, isNot(contains('Erhan Aktaş')));
+      expect(sourceScreen, isNot(contains('CC BY-NC-SA 4.0')));
     },
   );
 

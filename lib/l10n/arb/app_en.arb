@@ -2943,5 +2943,21 @@
         "type": "int"
       }
     }
+  },
+  "turkishTranslationDescription": "The provenance and translator or rights holder of the bundled dataset have not been independently verified. Representative passages match the text labeled Turkish Translation (Diyanet) on Quran.com; this comparison alone does not establish the dataset source or redistribution rights.",
+  "@turkishTranslationDescription": {
+    "description": "Disclaimer about the provenance of the Turkish translation dataset"
+  },
+  "turkishTranslationLicense": "License / redistribution: Not verified. Before release, obtain and verify a license or written permission that permits distributing the bundled translation text in this application.",
+  "@turkishTranslationLicense": {
+    "description": "Disclaimer about the license or redistribution rights of the Turkish translation dataset"
+  },
+  "turkishComparisonLinkLabel": "Open Quran.com comparison reference",
+  "@turkishComparisonLinkLabel": {
+    "description": "Label for the link to the Quran.com Turkish translation comparison reference"
+  },
+  "turkishTermsLinkLabel": "View Quran.com terms of use",
+  "@turkishTermsLinkLabel": {
+    "description": "Label for the link to the Quran.com terms of use"
   }
 }

@@ -178,10 +178,9 @@ void main() {
         findsOneWidget,
       );
 
-      final bookmarkButton = find.byIcon(
-        Icons.bookmark_border,
+      final bookmarkButton = find.byTooltip(
+        'Add Bookmark',
       );
-
       expect(
         bookmarkButton,
         findsOneWidget,

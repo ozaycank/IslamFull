@@ -746,6 +746,12 @@
   "tasbihDhikrSubhanallah": "سبحان الله",
   "tasbihDhikrAlhamdulillah": "الحمد لله",
   "tasbihDhikrAllahuAkbar": "الله أكبر",
-  "tasbihTotalProgress": "{current} / {total}",
-  "tasbihSegmentProgress": "{dhikr} ({current}/33)"
+  "tasbihTotalProgress": "{current} من {total}",
+"tasbihSegmentProgress": "الذكر {dhikr} ({current}/33)",
+"turkishTranslationDescription":
+    'لم يتم التحقق بصورة مستقلة من مصدر مجموعة البيانات المرفقة أو المترجم/صاحب الحقوق. تتطابق مقاطع نموذجية مع النص المعروض على Quran.com باسم "Turkish Translation (Diyanet)"؛ لكن هذه المقارنة وحدها لا تثبت المصدر أو حق إعادة التوزيع.',
+"turkishTranslationLicense" :
+    'الترخيص / إعادة التوزيع: غير متحقق منهما. يجب قبل الإصدار الحصول على ترخيص أو إذن مكتوب والتحقق من أنه يسمح بتوزيع نص الترجمة المرفق داخل هذا التطبيق.',
+"turkishComparisonLinkLabel": "فتح مرجع المقارنة على Quran.com",
+"turkishTermsLinkLabel": "عرض شروط استخدام Quran.com"
 }

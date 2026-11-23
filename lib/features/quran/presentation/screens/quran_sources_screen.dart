@@ -34,10 +34,11 @@ class QuranSourcesScreen extends StatelessWidget {
               title: copy.turkishTranslationTitle,
               description: copy.turkishTranslationDescription,
               license: copy.turkishTranslationLicense,
-              linkLabel: copy.acikKuranLinkLabel,
-              url: 'https://api.acikkuran.com/',
-              secondaryLinkLabel: copy.acikKuranRepositoryLinkLabel,
-              secondaryUrl: 'https://github.com/acik-kuran/acikkuran-api',
+              linkLabel: copy.turkishComparisonLinkLabel,
+              url:
+                  'https://quran.com/tr/bakara/26/translations/quran.tr.diyanet',
+              secondaryLinkLabel: copy.turkishTermsLinkLabel,
+              secondaryUrl: 'https://quran.com/terms-and-conditions',
             ),
             const SizedBox(height: 12),
             _SourceCard(
@@ -135,8 +136,8 @@ class _QuranSourceCopy {
     required this.turkishTranslationTitle,
     required this.turkishTranslationDescription,
     required this.turkishTranslationLicense,
-    required this.acikKuranLinkLabel,
-    required this.acikKuranRepositoryLinkLabel,
+    required this.turkishComparisonLinkLabel,
+    required this.turkishTermsLinkLabel,
     required this.englishTranslationTitle,
     required this.englishTranslationDescription,
     required this.englishTranslationLicense,
@@ -153,8 +154,8 @@ class _QuranSourceCopy {
   final String turkishTranslationTitle;
   final String turkishTranslationDescription;
   final String turkishTranslationLicense;
-  final String acikKuranLinkLabel;
-  final String acikKuranRepositoryLinkLabel;
+  final String turkishComparisonLinkLabel;
+  final String turkishTermsLinkLabel;
   final String englishTranslationTitle;
   final String englishTranslationDescription;
   final String englishTranslationLicense;
