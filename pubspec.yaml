@@ -51,6 +51,7 @@ flutter:
   generate: true
   assets:
     - assets/images/
+    - assets/illustrations/
     - assets/images/eid_prayer/
     - assets/images/ghusl/
     - assets/images/hajj/
