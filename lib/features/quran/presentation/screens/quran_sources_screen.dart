@@ -174,13 +174,13 @@ class _QuranSourceCopy {
             'Lisans: Creative Commons Attribution 3.0 (CC BY 3.0).',
         tanzilLinkLabel: 'Tanzil web sitesini aç',
         licenseLinkLabel: 'Tanzil lisans koşullarını aç',
-        turkishTranslationTitle: 'Türkçe meal',
+        turkishTranslationTitle: 'Turkish translation',
         turkishTranslationDescription:
-            'Çevirmen: Erhan Aktaş (Kerim Kur’an). Uygulamanın kaynak kaydı, Türkçe meali AçıkKuran API üzerinden alınmış olarak belirtir.',
+            'The provenance and translator or rights holder of the bundled dataset have not been independently verified. Representative passages match the text labeled "Turkish Translation (Diyanet)" on Quran.com; this comparison alone does not establish the dataset source or redistribution rights.',
         turkishTranslationLicense:
-            'AçıkKuran API deposu CC BY-NC-SA 4.0 lisansını listeler. Bu lisansın paketlenen meal metnini ve uygulamanın dağıtım biçimini kapsadığı yayın öncesinde doğrulanmalıdır.',
-        acikKuranLinkLabel: 'AçıkKuran API kaynağını aç',
-        acikKuranRepositoryLinkLabel: 'AçıkKuran API deposunu aç',
+            'License / redistribution: Not verified. Before release, obtain and verify a license or written permission that permits distributing the bundled translation text in this application.',
+        turkishComparisonLinkLabel: 'Open Quran.com comparison reference',
+        turkishTermsLinkLabel: 'View Quran.com terms of use',
         englishTranslationTitle: 'İngilizce meal',
         englishTranslationDescription:
             'Depodaki kaynak kaydı metni Marmaduke Pickthall’ın The Meaning of the Glorious Koran (1930) eserine atfediyor.',
@@ -204,11 +204,11 @@ class _QuranSourceCopy {
         licenseLinkLabel: 'عرض شروط ترخيص تنزيل',
         turkishTranslationTitle: 'الترجمة التركية',
         turkishTranslationDescription:
-            'المترجم: Erhan Aktaş، واسم العمل Kerim Kur’an. تشير معلومات المصدر في التطبيق إلى أن الترجمة التركية مأخوذة عبر واجهة AçıkKuran API.',
+            'لم يتم التحقق بصورة مستقلة من مصدر مجموعة البيانات المرفقة أو المترجم أو صاحب الحقوق. تتطابق مقاطع نموذجية مع النص المعروض على Quran.com باسم "Turkish Translation (Diyanet)"؛ لكن هذه المقارنة وحدها لا تثبت مصدر مجموعة البيانات أو حقوق إعادة توزيعها.',
         turkishTranslationLicense:
-            'يذكر مستودع AçıkKuran API ترخيص CC BY-NC-SA 4.0. يجب التحقق قبل الإصدار من أن هذا الترخيص يغطي نص الترجمة المرفق وطريقة توزيعه داخل التطبيق.',
-        acikKuranLinkLabel: 'فتح مصدر AçıkKuran API',
-        acikKuranRepositoryLinkLabel: 'فتح مستودع AçıkKuran API',
+            'الترخيص / إعادة التوزيع: غير متحقق منهما. يجب قبل الإصدار الحصول على ترخيص أو إذن مكتوب والتحقق من أنه يسمح بتوزيع نص الترجمة المرفق داخل هذا التطبيق.',
+        turkishComparisonLinkLabel: 'فتح مرجع المقارنة على Quran.com',
+        turkishTermsLinkLabel: 'عرض شروط استخدام Quran.com',
         englishTranslationTitle: 'الترجمة الإنجليزية',
         englishTranslationDescription:
             'تنسب ملاحظة المصدر في المستودع النص إلى عمل The Meaning of the Glorious Koran لمارمادوك بيكثال (1930).',
@@ -229,13 +229,13 @@ class _QuranSourceCopy {
           'License: Creative Commons Attribution 3.0 (CC BY 3.0).',
       tanzilLinkLabel: 'Open Tanzil website',
       licenseLinkLabel: 'View Tanzil license terms',
-      turkishTranslationTitle: 'Turkish translation',
+      turkishTranslationTitle: 'Türkçe meal',
       turkishTranslationDescription:
-          'Translator: Erhan Aktaş (Kerim Kur’an). The application source record identifies AçıkKuran API as the source of the Turkish translation.',
+          'Paketlenen veri kümesinin kaynağı ve çevirmeni bağımsız olarak doğrulanmadı. Örnek bölümler Quran.com üzerinde "Turkish Translation (Diyanet)" adıyla gösterilen metinle eşleşiyor; bu karşılaştırma tek başına kaynağı veya yeniden dağıtım hakkını kanıtlamaz.',
       turkishTranslationLicense:
-          'The AçıkKuran API repository lists CC BY-NC-SA 4.0. Before release, verify that this license covers the bundled translation text and its distribution in this application.',
-      acikKuranLinkLabel: 'Open AçıkKuran API',
-      acikKuranRepositoryLinkLabel: 'Open AçıkKuran API repository',
+          'Lisans / yeniden dağıtım: Doğrulanmadı. Paketlenen meal metninin bu uygulama içinde dağıtımına izin veren lisans veya yazılı izin yayın öncesinde doğrulanmalıdır.',
+      turkishComparisonLinkLabel: 'Quran.com karşılaştırma referansını aç',
+      turkishTermsLinkLabel: 'Quran.com kullanım koşullarını aç',
       englishTranslationTitle: 'English translation',
       englishTranslationDescription:
           'The repository source record attributes this text to Marmaduke Pickthall’s The Meaning of the Glorious Koran (1930).',
