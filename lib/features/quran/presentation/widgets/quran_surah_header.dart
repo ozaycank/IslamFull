@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+
+import '../../../../core/constants/app_assets.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../shared/design_system/tokens/app_spacing.dart';
 import '../../../../shared/widgets/app_card.dart';
 import '../../domain/entities/revelation_type.dart';
 import '../../domain/entities/surah.dart';
-import '../../../../core/constants/app_assets.dart';
 
 class QuranSurahHeader extends StatelessWidget {
   final Surah surah;
 
-  const QuranSurahHeader({super.key, required this.surah});
+  const QuranSurahHeader({
+    super.key,
+    required this.surah,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +22,9 @@ class QuranSurahHeader extends StatelessWidget {
     final textTheme = context.textTheme;
 
     final languageCode = l10n.localeName.split('_').first;
+
     final displayName = switch (languageCode) {
-      'ar' => '', // Arabic name is already displayed immediately above.
+      'ar' => '',
       'tr' => surah.nameTurkish,
       _ => surah.nameTransliteration,
     };
@@ -37,48 +42,66 @@ class QuranSurahHeader extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(
-              width: double.infinity,
-              height: 104,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Positioned.fill(
-                    child: Image.asset(
-                      AppAssets.surahHeader,
-                      fit: BoxFit.contain,
-                      excludeFromSemantics: true,
-                    ),
+            // Surah illustration: separate area, no text overlay.
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: SizedBox(
+                width: 112,
+                height: 112,
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Image.asset(
+                    AppAssets.surahHeader,
+                    fit: BoxFit.contain,
+                    excludeFromSemantics: true,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: AppSpacing.lg,
-                    ),
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        surah.nameArabic,
-                        style: textTheme.displaySmall?.copyWith(
-                          color: colorScheme.onSecondaryContainer,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
-            const SizedBox(height: AppSpacing.sm),
-            if (displayName.isNotEmpty)
+
+            const SizedBox(height: AppSpacing.md),
+
+            // Arabic surah name is now displayed independently.
+            SizedBox(
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.sm,
+                ),
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    surah.nameArabic,
+                    textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.center,
+                    style: textTheme.headlineSmall?.copyWith(
+                      color: colorScheme.primary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            if (displayName.isNotEmpty) ...[
+              const SizedBox(height: AppSpacing.xs),
               Text(
                 displayName,
+                textAlign: TextAlign.center,
                 style: textTheme.titleLarge?.copyWith(
                   color: colorScheme.onSecondaryContainer,
                 ),
               ),
+            ],
+
             const SizedBox(height: AppSpacing.md),
-            Divider(color: colorScheme.outlineVariant.withValues(alpha: 0.5)),
+
+            Divider(
+              color: colorScheme.outlineVariant.withValues(alpha: 0.5),
+            ),
+
             const SizedBox(height: AppSpacing.md),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -90,7 +113,9 @@ class QuranSurahHeader extends StatelessWidget {
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: AppSpacing.md,
+                  ),
                   child: Text('•'),
                 ),
                 Text(

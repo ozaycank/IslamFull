@@ -113,11 +113,12 @@ class QuranAyahView extends ConsumerWidget {
                     ? Icon(
                         Icons.bookmark,
                         color: colorScheme.primary,
+                        size: 32,
                       )
                     : Image.asset(
                         AppAssets.bookmarkOutline,
-                        width: 24,
-                        height: 24,
+                        width: 32,
+                        height: 32,
                         fit: BoxFit.contain,
                         excludeFromSemantics: true,
                       ),

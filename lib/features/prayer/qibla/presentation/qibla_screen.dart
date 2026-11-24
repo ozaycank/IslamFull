@@ -366,8 +366,8 @@ class QiblaScreen extends ConsumerWidget {
                     ),
                     child: Image.asset(
                       AppAssets.kaaba,
-                      width: 64,
-                      height: 64,
+                      width: 224,
+                      height: 224,
                       fit: BoxFit.contain,
                       excludeFromSemantics: true,
                     ),
