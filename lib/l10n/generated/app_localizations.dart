@@ -4491,6 +4491,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{dhikr} ({current}/33)'**
   String tasbihSegmentProgress(String dhikr, int current);
+
+  /// Disclaimer about the provenance of the Turkish translation dataset
+  ///
+  /// In en, this message translates to:
+  /// **'The provenance and translator or rights holder of the bundled dataset have not been independently verified. Representative passages match the text labeled Turkish Translation (Diyanet) on Quran.com; this comparison alone does not establish the dataset source or redistribution rights.'**
+  String get turkishTranslationDescription;
+
+  /// Disclaimer about the license or redistribution rights of the Turkish translation dataset
+  ///
+  /// In en, this message translates to:
+  /// **'License / redistribution: Not verified. Before release, obtain and verify a license or written permission that permits distributing the bundled translation text in this application.'**
+  String get turkishTranslationLicense;
+
+  /// Label for the link to the Quran.com Turkish translation comparison reference
+  ///
+  /// In en, this message translates to:
+  /// **'Open Quran.com comparison reference'**
+  String get turkishComparisonLinkLabel;
+
+  /// Label for the link to the Quran.com terms of use
+  ///
+  /// In en, this message translates to:
+  /// **'View Quran.com terms of use'**
+  String get turkishTermsLinkLabel;
 }
 
 class _AppLocalizationsDelegate

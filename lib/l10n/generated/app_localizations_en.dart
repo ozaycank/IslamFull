@@ -2486,4 +2486,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String tasbihSegmentProgress(String dhikr, int current) {
     return '$dhikr ($current/33)';
   }
+
+  @override
+  String get turkishTranslationDescription =>
+      'The provenance and translator or rights holder of the bundled dataset have not been independently verified. Representative passages match the text labeled Turkish Translation (Diyanet) on Quran.com; this comparison alone does not establish the dataset source or redistribution rights.';
+
+  @override
+  String get turkishTranslationLicense =>
+      'License / redistribution: Not verified. Before release, obtain and verify a license or written permission that permits distributing the bundled translation text in this application.';
+
+  @override
+  String get turkishComparisonLinkLabel =>
+      'Open Quran.com comparison reference';
+
+  @override
+  String get turkishTermsLinkLabel => 'View Quran.com terms of use';
 }

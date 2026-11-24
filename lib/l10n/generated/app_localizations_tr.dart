@@ -2491,4 +2491,19 @@ class AppLocalizationsTr extends AppLocalizations {
   String tasbihSegmentProgress(String dhikr, int current) {
     return '$dhikr ($current/33)';
   }
+
+  @override
+  String get turkishTranslationDescription =>
+      'Paketlenen veri kümesinin kaynağı ve çevirmeni bağımsız olarak doğrulanmadı. Örnek bölümler Quran.com üzerinde \'Turkish Translation (Diyanet)\' adıyla gösterilen metinle eşleşiyor; bu karşılaştırma tek başına kaynağı veya yeniden dağıtım hakkını kanıtlamaz.';
+
+  @override
+  String get turkishTranslationLicense =>
+      'Lisans / yeniden dağıtım: Doğrulanmadı. Paketlenen meal metninin bu uygulama içinde dağıtımına izin veren lisans veya yazılı izin yayın öncesinde doğrulanmalıdır.';
+
+  @override
+  String get turkishComparisonLinkLabel =>
+      'Quran.com karşılaştırma referansını aç';
+
+  @override
+  String get turkishTermsLinkLabel => 'Quran.com kullanım koşullarını aç';
 }

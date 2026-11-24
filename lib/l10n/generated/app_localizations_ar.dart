@@ -2464,11 +2464,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String tasbihTotalProgress(int current, int total) {
-    return '$current / $total';
+    return '$current من $total';
   }
 
   @override
   String tasbihSegmentProgress(String dhikr, int current) {
-    return '$dhikr ($current/33)';
+    return 'الذكر $dhikr ($current/33)';
   }
+
+  @override
+  String get turkishTranslationDescription =>
+      'لم يتم التحقق بصورة مستقلة من مصدر مجموعة البيانات المرفقة أو المترجم/صاحب الحقوق. تتطابق مقاطع نموذجية مع النص المعروض على Quran.com باسم \'Turkish Translation (Diyanet)\'؛ لكن هذه المقارنة وحدها لا تثبت المصدر أو حق إعادة التوزيع.';
+
+  @override
+  String get turkishTranslationLicense =>
+      'الترخيص / إعادة التوزيع: غير متحقق منهما. يجب قبل الإصدار الحصول على ترخيص أو إذن مكتوب والتحقق من أنه يسمح بتوزيع نص الترجمة المرفق داخل هذا التطبيق.';
+
+  @override
+  String get turkishComparisonLinkLabel => 'فتح مرجع المقارنة على Quran.com';
+
+  @override
+  String get turkishTermsLinkLabel => 'عرض شروط استخدام Quran.com';
 }

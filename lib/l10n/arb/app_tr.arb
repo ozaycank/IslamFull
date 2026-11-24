@@ -901,10 +901,10 @@
   "tasbihDhikrAllahuAkbar": "Allahu Ekber",
   "tasbihTotalProgress": "{current} / {total}",
   "tasbihSegmentProgress": "{dhikr} ({current}/33)",
-  turkishTranslationDescription:
-    'Paketlenen veri kümesinin kaynağı ve çevirmeni bağımsız olarak doğrulanmadı. Örnek bölümler Quran.com üzerinde "Turkish Translation (Diyanet)" adıyla gösterilen metinle eşleşiyor; bu karşılaştırma tek başına kaynağı veya yeniden dağıtım hakkını kanıtlamaz.',
-turkishTranslationLicense:
-    'Lisans / yeniden dağıtım: Doğrulanmadı. Paketlenen meal metninin bu uygulama içinde dağıtımına izin veren lisans veya yazılı izin yayın öncesinde doğrulanmalıdır.',
-turkishComparisonLinkLabel: 'Quran.com karşılaştırma referansını aç',
-turkishTermsLinkLabel: 'Quran.com kullanım koşullarını aç'
+  "turkishTranslationDescription":
+    "Paketlenen veri kümesinin kaynağı ve çevirmeni bağımsız olarak doğrulanmadı. Örnek bölümler Quran.com üzerinde 'Turkish Translation (Diyanet)' adıyla gösterilen metinle eşleşiyor; bu karşılaştırma tek başına kaynağı veya yeniden dağıtım hakkını kanıtlamaz.",
+"turkishTranslationLicense":
+    "Lisans / yeniden dağıtım: Doğrulanmadı. Paketlenen meal metninin bu uygulama içinde dağıtımına izin veren lisans veya yazılı izin yayın öncesinde doğrulanmalıdır.",
+"turkishComparisonLinkLabel": "Quran.com karşılaştırma referansını aç",
+"turkishTermsLinkLabel": "Quran.com kullanım koşullarını aç"
 }
